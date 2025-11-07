@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>ADCC Georgia</title>
+<script src="https://cdn.tailwindcss.com"></script>
+<style>
+  body { background-color: #111; color: #f5f5f5; }
+  a { color: #f00; }
+</style>
+</head>
+<body class="font-sans">
+
+<!-- Header -->
+<header class="bg-black p-6 flex justify-between items-center">
+  <div class="flex items-center gap-4">
+    <div class="bg-gray-700 w-24 h-12 flex items-center justify-center text-white">LOGO</div>
+    <h1 class="text-2xl font-bold text-red-600">ADCC Georgia</h1>
+  </div>
+  <nav class="flex gap-4">
+    <a href="#about" class="hover:underline">About</a>
+    <a href="#event" class="hover:underline">Event</a>
+    <a href="#contact" class="hover:underline">Contact</a>
+  </nav>
+</header>
+
+<!-- Hero Section with Countdown -->
+<section class="text-center p-12">
+  <h2 class="text-4xl font-bold text-red-600 mb-4">ADCC Georgia Official Event</h2>
+  <p class="mb-6">October 12, 2025 · Rustavi Sports Palace, Rustavi, Georgia</p>
+  <div id="countdown" class="text-3xl font-semibold text-white"></div>
+</section>
+
+<script>
+// Countdown Timer
+const eventDate = new Date('October 12, 2025 00:00:00').getTime();
+const countdownEl = document.getElementById('countdown');
+setInterval(() => {
+  const now = new Date().getTime();
+  const distance = eventDate - now;
+  const days = Math.floor(distance / (1000 * 60 * 60 * 24));
+  const hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+  const minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
+  const seconds = Math.floor((distance % (1000 * 60)) / 1000);
+  countdownEl.innerHTML = `${days}d ${hours}h ${minutes}m ${seconds}s`;
+}, 1000);
+</script>
+
+<!-- About Section -->
+<section id="about" class="p-12 max-w-4xl mx-auto">
+  <h3 class="text-3xl font-bold text-red-600 mb-4">About ADCC Georgia</h3>
+  <p>ADCC Georgia organizes high-quality grappling tournaments in Georgia. We follow ADCC-style rules, support athletes, and create fair competition for all skill levels.</p>
+</section>
+
+<!-- Event Section -->
+<section id="event" class="p-12 max-w-4xl mx-auto bg-gray-900 rounded-lg my-6">
+  <h3 class="text-3xl font-bold text-red-600 mb-4">Upcoming Event</h3>
+  <p><strong>Date:</strong> October 12, 2025</p>
+  <p><strong>Venue:</strong> Rustavi Sports Palace, Rustavi, Georgia</p>
+  <p class="mt-2">To register, email: <a href="mailto:adccgeorgia@gmail.com">adccgeorgia@gmail.com</a></p>
+  <div class="mt-4 flex gap-4">
+    <a href="https://instagram.com/adccgeorgia" target="_blank" class="px-4 py-2 bg-red-600 rounded">Instagram</a>
+    <a href="https://fb.com/adccgeorgia" target="_blank" class="px-4 py-2 bg-red-600 rounded">Facebook</a>
+  </div>
+</section>
+
+<!-- Gallery Section -->
+<section id="gallery" class="p-12 max-w-4xl mx-auto">
+  <h3 class="text-3xl font-bold text-red-600 mb-4">Gallery</h3>
+  <div class="grid sm:grid-cols-3 gap-4">
+    <div class="bg-gray-700 h-48 flex items-center justify-center">Photo 1</div>
+    <div class="bg-gray-700 h-48 flex items-center justify-center">Photo 2</div>
+    <div class="bg-gray-700 h-48 flex items-center justify-center">Photo 3</div>
+  </div>
+</section>
+
+<!-- Contact Section -->
+<section id="contact" class="p-12 max-w-4xl mx-auto bg-gray-900 rounded-lg my-6">
+  <h3 class="text-3xl font-bold text-red-600 mb-4">Contact</h3>
+  <p>Email: <a href="mailto:adccgeorgia@gmail.com">adccgeorgia@gmail.com</a></p>
+  <p class="mt-2">Instagram: <a href="https://instagram.com/adccgeorgia" target="_blank">@adccgeorgia</a></p>
+  <p>Facebook: <a href="https://fb.com/adccgeorgia" target="_blank">ADCC Georgia</a></p>
+</section>
+
+<!-- Footer -->
+<footer class="p-6 text-center text-gray-400">
+  © 2025 ADCC Georgia — All rights reserved.
+</footer>
+
+</body>
+</html>
