@@ -36,5 +36,59 @@
 <script>
 // Countdown Timer
 const eventDate = new Date('October 12, 2025 00:00:00').getTime();
-const countdownEl = document.g
+const countdownEl = document.getElementById('countdown');
+setInterval(() => {
+  const now = new Date().getTime();
+  const distance = eventDate - now;
+  const days = Math.floor(distance / (1000 * 60 * 60 * 24));
+  const hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+  const minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
+  const seconds = Math.floor((distance % (1000 * 60)) / 1000);
+  countdownEl.innerHTML = `${days}d ${hours}h ${minutes}m ${seconds}s`;
+}, 1000);
+</script>
+
+<!-- About Section -->
+<section id="about" class="p-12 max-w-4xl mx-auto">
+  <h3 class="text-3xl font-bold text-red-600 mb-4">About ADCC Georgia</h3>
+  <p>ADCC Georgia organizes high-quality grappling tournaments in Georgia. We follow ADCC-style rules, support athletes, and create fair competition for all skill levels.</p>
+</section>
+
+<!-- Event Section -->
+<section id="event" class="p-12 max-w-4xl mx-auto bg-gray-900 rounded-lg my-6">
+  <h3 class="text-3xl font-bold text-red-600 mb-4">Upcoming Event</h3>
+  <p><strong>Date:</strong> October 12, 2025</p>
+  <p><strong>Venue:</strong> Rustavi Sports Palace, Rustavi, Georgia</p>
+  <p class="mt-2">To register, email: <a href="mailto:adccgeorgia@gmail.com">adccgeorgia@gmail.com</a></p>
+  <div class="mt-4 flex gap-4">
+    <a href="https://instagram.com/adccgeorgia" target="_blank" class="px-4 py-2 bg-red-600 rounded">Instagram</a>
+    <a href="https://fb.com/adccgeorgia" target="_blank" class="px-4 py-2 bg-red-600 rounded">Facebook</a>
+  </div>
+</section>
+
+<!-- Gallery Section -->
+<section id="gallery" class="p-12 max-w-4xl mx-auto">
+  <h3 class="text-3xl font-bold text-red-600 mb-4">Gallery</h3>
+  <div class="grid sm:grid-cols-3 gap-4">
+    <div class="bg-gray-700 h-48 flex items-center justify-center">Photo 1</div>
+    <div class="bg-gray-700 h-48 flex items-center justify-center">Photo 2</div>
+    <div class="bg-gray-700 h-48 flex items-center justify-center">Photo 3</div>
+  </div>
+</section>
+
+<!-- Contact Section -->
+<section id="contact" class="p-12 max-w-4xl mx-auto bg-gray-900 rounded-lg my-6">
+  <h3 class="text-3xl font-bold text-red-600 mb-4">Contact</h3>
+  <p>Email: <a href="mailto:adccgeorgia@gmail.com">adccgeorgia@gmail.com</a></p>
+  <p class="mt-2">Instagram: <a href="https://instagram.com/adccgeorgia" target="_blank">@adccgeorgia</a></p>
+  <p>Facebook: <a href="https://fb.com/adccgeorgia" target="_blank">ADCC Georgia</a></p>
+</section>
+
+<!-- Footer -->
+<footer class="p-6 text-center text-gray-400">
+  © 2025 ADCC Georgia — All rights reserved.
+</footer>
+
+</body>
+</html>
 
