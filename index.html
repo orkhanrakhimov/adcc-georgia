@@ -9,6 +9,20 @@
   body { background-color: #111; color: #f5f5f5; }
   a { color: #f00; }
   .header-title { font-family: 'Arial', sans-serif; font-weight: 700; }
+  .hero {
+    background-image: url('main.png');
+    background-size: contain; /* Keeps poster proportions */
+    background-position: center;
+    background-repeat: no-repeat;
+    height: 400px; /* Default height */
+    max-height: 80vh; /* Avoid being too tall on big screens */
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    padding: 1.5rem;
+  }
 </style>
 </head>
 <body class="font-sans">
@@ -26,13 +40,10 @@
   </nav>
 </header>
 
-<!-- Hero Section with Poster and Countdown -->
-<section class="text-center p-12 flex flex-col items-center gap-6">
-  <!-- Poster image -->
-  <img src="main.png" alt="ADCC Georgia Event Poster" class="max-w-full h-auto rounded-lg shadow-lg">
-
-  <h2 class="text-3xl sm:text-5xl font-bold text-red-600 mt-4">ADCC Georgia Official Event</h2>
-  <p class="mb-4 text-white text-lg sm:text-xl">October 12, 2025 · Rustavi Sports Palace, Rustavi, Georgia</p>
+<!-- Hero Section with Poster Background and Countdown -->
+<section class="hero">
+  <h2 class="text-3xl sm:text-5xl font-bold text-red-600 mb-2">ADCC Georgia Official Event</h2>
+  <p class="mb-2 text-white text-lg sm:text-xl">October 12, 2025 · Rustavi Sports Palace, Rustavi, Georgia</p>
   <div id="countdown" class="text-2xl sm:text-3xl font-semibold text-white"></div>
 </section>
 
