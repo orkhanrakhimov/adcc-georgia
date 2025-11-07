@@ -10,13 +10,10 @@
   a { color: #f00; }
   .header-title { font-family: 'Arial', sans-serif; font-weight: 700; }
 
-  /* Main section background */
-  .main-section {
-    background-image: url('main.png');
-    background-size: cover;
-    background-position: center;
-    background-repeat: no-repeat;
-    padding: 3rem 1rem;
+  /* Sporty font for main info and countdown */
+  .sporty {
+    font-family: 'Impact', 'Arial Black', sans-serif;
+    font-weight: 900;
   }
 </style>
 </head>
@@ -36,16 +33,16 @@
 </header>
 
 <!-- Countdown & Event Info Section -->
-<section class="main-section text-center sm:text-left max-w-4xl mx-auto rounded-lg flex flex-col sm:flex-row justify-between items-center gap-6">
+<section class="text-center sm:text-left max-w-4xl mx-auto p-12 flex flex-col sm:flex-row justify-between items-center gap-6">
   <!-- Countdown -->
   <div class="flex flex-col items-center sm:items-start gap-2">
-    <h2 class="text-3xl sm:text-4xl font-bold text-red-600">ADCC Georgia Official Event</h2>
-    <div id="countdown" class="text-2xl sm:text-3xl font-semibold text-white"></div>
+    <h2 class="text-3xl sm:text-4xl text-red-600 mb-1 sporty">ADCC Georgia Official Event</h2>
+    <div id="countdown" class="text-2xl sm:text-3xl text-white font-bold sporty"></div>
     <a href="https://smoothcomp.com/en/event/24202" target="_blank" class="px-4 py-2 bg-red-600 rounded text-white font-bold mt-2">Register Now</a>
   </div>
 
   <!-- Event Info -->
-  <div class="text-white text-lg sm:text-xl">
+  <div class="text-white text-lg sm:text-xl sporty">
     <p><strong>Date:</strong> October 12, 2025</p>
     <p><strong>Venue:</strong> Rustavi Sports Palace, Rustavi, Georgia</p>
   </div>
@@ -109,3 +106,4 @@ setInterval(() => {
 
 </body>
 </html>
+
