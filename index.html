@@ -6,7 +6,7 @@
 <title>ADCC Georgia</title>
 <script src="https://cdn.tailwindcss.com"></script>
 <style>
-  @import url('https://fonts.googleapis.com/css2?family=Orbitron:wght@700&display=swap');
+  @import url('https://fonts.googleapis.com/css2?family=Orbitron:wght@700&family=Russo+One&display=swap');
 
   body { 
     background-color: #111; 
@@ -18,6 +18,12 @@
 
   /* Countdown */
   #countdown { font-family: 'Orbitron', sans-serif; letter-spacing: 2px; }
+
+  /* Hero heading */
+  .hero-title {
+    font-family: 'Russo One', sans-serif;
+    text-shadow: 2px 2px 8px rgba(0,0,0,0.7);
+  }
 
   /* Buttons hover effect */
   .btn:hover { transform: scale(1.05); box-shadow: 0 4px 10px rgba(255,0,0,0.5); }
@@ -48,7 +54,7 @@
     <div class="absolute inset-0 bg-black opacity-50"></div> <!-- dark overlay -->
   </div>
   <div class="relative z-10">
-    <h2 class="text-4xl font-bold text-red-600 mb-4">ADCC Georgia Official Event</h2>
+    <h2 class="hero-title text-4xl md:text-5xl font-bold text-red-500 mb-4">ADCC Georgia Open Official Event</h2>
     <p class="mb-6 text-xl text-white">October 12, 2025 · Rustavi Sports Palace, Rustavi, Georgia</p>
     <div id="countdown" class="text-3xl font-semibold text-white mb-4"></div>
     <a href="https://smoothcomp.com/en/event/24202" target="_blank" class="btn inline-block px-6 py-3 bg-red-600 text-white rounded font-bold transition-transform">Register Now</a>
@@ -115,3 +121,4 @@ setInterval(() => {
 
 </body>
 </html>
+
