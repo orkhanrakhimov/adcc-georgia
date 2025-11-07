@@ -6,24 +6,33 @@
 <title>ADCC Georgia</title>
 <script src="https://cdn.tailwindcss.com"></script>
 <style>
-  body { background-color: #111; color: #f5f5f5; }
-  a { color: #f00; }
-  .header-title { font-family: 'Arial', sans-serif; font-weight: 700; }
+  @import url('https://fonts.googleapis.com/css2?family=Orbitron:wght@700&display=swap');
 
-  /* Sporty font for main info and countdown */
-  .sporty {
-    font-family: 'Impact', 'Arial Black', sans-serif;
-    font-weight: 900;
+  body { 
+    background-color: #111; 
+    color: #f5f5f5; 
+    font-family: 'Arial', sans-serif;
   }
+  a { color: #f00; }
+  html { scroll-behavior: smooth; }
+
+  /* Countdown */
+  #countdown { font-family: 'Orbitron', sans-serif; letter-spacing: 2px; }
+
+  /* Buttons hover effect */
+  .btn:hover { transform: scale(1.05); box-shadow: 0 4px 10px rgba(255,0,0,0.5); }
+
+  /* Gallery hover */
+  .gallery-img:hover { transform: scale(1.05); box-shadow: 0 4px 15px rgba(0,0,0,0.7); }
 </style>
 </head>
 <body class="font-sans">
 
 <!-- Header -->
-<header class="bg-black p-6 flex justify-between items-center">
+<header class="bg-black p-6 flex justify-between items-center shadow-md">
   <div class="flex items-center gap-4">
     <img src="adcc.png" alt="ADCC Georgia Logo" width="80">
-    <h1 class="text-xl header-title text-red-600">ADCC Georgia</h1>
+    <h1 class="text-xl font-bold text-red-600 tracking-wide">ADCC Georgia</h1>
   </div>
   <nav class="flex gap-4">
     <a href="#about" class="hover:underline">About</a>
@@ -32,20 +41,12 @@
   </nav>
 </header>
 
-<!-- Countdown & Event Info Section -->
-<section class="text-center sm:text-left max-w-4xl mx-auto p-12 flex flex-col sm:flex-row justify-between items-center gap-6">
-  <!-- Countdown -->
-  <div class="flex flex-col items-center sm:items-start gap-2">
-    <h2 class="text-3xl sm:text-4xl text-red-600 mb-1 sporty">ADCC Georgia Official Event</h2>
-    <div id="countdown" class="text-2xl sm:text-3xl text-white font-bold sporty"></div>
-    <a href="https://smoothcomp.com/en/event/24202" target="_blank" class="px-4 py-2 bg-red-600 rounded text-white font-bold mt-2">Register Now</a>
-  </div>
-
-  <!-- Event Info -->
-  <div class="text-white text-lg sm:text-xl sporty">
-    <p><strong>Date:</strong> October 12, 2025</p>
-    <p><strong>Venue:</strong> Rustavi Sports Palace, Rustavi, Georgia</p>
-  </div>
+<!-- Hero / Countdown Section -->
+<section class="text-center p-12">
+  <h2 class="text-4xl font-bold text-red-600 mb-4">ADCC Georgia Official Event</h2>
+  <p class="mb-6 text-xl">October 12, 2025 · Rustavi Sports Palace, Rustavi, Georgia</p>
+  <div id="countdown" class="text-3xl font-semibold text-white mb-4"></div>
+  <a href="https://smoothcomp.com/en/event/24202" target="_blank" class="btn inline-block px-6 py-3 bg-red-600 text-white rounded font-bold transition-transform">Register Now</a>
 </section>
 
 <script>
@@ -67,42 +68,43 @@ setInterval(() => {
 <section id="about" class="p-12 max-w-4xl mx-auto">
   <h3 class="text-3xl font-bold text-red-600 mb-4">About ADCC Georgia</h3>
   <p>This is the official ADCC Georgia, organizing high-level grappling tournaments in Georgia. We follow official ADCC rules, support athletes, and provide fair competition for all skill levels.</p>
-
 </section>
 
-<!-- Event Section -->
+<!-- Upcoming Event Section -->
 <section id="event" class="p-12 max-w-4xl mx-auto bg-gray-900 rounded-lg my-6">
   <h3 class="text-3xl font-bold text-red-600 mb-4">Upcoming Event</h3>
   <p><strong>Date:</strong> October 12, 2025</p>
   <p><strong>Venue:</strong> Rustavi Sports Palace, Rustavi, Georgia</p>
-  <p class="mt-2">Reach us, email: <a href="mailto:adccgeorgia@gmail.com">adccgeorgia@gmail.com</a></p>
-  <div class="mt-4 flex gap-4 flex-wrap">
-    <a href="https://instagram.com/adccgeorgia" target="_blank" class="px-4 py-2 bg-red-600 rounded">Instagram</a>
-    <a href="https://fb.com/adccgeorgia" target="_blank" class="px-4 py-2 bg-red-600 rounded">Facebook</a>
-  </div>
 </section>
 
 <!-- Gallery Section -->
 <section id="gallery" class="p-12 max-w-4xl mx-auto">
   <h3 class="text-3xl font-bold text-red-600 mb-4">Gallery</h3>
   <div class="grid sm:grid-cols-3 gap-4">
-    <img src="one.png" alt="Gallery Photo 1" class="h-48 w-full object-cover rounded">
-    <img src="two.png" alt="Gallery Photo 2" class="h-48 w-full object-cover rounded">
-    <img src="three.png" alt="Gallery Photo 3" class="h-48 w-full object-cover rounded">
+    <img src="one.png" alt="Photo 1" class="gallery-img h-48 w-full object-cover rounded transition-transform">
+    <img src="two.png" alt="Photo 2" class="gallery-img h-48 w-full object-cover rounded transition-transform">
+    <img src="three.png" alt="Photo 3" class="gallery-img h-48 w-full object-cover rounded transition-transform">
   </div>
 </section>
 
 <!-- Contact Section -->
 <section id="contact" class="p-12 max-w-4xl mx-auto bg-gray-900 rounded-lg my-6">
   <h3 class="text-3xl font-bold text-red-600 mb-4">Contact</h3>
-  <p>Email: <a href="mailto:adccgeorgia@gmail.com">adccgeorgia@gmail.com</a></p>
-  <p class="mt-2">Instagram: <a href="https://instagram.com/adccgeorgia" target="_blank">@adccgeorgia</a></p>
-  <p>Facebook: <a href="https://fb.com/adccgeorgia" target="_blank">ADCC Georgia</a></p>
+  <p>Email: <a href="mailto:adccgeorgia@gmail.com" class="text-red-600 hover:underline">adccgeorgia@gmail.com</a></p>
+  <div class="mt-4 flex gap-4">
+    <a href="https://instagram.com/adccgeorgia" target="_blank" class="btn px-4 py-2 bg-red-600 rounded text-white font-semibold transition-transform">Instagram</a>
+    <a href="https://fb.com/adccgeorgia" target="_blank" class="btn px-4 py-2 bg-red-600 rounded text-white font-semibold transition-transform">Facebook</a>
+  </div>
 </section>
 
 <!-- Footer -->
 <footer class="p-6 text-center text-gray-400">
   © 2025 ADCC Georgia — All rights reserved.
+  <div class="mt-2 flex justify-center gap-4 text-sm">
+    <a href="https://instagram.com/adccgeorgia" target="_blank" class="hover:underline">Instagram</a>
+    <a href="https://fb.com/adccgeorgia" target="_blank" class="hover:underline">Facebook</a>
+    <a href="mailto:adccgeorgia@gmail.com" class="hover:underline">Email</a>
+  </div>
 </footer>
 
 </body>
