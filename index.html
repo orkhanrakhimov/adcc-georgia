@@ -45,9 +45,7 @@
 </header>
 
 <!-- Hero -->
-<section
-class="text-center p-12 bg-cover bg-center"
-style="background-image:url('main.png');">
+<section class="text-center p-12 bg-cover bg-center" style="background-image:url('main.png');">
 
     <h2 class="text-4xl font-bold text-red-600 mb-4 event-title">
         ADCC Georgia Nationals Open 2026
@@ -70,11 +68,9 @@ style="background-image:url('main.png');">
 
 <script>
 const eventDate = new Date("October 25, 2026 00:00:00").getTime();
-
 const countdownEl = document.getElementById("countdown");
 
-setInterval(() => {
-
+function updateCountdown() {
     const now = new Date().getTime();
     const distance = eventDate - now;
 
@@ -88,61 +84,43 @@ setInterval(() => {
     const minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
     const seconds = Math.floor((distance % (1000 * 60)) / 1000);
 
-    countdownEl.innerHTML =
-        `${days}d ${hours}h ${minutes}m ${seconds}s`;
+    countdownEl.innerHTML = `${days}d ${hours}h ${minutes}m ${seconds}s`;
+}
 
-}, 1000);
+updateCountdown();
+setInterval(updateCountdown, 1000);
 </script>
 
 <!-- About -->
 <section id="about" class="p-12 max-w-4xl mx-auto">
-
-    <h3 class="text-3xl font-bold text-red-600 mb-4">
-        About ADCC Georgia
-    </h3>
-
+    <h3 class="text-3xl font-bold text-red-600 mb-4">About ADCC Georgia</h3>
     <p>
         ADCC Georgia is the official organizer of ADCC competitions in Georgia,
-        hosting world-class submission grappling tournaments under official
-        ADCC rules. Our mission is to provide fair competition, professional
-        event organization, and opportunities for athletes of all experience
-        levels.
+        hosting world-class submission grappling tournaments under official ADCC rules.
     </p>
-
 </section>
 
 <!-- Event -->
 <section id="event" class="p-12 max-w-4xl mx-auto bg-gray-900 rounded-lg my-6">
-
-    <h3 class="text-3xl font-bold text-red-600 mb-4">
-        Upcoming Event
-    </h3>
+    <h3 class="text-3xl font-bold text-red-600 mb-4">Upcoming Event</h3>
 
     <p><strong>Date:</strong> October 25, 2026</p>
-
     <p><strong>Venue:</strong> Rustavi Sports Palace, Rustavi, Georgia</p>
 
     <p class="mt-2">
-        <a
-            href="https://maps.app.goo.gl/gDBiM75Gd4j2dBLm9"
-            target="_blank"
-            class="text-red-400 hover:underline">
+        <a href="https://maps.app.goo.gl/gDBiM75Gd4j2dBLm9" target="_blank">
             📍 View on Google Maps
         </a>
     </p>
-
 </section>
 
 <!-- Registration -->
 <section id="registration" class="p-12 max-w-4xl mx-auto bg-gray-800 rounded-lg my-6">
 
-    <h3 class="text-3xl font-bold text-red-600 mb-4">
-        Registration
-    </h3>
+    <h3 class="text-3xl font-bold text-red-600 mb-4">Registration</h3>
 
     <p>
-        Registration for the ADCC Georgia Nationals Open 2026 is open.
-        Secure your place through Smoothcomp.
+        Registration for ADCC Georgia Nationals Open 2026 is open on Smoothcomp.
     </p>
 
     <a
@@ -156,59 +134,25 @@ setInterval(() => {
 
 <!-- Gallery -->
 <section id="gallery" class="p-12 max-w-4xl mx-auto">
-
-    <h3 class="text-3xl font-bold text-red-600 mb-4">
-        Gallery
-    </h3>
+    <h3 class="text-3xl font-bold text-red-600 mb-4">Gallery</h3>
 
     <div class="grid sm:grid-cols-3 gap-4">
-
-        <img src="one.png" alt="Gallery Photo 1" class="rounded shadow-lg">
-
-        <img src="two.png" alt="Gallery Photo 2" class="rounded shadow-lg">
-
-        <img src="three.png" alt="Gallery Photo 3" class="rounded shadow-lg">
-
+        <img src="one.png" class="rounded shadow-lg">
+        <img src="two.png" class="rounded shadow-lg">
+        <img src="three.png" class="rounded shadow-lg">
     </div>
-
 </section>
 
 <!-- Contact -->
 <section id="contact" class="p-12 max-w-4xl mx-auto bg-gray-900 rounded-lg my-6">
 
-    <h3 class="text-3xl font-bold text-red-600 mb-4">
-        Contact
-    </h3>
+    <h3 class="text-3xl font-bold text-red-600 mb-4">Contact</h3>
 
-    <p class="mb-4">
-        For inquiries, sponsorships, or partnership opportunities, contact us:
-    </p>
-
-    <p>
-        Email:
-        <a
-            href="mailto:adccgeorgia@gmail.com"
-            class="text-red-400 hover:underline">
-            adccgeorgia@gmail.com
-        </a>
-    </p>
+    <p>Email: <a href="mailto:adccgeorgia@gmail.com">adccgeorgia@gmail.com</a></p>
 
     <div class="mt-4 flex gap-4">
-
-        <a
-            href="https://instagram.com/adccgeorgia"
-            target="_blank"
-            class="px-4 py-2 bg-red-600 rounded hover:bg-red-700">
-            Instagram
-        </a>
-
-        <a
-            href="https://fb.com/adccgeorgia"
-            target="_blank"
-            class="px-4 py-2 bg-red-600 rounded hover:bg-red-700">
-            Facebook
-        </a>
-
+        <a href="https://instagram.com/adccgeorgia" target="_blank" class="px-4 py-2 bg-red-600 rounded">Instagram</a>
+        <a href="https://fb.com/adccgeorgia" target="_blank" class="px-4 py-2 bg-red-600 rounded">Facebook</a>
     </div>
 
 </section>
