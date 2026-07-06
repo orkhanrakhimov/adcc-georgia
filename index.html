@@ -3,104 +3,220 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>ADCC Georgia</title>
+<title>ADCC Georgia Nationals Open 2026</title>
+
 <script src="https://cdn.tailwindcss.com"></script>
+
 <style>
-  body { background-color: #111; color: #f5f5f5; font-family: 'Arial', sans-serif; }
-  a { color: #f00; }
+  body {
+    background-color: #111;
+    color: #f5f5f5;
+    font-family: Arial, sans-serif;
+  }
+
+  a {
+    color: #f00;
+  }
+
   .event-title {
-    font-family: 'Impact', 'Arial Black', sans-serif;
+    font-family: Impact, "Arial Black", sans-serif;
     text-transform: uppercase;
     text-shadow: 2px 2px 8px #000;
     letter-spacing: 1px;
   }
 </style>
 </head>
-<body class="font-sans">
+
+<body>
 
 <!-- Header -->
 <header class="bg-black p-6 flex justify-between items-center">
-  <div class="flex items-center gap-4">
-    <img src="adcc.png" alt="ADCC Georgia Logo" width="120" class="rounded">
-  </div>
-  <nav class="flex gap-4">
-    <a href="#about" class="hover:underline">About</a>
-    <a href="#event" class="hover:underline">Event</a>
-    <a href="#results" class="hover:underline">Results</a>
-    <a href="#contact" class="hover:underline">Contact</a>
-  </nav>
+    <div class="flex items-center gap-4">
+        <img src="adcc.png" alt="ADCC Georgia Logo" width="120" class="rounded">
+    </div>
+
+    <nav class="flex gap-4">
+        <a href="#about" class="hover:underline">About</a>
+        <a href="#event" class="hover:underline">Event</a>
+        <a href="#registration" class="hover:underline">Registration</a>
+        <a href="#gallery" class="hover:underline">Gallery</a>
+        <a href="#contact" class="hover:underline">Contact</a>
+    </nav>
 </header>
 
-<!-- Hero Section with Countdown -->
-<section class="text-center p-12 bg-cover bg-center" style="background-image: url('main.png');">
-  <h2 class="text-4xl font-bold text-red-600 mb-4 event-title">ADCC Georgia Open Official Event</h2>
-  <p class="mb-6 text-lg">October 12, 2025 · Rustavi Sports Palace, Rustavi, Georgia</p>
-  <div id="countdown" class="text-3xl font-semibold text-white mb-6"></div>
-  <a href="https://smoothcomp.com/en/event/24202" target="_blank" class="px-6 py-3 bg-red-600 rounded text-white font-bold hover:bg-red-700">Register on Smoothcomp</a>
+<!-- Hero -->
+<section
+class="text-center p-12 bg-cover bg-center"
+style="background-image:url('main.png');">
+
+    <h2 class="text-4xl font-bold text-red-600 mb-4 event-title">
+        ADCC Georgia Nationals Open 2026
+    </h2>
+
+    <p class="mb-6 text-lg">
+        October 25, 2026 · Rustavi Sports Palace, Rustavi, Georgia
+    </p>
+
+    <div id="countdown" class="text-3xl font-semibold text-white mb-6"></div>
+
+    <a
+        href="https://smoothcomp.com/en/event/24202"
+        target="_blank"
+        class="px-6 py-3 bg-red-600 rounded text-white font-bold hover:bg-red-700">
+        Register on Smoothcomp
+    </a>
+
 </section>
 
 <script>
-// Countdown Timer
-const eventDate = new Date('October 12, 2025 00:00:00').getTime();
-const countdownEl = document.getElementById('countdown');
+const eventDate = new Date("October 25, 2026 00:00:00").getTime();
+
+const countdownEl = document.getElementById("countdown");
+
 setInterval(() => {
-  const now = new Date().getTime();
-  const distance = eventDate - now;
-  const days = Math.floor(distance / (1000 * 60 * 60 * 24));
-  const hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
-  const minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
-  const seconds = Math.floor((distance % (1000 * 60)) / 1000);
-  countdownEl.innerHTML = `${days}d ${hours}h ${minutes}m ${seconds}s`;
+
+    const now = new Date().getTime();
+    const distance = eventDate - now;
+
+    if (distance <= 0) {
+        countdownEl.innerHTML = "The event has started!";
+        return;
+    }
+
+    const days = Math.floor(distance / (1000 * 60 * 60 * 24));
+    const hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+    const minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
+    const seconds = Math.floor((distance % (1000 * 60)) / 1000);
+
+    countdownEl.innerHTML =
+        `${days}d ${hours}h ${minutes}m ${seconds}s`;
+
 }, 1000);
 </script>
 
-<!-- About Section -->
+<!-- About -->
 <section id="about" class="p-12 max-w-4xl mx-auto">
-  <h3 class="text-3xl font-bold text-red-600 mb-4">About ADCC Georgia</h3>
-  <p>This is the official ADCC Georgia, organizing high-level grappling tournaments in Georgia. We follow official ADCC rules, support athletes, and provide fair competition for all skill levels.</p>
+
+    <h3 class="text-3xl font-bold text-red-600 mb-4">
+        About ADCC Georgia
+    </h3>
+
+    <p>
+        ADCC Georgia is the official organizer of ADCC competitions in Georgia,
+        hosting world-class submission grappling tournaments under official
+        ADCC rules. Our mission is to provide fair competition, professional
+        event organization, and opportunities for athletes of all experience
+        levels.
+    </p>
+
 </section>
 
-<!-- Event Section -->
+<!-- Event -->
 <section id="event" class="p-12 max-w-4xl mx-auto bg-gray-900 rounded-lg my-6">
-  <h3 class="text-3xl font-bold text-red-600 mb-4">Upcoming Event</h3>
-  <p><strong>Date:</strong> October 12, 2025</p>
-  <p><strong>Venue:</strong> Rustavi Sports Palace, Rustavi, Georgia</p>
-  <p class="mt-2"><a href="https://maps.app.goo.gl/gDBiM75Gd4j2dBLm9" target="_blank" class="text-red-400 hover:underline">📍 View on Google Maps</a></p>
+
+    <h3 class="text-3xl font-bold text-red-600 mb-4">
+        Upcoming Event
+    </h3>
+
+    <p><strong>Date:</strong> October 25, 2026</p>
+
+    <p><strong>Venue:</strong> Rustavi Sports Palace, Rustavi, Georgia</p>
+
+    <p class="mt-2">
+        <a
+            href="https://maps.app.goo.gl/gDBiM75Gd4j2dBLm9"
+            target="_blank"
+            class="text-red-400 hover:underline">
+            📍 View on Google Maps
+        </a>
+    </p>
+
 </section>
 
-<!-- Results Section -->
-<section id="results" class="p-12 max-w-4xl mx-auto bg-gray-800 rounded-lg my-6">
-  <h3 class="text-3xl font-bold text-red-600 mb-4">Results</h3>
-  <p>Check official results from the ADCC Georgia Open 2025 below:</p>
-  <a href="https://adcombat.com/adcc-events/adcc-georgia-open-2025/" target="_blank" class="inline-block mt-4 px-6 py-3 bg-red-600 text-white font-bold rounded hover:bg-red-700">View Results</a>
+<!-- Registration -->
+<section id="registration" class="p-12 max-w-4xl mx-auto bg-gray-800 rounded-lg my-6">
+
+    <h3 class="text-3xl font-bold text-red-600 mb-4">
+        Registration
+    </h3>
+
+    <p>
+        Registration for the ADCC Georgia Nationals Open 2026 is open.
+        Secure your place through Smoothcomp.
+    </p>
+
+    <a
+        href="https://smoothcomp.com/en/event/24202"
+        target="_blank"
+        class="inline-block mt-4 px-6 py-3 bg-red-600 text-white font-bold rounded hover:bg-red-700">
+        Register Now
+    </a>
+
 </section>
 
-<!-- Gallery Section -->
+<!-- Gallery -->
 <section id="gallery" class="p-12 max-w-4xl mx-auto">
-  <h3 class="text-3xl font-bold text-red-600 mb-4">Gallery</h3>
-  <div class="grid sm:grid-cols-3 gap-4">
-    <img src="one.png" alt="Gallery Photo 1" class="rounded shadow-lg">
-    <img src="two.png" alt="Gallery Photo 2" class="rounded shadow-lg">
-    <img src="three.png" alt="Gallery Photo 3" class="rounded shadow-lg">
-  </div>
+
+    <h3 class="text-3xl font-bold text-red-600 mb-4">
+        Gallery
+    </h3>
+
+    <div class="grid sm:grid-cols-3 gap-4">
+
+        <img src="one.png" alt="Gallery Photo 1" class="rounded shadow-lg">
+
+        <img src="two.png" alt="Gallery Photo 2" class="rounded shadow-lg">
+
+        <img src="three.png" alt="Gallery Photo 3" class="rounded shadow-lg">
+
+    </div>
+
 </section>
 
-<!-- Contact Section -->
+<!-- Contact -->
 <section id="contact" class="p-12 max-w-4xl mx-auto bg-gray-900 rounded-lg my-6">
-  <h3 class="text-3xl font-bold text-red-600 mb-4">Contact</h3>
-  <p class="mb-4">For any inquiries or partnership opportunities, reach us at:</p>
-  <p>Email: <a href="mailto:adccgeorgia@gmail.com" class="text-red-400 hover:underline">adccgeorgia@gmail.com</a></p>
-  <div class="mt-4 flex gap-4">
-    <a href="https://instagram.com/adccgeorgia" target="_blank" class="px-4 py-2 bg-red-600 rounded hover:bg-red-700">Instagram</a>
-    <a href="https://fb.com/adccgeorgia" target="_blank" class="px-4 py-2 bg-red-600 rounded hover:bg-red-700">Facebook</a>
-  </div>
+
+    <h3 class="text-3xl font-bold text-red-600 mb-4">
+        Contact
+    </h3>
+
+    <p class="mb-4">
+        For inquiries, sponsorships, or partnership opportunities, contact us:
+    </p>
+
+    <p>
+        Email:
+        <a
+            href="mailto:adccgeorgia@gmail.com"
+            class="text-red-400 hover:underline">
+            adccgeorgia@gmail.com
+        </a>
+    </p>
+
+    <div class="mt-4 flex gap-4">
+
+        <a
+            href="https://instagram.com/adccgeorgia"
+            target="_blank"
+            class="px-4 py-2 bg-red-600 rounded hover:bg-red-700">
+            Instagram
+        </a>
+
+        <a
+            href="https://fb.com/adccgeorgia"
+            target="_blank"
+            class="px-4 py-2 bg-red-600 rounded hover:bg-red-700">
+            Facebook
+        </a>
+
+    </div>
+
 </section>
 
 <!-- Footer -->
 <footer class="p-6 text-center text-gray-400">
-  © 2025 ADCC Georgia — All rights reserved.
+    © 2026 ADCC Georgia. All rights reserved.
 </footer>
 
 </body>
 </html>
-
