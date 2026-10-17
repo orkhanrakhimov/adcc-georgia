@@ -20,14 +20,11 @@
     <nav>
       <a class="logo" href="./"><img src="logo.png" alt="ADCC"><span>GEORGIA</span></a>
       <ul id="menu">
-        <li><a data-i18n="nav.event" href="./#event">Event</a></li>
-        <li><a data-i18n="nav.weighin" href="weigh-in">Weigh-in</a></li>
-        <li><a data-i18n="nav.tickets" href="tickets">Tickets</a></li>
-        <li><a data-i18n="nav.shop" href="shop" class="active" aria-current="page">Shop</a></li>
+        <li class="has-sub"><a data-i18n="nav.event" href="event">Event</a><span class="chev" aria-hidden="true"></span><ul class="submenu"><li><a data-i18n="nav.event.d" href="event">Event details</a></li><li><a data-i18n="nav.weighin" href="weigh-in">Weigh-in</a></li><li><a data-i18n="nav.tickets" href="tickets">Tickets</a></li><li><a data-i18n="nav.rules" href="rules">Rules</a></li></ul></li>
+        <li><a data-i18n="nav.previous" href="previous-events">Previous events</a></li>
+        <li class="on"><a data-i18n="nav.shop" href="shop" class="active" aria-current="page">Shop</a></li>
         <li><a data-i18n="nav.join" href="join">Join us</a></li>
-        <li><a data-i18n="nav.rules" href="rules">Rules</a></li>
-        <li><a data-i18n="nav.previous" href="./#past">Previous events</a></li>
-        <li><a data-i18n="nav.contact" href="./#contact">Contact</a></li>
+        <li><a data-i18n="nav.contact" href="contact">Contact</a></li>
       </ul>
       <div class="nav-right">
         <div class="lang" role="group" aria-label="Language">
@@ -66,8 +63,18 @@
 
 <div id="wa-wrap" class="wa-wrap"></div>
 
-<footer>
-  <div class="wrap">
+<footer class="site-foot">
+  <div class="wrap fgrid">
+    <div class="fbrand">
+      <a class="logo" href="./"><img src="logo.png" alt="ADCC"><span>GEORGIA</span></a>
+      <p data-i18n="ft.about">Submission grappling events in Tbilisi, Georgia.</p>
+      <div class="soc" id="ft-soc"></div>
+    </div>
+    <div><h4 data-i18n="ft.event">Event</h4><ul><li><a data-i18n="nav.event.d" href="event">Event details</a></li><li><a data-i18n="nav.weighin" href="weigh-in">Weigh-in</a></li><li><a data-i18n="nav.tickets" href="tickets">Tickets</a></li><li><a data-i18n="nav.rules" href="rules">Rules</a></li><li><a data-i18n="nav.previous" href="previous-events">Previous events</a></li></ul></div>
+    <div><h4 data-i18n="ft.community">Community</h4><ul><li><a data-i18n="nav.shop" href="shop">Shop</a></li><li><a data-i18n="nav.join.f" href="join">Join the team</a></li><li><a data-i18n="nav.contact" href="contact">Contact</a></li></ul></div>
+    <div><h4 data-i18n="ft.contact">Contact</h4><ul id="ft-contact"></ul></div>
+  </div>
+  <div class="wrap fbottom">
     <span>© 2026 ADCC Georgia</span>
     <span data-i18n="ft.r">Submission grappling · Tbilisi</span>
   </div>

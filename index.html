@@ -18,16 +18,13 @@
 <header class="top">
   <div class="wrap">
     <nav>
-      <a class="logo" href="#top"><img src="logo.png" alt="ADCC"><span>GEORGIA</span></a>
+      <a class="logo" href="./"><img src="logo.png" alt="ADCC"><span>GEORGIA</span></a>
       <ul id="menu">
-        <li><a data-i18n="nav.event" href="#event">Event</a></li>
-        <li><a data-i18n="nav.weighin" href="weigh-in">Weigh-in</a></li>
-        <li><a data-i18n="nav.tickets" href="tickets">Tickets</a></li>
+        <li class="has-sub"><a data-i18n="nav.event" href="event">Event</a><span class="chev" aria-hidden="true"></span><ul class="submenu"><li><a data-i18n="nav.event.d" href="event">Event details</a></li><li><a data-i18n="nav.weighin" href="weigh-in">Weigh-in</a></li><li><a data-i18n="nav.tickets" href="tickets">Tickets</a></li><li><a data-i18n="nav.rules" href="rules">Rules</a></li></ul></li>
+        <li><a data-i18n="nav.previous" href="previous-events">Previous events</a></li>
         <li><a data-i18n="nav.shop" href="shop">Shop</a></li>
         <li><a data-i18n="nav.join" href="join">Join us</a></li>
-        <li><a data-i18n="nav.rules" href="rules">Rules</a></li>
-        <li><a data-i18n="nav.previous" href="#past">Previous events</a></li>
-        <li><a data-i18n="nav.contact" href="#contact">Contact</a></li>
+        <li><a data-i18n="nav.contact" href="contact">Contact</a></li>
       </ul>
       <div class="nav-right">
         <div class="lang" role="group" aria-label="Language">
@@ -62,44 +59,28 @@
     </div>
   </section>
 
-  <section id="event">
+  <section id="hub">
     <div class="wrap">
-      <h2 data-i18n-html="ev.h">Event <span>details</span></h2>
-      <p data-i18n="ev.sub" class="sub">Everything you need to know about the day.</p>
-      <div class="details">
-        <div class="card" id="ev-card"></div>
-        <div class="card">
-          <span data-i18n="ev.how" class="tag">How to compete</span>
-          <ul class="steps">
-            <li data-i18n="ev.s1">Open the event page on Smoothcomp</li>
-            <li data-i18n="ev.s2">Create an account or log in</li>
-            <li data-i18n="ev.s3">Choose your division and complete registration</li>
-            <li data-i18n="ev.s4">Read the ADCC rules before the event</li>
-          </ul>
-        </div>
-      </div>
-      <div class="linkcards" id="linkcards"></div>
+      <h2 data-i18n-html="hub.h">Everything <span>you need</span></h2>
+      <p data-i18n="hub.sub" class="sub">Plan your day: event details, weigh-in, tickets, rules and more.</p>
+      <div class="hubgrid" id="hub-cards"></div>
     </div>
   </section>
 
   <section id="past">
     <div class="wrap past">
       <h2 data-i18n-html="past.h">Previous <span>events</span></h2>
-      <p data-i18n="past.sub" class="sub">Photos, results and highlights from past ADCC Georgia events.</p>
-      <div class="gallery" id="gallery"></div>
       <p id="past-p"></p>
+      <div class="gallery sm" id="gallery"></div>
       <div class="actions" id="past-actions"></div>
     </div>
   </section>
 
-  <section id="contact">
-    <div class="wrap two">
-      <div>
-        <h2 data-i18n-html="ct.h">Get in <span>touch</span></h2>
-        <p data-i18n="ct.sub" class="sub" style="margin-top:12px">Questions about registration or the event? Message us.</p>
-        <p class="loc" id="contact-loc"></p>
-      </div>
-      <div class="tiles" id="contact-tiles"></div>
+  <section id="contact-teaser">
+    <div class="wrap">
+      <h2 data-i18n-html="ct.h">Get in <span>touch</span></h2>
+      <p data-i18n="ct.sub" class="sub">Questions about registration or the event? Message us.</p>
+      <div class="actions ct-actions" id="ct-actions"></div>
     </div>
   </section>
 
@@ -107,13 +88,30 @@
 
 <div id="wa-wrap" class="wa-wrap"></div>
 
-<footer>
-  <div class="wrap">
+<footer class="site-foot">
+  <div class="wrap fgrid">
+    <div class="fbrand">
+      <a class="logo" href="./"><img src="logo.png" alt="ADCC"><span>GEORGIA</span></a>
+      <p data-i18n="ft.about">Submission grappling events in Tbilisi, Georgia.</p>
+      <div class="soc" id="ft-soc"></div>
+    </div>
+    <div><h4 data-i18n="ft.event">Event</h4><ul><li><a data-i18n="nav.event.d" href="event">Event details</a></li><li><a data-i18n="nav.weighin" href="weigh-in">Weigh-in</a></li><li><a data-i18n="nav.tickets" href="tickets">Tickets</a></li><li><a data-i18n="nav.rules" href="rules">Rules</a></li><li><a data-i18n="nav.previous" href="previous-events">Previous events</a></li></ul></div>
+    <div><h4 data-i18n="ft.community">Community</h4><ul><li><a data-i18n="nav.shop" href="shop">Shop</a></li><li><a data-i18n="nav.join.f" href="join">Join the team</a></li><li><a data-i18n="nav.contact" href="contact">Contact</a></li></ul></div>
+    <div><h4 data-i18n="ft.contact">Contact</h4><ul id="ft-contact"></ul></div>
+  </div>
+  <div class="wrap fbottom">
     <span>© 2026 ADCC Georgia</span>
     <span data-i18n="ft.r">Submission grappling · Tbilisi</span>
   </div>
 </footer>
 
+<script>
+  // old links like adcc.ge/#contact now go to the real pages
+  (function(){
+    var m={'#event':'event','#past':'previous-events','#contact':'contact'}[location.hash];
+    if(m) location.replace(m);
+  })();
+</script>
 <script src="site.js"></script>
 </body>
 </html>

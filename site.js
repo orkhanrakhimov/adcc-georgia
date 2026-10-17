@@ -4,30 +4,30 @@
   'use strict';
 
   var KA = {
- "nav.event": "ღონისძიება",
+ "ft.event": "ღონისძიება",
+ "ft.community": "საზოგადოება",
+ "ft.contact": "კონტაქტი",
+ "nav.event.d": "ღონისძიების დეტალები",
  "nav.weighin": "აწონვა",
  "nav.tickets": "ბილეთები",
+ "nav.rules": "წესები",
+ "nav.event": "ღონისძიება",
+ "nav.previous": "წინა ღონისძიებები",
  "nav.shop": "მაღაზია",
  "nav.join": "გუნდში",
- "nav.rules": "წესები",
- "nav.previous": "წინა ღონისძიებები",
  "nav.contact": "კონტაქტი",
  "nav.register": "რეგისტრაცია",
  "cd.days": "დღე",
  "cd.hours": "საათი",
  "cd.minutes": "წუთი",
  "cd.seconds": "წამი",
- "ev.h": "ღონისძიების <span>დეტალები</span>",
- "ev.sub": "ყველაფერი, რაც დღის შესახებ უნდა იცოდეთ.",
- "ev.how": "როგორ მივიღოთ მონაწილეობა",
- "ev.s1": "გახსენით ღონისძიების გვერდი Smoothcomp-ზე",
- "ev.s2": "შექმენით ანგარიში ან შედით სისტემაში",
- "ev.s3": "აირჩიეთ დივიზია და დაასრულეთ რეგისტრაცია",
- "ev.s4": "ღონისძიებამდე გაეცანით ADCC-ის წესებს",
+ "hub.h": "ყველაფერი, <span>რაც გჭირდებათ</span>",
+ "hub.sub": "დაგეგმეთ თქვენი დღე: ღონისძიების დეტალები, აწონვა, ბილეთები, წესები და სხვა.",
  "past.h": "წინა <span>ღონისძიებები</span>",
- "past.sub": "ფოტოები, შედეგები და მნიშვნელოვანი მომენტები ADCC Georgia-ს წინა ღონისძიებებიდან.",
  "ct.h": "<span>დაგვიკავშირდით</span>",
  "ct.sub": "გაქვთ შეკითხვები რეგისტრაციის ან ღონისძიების შესახებ? მოგვწერეთ.",
+ "nav.join.f": "შემოგვიერთდით გუნდში",
+ "ft.about": "სუბმიშენ გრეპლინგის ღონისძიებები თბილისში, საქართველო.",
  "ft.r": "Submission grappling · თბილისი",
  "title.rules": "წესები და რეგულაციები – ADCC Georgia",
  "rl.h1": "წესები და <em>რეგულაციები</em>",
@@ -44,7 +44,20 @@
  "shop.h1": "მერჩი და <em>აღჭურვილობა</em>",
  "shop.q": "გაქვთ შეკითხვები მერჩსა ან ზომებზე? მოგვწერეთ.",
  "title.join": "შემოგვიერთდით გუნდში – ADCC Georgia",
- "join.h1": "შემოგვიერთდით <em>გუნდში</em>"
+ "join.h1": "შემოგვიერთდით <em>გუნდში</em>",
+ "ev.how": "როგორ მივიღოთ მონაწილეობა",
+ "ev.s1": "გახსენით ღონისძიების გვერდი Smoothcomp-ზე",
+ "ev.s2": "შექმენით ანგარიში ან შედით სისტემაში",
+ "ev.s3": "აირჩიეთ დივიზია და დაასრულეთ რეგისტრაცია",
+ "ev.s4": "ღონისძიებამდე გაეცანით ADCC-ის წესებს",
+ "ev.sub": "ყველაფერი, რაც დღის შესახებ უნდა იცოდეთ.",
+ "title.event": "ღონისძიების დეტალები – ADCC Georgia",
+ "event.h1": "ღონისძიების <em>დეტალები</em>",
+ "past.sub": "ფოტოები, შედეგები და მნიშვნელოვანი მომენტები ADCC Georgia-ს წინა ღონისძიებებიდან.",
+ "title.previous-events": "წინა ღონისძიებები – ADCC Georgia",
+ "previous-events.h1": "წინა <em>ღონისძიებები</em>",
+ "title.contact": "კონტაქტი – ADCC Georgia",
+ "contact.h1": "<em>დაგვიკავშირდით</em>"
 };              // static page text: key -> Georgian
   var UI = {
  "hero.eb": [
@@ -322,6 +335,46 @@
  "join.fix": [
   "Please check the highlighted fields.",
   "გთხოვთ, გადაამოწმოთ მონიშნული ველები."
+ ],
+ "hub.event.t": [
+  "Event details",
+  "ღონისძიების დეტალები"
+ ],
+ "hub.rules.t": [
+  "Rules explained",
+  "წესები განმარტებით"
+ ],
+ "hub.rules.p": [
+  "Scoring, penalties and time limits for every division.",
+  "ქულები, სანქციები და დროითი ლიმიტები ყველა დივიზიისთვის."
+ ],
+ "past.all": [
+  "All previous events →",
+  "ყველა წინა ღონისძიება →"
+ ],
+ "ct.all": [
+  "All contact options →",
+  "კონტაქტის ყველა გზა →"
+ ],
+ "ct.join": [
+  "Want to be part of the team? Apply as a referee, organisation team member or media.",
+  "გსურთ გუნდის ნაწილი გახდეთ? გაგზავნეთ განაცხადი მსაჯად, საორგანიზაციო გუნდში ან მედიისთვის."
+ ],
+ "ft.contact": [
+  "Contact",
+  "კონტაქტი"
+ ],
+ "ft.event": [
+  "Event",
+  "ღონისძიება"
+ ],
+ "ft.community": [
+  "Community",
+  "საზოგადოება"
+ ],
+ "ft.about": [
+  "Submission grappling events in Tbilisi, Georgia.",
+  "სუბმიშენ გრეპლინგის ღონისძიებები თბილისში, საქართველო."
  ]
 };              // dynamic text: key -> [English, Georgian]
   var DEFAULTS = {
@@ -612,6 +665,10 @@
     hoodie: '<path d="M9 4L3.5 6.5 3 18.5l3.5.5V10l.5 10h10l.5-10v9l3.5-.5-.5-12L15 4"/><path d="M9 4c0-1.5 1.3-2.5 3-2.5S15 2.5 15 4c0 2.5-1.3 4.5-3 4.5S9 6.5 9 4z"/><path d="M9.5 15.5h5"/>',
     rashguard: '<path d="M9 3.5L3.5 6 3 18.5l3.5.5V10l.5 10h10l.5-10v9l3.5-.5L20.5 6 15 3.5a3 3 0 0 1-6 0z"/><path d="M7 9.5l.5 4M17 9.5l-.5 4"/>',
     cap: '<path d="M4 15a8 8 0 0 1 16 0z"/><path d="M20 15c1.8.2 2.5.8 2.5 1.8 0 .5-.4.7-1 .7H8.5"/><path d="M12 7v8"/>',
+    calendar: '<rect x="3.5" y="5" width="17" height="15" rx="2.5"/><path d="M3.5 10h17M8 3v4M16 3v4"/>',
+    scale: '<path d="M12 4v15M7 20h10M5 7h14"/><path d="M5 7l-2.5 6h5zM19 7l-2.5 6h5z"/>',
+    book: '<path d="M4 5.5A1.5 1.5 0 0 1 5.5 4H12v15H5.5A1.5 1.5 0 0 0 4 20.5z"/><path d="M20 5.5A1.5 1.5 0 0 0 18.5 4H12v15h6.5a1.5 1.5 0 0 1 1.5 1.5z"/>',
+    arrow: '<path d="M5 12h14M13 6l6 6-6 6"/>',
     flag: '<path d="M5 21V4"/><path d="M5 4h12l-2.5 4 2.5 4H5"/>',
     team: '<circle cx="9" cy="8" r="3"/><path d="M3 20a6 6 0 0 1 12 0"/><circle cx="17" cy="9" r="2.5"/><path d="M16 14.2A5 5 0 0 1 21 19"/>',
     lens: '<rect x="3" y="6.5" width="18" height="13" rx="2.5"/><circle cx="12" cy="13" r="3.6"/><path d="M8.5 6.5L10 4h4l1.5 2.5"/>',
@@ -719,8 +776,10 @@
       if (reg) a.setAttribute('href', reg);
       a.hidden = (ph.name === 'over' || !reg);
     });
-    var eb = $('#page-eyebrow'); if (eb) eb.textContent = ev.name;
+    var eb = $('#page-eyebrow');
+    if (eb && (page === 'event' || page === 'weigh-in' || page === 'tickets')) eb.textContent = ev.name;
     renderWhatsApp();
+    renderFooter();
   }
 
   function waList() {
@@ -777,10 +836,116 @@
     return p ? p + ' ' + ui('cur') : ui('free');
   }
 
+  function renderFooter() {
+    var c = DATA.contact || {};
+    var soc = $('#ft-soc'), lst = $('#ft-contact');
+    if (soc) {
+      clear(soc);
+      function sb(ic, label, href, ext_) {
+        var a = h('a', { class: 'sb', href: href, 'aria-label': label, title: label, target: ext_ ? '_blank' : null, rel: ext_ ? 'noopener' : null }, [icon(ic)]);
+        soc.appendChild(a);
+      }
+      var ig = String(c.instagram || '').trim().replace(/^@/, ''), fb = String(c.facebook || '').trim();
+      if (ig) sb('camera', 'Instagram', 'https://www.instagram.com/' + encodeURIComponent(ig), true);
+      if (fb) sb('people', 'Facebook', 'https://www.facebook.com/' + encodeURIComponent(fb), true);
+      var w0 = waList()[0]; if (w0) sb('phone', 'WhatsApp', waHref(w0.number), true);
+      if (String(c.email || '').trim()) sb('mail', ui('ct.email'), 'mailto:' + c.email.trim(), false);
+    }
+    if (lst) {
+      clear(lst);
+      if (String(c.email || '').trim()) lst.appendChild(h('li', null, [h('a', { href: 'mailto:' + c.email.trim() }, [c.email.trim()])]));
+      waList().forEach(function (w) { lst.appendChild(h('li', null, [ext(waHref(w.number), null, [w.number])])); });
+      if (tx(c.location)) lst.appendChild(h('li', { class: 'muted' }, [tx(c.location)]));
+    }
+  }
+
+  // ---- shared pieces
+  function hubCard(href, ic, title, text, go) {
+    return h('a', { class: 'card hub', href: href }, [
+      h('span', { class: 'hico' }, [icon(ic)]),
+      h('h3', null, [title]),
+      h('p', null, [text]),
+      h('span', { class: 'go' }, [go || ui('lk.go')])
+    ]);
+  }
+  function weighText() {
+    return (DATA.weighin.days || []).map(function (d) { return dateShort(d.date) + ' ' + d.from + '–' + d.to; }).join(' · ');
+  }
+  function ticketText() {
+    return (DATA.tickets.items || []).map(function (it) { return tx(it.name) + ' ' + priceText(it); }).join(' · ');
+  }
+  function shopInfo() {
+    var cats = (DATA.shop && DATA.shop.categories) || [], n = 0;
+    cats.forEach(function (c) { n += (c.items || []).length; });
+    return { cats: cats, n: n, text: cats.map(function (c) { return tx(c.desc); }).filter(Boolean).join(' ') };
+  }
+  function hubCards(box, which) {
+    clear(box);
+    var ev = DATA.event, sh = shopInfo();
+    which.forEach(function (k) {
+      if (k === 'event') box.appendChild(hubCard('event', 'calendar', ui('hub.event.t'), dateLong(ev.date) + ' · ' + (normTime(ev.time) || ev.time)));
+      if (k === 'weighin' && (DATA.weighin.days || []).length) box.appendChild(hubCard('weigh-in', 'scale', ui('lk.weigh.t'), weighText()));
+      if (k === 'tickets' && (DATA.tickets.items || []).length) box.appendChild(hubCard('tickets', 'ticket', ui('lk.tick.t'), ticketText()));
+      if (k === 'rules') box.appendChild(hubCard('rules', 'book', ui('hub.rules.t'), ui('hub.rules.p')));
+      if (k === 'shop' && sh.cats.length) box.appendChild(hubCard('shop', 'tshirt', ui('lk.shop.t'), sh.text, sh.n ? ui('lk.go') : ui('lk.soon')));
+      if (k === 'join') box.appendChild(hubCard('join', 'team', ui('lk.join.t'), ui('lk.join.p')));
+    });
+  }
+  function fillGallery(g, max) {
+    clear(g);
+    var shown = 0;
+    (DATA.gallery || []).forEach(function (p) {
+      if (max && shown >= max) return;
+      var src = String(p && p.src || '');
+      if (!/^(photos\/[\w.\-]+|https:\/\/[^\s"'<>]+)$/.test(src)) return;
+      var img = h('img', { src: src, alt: 'ADCC Georgia', loading: 'lazy' });
+      var shot = h('div', { class: 'shot' }, [img]);
+      img.addEventListener('error', function () { if (shot.parentNode) shot.parentNode.removeChild(shot); g.style.display = g.children.length ? '' : 'none'; });
+      g.appendChild(shot); shown++;
+    });
+    g.style.display = g.children.length ? '' : 'none';
+  }
+  function eventCard(ph) {
+    var ev = DATA.event, reg = url(ev.registerUrl);
+    var card = $('#ev-card'); clear(card);
+    card.appendChild(h('span', { class: 'tag' }, [ev.name]));
+    var dl = h('dl');
+    row(dl, ui('ev.date'), dateLong(ev.date));
+    row(dl, ui('ev.start'), normTime(ev.time) || ev.time);
+    var vk = [ev.venue, h('br'), tx(ev.address)];
+    if (url(ev.mapUrl)) { vk.push(h('br')); vk.push(ext(url(ev.mapUrl), null, [ui('ev.map')])); }
+    row(dl, ui('ev.venue'), vk);
+    var rk = [ui('ev.rules.v'), h('br'), h('a', { href: 'rules' }, [ui('ev.rules.exp')])];
+    if (url(ev.rulesUrl)) { rk.push(h('br')); rk.push(ext(url(ev.rulesUrl), null, [ui('ev.rules.off')])); }
+    row(dl, ui('ev.rules'), rk);
+    row(dl, ui('ev.entry'), tx(ev.entry));
+    card.appendChild(dl);
+    if (ph.name !== 'over' && reg) card.appendChild(h('div', { class: 'actions' }, [ext(reg, 'btn', [ui('ev.cta')])]));
+  }
+  function pastText(pa) {
+    var pv = DATA.previous || {}, c = DATA.contact || {};
+    var pp = $('#past-p'); if (pp) { clear(pp); if (pv.name) pp.appendChild(document.createTextNode(ui('past.p', { name: pv.name }))); }
+    return pv;
+  }
+  function contactTiles() {
+    var c = DATA.contact || {}, tiles = $('#contact-tiles'); clear(tiles);
+    function tile(ic, title, sub, href, newTab, wide) {
+      tiles.appendChild(h('a', { class: 'tile' + (wide ? ' wide' : ''), href: href, target: newTab ? '_blank' : null, rel: newTab ? 'noopener' : null },
+        [icon(ic), h('span', { class: 'tt' }, [h('b', null, [title]), h('small', null, [sub])])]));
+    }
+    if (String(c.email || '').trim()) tile('mail', ui('ct.email'), c.email, 'mailto:' + c.email.trim(), false, true);
+    waList().forEach(function (w) { tile('phone', w.label || 'WhatsApp', w.number, waHref(w.number), true); });
+    var ig = String(c.instagram || '').trim().replace(/^@/, ''), fb = String(c.facebook || '').trim();
+    if (ig) tile('camera', 'Instagram', '@' + ig, 'https://www.instagram.com/' + encodeURIComponent(ig), true);
+    if (fb) tile('people', 'Facebook', ui('ct.follow'), 'https://www.facebook.com/' + encodeURIComponent(fb), true);
+    var loc = $('#contact-loc'); clear(loc);
+    if (tx(c.location)) { loc.appendChild(icon('pin')); loc.appendChild(h('span', null, [tx(c.location)])); }
+  }
+
+  // ---- pages
   function renderIndex(ph) {
     var ev = DATA.event, c = DATA.contact, pv = DATA.previous;
 
-    // hero
     setText('#hero-eyebrow', ph.name === 'over' ? ui('hero.eb.over') : ph.name === 'before' ? ui('hero.eb') : ui('hero.eb.today'));
     var t = $('#hero-title'); clear(t);
     var name = ev.name || '', hl = ev.highlight || '', i = hl ? name.indexOf(hl) : -1;
@@ -797,95 +962,47 @@
     var act = $('#hero-actions'); clear(act);
     var reg = url(ev.registerUrl);
     if (ph.name === 'over') {
-      act.appendChild(h('a', { class: 'btn', href: '#past' }, [ui('hero.results')]));
-      act.appendChild(h('a', { class: 'btn ghost', href: '#contact' }, [ui('hero.follow')]));
+      act.appendChild(h('a', { class: 'btn', href: 'previous-events' }, [ui('hero.results')]));
+      act.appendChild(h('a', { class: 'btn ghost', href: 'contact' }, [ui('hero.follow')]));
     } else {
       if (reg) act.appendChild(ext(reg, 'btn', [ui('hero.register')]));
-      act.appendChild(h('a', { class: 'btn ghost', href: 'rules' }, [ui('hero.rules')]));
+      act.appendChild(h('a', { class: 'btn ghost', href: 'event' }, [ui('hub.event.t')]));
     }
 
-    // event details card
-    var card = $('#ev-card'); clear(card);
-    card.appendChild(h('span', { class: 'tag' }, [ev.name]));
-    var dl = h('dl');
-    row(dl, ui('ev.date'), dateLong(ev.date));
-    row(dl, ui('ev.start'), normTime(ev.time) || ev.time);
-    var vk = [ev.venue, h('br'), tx(ev.address)];
-    if (url(ev.mapUrl)) { vk.push(h('br')); vk.push(ext(url(ev.mapUrl), null, [ui('ev.map')])); }
-    row(dl, ui('ev.venue'), vk);
-    var rk = [ui('ev.rules.v'), h('br'), h('a', { href: 'rules' }, [ui('ev.rules.exp')])];
-    if (url(ev.rulesUrl)) { rk.push(h('br')); rk.push(ext(url(ev.rulesUrl), null, [ui('ev.rules.off')])); }
-    row(dl, ui('ev.rules'), rk);
-    row(dl, ui('ev.entry'), tx(ev.entry));
-    card.appendChild(dl);
-    if (ph.name !== 'over' && reg) card.appendChild(h('div', { class: 'actions' }, [ext(reg, 'btn', [ui('ev.cta')])]));
+    hubCards($('#hub-cards'), ['event', 'weighin', 'tickets', 'rules', 'shop', 'join']);
 
-    // weigh-in + tickets summary cards
-    var lc = $('#linkcards'); clear(lc);
-    var days = (DATA.weighin.days || []);
-    if (days.length) {
-      lc.appendChild(h('a', { class: 'card linkcard', href: 'weigh-in' }, [
-        h('h3', null, [ui('lk.weigh.t')]),
-        h('p', null, [days.map(function (d) { return dateShort(d.date) + ' ' + d.from + '–' + d.to; }).join(' · ')]),
-        h('span', { class: 'go' }, [ui('lk.go')])
-      ]));
-    }
-    var items = (DATA.tickets.items || []);
-    if (items.length) {
-      lc.appendChild(h('a', { class: 'card linkcard', href: 'tickets' }, [
-        h('h3', null, [ui('lk.tick.t')]),
-        h('p', null, [items.map(function (it) { return tx(it.name) + ' ' + priceText(it); }).join(' · ')]),
-        h('span', { class: 'go' }, [ui('lk.go')])
-      ]));
-    }
+    fillGallery($('#gallery'), 3);
+    pastText();
+    var pa = $('#past-actions'); clear(pa);
+    pa.appendChild(h('a', { class: 'btn ghost', href: 'previous-events' }, [ui('past.all')]));
 
-    var shopCats = (DATA.shop && DATA.shop.categories) || [], shopN = 0;
-    shopCats.forEach(function (cat) { shopN += (cat.items || []).length; });
-    if (shopCats.length) {
-      lc.appendChild(h('a', { class: 'card linkcard', href: 'shop' }, [
-        h('h3', null, [ui('lk.shop.t')]),
-        h('p', null, [shopCats.map(function (cat) { return tx(cat.desc); }).filter(Boolean).join(' ')]),
-        h('span', { class: 'go' }, [shopN ? ui('lk.go') : ui('lk.soon')])
-      ]));
-    }
+    var ca = $('#ct-actions'); clear(ca);
+    var w0 = waList()[0], ig = String(c.instagram || '').trim().replace(/^@/, '');
+    if (w0) ca.appendChild(ext(waHref(w0.number), 'btn', [ui('tk.wa')]));
+    if (ig) ca.appendChild(ext('https://www.instagram.com/' + encodeURIComponent(ig), 'btn ghost', [ui('shop.ig')]));
+    ca.appendChild(h('a', { class: 'btn ghost', href: 'contact' }, [ui('ct.all')]));
+  }
 
-    lc.appendChild(h('a', { class: 'card linkcard', href: 'join' }, [
-      h('h3', null, [ui('lk.join.t')]),
-      h('p', null, [ui('lk.join.p')]),
-      h('span', { class: 'go' }, [ui('lk.go')])
-    ]));
+  function renderEvent(ph) {
+    eventCard(ph);
+    hubCards($('#hub-cards'), ['weighin', 'tickets', 'rules']);
+  }
 
-    // previous events
-    var g = $('#gallery'); clear(g);
-    (DATA.gallery || []).forEach(function (p) {
-      var src = String(p && p.src || '');
-      if (!/^(photos\/[\w.\-]+|https:\/\/[^\s"'<>]+)$/.test(src)) return;
-      var img = h('img', { src: src, alt: 'ADCC Georgia', loading: 'lazy' });
-      var shot = h('div', { class: 'shot' }, [img]);
-      img.addEventListener('error', function () { if (shot.parentNode) shot.parentNode.removeChild(shot); g.style.display = g.children.length ? '' : 'none'; });
-      g.appendChild(shot);
-    });
-    g.style.display = g.children.length ? '' : 'none';
-    var pp = $('#past-p'); clear(pp);
-    if (pv.name) pp.appendChild(document.createTextNode(ui('past.p', { name: pv.name })));
+  function renderPrevious() {
+    var c = DATA.contact || {}, pv = DATA.previous || {};
+    fillGallery($('#gallery'), 0);
+    pastText();
     var pa = $('#past-actions'); clear(pa);
     var fb = String(c.facebook || '').trim();
     if (fb) pa.appendChild(ext('https://www.facebook.com/' + encodeURIComponent(fb), 'btn ghost', [ui('past.fb')]));
     if (url(pv.resultsUrl)) pa.appendChild(ext(url(pv.resultsUrl), 'btn ghost', [ui('past.res', { name: pv.name || '' })]));
+  }
 
-    // contact tiles
-    var tiles = $('#contact-tiles'); clear(tiles);
-    function tile(ic, title, sub, href, newTab, wide) {
-      var a = h('a', { class: 'tile' + (wide ? ' wide' : ''), href: href, target: newTab ? '_blank' : null, rel: newTab ? 'noopener' : null }, [icon(ic), h('span', { class: 'tt' }, [h('b', null, [title]), h('small', null, [sub])])]);
-      tiles.appendChild(a);
-    }
-    if (String(c.email || '').trim()) tile('mail', ui('ct.email'), c.email, 'mailto:' + c.email.trim(), false, true);
-    waList().forEach(function (w) { tile('phone', w.label || 'WhatsApp', w.number, waHref(w.number), true); });
-    var ig = String(c.instagram || '').trim().replace(/^@/, '');
-    if (ig) tile('camera', 'Instagram', '@' + ig, 'https://www.instagram.com/' + encodeURIComponent(ig), true);
-    if (fb) tile('people', 'Facebook', ui('ct.follow'), 'https://www.facebook.com/' + encodeURIComponent(fb), true);
-    var loc = $('#contact-loc'); clear(loc);
-    if (tx(c.location)) { loc.appendChild(icon('pin')); loc.appendChild(h('span', null, [tx(c.location)])); }
+  function renderContact() {
+    contactTiles();
+    setText('#ct-join', ui('ct.join'));
+    var a = $('#ct-join-actions'); clear(a);
+    a.appendChild(h('a', { class: 'btn', href: 'join' }, [ui('lk.join.t')]));
   }
 
   function renderWeighin(ph) {
@@ -1227,6 +1344,9 @@
     curPhase = ph.name;
     renderChrome(ph);
     if (page === 'index') renderIndex(ph);
+    if (page === 'event') renderEvent(ph);
+    if (page === 'previous-events') renderPrevious();
+    if (page === 'contact') renderContact();
     if (page === 'weigh-in') renderWeighin(ph);
     if (page === 'tickets') renderTickets(ph);
     if (page === 'shop') renderShop();
