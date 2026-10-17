@@ -67,7 +67,7 @@
 
 <main class="wrap adm">
   <h1>Site admin</h1>
-  <p class="muted">Edit the event, weigh-in, tickets, shop, contacts and photos here. Changes are saved to your GitHub repository and appear on the site within 1–2 minutes. No code needed.</p>
+  <p class="muted">Edit the event, weigh-in, tickets, shop, join forms, contacts and photos here. Changes are saved to your GitHub repository and appear on the site within 1–2 minutes. No code needed.</p>
 
   <!-- ============ CONNECT (first time only) ============ -->
   <section id="connect" class="box">
@@ -294,6 +294,20 @@
       }, function () { return { name: { en: '', ka: '' }, desc: { en: '', ka: '' }, items: [], coming: [] }; }, 'Add category', 'Category'),
     ]));
 
+    root.appendChild(section('Join the team (forms)', false, [
+      el('p', { class: 'muted' }, ['Applications for referees, organisation team and media arrive by email. To receive them, create a free access key at web3forms.com using the email address that should receive applications, then paste the key below. Until a key is added, the form opens the visitor’s email app instead.']),
+      field('Web3Forms access key', inp('join.accessKey', { ph: 'xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx' }), 'It is safe to keep this on the site. It only lets the form send emails to you.'),
+      bi('Intro text', 'join.intro', { area: true }),
+      chk('join.referee.open', 'Referee applications are open'),
+      bi('Referee note (optional)', 'join.referee.note', { area: true }),
+      chk('join.organisation.open', 'Organisation team applications are open'),
+      bi('Organisation team note (optional)', 'join.organisation.note', { area: true }),
+      chk('join.media.open', 'Media accreditation applications are open'),
+      bi('Media note (optional)', 'join.media.note', { area: true }),
+      bi('Media rights agreement (checkbox text)', 'join.media.terms', { area: true }),
+      bi('Privacy agreement (checkbox text)', 'join.privacy', { area: true })
+    ]));
+
     root.appendChild(section('Previous event', false, [
       field('Last event name', inp('previous.name'), 'Shown in “Our last event was …”.'),
       field('Results link', inp('previous.resultsUrl', { type: 'url', ph: 'https://…' }), 'Leave empty to hide the results button.')
@@ -435,6 +449,7 @@
         if (!x.name.en) e.push('Shop category ' + (ci + 1) + ', placeholder ' + (i + 1) + ': English name is required.');
       });
     });
+    if (d.join.accessKey && !/^[\w-]{16,}$/.test(d.join.accessKey)) e.push('Join the team: the access key looks wrong. Paste it exactly as shown on web3forms.com.');
     d.contact.whatsapp.forEach(function (x, i) {
       if (String(x.number).replace(/\D/g, '').length < 8) e.push('WhatsApp number ' + (i + 1) + ' looks too short. Remove it or fix it.');
     });

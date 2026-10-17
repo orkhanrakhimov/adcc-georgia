@@ -8,6 +8,7 @@
  "nav.weighin": "აწონვა",
  "nav.tickets": "ბილეთები",
  "nav.shop": "მაღაზია",
+ "nav.join": "გუნდში",
  "nav.rules": "წესები",
  "nav.previous": "წინა ღონისძიებები",
  "nav.contact": "კონტაქტი",
@@ -41,7 +42,9 @@
  "tk.q": "გაქვთ კითხვები ბილეთებზე? მოგვწერეთ.",
  "title.shop": "მერჩი და აღჭურვილობა – ADCC Georgia",
  "shop.h1": "მერჩი და <em>აღჭურვილობა</em>",
- "shop.q": "გაქვთ შეკითხვები მერჩსა ან ზომებზე? მოგვწერეთ."
+ "shop.q": "გაქვთ შეკითხვები მერჩსა ან ზომებზე? მოგვწერეთ.",
+ "title.join": "შემოგვიერთდით გუნდში – ADCC Georgia",
+ "join.h1": "შემოგვიერთდით <em>გუნდში</em>"
 };              // static page text: key -> Georgian
   var UI = {
  "hero.eb": [
@@ -235,6 +238,90 @@
  "shop.q": [
   "Questions about merch or sizes? Message us.",
   "გაქვთ შეკითხვები მერჩსა ან ზომებზე? მოგვწერეთ."
+ ],
+ "lk.join.t": [
+  "Join the team",
+  "შემოგვიერთდით გუნდში"
+ ],
+ "lk.join.p": [
+  "Referees, organisation team and media accreditation. Apply here.",
+  "მსაჯები, საორგანიზაციო გუნდი და მედიააკრედიტაცია. განაცხადი აქ."
+ ],
+ "join.open": [
+  "Open",
+  "ღიაა"
+ ],
+ "join.closed": [
+  "Closed",
+  "დახურულია"
+ ],
+ "join.closedmsg": [
+  "Applications for this role are closed right now. Follow us for the next call.",
+  "ამ როლზე განაცხადების მიღება ამჟამად დახურულია. მომდევნო ნაკრების შესახებ გამოგვიწერეთ."
+ ],
+ "join.pick": [
+  "Choose a role above to apply.",
+  "განაცხადისთვის აირჩიეთ როლი ზემოთ."
+ ],
+ "join.apply": [
+  "Apply:",
+  "განაცხადი:"
+ ],
+ "join.submit": [
+  "Send application",
+  "განაცხადის გაგზავნა"
+ ],
+ "join.sending": [
+  "Sending…",
+  "იგზავნება…"
+ ],
+ "join.optional": [
+  "optional",
+  "არასავალდებულო"
+ ],
+ "join.req": [
+  "Please fill in this field.",
+  "გთხოვთ, შეავსოთ ეს ველი."
+ ],
+ "join.pickone": [
+  "Please choose at least one option.",
+  "გთხოვთ, აირჩიოთ მინიმუმ ერთი ვარიანტი."
+ ],
+ "join.bademail": [
+  "Please enter a valid email address.",
+  "გთხოვთ, შეიყვანოთ სწორი ელფოსტა."
+ ],
+ "join.badurl": [
+  "Please enter a valid link.",
+  "გთხოვთ, შეიყვანოთ სწორი ბმული."
+ ],
+ "join.agree": [
+  "You need to agree to continue.",
+  "გასაგრძელებლად საჭიროა დათანხმება."
+ ],
+ "join.ok.t": [
+  "Thank you!",
+  "გმადლობთ!"
+ ],
+ "join.ok.p": [
+  "We received your application. We will contact you if there is a match.",
+  "თქვენი განაცხადი მივიღეთ. თუ თქვენი კანდიდატურა შეესაბამება, დაგიკავშირდებით."
+ ],
+ "join.err": [
+  "Sorry, we could not send your application. Please try again, or send it by email.",
+  "ვწუხვართ, განაცხადის გაგზავნა ვერ მოხერხდა. სცადეთ ხელახლა ან გამოგვიგზავნეთ ელფოსტით."
+ ],
+ "join.mail": [
+  "Send by email",
+  "გაგზავნა ელფოსტით"
+ ],
+ "join.mailopen": [
+  "Your email app should open with your application ready. Press Send there to finish.",
+  "ელფოსტის აპლიკაცია გაიხსნება თქვენი განაცხადით. დასასრულებლად დააჭირეთ გაგზავნას."
+ ],
+ "join.fix": [
+  "Please check the highlighted fields.",
+  "გთხოვთ, გადაამოწმოთ მონიშნული ველები."
  ]
 };              // dynamic text: key -> [English, Georgian]
   var DEFAULTS = {
@@ -421,6 +508,42 @@
    }
   ]
  },
+ "join": {
+  "accessKey": "",
+  "intro": {
+   "en": "Be part of the ADCC Georgia team. Choose a role, tell us about yourself and we will contact you if there is a match.",
+   "ka": "გახდით ADCC Georgia-ს გუნდის ნაწილი. აირჩიეთ როლი, მოგვიყევით თქვენ შესახებ და თუ კანდიდატურა შეესაბამება, დაგიკავშირდებით."
+  },
+  "referee": {
+   "open": true,
+   "note": {
+    "en": "",
+    "ka": ""
+   }
+  },
+  "organisation": {
+   "open": true,
+   "note": {
+    "en": "",
+    "ka": ""
+   }
+  },
+  "media": {
+   "open": true,
+   "note": {
+    "en": "",
+    "ka": ""
+   },
+   "terms": {
+    "en": "If I am accredited, I agree that ADCC Georgia may use the photos and videos I produce at ADCC Georgia events, free of charge, for promotion, publications and social media, with credit to me where possible. I keep the copyright to my work.",
+    "ka": "აკრედიტაციის მიღების შემთხვევაში ვეთანხმები, რომ ADCC Georgia-ს შეუძლია უსასყიდლოდ გამოიყენოს ჩემ მიერ ADCC Georgia-ს ღონისძიებებზე შექმნილი ფოტოები და ვიდეოები პოპულარიზაციის, პუბლიკაციებისა და სოციალური ქსელებისთვის, შესაძლებლობის შემთხვევაში ჩემი ავტორობის მითითებით. ჩემი ნამუშევრის საავტორო უფლებები რჩება ჩემთან."
+   }
+  },
+  "privacy": {
+   "en": "I agree that ADCC Georgia may store and use the information in this form only to review my application and contact me.",
+   "ka": "ვეთანხმები, რომ ADCC Georgia-მ ამ ფორმაში მითითებული ინფორმაცია შეინახოს და გამოიყენოს მხოლოდ ჩემი განაცხადის განსახილველად და ჩემთან დასაკავშირებლად."
+  }
+ },
  "previous": {
   "name": "ADCC Georgia Open 2025",
   "resultsUrl": "https://adcombat.com/adcc-events/adcc-georgia-open-2025/"
@@ -489,6 +612,9 @@
     hoodie: '<path d="M9 4L3.5 6.5 3 18.5l3.5.5V10l.5 10h10l.5-10v9l3.5-.5-.5-12L15 4"/><path d="M9 4c0-1.5 1.3-2.5 3-2.5S15 2.5 15 4c0 2.5-1.3 4.5-3 4.5S9 6.5 9 4z"/><path d="M9.5 15.5h5"/>',
     rashguard: '<path d="M9 3.5L3.5 6 3 18.5l3.5.5V10l.5 10h10l.5-10v9l3.5-.5L20.5 6 15 3.5a3 3 0 0 1-6 0z"/><path d="M7 9.5l.5 4M17 9.5l-.5 4"/>',
     cap: '<path d="M4 15a8 8 0 0 1 16 0z"/><path d="M20 15c1.8.2 2.5.8 2.5 1.8 0 .5-.4.7-1 .7H8.5"/><path d="M12 7v8"/>',
+    flag: '<path d="M5 21V4"/><path d="M5 4h12l-2.5 4 2.5 4H5"/>',
+    team: '<circle cx="9" cy="8" r="3"/><path d="M3 20a6 6 0 0 1 12 0"/><circle cx="17" cy="9" r="2.5"/><path d="M16 14.2A5 5 0 0 1 21 19"/>',
+    lens: '<rect x="3" y="6.5" width="18" height="13" rx="2.5"/><circle cx="12" cy="13" r="3.6"/><path d="M8.5 6.5L10 4h4l1.5 2.5"/>',
     shorts: '<path d="M5 4h14l1.5 15H14l-2-8-2 8H3.5z"/><path d="M5.5 8h13"/>'
   };
   function icon(name) {
@@ -723,6 +849,12 @@
       ]));
     }
 
+    lc.appendChild(h('a', { class: 'card linkcard', href: 'join' }, [
+      h('h3', null, [ui('lk.join.t')]),
+      h('p', null, [ui('lk.join.p')]),
+      h('span', { class: 'go' }, [ui('lk.go')])
+    ]));
+
     // previous events
     var g = $('#gallery'); clear(g);
     (DATA.gallery || []).forEach(function (p) {
@@ -876,6 +1008,219 @@
     return h('div', { class: 'prod' + (status === 'soldout' ? ' sold' : '') }, [ph, body]);
   }
 
+  // ------------------------------------------------------------ join the team
+  function L(en, ka) { return { en: en, ka: ka }; }
+  var ROLE_KEYS = ['referee', 'organisation', 'media'];
+  var COMMON = [
+    { n: 'name', t: 'text', req: 1, ac: 'name', l: L('Full name', 'სახელი და გვარი') },
+    { n: 'email', t: 'email', req: 1, ac: 'email', l: L('Email', 'ელფოსტა') },
+    { n: 'phone', t: 'tel', req: 1, ac: 'tel', l: L('Phone / WhatsApp', 'ტელეფონი / WhatsApp') },
+    { n: 'city', t: 'text', req: 1, l: L('City', 'ქალაქი') },
+    { n: 'languages', t: 'text', l: L('Languages you speak', 'ენები, რომლებზეც საუბრობთ'), h: L('For example: Georgian, English, Russian', 'მაგალითად: ქართული, ინგლისური, რუსული') }
+  ];
+  var AVAIL = { n: 'availability', t: 'textarea', req: 1, l: L('Availability', 'ხელმისაწვდომობა'), h: L('Which events or dates can you join?', 'რომელ ღონისძიებებზე ან თარიღებზე შეგიძლიათ მონაწილეობა?') };
+  var SOCIAL = { n: 'social', t: 'url', l: L('Instagram / Facebook / LinkedIn link', 'Instagram / Facebook / LinkedIn ბმული') };
+  var ROLES = {
+    referee: {
+      icon: 'flag', title: L('Referee', 'მსაჯი'), desc: L('Officiate matches at ADCC Georgia events.', 'იმსაჯეთ მატჩები ADCC Georgia-ს ღონისძიებებზე.'),
+      fields: [
+        { n: 'background', t: 'text', req: 1, l: L('Belt / rank and gym or team', 'ქამარი / ხარისხი და სპორტდარბაზი ან გუნდი') },
+        { n: 'experience', t: 'textarea', req: 1, l: L('Refereeing experience', 'მსაჯობის გამოცდილება'), h: L('Events you refereed, for how long and under which rules.', 'რომელ ღონისძიებებზე იმსაჯეთ, რამდენი ხანი და რომელი წესებით.') },
+        { n: 'certificates', t: 'text', l: L('Certificates or courses', 'სერტიფიკატები ან კურსები') },
+        AVAIL,
+        { n: 'why', t: 'textarea', req: 1, l: L('Why do you want to be an ADCC referee?', 'რატომ გსურთ ADCC-ის მსაჯობა?') },
+        SOCIAL
+      ]
+    },
+    organisation: {
+      icon: 'team', title: L('Organisation team', 'საორგანიზაციო გუნდი'), desc: L('Help run the event behind the scenes.', 'დაგვეხმარეთ ღონისძიების ორგანიზებაში.'),
+      fields: [
+        { n: 'areas', t: 'checks', req: 1, l: L('Where would you like to help?', 'რომელ მიმართულებაში გსურთ დახმარება?'), o: [
+          L('Check-in & registration', 'რეგისტრაცია და მიღება'), L('Weigh-in', 'აწონვა'), L('Mat table & scoring', 'ტატამის მაგიდა და ქულების აღრიცხვა'),
+          L('Logistics & set-up', 'ლოგისტიკა და მოწყობა'), L('Tickets & entrance', 'ბილეთები და შესასვლელი'),
+          L('Hospitality & athlete support', 'სტუმრები და სპორტსმენების მხარდაჭერა'), L('Other', 'სხვა')] },
+        { n: 'experience', t: 'textarea', req: 1, l: L('Your experience', 'თქვენი გამოცდილება'), h: L('Events, sports, volunteering or work that is relevant.', 'ღონისძიებები, სპორტი, მოხალისეობა ან სამუშაო, რომელიც შესაბამისია.') },
+        AVAIL,
+        { n: 'why', t: 'textarea', req: 1, l: L('Why do you want to join the ADCC Georgia team?', 'რატომ გსურთ ADCC Georgia-ს გუნდში გაწევრიანება?') },
+        SOCIAL
+      ]
+    },
+    media: {
+      icon: 'lens', title: L('Media accreditation', 'მედიააკრედიტაცია'), desc: L('Photographers, videographers and journalists.', 'ფოტოგრაფები, ვიდეოგრაფები და ჟურნალისტები.'),
+      fields: [
+        { n: 'media_type', t: 'checks', req: 1, l: L('What do you do?', 'რას აკეთებთ?'), o: [
+          L('Photographer', 'ფოტოგრაფი'), L('Videographer', 'ვიდეოგრაფი'), L('Journalist / writer', 'ჟურნალისტი / ავტორი'),
+          L('Social media content', 'სოციალური მედიის კონტენტი'), L('Other', 'სხვა')] },
+        { n: 'who', t: 'textarea', req: 1, l: L('Who are you?', 'ვინ ხართ?'), h: L('Your name, outlet, channel or studio.', 'თქვენი სახელი, გამოცემა, არხი ან სტუდია.') },
+        { n: 'portfolio', t: 'url', req: 1, l: L('Portfolio link', 'პორტფოლიოს ბმული'), h: L('Website, Instagram, YouTube, Behance or similar.', 'ვებგვერდი, Instagram, YouTube, Behance ან მსგავსი.') },
+        { n: 'other_links', t: 'text', l: L('Other links', 'სხვა ბმულები') },
+        { n: 'experience', t: 'textarea', req: 1, l: L('Experience', 'გამოცდილება'), h: L('Sports events, clients, publications.', 'სპორტული ღონისძიებები, კლიენტები, პუბლიკაციები.') },
+        { n: 'equipment', t: 'text', l: L('Equipment', 'აღჭურვილობა') }
+      ]
+    }
+  };
+  var FV = {}, joinTab = null, joinSent = {};
+
+  function joinFields(k, J) {
+    var list = COMMON.concat(ROLES[k].fields);
+    if (k === 'media') list.push({ n: 'rights', t: 'consent', req: 1, text: (J.media || {}).terms });
+    list.push({ n: 'privacy', t: 'consent', req: 1, text: J.privacy });
+    return list;
+  }
+
+  function jField(f, vals, k, errs) {
+    var id = 'jf-' + k + '-' + f.n;
+    var wrap = h('div', { class: 'jf' + (f.t === 'consent' ? ' jconsent' : '') });
+    var ctl;
+    if (f.t === 'textarea') {
+      ctl = h('textarea', { id: id, name: f.n, rows: '4' });
+      ctl.value = vals[f.n] || '';
+      ctl.addEventListener('input', function () { vals[f.n] = ctl.value; });
+    } else if (f.t === 'checks') {
+      ctl = h('div', { class: 'opts', role: 'group', 'aria-labelledby': id + '-l' });
+      f.o.forEach(function (o) {
+        var cb = h('input', { type: 'checkbox', value: o.en });
+        cb.checked = (vals[f.n] || []).indexOf(o.en) >= 0;
+        cb.addEventListener('change', function () {
+          vals[f.n] = $$('input', ctl).filter(function (x) { return x.checked; }).map(function (x) { return x.value; });
+        });
+        ctl.appendChild(h('label', { class: 'opt' }, [cb, h('span', null, [tx(o)])]));
+      });
+    } else if (f.t === 'consent') {
+      var cb2 = h('input', { type: 'checkbox', id: id, name: f.n });
+      cb2.checked = !!vals[f.n];
+      cb2.addEventListener('change', function () { vals[f.n] = cb2.checked; });
+      ctl = h('label', { class: 'opt', for: id }, [cb2, h('span', null, [tx(f.text)])]);
+    } else {
+      ctl = h('input', { id: id, name: f.n, type: f.t === 'url' ? 'text' : f.t, autocomplete: f.ac || 'off', inputmode: f.t === 'url' ? 'url' : null });
+      ctl.value = vals[f.n] || '';
+      ctl.addEventListener('input', function () { vals[f.n] = ctl.value; });
+    }
+    if (f.t !== 'consent') {
+      var lab = tx(f.l) + (f.req ? '' : ' (' + ui('join.optional') + ')');
+      wrap.appendChild(h(f.t === 'checks' ? 'span' : 'label', { class: 'jl', id: id + '-l', for: f.t === 'checks' ? null : id }, [lab]));
+      if (f.h) wrap.appendChild(h('small', { class: 'jh' }, [tx(f.h)]));
+    }
+    wrap.appendChild(ctl);
+    var er = h('small', { class: 'jerr', role: 'alert', hidden: 'hidden' });
+    errs[f.n] = { box: wrap, el: er };
+    wrap.appendChild(er);
+    return wrap;
+  }
+
+  function normUrl(v) {
+    v = String(v || '').trim();
+    if (v && !/^https?:\/\//i.test(v)) v = 'https://' + v;
+    return v;
+  }
+  function validUrl(v) {
+    try { var u = new URL(v); return /^https?:$/.test(u.protocol) && u.hostname.indexOf('.') > 0; } catch (e) { return false; }
+  }
+
+  function renderJoin() {
+    var J = DATA.join || {};
+    setText('#join-intro', tx(J.intro));
+    var tabs = $('#join-tabs'); clear(tabs);
+    var box = $('#join-form'); clear(box);
+    ROLE_KEYS.forEach(function (k) {
+      var cfg = J[k] || {}, open = cfg.open !== false, r = ROLES[k];
+      var card = h('button', { type: 'button', class: 'role' + (joinTab === k ? ' on' : '') + (open ? '' : ' closed'), 'aria-pressed': joinTab === k ? 'true' : 'false' }, [
+        icon(r.icon), h('b', null, [tx(r.title)]), h('span', { class: 'rd' }, [tx(r.desc)]),
+        h('span', { class: 'badge' }, [open ? ui('join.open') : ui('join.closed')])
+      ]);
+      card.addEventListener('click', function () {
+        joinTab = k; renderJoin(); markKa();
+        var f = $('#join-form'); if (f && f.scrollIntoView) f.scrollIntoView({ behavior: 'smooth', block: 'start' });
+      });
+      tabs.appendChild(card);
+    });
+    if (!joinTab) { box.appendChild(h('p', { class: 'join-pick' }, [ui('join.pick')])); return; }
+
+    var k = joinTab, cfg = J[k] || {}, r = ROLES[k];
+    var head = h('h2', { class: 'jt' }, [ui('join.apply') + ' ' + tx(r.title)]);
+    if (cfg.open === false) {
+      box.appendChild(h('div', { class: 'card' }, [head, h('p', null, [ui('join.closedmsg')])])); return;
+    }
+    if (joinSent[k]) {
+      box.appendChild(h('div', { class: 'card join-ok' }, [h('h3', null, [ui('join.ok.t')]), h('p', null, [ui('join.ok.p')])])); return;
+    }
+    var vals = FV[k] || (FV[k] = {}), errs = {}, fields = joinFields(k, J);
+    var form = h('form', { class: 'jform card', novalidate: 'novalidate' }, [head]);
+    if (tx(cfg.note)) form.appendChild(h('p', { class: 'jnote' }, [tx(cfg.note)]));
+    fields.forEach(function (f) { form.appendChild(jField(f, vals, k, errs)); });
+    form.appendChild(h('input', { type: 'text', name: 'website', class: 'hp', tabindex: '-1', autocomplete: 'off', 'aria-hidden': 'true' }));
+    var msg = h('p', { class: 'jmsg', role: 'status' });
+    var btn = h('button', { type: 'submit', class: 'btn' }, [ui('join.submit')]);
+    form.appendChild(msg);
+    form.appendChild(h('div', { class: 'actions' }, [btn]));
+    form.addEventListener('submit', function (e) { e.preventDefault(); sendJoin(k, fields, vals, errs, form, btn, msg, J); });
+    box.appendChild(form);
+  }
+
+  function sendJoin(k, fields, vals, errs, form, btn, msg, J) {
+    var first = null;
+    fields.forEach(function (f) {
+      var v = vals[f.n], m = '';
+      var empty = f.t === 'checks' ? !(v && v.length) : f.t === 'consent' ? !v : !String(v || '').trim();
+      if (f.req && empty) m = f.t === 'checks' ? ui('join.pickone') : f.t === 'consent' ? ui('join.agree') : ui('join.req');
+      else if (!empty && f.t === 'email' && !/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(String(v).trim())) m = ui('join.bademail');
+      else if (!empty && f.t === 'url' && !validUrl(normUrl(v))) m = ui('join.badurl');
+      var e = errs[f.n];
+      e.el.textContent = m; e.el.hidden = !m;
+      e.box.className = e.box.className.replace(' bad', '') + (m ? ' bad' : '');
+      if (m && !first) first = e.box;
+    });
+    msg.textContent = '';
+    if (first) {
+      msg.textContent = ui('join.fix');
+      if (first.scrollIntoView) first.scrollIntoView({ behavior: 'smooth', block: 'center' });
+      return;
+    }
+    if (String((form.elements.website || {}).value || '').trim()) { joinSent[k] = true; renderJoin(); markKa(); return; }   // spam trap
+
+    var r = ROLES[k], lines = [], payload = {};
+    fields.forEach(function (f) {
+      var v = vals[f.n], out;
+      if (f.t === 'checks') out = (v || []).join(', ');
+      else if (f.t === 'consent') out = v ? 'Yes – ' + tx(f.text) : '';
+      else if (f.t === 'url') out = normUrl(v);
+      else out = String(v || '').trim();
+      if (!out) return;
+      var label = f.t === 'consent' ? (f.n === 'rights' ? 'Media rights consent' : 'Data consent') : f.l.en;
+      payload[label] = out; lines.push(label + ': ' + out);
+    });
+    var who = String(vals.name || '').trim();
+    var subject = 'ADCC Georgia – ' + r.title.en + ' application – ' + who;
+
+    var mail = String((DATA.contact || {}).email || '').trim();
+    function viaEmail() {
+      var body = lines.join('\n\n');
+      while (encodeURIComponent(body).length > 1700 && body.length > 200) body = body.slice(0, body.length - 100);
+      msg.textContent = ui('join.mailopen');
+      window.location.href = 'mailto:' + mail + '?subject=' + encodeURIComponent(subject) + '&body=' + encodeURIComponent(body);
+    }
+    var key = String(J.accessKey || '').trim();
+    if (!key) { if (mail) viaEmail(); return; }
+
+    btn.disabled = true; btn.textContent = ui('join.sending');
+    var data = { access_key: key, subject: subject, from_name: 'ADCC Georgia website', email: String(vals.email).trim(), botcheck: false, 'Application for': r.title.en, 'Site language': lang === 'ka' ? 'Georgian' : 'English' };
+    for (var n in payload) data[n] = payload[n];
+    fetch('https://api.web3forms.com/submit', { method: 'POST', headers: { 'Content-Type': 'application/json', 'Accept': 'application/json' }, body: JSON.stringify(data) })
+      .then(function (res) { return res.json().catch(function () { return {}; }).then(function (j) { return res.ok && j.success !== false; }); })
+      .catch(function () { return false; })
+      .then(function (ok) {
+        if (ok) { joinSent[k] = true; FV[k] = {}; renderJoin(); markKa(); var f = $('#join-form'); if (f && f.scrollIntoView) f.scrollIntoView({ behavior: 'smooth', block: 'start' }); return; }
+        btn.disabled = false; btn.textContent = ui('join.submit');
+        msg.textContent = ui('join.err');
+        if (mail && !$('.jmail', form)) {
+          var a = h('button', { type: 'button', class: 'btn ghost sm jmail' }, [ui('join.mail')]);
+          a.addEventListener('click', viaEmail);
+          msg.parentNode.appendChild(h('div', { class: 'actions', style: 'margin-top:10px' }, [a]));
+        }
+        markKa();
+      });
+  }
+
   function renderAll() {
     if (!DATA) return;
     var ph = phase(DATA.event, Date.now());
@@ -885,6 +1230,7 @@
     if (page === 'weigh-in') renderWeighin(ph);
     if (page === 'tickets') renderTickets(ph);
     if (page === 'shop') renderShop();
+    if (page === 'join') renderJoin();
     tickCountdown(true);
     markKa();
     document.body.classList.remove('loading');
@@ -907,6 +1253,7 @@
   var saved = ls() && ls().getItem(KEY);
   lang = (q || saved) === 'ka' ? 'ka' : 'en';
   DATA = merge(DEFAULTS, {});
+  (function () { var hh = location.hash.slice(1); if (page === 'join' && ROLES[hh]) joinTab = hh; })();
   applyStatic();
 
   $$('[data-lang-btn]').forEach(function (b) {

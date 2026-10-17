@@ -182,6 +182,42 @@
       }
     ]
   },
+  "join": {
+    "accessKey": "",
+    "intro": {
+      "en": "Be part of the ADCC Georgia team. Choose a role, tell us about yourself and we will contact you if there is a match.",
+      "ka": "გახდით ADCC Georgia-ს გუნდის ნაწილი. აირჩიეთ როლი, მოგვიყევით თქვენ შესახებ და თუ კანდიდატურა შეესაბამება, დაგიკავშირდებით."
+    },
+    "referee": {
+      "open": true,
+      "note": {
+        "en": "",
+        "ka": ""
+      }
+    },
+    "organisation": {
+      "open": true,
+      "note": {
+        "en": "",
+        "ka": ""
+      }
+    },
+    "media": {
+      "open": true,
+      "note": {
+        "en": "",
+        "ka": ""
+      },
+      "terms": {
+        "en": "If I am accredited, I agree that ADCC Georgia may use the photos and videos I produce at ADCC Georgia events, free of charge, for promotion, publications and social media, with credit to me where possible. I keep the copyright to my work.",
+        "ka": "აკრედიტაციის მიღების შემთხვევაში ვეთანხმები, რომ ADCC Georgia-ს შეუძლია უსასყიდლოდ გამოიყენოს ჩემ მიერ ADCC Georgia-ს ღონისძიებებზე შექმნილი ფოტოები და ვიდეოები პოპულარიზაციის, პუბლიკაციებისა და სოციალური ქსელებისთვის, შესაძლებლობის შემთხვევაში ჩემი ავტორობის მითითებით. ჩემი ნამუშევრის საავტორო უფლებები რჩება ჩემთან."
+      }
+    },
+    "privacy": {
+      "en": "I agree that ADCC Georgia may store and use the information in this form only to review my application and contact me.",
+      "ka": "ვეთანხმები, რომ ADCC Georgia-მ ამ ფორმაში მითითებული ინფორმაცია შეინახოს და გამოიყენოს მხოლოდ ჩემი განაცხადის განსახილველად და ჩემთან დასაკავშირებლად."
+    }
+  },
   "previous": {
     "name": "ADCC Georgia Open 2025",
     "resultsUrl": "https://adcombat.com/adcc-events/adcc-georgia-open-2025/"
