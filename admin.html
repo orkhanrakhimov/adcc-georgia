@@ -1,0 +1,492 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="robots" content="noindex,nofollow">
+<title>Admin – ADCC Georgia</title>
+<link rel="icon" href="logo.png">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Oswald:wght@500;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="style.css">
+<style>
+  .adm{padding-top:36px;padding-bottom:40px;max-width:900px}
+  .adm h1{font-size:2.2rem;margin-bottom:8px}
+  .muted{color:var(--muted)}
+  button.btn{font-size:1rem;line-height:1.2}
+  button.btn.sm{font-size:.85rem}
+  .box{background:var(--panel);border:1px solid var(--line);border-radius:8px;padding:22px;margin:18px 0}
+  .box h2{font-size:1.3rem;margin-bottom:10px}
+  .box ol{margin:10px 0 16px 20px;color:var(--muted)}
+  .box ol li{margin:4px 0}
+  .box ol b{color:var(--text);font-weight:600}
+  details.sec{background:var(--panel);border:1px solid var(--line);border-radius:8px;margin:14px 0}
+  details.sec>.body{padding:18px 22px 22px;display:grid;gap:16px}
+  .f{display:flex;flex-direction:column;gap:6px}
+  .fl{font-weight:600;font-size:.9rem}
+  .f small{color:var(--muted);font-size:.78rem}
+  input[type=text],input[type=url],input[type=date],input[type=time],input[type=password],input[type=email],textarea,select{width:100%;background:#0f0f11;border:1px solid #33333a;border-radius:6px;color:var(--text);padding:10px 12px;font:inherit}
+  input:focus,textarea:focus,select:focus,button:focus-visible{outline:2px solid var(--accent);outline-offset:1px}
+  textarea{min-height:74px;resize:vertical}
+  .cols,.row2,.row3{display:grid;gap:12px}
+  .cols,.row2{grid-template-columns:1fr 1fr}
+  .row3{grid-template-columns:1fr 1fr 1fr}
+  @media(max-width:640px){.cols,.row2,.row3{grid-template-columns:1fr}}
+  .chk{display:flex;align-items:center;gap:10px;cursor:pointer}
+  .chk input{width:18px;height:18px;accent-color:var(--accent)}
+  .li{border:1px solid var(--line);border-radius:8px;padding:16px;display:grid;gap:14px;background:#111113}
+  .li .top-row{display:flex;justify-content:space-between;align-items:center;gap:10px}
+  .li .top-row b{font-family:Oswald,sans-serif;text-transform:uppercase;color:var(--gold);letter-spacing:.04em}
+  .savebar{position:sticky;bottom:0;background:rgba(11,11,12,.96);border-top:1px solid var(--line);padding:14px 0;display:flex;gap:14px;align-items:center;flex-wrap:wrap;z-index:15;margin-top:20px}
+  #status{font-size:.95rem;flex:1;min-width:200px}
+  #status.ok{color:#6fd98a}
+  #status.err{color:#ff7b86;white-space:pre-line}
+  #status.warn{color:var(--gold)}
+  .thumbs{display:grid;grid-template-columns:repeat(auto-fill,minmax(120px,1fr));gap:10px}
+  .thumb{position:relative;aspect-ratio:1;border-radius:6px;overflow:hidden;background:#1a1a1e;border:1px solid var(--line)}
+  .thumb img{width:100%;height:100%;object-fit:cover;display:block}
+  .thumb button{position:absolute;top:4px;right:4px;background:rgba(0,0,0,.75);color:#fff;border:0;border-radius:4px;padding:3px 8px;cursor:pointer;font-size:.8rem}
+  .tip{border-left:4px solid var(--gold);background:#17150f;padding:12px 16px;border-radius:6px;color:var(--text);font-size:.92rem}
+  .btnrow{display:flex;gap:10px;flex-wrap:wrap}
+  .hdr-right{margin-left:auto;display:flex;gap:10px;align-items:center}
+</style>
+</head>
+<body data-page="admin">
+
+<header class="top">
+  <div class="wrap">
+    <nav>
+      <a class="logo" href="./"><img src="logo.png" alt="ADCC"><span>ADMIN</span></a>
+      <div class="hdr-right">
+        <a class="btn ghost sm" href="./">View site</a>
+        <button type="button" class="btn ghost sm" id="logout" hidden>Log out</button>
+      </div>
+    </nav>
+  </div>
+</header>
+
+<main class="wrap adm">
+  <h1>Site admin</h1>
+  <p class="muted">Edit the event, weigh-in, tickets, shop, contacts and photos here. Changes are saved to your GitHub repository and appear on the site within 1–2 minutes. No code needed.</p>
+
+  <!-- ============ CONNECT (first time only) ============ -->
+  <section id="connect" class="box">
+    <h2>Connect to GitHub (one time)</h2>
+    <ol>
+      <li>On github.com open <b>Settings → Developer settings → Personal access tokens → Fine-grained tokens</b> and click <b>Generate new token</b>.</li>
+      <li>Under <b>Repository access</b> choose <b>Only select repositories</b> and pick your website's repository.</li>
+      <li>Under <b>Permissions → Repository permissions</b> set <b>Contents: Read and write</b>.</li>
+      <li>Set an expiry date, click <b>Generate token</b>, copy it and paste it below.</li>
+    </ol>
+    <div class="row2">
+      <label class="f"><span class="fl">Repository</span><input type="text" id="c-repo" placeholder="your-username/your-repository" autocomplete="off" spellcheck="false"><small>The name shown at the top of your repo page, like <i>username/repo</i>.</small></label>
+      <label class="f"><span class="fl">Access token</span><input type="password" id="c-token" placeholder="github_pat_…" autocomplete="off" spellcheck="false"><small>Stays in this browser only.</small></label>
+    </div>
+    <p class="muted" style="margin:14px 0;font-size:.88rem">Anyone with this token can change your website, so never share it. Use <b>Log out</b> on shared computers.</p>
+    <button type="button" class="btn" id="connect-btn">Connect</button>
+    <p id="connect-msg" class="muted" style="margin-top:12px" role="status"></p>
+  </section>
+
+  <!-- ============ EDITOR ============ -->
+  <div id="editor" hidden>
+    <p class="tip">After an event is over, update the <b>Event</b>, <b>Weigh-in</b> and <b>Tickets</b> sections for your next event and press <b>Save</b>. The countdown and all pages switch to the new event automatically.</p>
+    <div id="sections"></div>
+    <div class="savebar">
+      <button type="button" class="btn" id="save">Save changes</button>
+      <span id="status" role="status"></span>
+    </div>
+  </div>
+</main>
+
+<script src="site.js"></script>
+<script>
+(function () {
+  'use strict';
+  var A = window.ADCC;
+  var LS = 'adcc-admin';
+  var cfg = null, state = null, dirty = false, thumbs = {};
+
+  // ---------------------------------------------------------------- helpers
+  function $(s) { return document.querySelector(s); }
+  function el(tag, attrs, kids) {
+    var e = document.createElement(tag), k;
+    if (attrs) for (k in attrs) { var v = attrs[k]; if (v === null || v === undefined || v === false) continue; e.setAttribute(k, v); }
+    (kids || []).forEach(function (c) { if (c === null || c === undefined) return; e.appendChild(typeof c === 'string' ? document.createTextNode(c) : c); });
+    return e;
+  }
+  function clear(n) { while (n.firstChild) n.removeChild(n.firstChild); }
+  function clone(o) { return JSON.parse(JSON.stringify(o)); }
+  function get(p) { return p.split('.').reduce(function (a, k) { return a === null || a === undefined ? a : a[k]; }, state); }
+  function set(p, v) {
+    var ks = p.split('.'), last = ks.pop();
+    var t = ks.reduce(function (a, k) { return a[k]; }, state);
+    t[last] = v; markDirty();
+  }
+  function markDirty() { dirty = true; status('Unsaved changes', 'warn'); }
+  function status(msg, cls) { var s = $('#status'); s.textContent = msg; s.className = cls || ''; }
+  function store() { try { return window.localStorage; } catch (e) { return null; } }
+
+  // ------------------------------------------------------------ form pieces
+  function inp(path, o) {
+    o = o || {};
+    var i = el(o.area ? 'textarea' : 'input', { type: o.area ? null : (o.type || 'text'), placeholder: o.ph || '' });
+    var v = get(path); i.value = (v === null || v === undefined) ? '' : v;
+    i.addEventListener('input', function () { set(path, i.value); });
+    return i;
+  }
+  function field(label, node, hint) {
+    return el('label', { class: 'f' }, [el('span', { class: 'fl' }, [label]), node, hint ? el('small', null, [hint]) : null]);
+  }
+  function bi(label, path, o) {
+    o = o || {};
+    return el('div', { class: 'f' }, [
+      el('span', { class: 'fl' }, [label]),
+      el('div', { class: 'cols' }, [
+        el('div', { class: 'f' }, [el('small', null, ['English']), inp(path + '.en', o)]),
+        el('div', { class: 'f' }, [el('small', null, ['ქართული (optional)']), inp(path + '.ka', o)])
+      ])
+    ]);
+  }
+  function chk(path, label) {
+    var i = el('input', { type: 'checkbox' }); i.checked = !!get(path);
+    i.addEventListener('change', function () { set(path, i.checked); });
+    return el('label', { class: 'chk' }, [i, el('span', null, [label])]);
+  }
+  function section(title, open, kids) {
+    var d = el('details', { class: 'sec' }, [el('summary', null, [title]), el('div', { class: 'body' }, kids)]);
+    if (open) d.setAttribute('open', '');
+    return d;
+  }
+  function listBox(arrPath, renderItem, makeNew, addLabel, itemName) {
+    var box = el('div', { class: 'f', style: 'gap:12px' });
+    function draw() {
+      clear(box);
+      var arr = get(arrPath);
+      arr.forEach(function (item, i) {
+        var rm = el('button', { type: 'button', class: 'btn ghost sm' }, ['Remove']);
+        rm.addEventListener('click', function () {
+          if (!window.confirm('Remove this ' + itemName + '?')) return;
+          arr.splice(i, 1); markDirty(); draw();
+        });
+        box.appendChild(el('div', { class: 'li' }, [el('div', { class: 'top-row' }, [el('b', null, [itemName + ' ' + (i + 1)]), rm])].concat(renderItem(arrPath + '.' + i))));
+      });
+      var add = el('button', { type: 'button', class: 'btn ghost sm', style: 'align-self:flex-start' }, ['+ ' + addLabel]);
+      add.addEventListener('click', function () { arr.push(makeNew()); markDirty(); draw(); });
+      box.appendChild(add);
+    }
+    draw();
+    return box;
+  }
+
+  function sel(path, options) {
+    var i = el('select');
+    options.forEach(function (o) { var op = el('option', { value: o[0] }, [o[1]]); i.appendChild(op); });
+    i.value = get(path) || options[0][0];
+    i.addEventListener('change', function () { set(path, i.value); });
+    return i;
+  }
+  var ICON_OPTS = [['tshirt', 'T-shirt'], ['hoodie', 'Hoodie'], ['sweater', 'Sweater'], ['cap', 'Cap'], ['rashguard', 'Rash guard'], ['shorts', 'Shorts']];
+  function photoField(path) {
+    var box = el('div', { class: 'f' }), file = el('input', { type: 'file', accept: 'image/*' });
+    function draw() {
+      var v = get(path), old = box.querySelector('.pv'); if (old) old.remove();
+      if (v) {
+        var rm = el('button', { type: 'button' }, ['Remove photo']);
+        rm.addEventListener('click', function () { set(path, ''); draw(); });
+        box.appendChild(el('div', { class: 'thumb pv', style: 'max-width:140px' }, [el('img', { src: thumbs[v] || v, alt: '' }), rm]));
+      }
+    }
+    file.addEventListener('change', async function () {
+      var f = file.files[0]; file.value = ''; if (!f) return;
+      status('Uploading photo…');
+      try {
+        var blob = await toJpeg(f, 1200), p = 'photos/shop-' + Date.now().toString(36) + '.jpg';
+        await putFile(p, await blobB64(blob), 'Add shop photo (admin panel)');
+        thumbs[p] = URL.createObjectURL(blob); set(path, p); draw();
+        status('Photo uploaded. Press “Save changes” to show it on the site.', 'warn');
+      } catch (e) { status('Photo failed: ' + (e.message || 'could not read this image'), 'err'); }
+    });
+    box.appendChild(el('span', { class: 'fl' }, ['Photo (optional)']));
+    box.appendChild(file);
+    draw();
+    return box;
+  }
+
+  // ------------------------------------------------------------ build form
+  function buildForm() {
+    var root = $('#sections'); clear(root);
+
+    root.appendChild(section('Event', true, [
+      field('Event name', inp('event.name'), 'Shown as the big title and on every page.'),
+      field('Highlighted words (red part of the title)', inp('event.highlight'), 'Optional. Must be part of the event name, e.g. “Nationals Open”.'),
+      el('div', { class: 'row2' }, [field('Date', inp('event.date', { type: 'date' })), field('Start time', inp('event.time', { type: 'time' }), 'Tbilisi time')]),
+      field('Venue name', inp('event.venue')),
+      bi('Address', 'event.address'),
+      field('Map link', inp('event.mapUrl', { type: 'url', ph: 'https://…' }), 'Copy the link from Google Maps → Share.'),
+      field('Registration link', inp('event.registerUrl', { type: 'url', ph: 'https://…' }), 'Used by every “Register” button.'),
+      field('Official rules link', inp('event.rulesUrl', { type: 'url', ph: 'https://…' })),
+      bi('Entry information', 'event.entry', { area: true })
+    ]));
+
+    root.appendChild(section('Weigh-in', false, [
+      el('p', { class: 'muted' }, ['One card per weigh-in session. Dates are formatted automatically in English and Georgian.']),
+      listBox('weighin.days', function (p) {
+        return [
+          el('div', { class: 'row3' }, [field('Date', inp(p + '.date', { type: 'date' })), field('From', inp(p + '.from', { type: 'time' })), field('To', inp(p + '.to', { type: 'time' }))]),
+          bi('Label (optional)', p + '.label')
+        ];
+      }, function () { return { date: get('event.date'), from: '08:00', to: '10:00', label: { en: '', ka: '' } }; }, 'Add weigh-in session', 'Session')
+    ]));
+
+    root.appendChild(section('Tickets', false, [
+      listBox('tickets.items', function (p) {
+        return [
+          bi('Ticket name', p + '.name'),
+          field('Price in GEL', inp(p + '.price', { ph: 'e.g. 10' }), 'Leave empty to show “Free”.'),
+          bi('Description', p + '.desc', { area: true }),
+          chk(p + '.featured', 'Highlight this ticket (red outline)')
+        ];
+      }, function () { return { name: { en: '', ka: '' }, price: '', desc: { en: '', ka: '' }, featured: false }; }, 'Add ticket type', 'Ticket'),
+      bi('Note under the tickets', 'tickets.door', { area: true })
+    ]));
+
+    root.appendChild(section('Contacts', false, [
+      field('Email', inp('contact.email', { type: 'email' })),
+      el('span', { class: 'fl' }, ['WhatsApp numbers']),
+      listBox('contact.whatsapp', function (p) {
+        return [el('div', { class: 'row2' }, [field('Label', inp(p + '.label', { ph: 'WhatsApp' }), 'Shown to visitors, e.g. a person’s name.'), field('Number', inp(p + '.number', { ph: '+995 …' }), 'With country code.')])];
+      }, function () { return { label: 'WhatsApp', number: '' }; }, 'Add WhatsApp number', 'Number'),
+      el('div', { class: 'row2' }, [
+        field('Instagram username', inp('contact.instagram', { ph: 'adccgeorgia' }), 'Without @ or link.'),
+        field('Facebook page name', inp('contact.facebook', { ph: 'adccgeorgia' }), 'The last part of facebook.com/…')
+      ]),
+      bi('Location text', 'contact.location')
+    ]));
+
+    root.appendChild(section('Shop (merch & gear)', false, [
+      el('p', { class: 'muted' }, ['Each category shows its “coming soon” placeholders while it has no products. As soon as you add a product to a category, the placeholders are replaced by your products. Visitors order through your first WhatsApp number.']),
+      bi('Intro text', 'shop.intro', { area: true }),
+      bi('Note under the products', 'shop.note', { area: true }),
+      el('span', { class: 'fl' }, ['Categories']),
+      listBox('shop.categories', function (c) {
+        return [
+          bi('Category name', c + '.name'),
+          bi('Short description', c + '.desc'),
+          el('span', { class: 'fl' }, ['Products']),
+          listBox(c + '.items', function (p) {
+            return [
+              bi('Product name', p + '.name'),
+              el('div', { class: 'row3' }, [
+                field('Price in GEL', inp(p + '.price', { ph: 'e.g. 95' }), 'Empty = no price shown.'),
+                field('Status', sel(p + '.status', [['available', 'Available'], ['soon', 'Coming soon'], ['soldout', 'Sold out']])),
+                field('Placeholder icon', sel(p + '.icon', ICON_OPTS), 'Used when there is no photo.')
+              ]),
+              field('Sizes', inp(p + '.sizes', { ph: 'S, M, L, XL' }), 'Separate with commas. Leave empty if not needed.'),
+              bi('Description (optional)', p + '.desc', { area: true }),
+              photoField(p + '.photo')
+            ];
+          }, function () { return { name: { en: '', ka: '' }, price: '', status: 'available', sizes: '', desc: { en: '', ka: '' }, photo: '', icon: 'tshirt' }; }, 'Add product', 'Product'),
+          el('span', { class: 'fl' }, ['“Coming soon” placeholders']),
+          listBox(c + '.coming', function (p) {
+            return [el('div', { class: 'row2' }, [bi('Name', p + '.name'), field('Icon', sel(p + '.icon', ICON_OPTS))])];
+          }, function () { return { name: { en: '', ka: '' }, icon: 'tshirt' }; }, 'Add placeholder', 'Placeholder')
+        ];
+      }, function () { return { name: { en: '', ka: '' }, desc: { en: '', ka: '' }, items: [], coming: [] }; }, 'Add category', 'Category'),
+    ]));
+
+    root.appendChild(section('Previous event', false, [
+      field('Last event name', inp('previous.name'), 'Shown in “Our last event was …”.'),
+      field('Results link', inp('previous.resultsUrl', { type: 'url', ph: 'https://…' }), 'Leave empty to hide the results button.')
+    ]));
+
+    // photos
+    var thumbsBox = el('div', { class: 'thumbs' });
+    function drawThumbs() {
+      clear(thumbsBox);
+      get('gallery').forEach(function (g, i) {
+        var rm = el('button', { type: 'button' }, ['Remove']);
+        rm.addEventListener('click', function () { get('gallery').splice(i, 1); markDirty(); drawThumbs(); });
+        thumbsBox.appendChild(el('div', { class: 'thumb' }, [el('img', { src: thumbs[g.src] || g.src, alt: '' }), rm]));
+      });
+      if (!get('gallery').length) thumbsBox.appendChild(el('p', { class: 'muted' }, ['No photos yet.']));
+    }
+    var file = el('input', { type: 'file', accept: 'image/*', multiple: 'multiple' });
+    file.addEventListener('change', function () { uploadPhotos([].slice.call(file.files), drawThumbs); file.value = ''; });
+    root.appendChild(section('Photos (Previous events)', false, [
+      el('p', { class: 'muted' }, ['Choose photos from your phone or computer. They are resized automatically and uploaded to your repository. Press “Save changes” afterwards to show them on the site.']),
+      file, thumbsBox
+    ]));
+    drawThumbs();
+
+    // backup
+    var dl = el('button', { type: 'button', class: 'btn ghost sm' }, ['Download backup']);
+    dl.addEventListener('click', function () {
+      var a = el('a', { href: URL.createObjectURL(new Blob([JSON.stringify(state, null, 2)], { type: 'application/json' })), download: 'adcc-data-backup.json' });
+      document.body.appendChild(a); a.click(); a.remove();
+    });
+    var rs = el('button', { type: 'button', class: 'btn ghost sm' }, ['Reset form to defaults']);
+    rs.addEventListener('click', function () {
+      if (!window.confirm('Reset every field in this form to the original content? Nothing is saved until you press Save changes.')) return;
+      state = clone(A.defaults); buildForm(); markDirty();
+    });
+    root.appendChild(section('Backup', false, [el('div', { class: 'btnrow' }, [dl, rs])]));
+  }
+
+  // -------------------------------------------------------------- GitHub API
+  function gh(path, opts) {
+    opts = opts || {};
+    opts.headers = Object.assign({ 'Authorization': 'Bearer ' + cfg.token, 'Accept': 'application/vnd.github+json', 'X-GitHub-Api-Version': '2022-11-28' }, opts.headers || {});
+    return fetch('https://api.github.com/repos/' + cfg.repo + path, opts);
+  }
+  function friendly(status, msg) {
+    if (status === 401) return 'The token was rejected (expired or mistyped). Create a new token and log in again.';
+    if (status === 403) return 'GitHub says this token is not allowed to do that. Check it has Contents: Read and write on this repository. (' + msg + ')';
+    if (status === 404) return 'Repository or file not found. Check the repository name and that the token has access to it.';
+    return status + ': ' + msg;
+  }
+  async function fail(r) { var m = ''; try { m = (await r.json()).message || ''; } catch (e) {} throw new Error(friendly(r.status, m)); }
+  function b64utf8(s) {
+    var b = new TextEncoder().encode(s), bin = '';
+    for (var i = 0; i < b.length; i++) bin += String.fromCharCode(b[i]);
+    return btoa(bin);
+  }
+  function blobB64(blob) {
+    return new Promise(function (res, rej) {
+      var fr = new FileReader();
+      fr.onload = function () { res(String(fr.result).split(',')[1]); };
+      fr.onerror = rej; fr.readAsDataURL(blob);
+    });
+  }
+  async function putFile(path, b64, message) {
+    var sha, r = await gh('/contents/' + encodeURI(path) + '?ref=' + encodeURIComponent(cfg.branch));
+    if (r.status === 200) sha = (await r.json()).sha; else if (r.status !== 404) await fail(r);
+    var body = { message: message, content: b64, branch: cfg.branch };
+    if (sha) body.sha = sha;
+    var p = await gh('/contents/' + encodeURI(path), { method: 'PUT', headers: { 'Content-Type': 'application/json' }, body: JSON.stringify(body) });
+    if (!p.ok) await fail(p);
+  }
+
+  // ------------------------------------------------------------------ connect
+  async function connect() {
+    var repo = $('#c-repo').value.trim().replace(/^https?:\/\/github\.com\//i, '').replace(/\/+$/, '');
+    var token = $('#c-token').value.trim();
+    var msg = $('#connect-msg');
+    if (!/^[\w.\-]+\/[\w.\-]+$/.test(repo)) { msg.textContent = 'Enter the repository as username/repository.'; return; }
+    if (!token) { msg.textContent = 'Paste your access token.'; return; }
+    msg.textContent = 'Connecting…';
+    cfg = { repo: repo, token: token, branch: 'main' };
+    try {
+      var r = await gh('');
+      if (!r.ok) await fail(r);
+      var j = await r.json();
+      if (j.permissions && j.permissions.push === false) throw new Error('This token can only read the repository. Give it Contents: Read and write.');
+      cfg.branch = j.default_branch || 'main';
+      var s = store(); if (s) { try { s.setItem(LS, JSON.stringify(cfg)); } catch (e) {} }
+      msg.textContent = '';
+      await openEditor();
+    } catch (e) { cfg = null; msg.textContent = e.message; }
+  }
+  async function openEditor() {
+    $('#connect').hidden = true; $('#logout').hidden = false;
+    var data = null;
+    try { var r = await fetch('data.json', { cache: 'no-store' }); if (r.ok) data = await r.json(); } catch (e) {}
+    state = A.merge(clone(A.defaults), data || {});
+    ['whatsapp'].forEach(function () {});
+    $('#editor').hidden = false;
+    buildForm(); dirty = false; status('');
+  }
+  function logout() {
+    var s = store(); if (s) { try { s.removeItem(LS); } catch (e) {} }
+    cfg = null; state = null; dirty = false;
+    $('#editor').hidden = true; $('#logout').hidden = true; $('#connect').hidden = false;
+    $('#c-token').value = '';
+  }
+
+  // --------------------------------------------------------------------- save
+  function cleanup(o) {
+    if (typeof o === 'string') return o.trim();
+    if (Array.isArray(o)) return o.map(cleanup);
+    if (o && typeof o === 'object') { var out = {}; Object.keys(o).forEach(function (k) { out[k] = cleanup(o[k]); }); return out; }
+    return o;
+  }
+  function validate(d) {
+    var e = [], T = /^\d{1,2}:\d{2}$/, D = /^\d{4}-\d{2}-\d{2}$/;
+    if (!d.event.name) e.push('Event name is required.');
+    if (!D.test(d.event.date)) e.push('Event date is required.');
+    if (!T.test(d.event.time)) e.push('Event start time is required.');
+    [['mapUrl', 'Map link'], ['registerUrl', 'Registration link'], ['rulesUrl', 'Official rules link']].forEach(function (x) {
+      var v = d.event[x[0]]; if (v && !/^https?:\/\//i.test(v)) e.push(x[1] + ' must start with https://');
+    });
+    if (d.previous.resultsUrl && !/^https?:\/\//i.test(d.previous.resultsUrl)) e.push('Results link must start with https://');
+    d.weighin.days.forEach(function (x, i) {
+      if (!D.test(x.date) || !T.test(x.from) || !T.test(x.to)) e.push('Weigh-in session ' + (i + 1) + ': fill in date, from and to.');
+    });
+    d.tickets.items.forEach(function (x, i) {
+      if (!x.name.en) e.push('Ticket ' + (i + 1) + ': English name is required.');
+      if (x.price && !/^\d+([.,]\d+)?$/.test(x.price)) e.push('Ticket ' + (i + 1) + ': price must be a number (or empty for Free).');
+    });
+    (d.shop.categories || []).forEach(function (c, ci) {
+      if (!c.name.en) e.push('Shop category ' + (ci + 1) + ': English name is required.');
+      (c.items || []).forEach(function (x, i) {
+        if (!x.name.en) e.push('Shop category ' + (ci + 1) + ', product ' + (i + 1) + ': English name is required.');
+        if (x.price && !/^\d+([.,]\d+)?$/.test(x.price)) e.push('Shop category ' + (ci + 1) + ', product ' + (i + 1) + ': price must be a number (or empty).');
+      });
+      (c.coming || []).forEach(function (x, i) {
+        if (!x.name.en) e.push('Shop category ' + (ci + 1) + ', placeholder ' + (i + 1) + ': English name is required.');
+      });
+    });
+    d.contact.whatsapp.forEach(function (x, i) {
+      if (String(x.number).replace(/\D/g, '').length < 8) e.push('WhatsApp number ' + (i + 1) + ' looks too short. Remove it or fix it.');
+    });
+    if (d.contact.email && !/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(d.contact.email)) e.push('Email address looks wrong.');
+    return e;
+  }
+  async function save() {
+    var d = cleanup(state), errs = validate(d);
+    if (errs.length) { status('Please fix:\n• ' + errs.join('\n• '), 'err'); return; }
+    var btn = $('#save'); btn.disabled = true; status('Saving…');
+    try {
+      await putFile('data.json', b64utf8(JSON.stringify(d, null, 2) + '\n'), 'Update site info (admin panel)');
+      state = A.merge(clone(A.defaults), d); dirty = false;
+      status('Saved ✓  The site updates in 1–2 minutes (refresh with Ctrl+F5).', 'ok');
+    } catch (e) { status('Could not save: ' + e.message, 'err'); }
+    btn.disabled = false;
+  }
+
+  // ------------------------------------------------------------------- photos
+  async function toJpeg(file, maxPx) {
+    var bmp = await createImageBitmap(file), max = maxPx || 1600, sc = Math.min(1, max / Math.max(bmp.width, bmp.height));
+    var c = document.createElement('canvas'); c.width = Math.round(bmp.width * sc); c.height = Math.round(bmp.height * sc);
+    c.getContext('2d').drawImage(bmp, 0, 0, c.width, c.height);
+    return new Promise(function (res) { c.toBlob(res, 'image/jpeg', 0.85); });
+  }
+  async function uploadPhotos(files, redraw) {
+    if (!files.length) return;
+    var stamp = Date.now().toString(36), done = 0;
+    for (var i = 0; i < files.length; i++) {
+      status('Uploading photo ' + (i + 1) + ' of ' + files.length + '…');
+      try {
+        var blob = await toJpeg(files[i]);
+        var path = 'photos/' + stamp + '-' + (i + 1) + '.jpg';
+        await putFile(path, await blobB64(blob), 'Add photo (admin panel)');
+        thumbs[path] = URL.createObjectURL(blob);
+        get('gallery').push({ src: path }); done++;
+      } catch (e) { status('Photo ' + (i + 1) + ' failed: ' + (e.message || 'could not read this image'), 'err'); return; }
+    }
+    redraw(); dirty = true;
+    status(done + ' photo' + (done > 1 ? 's' : '') + ' uploaded. Press “Save changes” to show ' + (done > 1 ? 'them' : 'it') + ' on the site.', 'warn');
+  }
+
+  // -------------------------------------------------------------------- start
+  $('#connect-btn').addEventListener('click', connect);
+  $('#c-token').addEventListener('keydown', function (e) { if (e.key === 'Enter') connect(); });
+  $('#save').addEventListener('click', save);
+  $('#logout').addEventListener('click', logout);
+  window.addEventListener('beforeunload', function (e) { if (dirty) { e.preventDefault(); e.returnValue = ''; } });
+  var s = store(), saved = null;
+  try { saved = s && JSON.parse(s.getItem(LS) || 'null'); } catch (e) {}
+  if (saved && saved.repo && saved.token) { cfg = saved; openEditor(); }
+})();
+</script>
+</body>
+</html>
