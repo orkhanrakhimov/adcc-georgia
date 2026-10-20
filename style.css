@@ -320,3 +320,9 @@ footer.site-foot{border-top:1px solid var(--line);padding:56px 0 0;color:var(--m
 .plink{color:var(--gold);text-decoration:underline;text-underline-offset:3px}
 .intro h1{overflow-wrap:anywhere}
 .intro h1.ka-text{font-size:clamp(1.5rem,6.2vw,3.2rem)}
+
+/* ---------- weigh-in rule ---------- */
+.rule-note{display:flex;gap:16px;align-items:flex-start;margin-top:16px;padding:20px 22px;border:1px solid var(--accent);border-left-width:4px;border-radius:10px;background:#1a1012}
+.rule-note .ico svg{width:28px;height:28px;stroke:var(--accent);stroke-width:1.8}
+.rule-note h3{color:var(--text);font-size:1.3rem;margin:0 0 6px}
+.rule-note p{color:var(--text)}

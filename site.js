@@ -494,7 +494,17 @@
      "ka": "ღონისძიების დღე"
     }
    }
-  ]
+  ],
+  "rule": {
+   "title": {
+    "en": "No weight tolerance",
+    "ka": "წონაში ტოლერანტობა არ არის"
+   },
+   "text": {
+    "en": "There is no allowance for any grams over the weight limit. Athletes must weigh exactly the limit of their weight class or less. An athlete who is over the limit, even by a few grams, will be disqualified, and the entry fee will not be refunded.",
+    "ka": "წონის ლიმიტის გადაჭარბება ერთი გრამითაც არ დაიშვება. სპორტსმენის წონა უნდა იყოს ზუსტად თავისი წონითი კატეგორიის ლიმიტის ტოლი ან მასზე ნაკლები. სპორტსმენი, რომლის წონაც ლიმიტს აღემატება, თუნდაც რამდენიმე გრამით, დისკვალიფიცირებული იქნება და მონაწილეობის საფასური არ დაუბრუნდება."
+   }
+  }
  },
  "tickets": {
   "items": [
@@ -746,6 +756,7 @@
     calendar: '<rect x="3.5" y="5" width="17" height="15" rx="2.5"/><path d="M3.5 10h17M8 3v4M16 3v4"/>',
     scale: '<path d="M12 4v15M7 20h10M5 7h14"/><path d="M5 7l-2.5 6h5zM19 7l-2.5 6h5z"/>',
     book: '<path d="M4 5.5A1.5 1.5 0 0 1 5.5 4H12v15H5.5A1.5 1.5 0 0 0 4 20.5z"/><path d="M20 5.5A1.5 1.5 0 0 0 18.5 4H12v15h6.5a1.5 1.5 0 0 1 1.5 1.5z"/>',
+    alert: '<path d="M12 3.5L21.5 20h-19z"/><path d="M12 10v5M12 17.5v.01"/>',
     arrow: '<path d="M5 12h14M13 6l6 6-6 6"/>',
     flag: '<path d="M5 21V4"/><path d="M5 4h12l-2.5 4 2.5 4H5"/>',
     team: '<circle cx="9" cy="8" r="3"/><path d="M3 20a6 6 0 0 1 12 0"/><circle cx="17" cy="9" r="2.5"/><path d="M16 14.2A5 5 0 0 1 21 19"/>',
@@ -1097,6 +1108,12 @@
         h('div', { class: 'time' }, [d.from + ' – ' + d.to])
       ]));
     });
+    var rl = $('#wi-rule'), rule = DATA.weighin.rule || {}; clear(rl);
+    if (tx(rule.text)) {
+      rl.hidden = false;
+      rl.appendChild(icon('alert'));
+      rl.appendChild(h('div', null, [h('h3', null, [tx(rule.title)]), h('p', null, [tx(rule.text)])]));
+    } else rl.hidden = true;
     setText('#wi-addr', ev.venue + ', ' + tx(ev.address) + ', ' + ui('georgia'));
     var m = $('#wi-map'); clear(m);
     if (url(ev.mapUrl)) m.appendChild(ext(url(ev.mapUrl), null, [ui('ev.map')]));

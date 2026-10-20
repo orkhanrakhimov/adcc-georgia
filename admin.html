@@ -235,7 +235,11 @@
           el('div', { class: 'row3' }, [field('Date', inp(p + '.date', { type: 'date' })), field('From', inp(p + '.from', { type: 'time' })), field('To', inp(p + '.to', { type: 'time' }))]),
           bi('Label (optional)', p + '.label')
         ];
-      }, function () { return { date: get('event.date'), from: '08:00', to: '10:00', label: { en: '', ka: '' } }; }, 'Add weigh-in session', 'Session')
+      }, function () { return { date: get('event.date'), from: '08:00', to: '10:00', label: { en: '', ka: '' } }; }, 'Add weigh-in session', 'Session'),
+      el('span', { class: 'fl' }, ['Weight rule notice']),
+      el('p', { class: 'muted' }, ['A highlighted notice under the schedule. Leave the text empty to hide it.']),
+      bi('Notice title', 'weighin.rule.title'),
+      bi('Notice text', 'weighin.rule.text', { area: true })
     ]));
 
     root.appendChild(section('Tickets', false, [
