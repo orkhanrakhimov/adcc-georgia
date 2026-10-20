@@ -626,8 +626,8 @@
      "ka": "აღჭურვილობა"
     },
     "desc": {
-     "en": "Rash guards and shorts for training and competition.",
-     "ka": "რეშგარდები და შორტები ვარჯიშისა და შეჯიბრისთვის."
+     "en": "Rash guards, shorts and bags for training and competition.",
+     "ka": "რეშგარდები, შორტები და ჩანთები ვარჯიშისა და შეჯიბრისთვის."
     },
     "items": [],
     "coming": [
@@ -644,6 +644,13 @@
        "ka": "შორტები"
       },
       "icon": "shorts"
+     },
+     {
+      "name": {
+       "en": "Bags",
+       "ka": "ჩანთები"
+      },
+      "icon": "bag"
      }
     ]
    }
@@ -758,6 +765,7 @@
     book: '<path d="M4 5.5A1.5 1.5 0 0 1 5.5 4H12v15H5.5A1.5 1.5 0 0 0 4 20.5z"/><path d="M20 5.5A1.5 1.5 0 0 0 18.5 4H12v15h6.5a1.5 1.5 0 0 1 1.5 1.5z"/>',
     alert: '<path d="M12 3.5L21.5 20h-19z"/><path d="M12 10v5M12 17.5v.01"/>',
     arrow: '<path d="M5 12h14M13 6l6 6-6 6"/>',
+    bag: '<path d="M8.5 9V7.5a3.5 3.5 0 0 1 7 0V9"/><rect x="4" y="9" width="16" height="11" rx="3"/><path d="M4 14h16"/>',
     flag: '<path d="M5 21V4"/><path d="M5 4h12l-2.5 4 2.5 4H5"/>',
     team: '<circle cx="9" cy="8" r="3"/><path d="M3 20a6 6 0 0 1 12 0"/><circle cx="17" cy="9" r="2.5"/><path d="M16 14.2A5 5 0 0 1 21 19"/>',
     lens: '<rect x="3" y="6.5" width="18" height="13" rx="2.5"/><circle cx="12" cy="13" r="3.6"/><path d="M8.5 6.5L10 4h4l1.5 2.5"/>',

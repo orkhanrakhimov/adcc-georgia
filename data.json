@@ -169,8 +169,8 @@
           "ka": "აღჭურვილობა"
         },
         "desc": {
-          "en": "Rash guards and shorts for training and competition.",
-          "ka": "რეშგარდები და შორტები ვარჯიშისა და შეჯიბრისთვის."
+          "en": "Rash guards, shorts and bags for training and competition.",
+          "ka": "რეშგარდები, შორტები და ჩანთები ვარჯიშისა და შეჯიბრისთვის."
         },
         "items": [],
         "coming": [
@@ -187,6 +187,13 @@
               "ka": "შორტები"
             },
             "icon": "shorts"
+          },
+          {
+            "name": {
+              "en": "Bags",
+              "ka": "ჩანთები"
+            },
+            "icon": "bag"
           }
         ]
       }
