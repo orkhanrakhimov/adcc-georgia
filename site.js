@@ -127,7 +127,13 @@
  "terms.t24": "ჩვენ შეიძლება განვაახლოთ ეს პირობები. გვერდის თავში მითითებული თარიღი აჩვენებს ბოლო ცვლილების დროს. გაქვთ კითხვები? მოგვწერეთ: <a class=\"js-email\" href=\"#\"></a>.",
  "terms.t25": "ინგლისური და ქართული ტექსტის განსხვავების შემთხვევაში უპირატესობა ენიჭება ინგლისურ ვერსიას.",
  "title.terms": "პირობები და საავტორო უფლებები – ADCC Georgia",
- "terms.h1": "პირობები და <em>საავტორო უფლებები</em>"
+ "terms.h1": "პირობები და <em>საავტორო უფლებები</em>",
+ "title.404": "გვერდი ვერ მოიძებნა – ADCC Georgia",
+ "nf.h1": "გვერდი <em>ვერ მოიძებნა</em>",
+ "nf.p": "გვერდი, რომელსაც ეძებთ, არ არსებობს ან გადატანილია.",
+ "nf.home": "მთავარ გვერდზე გადასვლა",
+ "nf.event": "ღონისძიების დეტალები",
+ "nf.contact": "დაგვიკავშირდით"
 };              // static page text: key -> Georgian
   var UI = {
  "hero.eb": [
@@ -692,6 +698,18 @@
    "ka": "ვეთანხმები, რომ ADCC Georgia-მ ამ ფორმაში მითითებული ინფორმაცია შეინახოს და გამოიყენოს მხოლოდ ჩემი განაცხადის განსახილველად და ჩემთან დასაკავშირებლად."
   }
  },
+ "banner": {
+  "enabled": false,
+  "text": {
+   "en": "",
+   "ka": ""
+  },
+  "link": "",
+  "linkText": {
+   "en": "Learn more",
+   "ka": "დეტალები"
+  }
+ },
  "previous": {
   "name": "ADCC Georgia Open 2025",
   "resultsUrl": "https://adcombat.com/adcc-events/adcc-georgia-open-2025/"
@@ -877,6 +895,8 @@
     if (eb && (page === 'event' || page === 'weigh-in' || page === 'tickets')) eb.textContent = ev.name;
     renderWhatsApp();
     renderFooter();
+    renderBanner();
+    renderSchema();
     var mail = String((DATA.contact || {}).email || '').trim();
     $$('.js-email').forEach(function (a) { a.textContent = mail; a.setAttribute('href', mail ? 'mailto:' + mail : '#'); });
     $$('.js-year').forEach(function (e) { e.textContent = String(new Date().getFullYear()); });
@@ -934,6 +954,72 @@
   function priceText(t) {
     var p = String(t.price === undefined || t.price === null ? '' : t.price).trim();
     return p ? p + ' ' + ui('cur') : ui('free');
+  }
+
+  // ---- announcement banner
+  function hashStr(s) { var h = 5381; for (var i = 0; i < s.length; i++) h = ((h << 5) + h + s.charCodeAt(i)) | 0; return String(h); }
+  function bannerLink(l) {
+    l = String(l || '').trim();
+    if (/^https?:\/\//i.test(l)) return { href: l, ext: true };
+    if (/^[\w\-]+(#[\w\-]+)?$/.test(l)) return { href: l, ext: false };
+    return null;
+  }
+  function renderBanner() {
+    var box = $('#banner'); if (!box) return;
+    var b = DATA.banner || {}, text = tx(b.text);
+    clear(box);
+    var id = 'adcc-banner-' + hashStr((b.text && (b.text.en || '') + (b.text.ka || '')) + '|' + (b.link || ''));
+    var closed = false;
+    try { closed = window.sessionStorage.getItem(id) === '1'; } catch (e) {}
+    if (!b.enabled || !text || closed) { box.hidden = true; return; }
+    var inner = h('div', { class: 'wrap banner-in' }, [h('span', { class: 'bt' }, [text])]);
+    var l = bannerLink(b.link);
+    if (l) inner.appendChild(h('a', { class: 'bl', href: l.href, target: l.ext ? '_blank' : null, rel: l.ext ? 'noopener' : null }, [(tx(b.linkText) || ui('lk.go').replace(/\s*→\s*$/, '')) + ' →']));
+    var x = h('button', { type: 'button', class: 'bx', 'aria-label': 'Close' }, ['×']);
+    x.addEventListener('click', function () {
+      box.hidden = true;
+      try { window.sessionStorage.setItem(id, '1'); } catch (e) {}
+    });
+    inner.appendChild(x);
+    box.appendChild(inner);
+    box.hidden = false;
+  }
+
+  // ---- structured data for search engines (kept in sync with data.json)
+  var SITE = 'https://www.adcc.ge';
+  function renderSchema() {
+    var old = $('#ld-json'); if (old && old.parentNode) old.parentNode.removeChild(old);
+    var ev = DATA.event || {}, c = DATA.contact || {};
+    var ig = String(c.instagram || '').trim().replace(/^@/, ''), fb = String(c.facebook || '').trim();
+    var same = [];
+    if (ig) same.push('https://www.instagram.com/' + encodeURIComponent(ig));
+    if (fb) same.push('https://www.facebook.com/' + encodeURIComponent(fb));
+    var org = { '@type': 'SportsOrganization', name: 'ADCC Georgia', url: SITE + '/', logo: SITE + '/logo.png', sameAs: same };
+    if (String(c.email || '').trim()) org.email = c.email.trim();
+    var graph = [org];
+    if ((page === 'index' || page === 'event') && parts(ev.date)) {
+      var tm = normTime(ev.time) || '10:00';
+      var addr = (ev.address && ev.address.en) || '';
+      var offers = [];
+      ((DATA.tickets || {}).items || []).forEach(function (it) {
+        var p = String(it.price === undefined || it.price === null ? '' : it.price).trim().replace(',', '.');
+        if (p !== '' && isNaN(Number(p))) return;
+        offers.push({ '@type': 'Offer', name: (it.name && it.name.en) || '', price: p === '' ? 0 : Number(p), priceCurrency: 'GEL', availability: 'https://schema.org/InStock', url: SITE + '/tickets' });
+      });
+      var e = {
+        '@type': 'SportsEvent', name: ev.name, startDate: ev.date + 'T' + tm + ':00+04:00',
+        eventStatus: 'https://schema.org/EventScheduled', eventAttendanceMode: 'https://schema.org/OfflineEventAttendanceMode',
+        location: { '@type': 'Place', name: ev.venue, address: { '@type': 'PostalAddress', streetAddress: addr, addressLocality: 'Tbilisi', addressCountry: 'GE' } },
+        image: [SITE + '/og.jpg'], description: (ev.entry && ev.entry.en) || ev.name, url: SITE + '/event',
+        organizer: { '@type': 'Organization', name: 'ADCC Georgia', url: SITE + '/' }
+      };
+      if (offers.length) e.offers = offers;
+      graph.push(e);
+    }
+    var sc = document.createElement('script');
+    sc.type = 'application/ld+json'; sc.id = 'ld-json';
+    sc.textContent = JSON.stringify({ '@context': 'https://schema.org', '@graph': graph });
+    document.head.appendChild(sc);
   }
 
   function renderFooter() {

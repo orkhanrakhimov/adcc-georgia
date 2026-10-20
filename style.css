@@ -326,3 +326,10 @@ footer.site-foot{border-top:1px solid var(--line);padding:56px 0 0;color:var(--m
 .rule-note .ico svg{width:28px;height:28px;stroke:var(--accent);stroke-width:1.8}
 .rule-note h3{color:var(--text);font-size:1.3rem;margin:0 0 6px}
 .rule-note p{color:var(--text)}
+
+/* ---------- announcement banner ---------- */
+.banner{background:var(--accent);color:#fff;font-size:.9rem;font-weight:500}
+.banner-in{display:flex;align-items:center;justify-content:center;gap:14px;flex-wrap:wrap;position:relative;text-align:center;padding-top:9px;padding-bottom:9px;padding-right:44px}
+.bl{text-decoration:underline;text-underline-offset:3px;font-weight:700;white-space:nowrap}
+.bx{position:absolute;right:14px;top:50%;transform:translateY(-50%);background:none;border:0;color:#fff;font-size:1.4rem;line-height:1;cursor:pointer;padding:4px 6px;opacity:.85}
+.bx:hover{opacity:1}

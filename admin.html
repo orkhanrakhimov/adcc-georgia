@@ -67,7 +67,7 @@
 
 <main class="wrap adm">
   <h1>Site admin</h1>
-  <p class="muted">Edit the event, weigh-in, tickets, shop, join forms, contacts and photos here. Changes are saved to your GitHub repository and appear on the site within 1–2 minutes. No code needed.</p>
+  <p class="muted">Edit the announcement banner, event, weigh-in, tickets, shop, join forms, contacts and photos here. Changes are saved to your GitHub repository and appear on the site within 1–2 minutes. No code needed.</p>
 
   <!-- ============ CONNECT (first time only) ============ -->
   <section id="connect" class="box">
@@ -215,6 +215,14 @@
   // ------------------------------------------------------------ build form
   function buildForm() {
     var root = $('#sections'); clear(root);
+
+    root.appendChild(section('Announcement banner', false, [
+      el('p', { class: 'muted' }, ['A coloured bar at the top of every page, for example “Registration closes October 22”. Visitors can close it.']),
+      chk('banner.enabled', 'Show the banner on every page'),
+      bi('Message', 'banner.text'),
+      field('Link (optional)', inp('banner.link', { ph: 'https://… or a page name like tickets' }), 'Use a full https:// address, or the name of a page on this site: event, tickets, weigh-in, rules, shop, join, contact.'),
+      bi('Link button text', 'banner.linkText')
+    ]));
 
     root.appendChild(section('Event', true, [
       field('Event name', inp('event.name'), 'Shown as the big title and on every page.'),
@@ -454,6 +462,8 @@
       });
     });
     if (d.join.accessKey && !/^[\w-]{16,}$/.test(d.join.accessKey)) e.push('Join the team: the access key looks wrong. Paste it exactly as shown on web3forms.com.');
+    if (d.banner.enabled && !d.banner.text.en) e.push('Announcement banner: write the English message or switch the banner off.');
+    if (d.banner.link && !/^https?:\/\//i.test(d.banner.link) && !/^[\w-]+(#[\w-]+)?$/.test(d.banner.link)) e.push('Announcement banner: the link must start with https:// or be a page name such as tickets.');
     d.contact.whatsapp.forEach(function (x, i) {
       if (String(x.number).replace(/\D/g, '').length < 8) e.push('WhatsApp number ' + (i + 1) + ' looks too short. Remove it or fix it.');
     });

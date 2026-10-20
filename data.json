@@ -235,6 +235,18 @@
       "ka": "ვეთანხმები, რომ ADCC Georgia-მ ამ ფორმაში მითითებული ინფორმაცია შეინახოს და გამოიყენოს მხოლოდ ჩემი განაცხადის განსახილველად და ჩემთან დასაკავშირებლად."
     }
   },
+  "banner": {
+    "enabled": false,
+    "text": {
+      "en": "",
+      "ka": ""
+    },
+    "link": "",
+    "linkText": {
+      "en": "Learn more",
+      "ka": "დეტალები"
+    }
+  },
   "previous": {
     "name": "ADCC Georgia Open 2025",
     "resultsUrl": "https://adcombat.com/adcc-events/adcc-georgia-open-2025/"

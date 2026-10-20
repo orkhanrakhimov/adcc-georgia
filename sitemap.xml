@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
+  <url><loc>https://www.adcc.ge/</loc><priority>1.0</priority></url>
+  <url><loc>https://www.adcc.ge/event</loc><priority>0.9</priority></url>
+  <url><loc>https://www.adcc.ge/weigh-in</loc><priority>0.8</priority></url>
+  <url><loc>https://www.adcc.ge/tickets</loc><priority>0.8</priority></url>
+  <url><loc>https://www.adcc.ge/rules</loc><priority>0.7</priority></url>
+  <url><loc>https://www.adcc.ge/shop</loc><priority>0.6</priority></url>
+  <url><loc>https://www.adcc.ge/join</loc><priority>0.6</priority></url>
+  <url><loc>https://www.adcc.ge/previous-events</loc><priority>0.6</priority></url>
+  <url><loc>https://www.adcc.ge/contact</loc><priority>0.6</priority></url>
+  <url><loc>https://www.adcc.ge/privacy</loc><priority>0.3</priority></url>
+  <url><loc>https://www.adcc.ge/terms</loc><priority>0.3</priority></url>
+</urlset>
