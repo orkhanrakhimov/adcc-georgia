@@ -41,7 +41,7 @@ header.top{position:sticky;top:0;z-index:30;background:rgba(11,11,12,.94);backdr
 .lang button[aria-pressed="true"]{background:var(--panel);color:var(--text)}
 .burger{display:none;width:40px;height:36px;background:transparent;border:1px solid var(--line);border-radius:4px;cursor:pointer;flex-direction:column;align-items:center;justify-content:center;gap:4px;padding:0}
 .burger span{display:block;width:18px;height:2px;background:var(--text)}
-@media(max-width:1080px){
+@media(max-width:1260px){
   .burger{display:flex}
   .nav-right{margin-left:auto}
   #menu{display:none;position:absolute;top:64px;left:-20px;right:-20px;flex-direction:column;align-items:stretch;align-self:auto;gap:0;background:#0b0b0c;border-bottom:1px solid var(--line);padding:4px 20px 12px;margin:0}
@@ -365,3 +365,12 @@ footer.site-foot{border-top:1px solid var(--line);padding:56px 0 0;color:var(--m
   .sig .line{border-bottom:1px solid #000}
   .wf input[type=date]::-webkit-calendar-picker-indicator{display:none}
 }
+
+/* sponsors */
+.sp-h{font-size:1.6rem;margin:0 0 18px}
+.sp-ben{display:grid;grid-template-columns:repeat(3,1fr);gap:16px;margin-bottom:48px}
+.sp-card{padding:24px}.sp-card h3{color:var(--gold);font-size:1.15rem;margin-bottom:8px}.sp-card p{margin:0;line-height:1.55}
+.sp-logos{display:flex;flex-wrap:wrap;gap:16px;margin-bottom:48px}
+.sp-logo{display:flex;align-items:center;justify-content:center;min-width:160px;height:90px;padding:14px 20px;background:#fff;border-radius:8px;color:#111;font-weight:600}
+.sp-logo img{max-height:62px;max-width:150px;object-fit:contain}
+@media(max-width:900px){.sp-ben{grid-template-columns:1fr 1fr}}@media(max-width:600px){.sp-ben{grid-template-columns:1fr}}

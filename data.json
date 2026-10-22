@@ -271,6 +271,75 @@
       }
     ]
   },
+  "sponsors": {
+    "intro": {
+      "en": "ADCC Georgia brings elite submission grappling to Tbilisi. Partner with us and put your brand in front of a passionate sports community.",
+      "ka": "ADCC Georgia თბილისში ელიტარულ სუბმიშენ გრეპლინგს მართავს. გახდით ჩვენი პარტნიორი და თქვენი ბრენდი გააცანით გატაცებულ სპორტულ საზოგადოებას."
+    },
+    "benefits": [
+      {
+        "title": {
+          "en": "Visibility at the event",
+          "ka": "ხილვადობა ღონისძიებაზე"
+        },
+        "text": {
+          "en": "Your brand in front of athletes, coaches and spectators in the arena, through banners, mat or venue branding and announcements.",
+          "ka": "თქვენი ბრენდი სპორტსმენების, მწვრთნელებისა და მაყურებლის თვალწინ ასპარეზზე: ბანერებით, ხალიჩის ან დარბაზის ბრენდინგითა და განცხადებებით."
+        }
+      },
+      {
+        "title": {
+          "en": "An engaged community",
+          "ka": "ჩართული საზოგადოება"
+        },
+        "text": {
+          "en": "Reach a passionate and growing grappling community in Georgia and the region, from athletes and clubs to fans.",
+          "ka": "მიაღწიეთ საქართველოსა და რეგიონში მზარდ გრეპლინგის საზოგადოებას, სპორტსმენებიდან და კლუბებიდან გულშემატკივრებამდე."
+        }
+      },
+      {
+        "title": {
+          "en": "Online exposure",
+          "ka": "ონლაინ ხილვადობა"
+        },
+        "text": {
+          "en": "Your name and logo on our website and social media, including event announcements and results.",
+          "ka": "თქვენი სახელი და ლოგო ჩვენს ვებგვერდსა და სოციალურ ქსელებში, მათ შორის ღონისძიების ანონსებსა და შედეგებში."
+        }
+      },
+      {
+        "title": {
+          "en": "Photo and video content",
+          "ka": "ფოტო და ვიდეო კონტენტი"
+        },
+        "text": {
+          "en": "Event photos and video where your brand appears, which you can use in your own marketing.",
+          "ka": "ღონისძიების ფოტო და ვიდეო მასალა, სადაც თქვენი ბრენდი ჩანს და რომელიც შეგიძლიათ საკუთარ მარკეტინგში გამოიყენოთ."
+        }
+      },
+      {
+        "title": {
+          "en": "Support Georgian sport",
+          "ka": "ქართული სპორტის მხარდაჭერა"
+        },
+        "text": {
+          "en": "Help bring world-class submission grappling to Tbilisi and give local athletes a stage to compete.",
+          "ka": "დაგვეხმარეთ მსოფლიო დონის სუბმიშენ გრეპლინგი თბილისში მოვიტანოთ და ადგილობრივ სპორტსმენებს შეჯიბრის სცენა მივცეთ."
+        }
+      },
+      {
+        "title": {
+          "en": "A package that fits you",
+          "ka": "თქვენზე მორგებული პაკეტი"
+        },
+        "text": {
+          "en": "Cash or in-kind support, one event or longer. We agree what is included together, so it matches your goals and budget.",
+          "ka": "ფულადი ან არაფულადი მხარდაჭერა, ერთი ღონისძიება ან უფრო ხანგრძლივი თანამშრომლობა. რას მოიცავს, ერთად შევთანხმდებით, რათა თქვენს მიზნებსა და ბიუჯეტს შეესაბამებოდეს."
+        }
+      }
+    ],
+    "partners": []
+  },
   "contact": {
     "email": "adccgeorgia@gmail.com",
     "whatsapp": [

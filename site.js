@@ -17,6 +17,7 @@
  "nav.previous": "წინა ღონისძიებები",
  "nav.shop": "მაღაზია",
  "nav.join": "გუნდში",
+ "nav.sponsors": "პარტნიორები",
  "nav.contact": "კონტაქტი",
  "nav.register": "რეგისტრაცია",
  "cd.days": "დღე",
@@ -88,6 +89,8 @@
  "wv.sub": "წაიკითხეთ განაცხადი, შეავსეთ, დაბეჭდეთ და ხელი მოაწერეთ.",
  "title.waiver": "განაცხადი – ADCC Georgia",
  "waiver.h1": "მონაწილის <em>განაცხადი</em>",
+ "title.sponsors": "პარტნიორები – ADCC Georgia",
+ "sponsors.h1": "გახდით ჩვენი <em>პარტნიორი</em>",
  "privacy.intro": "ეს პოლიტიკა განმარტავს, რა პერსონალურ ინფორმაციას აგროვებს ADCC Georgia ამ ვებგვერდის მეშვეობით, რატომ ვაგროვებთ მას და რა არჩევანი გაქვთ.",
  "privacy.t1": "ბოლო განახლება: 2026 წლის 20 ოქტომბერი",
  "privacy.t2": "ვინ ვართ ჩვენ",
@@ -468,6 +471,86 @@
   "Contact",
   "კონტაქტი"
  ],
+ "sp.why": [
+  "Why partner with us",
+  "რატომ ჩვენთან თანამშრომლობა"
+ ],
+ "sp.partners": [
+  "Our partners",
+  "ჩვენი პარტნიორები"
+ ],
+ "sp.form": [
+  "Become a partner",
+  "გახდით პარტნიორი"
+ ],
+ "sp.formp": [
+  "Tell us about your company. We will get back to you by email.",
+  "მოგვიყევით თქვენი კომპანიის შესახებ. ელფოსტით დაგიკავშირდებით."
+ ],
+ "sp.company": [
+  "Company name",
+  "კომპანიის სახელი"
+ ],
+ "sp.contact": [
+  "Contact person",
+  "საკონტაქტო პირი"
+ ],
+ "sp.position": [
+  "Position",
+  "პოზიცია"
+ ],
+ "sp.email": [
+  "Email",
+  "ელფოსტა"
+ ],
+ "sp.phone": [
+  "Phone",
+  "ტელეფონი"
+ ],
+ "sp.web": [
+  "Website or social media",
+  "ვებგვერდი ან სოციალური ქსელი"
+ ],
+ "sp.interest": [
+  "What are you interested in?",
+  "რა გაინტერესებთ?"
+ ],
+ "sp.msg": [
+  "Message",
+  "შეტყობინება"
+ ],
+ "sp.msgh": [
+  "Tell us about your company and what you have in mind.",
+  "მოგვიყევით თქვენი კომპანიის შესახებ და რა გაქვთ მხედველობაში."
+ ],
+ "sp.o1": [
+  "Main partner",
+  "მთავარი პარტნიორი"
+ ],
+ "sp.o2": [
+  "Banner or mat branding",
+  "ბანერი ან ხალიჩის ბრენდინგი"
+ ],
+ "sp.o3": [
+  "Products or services (in-kind)",
+  "პროდუქტი ან სერვისი (არაფულადი)"
+ ],
+ "sp.o4": [
+  "Media partner",
+  "მედია პარტნიორი"
+ ],
+ "sp.o5": [
+  "Something else",
+  "სხვა"
+ ],
+ "sp.send": [
+  "Send inquiry",
+  "მოთხოვნის გაგზავნა"
+ ],
+ "sp.ok.p": [
+  "We received your inquiry and will contact you soon.",
+  "თქვენი მოთხოვნა მივიღეთ და მალე დაგიკავშირდებით."
+ ],
  "wi.waiver.t": [
   "Read and sign the waiver",
   "წაიკითხეთ და ხელი მოაწერეთ განაცხადს"
@@ -777,6 +860,75 @@
     }
    }
   ]
+ },
+ "sponsors": {
+  "intro": {
+   "en": "ADCC Georgia brings elite submission grappling to Tbilisi. Partner with us and put your brand in front of a passionate sports community.",
+   "ka": "ADCC Georgia თბილისში ელიტარულ სუბმიშენ გრეპლინგს მართავს. გახდით ჩვენი პარტნიორი და თქვენი ბრენდი გააცანით გატაცებულ სპორტულ საზოგადოებას."
+  },
+  "benefits": [
+   {
+    "title": {
+     "en": "Visibility at the event",
+     "ka": "ხილვადობა ღონისძიებაზე"
+    },
+    "text": {
+     "en": "Your brand in front of athletes, coaches and spectators in the arena, through banners, mat or venue branding and announcements.",
+     "ka": "თქვენი ბრენდი სპორტსმენების, მწვრთნელებისა და მაყურებლის თვალწინ ასპარეზზე: ბანერებით, ხალიჩის ან დარბაზის ბრენდინგითა და განცხადებებით."
+    }
+   },
+   {
+    "title": {
+     "en": "An engaged community",
+     "ka": "ჩართული საზოგადოება"
+    },
+    "text": {
+     "en": "Reach a passionate and growing grappling community in Georgia and the region, from athletes and clubs to fans.",
+     "ka": "მიაღწიეთ საქართველოსა და რეგიონში მზარდ გრეპლინგის საზოგადოებას, სპორტსმენებიდან და კლუბებიდან გულშემატკივრებამდე."
+    }
+   },
+   {
+    "title": {
+     "en": "Online exposure",
+     "ka": "ონლაინ ხილვადობა"
+    },
+    "text": {
+     "en": "Your name and logo on our website and social media, including event announcements and results.",
+     "ka": "თქვენი სახელი და ლოგო ჩვენს ვებგვერდსა და სოციალურ ქსელებში, მათ შორის ღონისძიების ანონსებსა და შედეგებში."
+    }
+   },
+   {
+    "title": {
+     "en": "Photo and video content",
+     "ka": "ფოტო და ვიდეო კონტენტი"
+    },
+    "text": {
+     "en": "Event photos and video where your brand appears, which you can use in your own marketing.",
+     "ka": "ღონისძიების ფოტო და ვიდეო მასალა, სადაც თქვენი ბრენდი ჩანს და რომელიც შეგიძლიათ საკუთარ მარკეტინგში გამოიყენოთ."
+    }
+   },
+   {
+    "title": {
+     "en": "Support Georgian sport",
+     "ka": "ქართული სპორტის მხარდაჭერა"
+    },
+    "text": {
+     "en": "Help bring world-class submission grappling to Tbilisi and give local athletes a stage to compete.",
+     "ka": "დაგვეხმარეთ მსოფლიო დონის სუბმიშენ გრეპლინგი თბილისში მოვიტანოთ და ადგილობრივ სპორტსმენებს შეჯიბრის სცენა მივცეთ."
+    }
+   },
+   {
+    "title": {
+     "en": "A package that fits you",
+     "ka": "თქვენზე მორგებული პაკეტი"
+    },
+    "text": {
+     "en": "Cash or in-kind support, one event or longer. We agree what is included together, so it matches your goals and budget.",
+     "ka": "ფულადი ან არაფულადი მხარდაჭერა, ერთი ღონისძიება ან უფრო ხანგრძლივი თანამშრომლობა. რას მოიცავს, ერთად შევთანხმდებით, რათა თქვენს მიზნებსა და ბიუჯეტს შეესაბამებოდეს."
+    }
+   }
+  ],
+  "partners": []
  },
  "contact": {
   "email": "adccgeorgia@gmail.com",
@@ -1431,6 +1583,100 @@
     }
   }
 
+  var spVals = {}, spSent = false;
+  function renderSponsors() {
+    var S = DATA.sponsors || {}, J = DATA.join || {};
+    setText('#sp-intro', tx(S.intro));
+    setText('#sp-why-h', ui('sp.why'));
+    var ben = $('#sp-ben'); clear(ben);
+    (S.benefits || []).forEach(function (b) {
+      if (!tx(b.title)) return;
+      ben.appendChild(h('div', { class: 'card sp-card' }, [h('h3', null, [tx(b.title)]), h('p', null, [tx(b.text)])]));
+    });
+    var pl = (S.partners || []).filter(function (x) { return x && x.name; }), pb = $('#sp-partners-box'), lg = $('#sp-logos');
+    clear(lg); pb.hidden = !pl.length;
+    if (pl.length) {
+      setText('#sp-part-h', ui('sp.partners'));
+      pl.forEach(function (x) {
+        var okLogo = /^(photos\/[\w.\-]+|https:\/\/[^\s"'<>]+)$/.test(String(x.logo || ''));
+        var inner = okLogo ? h('img', { src: x.logo, alt: x.name, loading: 'lazy' }) : h('span', null, [x.name]);
+        var u = url(x.url);
+        lg.appendChild(u ? h('a', { class: 'sp-logo', href: u, target: '_blank', rel: 'noopener', title: x.name }, [inner]) : h('div', { class: 'sp-logo', title: x.name }, [inner]));
+      });
+    }
+    var box = $('#sp-form'); clear(box);
+    if (spSent) { box.appendChild(h('div', { class: 'card join-ok' }, [h('h3', null, [ui('join.ok.t')]), h('p', null, [ui('sp.ok.p')])])); return; }
+    var fields = [
+      { n: 'company', t: 'text', req: 1, l: L2('sp.company') },
+      { n: 'name', t: 'text', req: 1, l: L2('sp.contact') },
+      { n: 'position', t: 'text', l: L2('sp.position') },
+      { n: 'email', t: 'email', req: 1, l: L2('sp.email'), ac: 'email' },
+      { n: 'phone', t: 'tel', l: L2('sp.phone'), ac: 'tel' },
+      { n: 'website', t: 'url', l: L2('sp.web') },
+      { n: 'interest', t: 'checks', l: L2('sp.interest'), o: [1, 2, 3, 4, 5].map(function (i) { return { en: UI['sp.o' + i][0], ka: UI['sp.o' + i][1] }; }) },
+      { n: 'message', t: 'textarea', req: 1, l: L2('sp.msg'), h: L2('sp.msgh') },
+      { n: 'privacy', t: 'consent', req: 1, text: J.privacy || { en: '', ka: '' } }
+    ];
+    var errs = {}, form = h('form', { class: 'jform card', novalidate: 'novalidate' }, [h('h2', { class: 'jt' }, [ui('sp.form')]), h('p', { class: 'jnote' }, [ui('sp.formp')])]);
+    fields.forEach(function (f) { form.appendChild(jField(f, spVals, 'sp', errs)); });
+    form.appendChild(h('input', { type: 'text', name: 'website2', class: 'hp', tabindex: '-1', autocomplete: 'off', 'aria-hidden': 'true' }));
+    var msg = h('p', { class: 'jmsg', role: 'status' }), btn = h('button', { type: 'submit', class: 'btn' }, [ui('sp.send')]);
+    form.appendChild(msg); form.appendChild(h('div', { class: 'actions' }, [btn]));
+    form.addEventListener('submit', function (e) { e.preventDefault(); sendSponsor(fields, errs, form, btn, msg, J); });
+    box.appendChild(form);
+  }
+  function L2(k) { return { en: UI[k][0], ka: UI[k][1] }; }
+
+  function sendSponsor(fields, errs, form, btn, msg, J) {
+    var first = null;
+    fields.forEach(function (f) {
+      var v = spVals[f.n], m = '';
+      var empty = f.t === 'checks' ? !(v && v.length) : f.t === 'consent' ? !v : !String(v || '').trim();
+      if (f.req && empty) m = f.t === 'consent' ? ui('join.agree') : ui('join.req');
+      else if (!empty && f.t === 'email' && !/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(String(v).trim())) m = ui('join.bademail');
+      else if (!empty && f.t === 'url' && !validUrl(normUrl(v))) m = ui('join.badurl');
+      var e = errs[f.n]; e.el.textContent = m; e.el.hidden = !m;
+      e.box.className = e.box.className.replace(' bad', '') + (m ? ' bad' : '');
+      if (m && !first) first = e.box;
+    });
+    msg.textContent = '';
+    if (first) { msg.textContent = ui('join.fix'); if (first.scrollIntoView) first.scrollIntoView({ behavior: 'smooth', block: 'center' }); return; }
+    if (String((form.elements.website2 || {}).value || '').trim()) { spSent = true; renderSponsors(); markKa(); return; }
+    var payload = {}, lines = [];
+    fields.forEach(function (f) {
+      if (f.t === 'consent') return;
+      var v = spVals[f.n], out = f.t === 'checks' ? (v || []).join(', ') : f.t === 'url' ? normUrl(v) : String(v || '').trim();
+      if (!out) return;
+      payload[f.l.en] = out; lines.push(f.l.en + ': ' + out);
+    });
+    var subject = 'ADCC Georgia – Sponsorship inquiry – ' + String(spVals.company || '').trim();
+    var mail = String((DATA.contact || {}).email || '').trim();
+    function viaEmail() {
+      var body = lines.join('\n\n');
+      while (encodeURIComponent(body).length > 1700 && body.length > 200) body = body.slice(0, body.length - 100);
+      msg.textContent = ui('join.mailopen');
+      window.location.href = 'mailto:' + mail + '?subject=' + encodeURIComponent(subject) + '&body=' + encodeURIComponent(body);
+    }
+    var key = String(J.accessKey || '').trim();
+    if (!key) { if (mail) viaEmail(); return; }
+    btn.disabled = true; btn.textContent = ui('join.sending');
+    var data = { access_key: key, subject: subject, from_name: 'ADCC Georgia website', email: String(spVals.email).trim(), botcheck: false, 'Form': 'Sponsorship inquiry', 'Site language': lang === 'ka' ? 'Georgian' : 'English' };
+    for (var n in payload) data[n] = payload[n];
+    fetch('https://api.web3forms.com/submit', { method: 'POST', headers: { 'Content-Type': 'application/json', 'Accept': 'application/json' }, body: JSON.stringify(data) })
+      .then(function (res) { return res.json().catch(function () { return {}; }).then(function (j) { return res.ok && j.success !== false; }); })
+      .catch(function () { return false; })
+      .then(function (ok) {
+        if (ok) { spSent = true; spVals = {}; renderSponsors(); markKa(); var f = $('#sp-form'); if (f && f.scrollIntoView) f.scrollIntoView({ behavior: 'smooth', block: 'start' }); return; }
+        btn.disabled = false; btn.textContent = ui('sp.send'); msg.textContent = ui('join.err');
+        if (mail && !$('.jmail', form)) {
+          var a = h('button', { type: 'button', class: 'btn ghost sm jmail' }, [ui('join.mail')]);
+          a.addEventListener('click', viaEmail);
+          msg.parentNode.appendChild(h('div', { class: 'actions', style: 'margin-top:10px' }, [a]));
+        }
+        markKa();
+      });
+  }
+
   function renderWaiver() {
     var ev = DATA.event || {}, ol = $('#wv-sections');
     setText('#wv-event', [ev.name, dateLong(ev.date), tx(ev.venue) || ev.venue].filter(Boolean).join(' · '));
@@ -1806,6 +2052,7 @@
     if (page === 'contact') renderContact();
     if (page === 'faq') renderFaq();
     if (page === 'waiver') renderWaiver();
+    if (page === 'sponsors') renderSponsors();
     if (page === 'weigh-in') renderWeighin(ph);
     if (page === 'tickets') renderTickets(ph);
     if (page === 'shop') renderShop();

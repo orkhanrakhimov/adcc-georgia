@@ -265,6 +265,17 @@
         function () { return { title: { en: '', ka: '' }, text: { en: '', ka: '' } }; }, 'Add paragraph', 'Paragraph')
     ]));
 
+    root.appendChild(section('Partners & sponsors', false, [
+      bi('Intro text', 'sponsors.intro', { area: true }),
+      el('span', { class: 'fl' }, ['Why partner with us (cards)']),
+      listBox('sponsors.benefits', function (p) { return [bi('Heading', p + '.title'), bi('Text', p + '.text', { area: true })]; },
+        function () { return { title: { en: '', ka: '' }, text: { en: '', ka: '' } }; }, 'Add card', 'Card'),
+      el('span', { class: 'fl' }, ['Current partners (shown as a logo row)']),
+      el('p', { class: 'muted' }, ['Add partners once you have them. The section stays hidden while the list is empty. Inquiries go to the same email as the Join the team forms.']),
+      listBox('sponsors.partners', function (p) { return [field('Name', inp(p + '.name')), photoField(p + '.logo'), field('Website (optional)', inp(p + '.url', { ph: 'https://…' }))]; },
+        function () { return { name: '', logo: '', url: '' }; }, 'Add partner', 'Partner')
+    ]));
+
     root.appendChild(section('Tickets', false, [
       listBox('tickets.items', function (p) {
         return [
@@ -501,7 +512,7 @@
   async function toJpeg(file, maxPx) {
     var bmp = await createImageBitmap(file), max = maxPx || 1600, sc = Math.min(1, max / Math.max(bmp.width, bmp.height));
     var c = document.createElement('canvas'); c.width = Math.round(bmp.width * sc); c.height = Math.round(bmp.height * sc);
-    c.getContext('2d').drawImage(bmp, 0, 0, c.width, c.height);
+    var cx = c.getContext('2d'); cx.fillStyle = '#fff'; cx.fillRect(0, 0, c.width, c.height); cx.drawImage(bmp, 0, 0, c.width, c.height);
     return new Promise(function (res) { c.toBlob(res, 'image/jpeg', 0.85); });
   }
   async function uploadPhotos(files, redraw) {
