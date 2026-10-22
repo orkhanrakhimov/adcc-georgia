@@ -12,6 +12,7 @@
  "nav.tickets": "ბილეთები",
  "nav.rules": "წესები",
  "nav.faq": "ხშირი კითხვები",
+ "nav.waiver": "განაცხადი",
  "nav.event": "ღონისძიება",
  "nav.previous": "წინა ღონისძიებები",
  "nav.shop": "მაღაზია",
@@ -64,6 +65,29 @@
  "faq.sub": "სწრაფი პასუხები სპორტსმენებისთვის, მწვრთნელებისა და მაყურებლებისთვის.",
  "title.faq": "ხშირი კითხვები – ADCC Georgia",
  "faq.h1": "ხშირი <em>კითხვები</em>",
+ "wv.f.name": "სახელი და გვარი",
+ "wv.f.dob": "დაბადების თარიღი",
+ "wv.f.id": "პირადობის / პასპორტის ნომერი",
+ "wv.f.phone": "ტელეფონი",
+ "wv.f.email": "ელფოსტა",
+ "wv.f.team": "გუნდი / კლუბი",
+ "wv.f.div": "დივიზია / წონითი კატეგორია",
+ "wv.f.em": "საკონტაქტო პირი საგანგებო შემთხვევისთვის (სახელი)",
+ "wv.f.emp": "საკონტაქტო პირის ტელეფონი",
+ "wv.g.name": "მშობლის / მეურვის სახელი და გვარი",
+ "wv.help": "სურვილისამებრ შეავსეთ მონაცემები ეკრანზე, შემდეგ დაბეჭდეთ გვერდი, ხელით მოაწერეთ ხელი და წამოიღეთ აწონვაზე. შეგიძლიათ ცარიელიც დაბეჭდოთ და კალმით შეავსოთ.",
+ "wv.print": "ბეჭდვა / PDF-ად შენახვა",
+ "wv.clear": "ფორმის გასუფთავება",
+ "wv.s.ath": "სპორტსმენის ხელმოწერა",
+ "wv.s.date": "თარიღი",
+ "wv.s.gu": "მშობლის / მეურვის ხელმოწერა",
+ "wv.s.date2": "თარიღი",
+ "wv.title": "მონაწილის განაცხადი და პასუხისმგებლობისგან გათავისუფლება",
+ "wv.agree": "ქვემოთ ხელმოწერით ვადასტურებ, რომ წავიკითხე, გავიგე და ვეთანხმები ყველაფერს ზემოთ ჩამოთვლილს.",
+ "wv.g.h": "მშობელი ან მეურვე (18 წლამდე სპორტსმენებისთვის)",
+ "wv.sub": "წაიკითხეთ განაცხადი, შეავსეთ, დაბეჭდეთ და ხელი მოაწერეთ.",
+ "title.waiver": "განაცხადი – ADCC Georgia",
+ "waiver.h1": "მონაწილის <em>განაცხადი</em>",
  "privacy.intro": "ეს პოლიტიკა განმარტავს, რა პერსონალურ ინფორმაციას აგროვებს ADCC Georgia ამ ვებგვერდის მეშვეობით, რატომ ვაგროვებთ მას და რა არჩევანი გაქვთ.",
  "privacy.t1": "ბოლო განახლება: 2026 წლის 20 ოქტომბერი",
  "privacy.t2": "ვინ ვართ ჩვენ",
@@ -444,6 +468,18 @@
   "Contact",
   "კონტაქტი"
  ],
+ "wi.waiver.t": [
+  "Read and sign the waiver",
+  "წაიკითხეთ და ხელი მოაწერეთ განაცხადს"
+ ],
+ "wi.waiver.p": [
+  "Open the waiver, fill in your details, print it and sign it by hand. Bring the signed copy to the weigh-in.",
+  "გახსენით განაცხადი, შეავსეთ თქვენი მონაცემები, დაბეჭდეთ და ხელით მოაწერეთ ხელი. ხელმოწერილი ეგზემპლარი წამოიღეთ აწონვაზე."
+ ],
+ "wi.waiver.b": [
+  "Open the waiver",
+  "განაცხადის გახსნა"
+ ],
  "faq.more": [
   "Still have a question? Get in touch.",
   "კვლავ გაქვთ შეკითხვა? დაგვიკავშირდით."
@@ -654,6 +690,90 @@
     "a": {
      "en": "Message us on WhatsApp or email. Details are on the Contact page.",
      "ka": "მოგვწერეთ WhatsApp-ზე ან ელფოსტით. დეტალები იხილეთ კონტაქტის გვერდზე."
+    }
+   }
+  ]
+ },
+ "waiver": {
+  "sections": [
+   {
+    "title": {
+     "en": "Voluntary participation",
+     "ka": "ნებაყოფლობითი მონაწილეობა"
+    },
+    "text": {
+     "en": "I am entering this event of my own free will. I have read and understood this waiver and I agree to follow the rules of the event and the instructions of the referees and organisers.",
+     "ka": "მე ღონისძიებაში ვმონაწილეობ საკუთარი ნებით. წავიკითხე და გავიგე ეს განაცხადი და ვთანხმდები დავიცვა ღონისძიების წესები და მსაჯებისა და ორგანიზატორების მითითებები."
+    }
+   },
+   {
+    "title": {
+     "en": "Risk of injury",
+     "ka": "ტრავმის რისკი"
+    },
+    "text": {
+     "en": "I understand that submission grappling is a contact sport with a risk of injury, including serious injury. I accept these risks and take part at my own risk.",
+     "ka": "მესმის, რომ სუბმიშენ გრეპლინგი კონტაქტური სპორტია და არსებობს ტრავმის, მათ შორის მძიმე ტრავმის, რისკი. ამ რისკებს ვიღებ და მონაწილეობას ვიღებ საკუთარი პასუხისმგებლობით."
+    }
+   },
+   {
+    "title": {
+     "en": "Health",
+     "ka": "ჯანმრთელობა"
+    },
+    "text": {
+     "en": "I confirm that I am in good health and fit to compete, and that I have no medical condition that makes it unsafe for me to take part. I will tell the organisers or the medical staff at once if this changes.",
+     "ka": "ვადასტურებ, რომ ჯანმრთელი ვარ და შემიძლია შეჯიბრში მონაწილეობა, და არ მაქვს ისეთი სამედიცინო მდგომარეობა, რომელიც მონაწილეობას საფრთხეს უქმნის. თუ ეს შეიცვლება, დაუყოვნებლივ შევატყობინებ ორგანიზატორებს ან სამედიცინო პერსონალს."
+    }
+   },
+   {
+    "title": {
+     "en": "Weigh-in and identity",
+     "ka": "აწონვა და პიროვნების დადასტურება"
+    },
+    "text": {
+     "en": "I will bring an ID card or passport to the weigh-in. I understand that there is no weight tolerance, and that if I am over the limit of my weight class I will be disqualified and the entry fee will not be refunded.",
+     "ka": "აწონვაზე თან მექნება პირადობის მოწმობა ან პასპორტი. მესმის, რომ წონაში ტოლერანტობა არ არის და თუ ჩემი წონითი კატეგორიის ლიმიტს გადავაჭარბებ, დისკვალიფიცირებული ვიქნები და მონაწილეობის საფასური არ დამიბრუნდება."
+    }
+   },
+   {
+    "title": {
+     "en": "Release of liability",
+     "ka": "პასუხისმგებლობისგან გათავისუფლება"
+    },
+    "text": {
+     "en": "To the fullest extent allowed by law, I release ADCC Georgia, its organisers, referees, staff, volunteers and the venue from claims for injury, loss or damage that arise from my taking part, except where the law does not allow this.",
+     "ka": "კანონით დაშვებული მაქსიმალური ფარგლებით, ვათავისუფლებ ADCC Georgia-ს, მის ორგანიზატორებს, მსაჯებს, პერსონალს, მოხალისეებსა და ღონისძიების ადგილს ჩემი მონაწილეობით გამოწვეული ტრავმის, ზიანის ან დანაკარგის გამო პრეტენზიებისგან, გარდა იმ შემთხვევებისა, როცა კანონი ამას არ უშვებს."
+    }
+   },
+   {
+    "title": {
+     "en": "Photos and video",
+     "ka": "ფოტო და ვიდეო"
+    },
+    "text": {
+     "en": "I agree that photos and video taken at the event, in which I may appear, can be used by ADCC Georgia and its partners to promote the event and the sport.",
+     "ka": "ვთანხმდები, რომ ღონისძიებაზე გადაღებული ფოტო და ვიდეო მასალა, რომელზეც შესაძლოა ვჩანდე, ADCC Georgia-მ და მისმა პარტნიორებმა შეიძლება გამოიყენონ ღონისძიებისა და სპორტის პოპულარიზაციისთვის."
+    }
+   },
+   {
+    "title": {
+     "en": "Personal data",
+     "ka": "პერსონალური მონაცემები"
+    },
+    "text": {
+     "en": "I agree that ADCC Georgia may keep the details on this form to run the event and to contact me or my emergency contact if needed.",
+     "ka": "ვთანხმდები, რომ ADCC Georgia-მ ამ ფორმაზე მითითებული მონაცემები შეინახოს ღონისძიების ორგანიზებისთვის და საჭიროების შემთხვევაში ჩემთან ან ჩემს საკონტაქტო პირთან დასაკავშირებლად."
+    }
+   },
+   {
+    "title": {
+     "en": "Athletes under 18",
+     "ka": "18 წლამდე სპორტსმენები"
+    },
+    "text": {
+     "en": "If the athlete is under 18, a parent or legal guardian must also read and sign this waiver and accepts it on the athlete's behalf.",
+     "ka": "თუ სპორტსმენი 18 წლამდეა, ამ განაცხადს უნდა გაეცნოს და ხელი მოაწეროს მშობელმა ან კანონიერმა წარმომადგენელმა, რომელიც მას სპორტსმენის სახელით ეთანხმება."
     }
    }
   ]
@@ -1311,7 +1431,26 @@
     }
   }
 
+  function renderWaiver() {
+    var ev = DATA.event || {}, ol = $('#wv-sections');
+    setText('#wv-event', [ev.name, dateLong(ev.date), tx(ev.venue) || ev.venue].filter(Boolean).join(' · '));
+    clear(ol);
+    ((DATA.waiver || {}).sections || []).forEach(function (s) {
+      if (!tx(s.text)) return;
+      ol.appendChild(h('li', null, [h('b', null, [tx(s.title) + '. ']), tx(s.text)]));
+    });
+    var pb = $('#wv-print'); if (pb && !pb._b) { pb._b = 1; pb.addEventListener('click', function () { window.print(); }); }
+    var cb = $('#wv-clear'); if (cb && !cb._b) { cb._b = 1; cb.addEventListener('click', function () { $$('#wv-sheet input').forEach(function (i) { i.value = ''; }); }); }
+  }
+
   function renderWeighin(ph) {
+    var wb = $('#wi-waiver');
+    if (wb) {
+      clear(wb);
+      wb.appendChild(icon('book'));
+      wb.appendChild(h('div', null, [h('h3', null, [ui('wi.waiver.t')]), h('p', null, [ui('wi.waiver.p')]),
+        h('p', { style: 'margin-top:12px' }, [h('a', { class: 'btn sm', href: 'waiver' }, [ui('wi.waiver.b')])])]));
+    }
     var ev = DATA.event;
     setText('#wi-intro', ui('wi.p'));
     var box = $('#wi-cards'); clear(box);
@@ -1666,6 +1805,7 @@
     if (page === 'previous-events') renderPrevious();
     if (page === 'contact') renderContact();
     if (page === 'faq') renderFaq();
+    if (page === 'waiver') renderWaiver();
     if (page === 'weigh-in') renderWeighin(ph);
     if (page === 'tickets') renderTickets(ph);
     if (page === 'shop') renderShop();

@@ -187,6 +187,90 @@
       }
     ]
   },
+  "waiver": {
+    "sections": [
+      {
+        "title": {
+          "en": "Voluntary participation",
+          "ka": "ნებაყოფლობითი მონაწილეობა"
+        },
+        "text": {
+          "en": "I am entering this event of my own free will. I have read and understood this waiver and I agree to follow the rules of the event and the instructions of the referees and organisers.",
+          "ka": "მე ღონისძიებაში ვმონაწილეობ საკუთარი ნებით. წავიკითხე და გავიგე ეს განაცხადი და ვთანხმდები დავიცვა ღონისძიების წესები და მსაჯებისა და ორგანიზატორების მითითებები."
+        }
+      },
+      {
+        "title": {
+          "en": "Risk of injury",
+          "ka": "ტრავმის რისკი"
+        },
+        "text": {
+          "en": "I understand that submission grappling is a contact sport with a risk of injury, including serious injury. I accept these risks and take part at my own risk.",
+          "ka": "მესმის, რომ სუბმიშენ გრეპლინგი კონტაქტური სპორტია და არსებობს ტრავმის, მათ შორის მძიმე ტრავმის, რისკი. ამ რისკებს ვიღებ და მონაწილეობას ვიღებ საკუთარი პასუხისმგებლობით."
+        }
+      },
+      {
+        "title": {
+          "en": "Health",
+          "ka": "ჯანმრთელობა"
+        },
+        "text": {
+          "en": "I confirm that I am in good health and fit to compete, and that I have no medical condition that makes it unsafe for me to take part. I will tell the organisers or the medical staff at once if this changes.",
+          "ka": "ვადასტურებ, რომ ჯანმრთელი ვარ და შემიძლია შეჯიბრში მონაწილეობა, და არ მაქვს ისეთი სამედიცინო მდგომარეობა, რომელიც მონაწილეობას საფრთხეს უქმნის. თუ ეს შეიცვლება, დაუყოვნებლივ შევატყობინებ ორგანიზატორებს ან სამედიცინო პერსონალს."
+        }
+      },
+      {
+        "title": {
+          "en": "Weigh-in and identity",
+          "ka": "აწონვა და პიროვნების დადასტურება"
+        },
+        "text": {
+          "en": "I will bring an ID card or passport to the weigh-in. I understand that there is no weight tolerance, and that if I am over the limit of my weight class I will be disqualified and the entry fee will not be refunded.",
+          "ka": "აწონვაზე თან მექნება პირადობის მოწმობა ან პასპორტი. მესმის, რომ წონაში ტოლერანტობა არ არის და თუ ჩემი წონითი კატეგორიის ლიმიტს გადავაჭარბებ, დისკვალიფიცირებული ვიქნები და მონაწილეობის საფასური არ დამიბრუნდება."
+        }
+      },
+      {
+        "title": {
+          "en": "Release of liability",
+          "ka": "პასუხისმგებლობისგან გათავისუფლება"
+        },
+        "text": {
+          "en": "To the fullest extent allowed by law, I release ADCC Georgia, its organisers, referees, staff, volunteers and the venue from claims for injury, loss or damage that arise from my taking part, except where the law does not allow this.",
+          "ka": "კანონით დაშვებული მაქსიმალური ფარგლებით, ვათავისუფლებ ADCC Georgia-ს, მის ორგანიზატორებს, მსაჯებს, პერსონალს, მოხალისეებსა და ღონისძიების ადგილს ჩემი მონაწილეობით გამოწვეული ტრავმის, ზიანის ან დანაკარგის გამო პრეტენზიებისგან, გარდა იმ შემთხვევებისა, როცა კანონი ამას არ უშვებს."
+        }
+      },
+      {
+        "title": {
+          "en": "Photos and video",
+          "ka": "ფოტო და ვიდეო"
+        },
+        "text": {
+          "en": "I agree that photos and video taken at the event, in which I may appear, can be used by ADCC Georgia and its partners to promote the event and the sport.",
+          "ka": "ვთანხმდები, რომ ღონისძიებაზე გადაღებული ფოტო და ვიდეო მასალა, რომელზეც შესაძლოა ვჩანდე, ADCC Georgia-მ და მისმა პარტნიორებმა შეიძლება გამოიყენონ ღონისძიებისა და სპორტის პოპულარიზაციისთვის."
+        }
+      },
+      {
+        "title": {
+          "en": "Personal data",
+          "ka": "პერსონალური მონაცემები"
+        },
+        "text": {
+          "en": "I agree that ADCC Georgia may keep the details on this form to run the event and to contact me or my emergency contact if needed.",
+          "ka": "ვთანხმდები, რომ ADCC Georgia-მ ამ ფორმაზე მითითებული მონაცემები შეინახოს ღონისძიების ორგანიზებისთვის და საჭიროების შემთხვევაში ჩემთან ან ჩემს საკონტაქტო პირთან დასაკავშირებლად."
+        }
+      },
+      {
+        "title": {
+          "en": "Athletes under 18",
+          "ka": "18 წლამდე სპორტსმენები"
+        },
+        "text": {
+          "en": "If the athlete is under 18, a parent or legal guardian must also read and sign this waiver and accepts it on the athlete's behalf.",
+          "ka": "თუ სპორტსმენი 18 წლამდეა, ამ განაცხადს უნდა გაეცნოს და ხელი მოაწეროს მშობელმა ან კანონიერმა წარმომადგენელმა, რომელიც მას სპორტსმენის სახელით ეთანხმება."
+        }
+      }
+    ]
+  },
   "contact": {
     "email": "adccgeorgia@gmail.com",
     "whatsapp": [

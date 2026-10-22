@@ -259,6 +259,12 @@
         function () { return { q: { en: '', ka: '' }, a: { en: '', ka: '' } }; }, 'Add question', 'Question')
     ]));
 
+    root.appendChild(section('Waiver (printable form)', false, [
+      el('p', { class: 'muted' }, ['Numbered paragraphs of the waiver page. Have the wording checked by a lawyer before relying on it.']),
+      listBox('waiver.sections', function (p) { return [bi('Heading', p + '.title'), bi('Text', p + '.text', { area: true })]; },
+        function () { return { title: { en: '', ka: '' }, text: { en: '', ka: '' } }; }, 'Add paragraph', 'Paragraph')
+    ]));
+
     root.appendChild(section('Tickets', false, [
       listBox('tickets.items', function (p) {
         return [
