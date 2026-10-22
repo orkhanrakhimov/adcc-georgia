@@ -228,6 +228,7 @@
       field('Event name', inp('event.name'), 'Shown as the big title and on every page.'),
       field('Highlighted words (red part of the title)', inp('event.highlight'), 'Optional. Must be part of the event name, e.g. “Nationals Open”.'),
       el('div', { class: 'row2' }, [field('Date', inp('event.date', { type: 'date' })), field('Start time', inp('event.time', { type: 'time' }), 'Tbilisi time')]),
+      field('End time (for the calendar button)', inp('event.endTime', { type: 'time' }), 'Tbilisi time. If empty, the calendar entry lasts 8 hours.'),
       field('Venue name', inp('event.venue')),
       bi('Address', 'event.address'),
       field('Map link', inp('event.mapUrl', { type: 'url', ph: 'https://…' }), 'Copy the link from Google Maps → Share.'),

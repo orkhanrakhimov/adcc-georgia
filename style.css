@@ -374,3 +374,6 @@ footer.site-foot{border-top:1px solid var(--line);padding:56px 0 0;color:var(--m
 .sp-logo{display:flex;align-items:center;justify-content:center;min-width:160px;height:90px;padding:14px 20px;background:#fff;border-radius:8px;color:#111;font-weight:600}
 .sp-logo img{max-height:62px;max-width:150px;object-fit:contain}
 @media(max-width:900px){.sp-ben{grid-template-columns:1fr 1fr}}@media(max-width:600px){.sp-ben{grid-template-columns:1fr}}
+
+.cal{margin-top:24px;display:flex;align-items:center;gap:16px;flex-wrap:wrap;padding:18px 22px;border:1px solid var(--line);border-radius:8px;background:var(--panel)}
+.cal[hidden]{display:none}.cal b{font-family:Oswald,sans-serif;text-transform:uppercase;letter-spacing:.05em}.cal .actions{margin:0}

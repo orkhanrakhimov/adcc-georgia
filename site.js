@@ -471,6 +471,18 @@
   "Contact",
   "კონტაქტი"
  ],
+ "cal.t": [
+  "Add to your calendar",
+  "დაამატეთ კალენდარში"
+ ],
+ "cal.ics": [
+  "Apple / Outlook (.ics)",
+  "Apple / Outlook (.ics)"
+ ],
+ "cal.g": [
+  "Google Calendar",
+  "Google Calendar"
+ ],
  "sp.why": [
   "Why partner with us",
   "რატომ ჩვენთან თანამშრომლობა"
@@ -594,6 +606,7 @@
   "highlight": "Nationals Open",
   "date": "2026-10-25",
   "time": "10:00",
+  "endTime": "18:00",
   "venue": "Gymnastic Venue",
   "address": {
    "en": "Bob Walsh St., Dighomi, Tbilisi",
@@ -1544,8 +1557,40 @@
     ca.appendChild(h('a', { class: 'btn ghost', href: 'contact' }, [ui('ct.all')]));
   }
 
+  function calStamp(ev, hhmm) {   // Tbilisi (UTC+4) -> UTC stamp
+    var p = parts(ev.date), t = /^(\d{2}):(\d{2})$/.exec(hhmm); if (!p || !t) return '';
+    var d = new Date(Date.UTC(p.y, p.m - 1, p.d, +t[1] - 4, +t[2]));
+    return d.toISOString().replace(/[-:]/g, '').replace(/\.\d{3}/, '');
+  }
+  function renderCal(ph) {
+    var box = $('#ev-cal'); if (!box) return;
+    var ev = DATA.event || {}; clear(box);
+    var st = normTime(ev.time) || '10:00', en = normTime(ev.endTime);
+    if (!en || en <= st) { var hh = +st.slice(0, 2) + 8; en = hh > 23 ? '23:59' : pad(hh) + st.slice(2); }
+    var a = calStamp(ev, st), b = calStamp(ev, en);
+    if (!a || ph.name === 'over') { box.hidden = true; return; }
+    var addr = ((ev.address && ev.address.en) || '') + ', Georgia', loc = [ev.venue, addr].filter(Boolean).join(', ');
+    var desc = 'Weigh-in and details: ' + SITE + '/weigh-in';
+    function esc(x) { return String(x).replace(/\\/g, '\\\\').replace(/;/g, '\\;').replace(/,/g, '\\,').replace(/\n/g, '\\n'); }
+    var ics = ['BEGIN:VCALENDAR', 'VERSION:2.0', 'PRODID:-//ADCC Georgia//Website//EN', 'CALSCALE:GREGORIAN', 'BEGIN:VEVENT',
+      'UID:' + a + '-adcc-georgia@adcc.ge', 'DTSTAMP:' + a, 'DTSTART:' + a, 'DTEND:' + b,
+      'SUMMARY:' + esc(ev.name), 'LOCATION:' + esc(loc), 'DESCRIPTION:' + esc(desc), 'URL:' + SITE + '/event', 'END:VEVENT', 'END:VCALENDAR'].join('\r\n');
+    var gcal = 'https://calendar.google.com/calendar/render?action=TEMPLATE&text=' + encodeURIComponent(ev.name) + '&dates=' + a + '/' + b +
+      '&location=' + encodeURIComponent(loc) + '&details=' + encodeURIComponent(desc);
+    var icsBtn = h('button', { type: 'button', class: 'btn ghost sm' }, [ui('cal.ics')]);
+    icsBtn.addEventListener('click', function () {
+      var blob = new Blob([ics], { type: 'text/calendar;charset=utf-8' }), u = URL.createObjectURL(blob);
+      var l = h('a', { href: u, download: 'adcc-georgia-event.ics' }); document.body.appendChild(l); l.click();
+      setTimeout(function () { document.body.removeChild(l); URL.revokeObjectURL(u); }, 500);
+    });
+    box.hidden = false;
+    box.appendChild(h('b', null, [ui('cal.t')]));
+    box.appendChild(h('div', { class: 'actions' }, [icsBtn, h('a', { class: 'btn ghost sm', href: gcal, target: '_blank', rel: 'noopener' }, [ui('cal.g')])]));
+  }
+
   function renderEvent(ph) {
     eventCard(ph);
+    renderCal(ph);
     hubCards($('#hub-cards'), ['weighin', 'tickets', 'rules']);
   }
 
