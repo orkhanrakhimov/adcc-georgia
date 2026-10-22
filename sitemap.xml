@@ -9,6 +9,7 @@
   <url><loc>https://www.adcc.ge/join</loc><priority>0.6</priority></url>
   <url><loc>https://www.adcc.ge/previous-events</loc><priority>0.6</priority></url>
   <url><loc>https://www.adcc.ge/contact</loc><priority>0.6</priority></url>
+  <url><loc>https://www.adcc.ge/faq</loc><priority>0.6</priority></url>
   <url><loc>https://www.adcc.ge/privacy</loc><priority>0.3</priority></url>
   <url><loc>https://www.adcc.ge/terms</loc><priority>0.3</priority></url>
 </urlset>

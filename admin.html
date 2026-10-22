@@ -253,6 +253,12 @@
       bi('Notice text', 'weighin.idnote.text', { area: true })
     ]));
 
+    root.appendChild(section('FAQ', false, [
+      el('p', { class: 'muted' }, ['Questions and answers shown on the FAQ page.']),
+      listBox('faq.items', function (p) { return [bi('Question', p + '.q'), bi('Answer', p + '.a', { area: true })]; },
+        function () { return { q: { en: '', ka: '' }, a: { en: '', ka: '' } }; }, 'Add question', 'Question')
+    ]));
+
     root.appendChild(section('Tickets', false, [
       listBox('tickets.items', function (p) {
         return [

@@ -11,6 +11,7 @@
  "nav.weighin": "აწონვა",
  "nav.tickets": "ბილეთები",
  "nav.rules": "წესები",
+ "nav.faq": "ხშირი კითხვები",
  "nav.event": "ღონისძიება",
  "nav.previous": "წინა ღონისძიებები",
  "nav.shop": "მაღაზია",
@@ -60,6 +61,9 @@
  "previous-events.h1": "წინა <em>ღონისძიებები</em>",
  "title.contact": "კონტაქტი – ADCC Georgia",
  "contact.h1": "<em>დაგვიკავშირდით</em>",
+ "faq.sub": "სწრაფი პასუხები სპორტსმენებისთვის, მწვრთნელებისა და მაყურებლებისთვის.",
+ "title.faq": "ხშირი კითხვები – ADCC Georgia",
+ "faq.h1": "ხშირი <em>კითხვები</em>",
  "privacy.intro": "ეს პოლიტიკა განმარტავს, რა პერსონალურ ინფორმაციას აგროვებს ADCC Georgia ამ ვებგვერდის მეშვეობით, რატომ ვაგროვებთ მას და რა არჩევანი გაქვთ.",
  "privacy.t1": "ბოლო განახლება: 2026 წლის 20 ოქტომბერი",
  "privacy.t2": "ვინ ვართ ჩვენ",
@@ -440,6 +444,10 @@
   "Contact",
   "კონტაქტი"
  ],
+ "faq.more": [
+  "Still have a question? Get in touch.",
+  "კვლავ გაქვთ შეკითხვა? დაგვიკავშირდით."
+ ],
  "ft.event": [
   "Event",
   "ღონისძიება"
@@ -565,6 +573,90 @@
    "en": "Tickets can be bought at the door.",
    "ka": "ბილეთები იყიდება შესასვლელთან."
   }
+ },
+ "faq": {
+  "items": [
+   {
+    "q": {
+     "en": "How do I register?",
+     "ka": "როგორ დავრეგისტრირდე?"
+    },
+    "a": {
+     "en": "Register through the event page on Smoothcomp using the Register button on this site. Registration is online.",
+     "ka": "რეგისტრაცია ხდება ღონისძიების გვერდზე Smoothcomp-ზე, ამ საიტზე არსებული რეგისტრაციის ღილაკით. რეგისტრაცია ონლაინ ხდება."
+    }
+   },
+   {
+    "q": {
+     "en": "When and where is the weigh-in?",
+     "ka": "როდის და სად არის აწონვა?"
+    },
+    "a": {
+     "en": "See the Weigh-in page for the exact days, times and location.",
+     "ka": "ზუსტი დღეები, დრო და ადგილი იხილეთ აწონვის გვერდზე."
+    }
+   },
+   {
+    "q": {
+     "en": "What happens if I am over the weight limit?",
+     "ka": "რა მოხდება, თუ წონა ლიმიტს აღემატება?"
+    },
+    "a": {
+     "en": "There is no weight tolerance. An athlete who is over the limit, even by a few grams, is disqualified and the entry fee is not refunded.",
+     "ka": "წონაში ტოლერანტობა არ არის. ლიმიტზე მეტი წონის (თუნდაც რამდენიმე გრამის) მქონე სპორტსმენი დისკვალიფიცირდება და მონაწილეობის საფასური არ უბრუნდება."
+    }
+   },
+   {
+    "q": {
+     "en": "What do I need to bring to the weigh-in?",
+     "ka": "რა უნდა წავიღო აწონვაზე?"
+    },
+    "a": {
+     "en": "An ID card or a passport, so your identity can be confirmed.",
+     "ka": "პირადობის მოწმობა ან პასპორტი, პიროვნების დასადასტურებლად."
+    }
+   },
+   {
+    "q": {
+     "en": "Can spectators and coaches attend?",
+     "ka": "შეუძლიათ მაყურებლებსა და მწვრთნელებს დასწრება?"
+    },
+    "a": {
+     "en": "Yes. See the Tickets page for spectator and coach tickets and prices.",
+     "ka": "დიახ. მაყურებლისა და მწვრთნელის ბილეთები და ფასები იხილეთ ბილეთების გვერდზე."
+    }
+   },
+   {
+    "q": {
+     "en": "Where can I find the rules?",
+     "ka": "სად ვიპოვო წესები?"
+    },
+    "a": {
+     "en": "The Rules page explains scoring, penalties and time limits. It also links to the full official ADCC rules.",
+     "ka": "წესების გვერდზე ახსნილია ქულები, ჯარიმები და დროითი ლიმიტები. იქ ასევე არის სრული ოფიციალური ADCC-ის წესების ბმული."
+    }
+   },
+   {
+    "q": {
+     "en": "Can I volunteer, referee or cover the event as media?",
+     "ka": "შემიძლია მოხალისედ, მსაჯად ან მედიის წარმომადგენლად ჩართვა?"
+    },
+    "a": {
+     "en": "Yes. Use the Join us page to apply as a referee, for the organising team or for media accreditation.",
+     "ka": "დიახ. გამოიყენეთ „გუნდში“ გვერდი მსაჯად, საორგანიზაციო გუნდში ან მედია აკრედიტაციისთვის სააპლიკაციოდ."
+    }
+   },
+   {
+    "q": {
+     "en": "How can I contact you?",
+     "ka": "როგორ დავგიკავშირდე?"
+    },
+    "a": {
+     "en": "Message us on WhatsApp or email. Details are on the Contact page.",
+     "ka": "მოგვწერეთ WhatsApp-ზე ან ელფოსტით. დეტალები იხილეთ კონტაქტის გვერდზე."
+    }
+   }
+  ]
  },
  "contact": {
   "email": "adccgeorgia@gmail.com",
@@ -1202,6 +1294,23 @@
     a.appendChild(h('a', { class: 'btn', href: 'join' }, [ui('lk.join.t')]));
   }
 
+  function renderFaq() {
+    var box = $('#faq-list'), items = (DATA.faq || {}).items || [], ld = [];
+    clear(box);
+    items.forEach(function (it) {
+      if (!tx(it.q) || !tx(it.a)) return;
+      box.appendChild(h('details', null, [h('summary', null, [tx(it.q)]), h('div', { class: 'det-body' }, [h('p', null, [tx(it.a)])])]));
+      ld.push({ '@type': 'Question', name: it.q.en, acceptedAnswer: { '@type': 'Answer', text: it.a.en } });
+    });
+    setText('#faq-more', ui('faq.more'));
+    var oldLd = $('#faq-ld'); if (oldLd && oldLd.parentNode) oldLd.parentNode.removeChild(oldLd);
+    if (ld.length) {
+      var sc = document.createElement('script'); sc.type = 'application/ld+json'; sc.id = 'faq-ld';
+      sc.textContent = JSON.stringify({ '@context': 'https://schema.org', '@type': 'FAQPage', mainEntity: ld });
+      document.head.appendChild(sc);
+    }
+  }
+
   function renderWeighin(ph) {
     var ev = DATA.event;
     setText('#wi-intro', ui('wi.p'));
@@ -1556,6 +1665,7 @@
     if (page === 'event') renderEvent(ph);
     if (page === 'previous-events') renderPrevious();
     if (page === 'contact') renderContact();
+    if (page === 'faq') renderFaq();
     if (page === 'weigh-in') renderWeighin(ph);
     if (page === 'tickets') renderTickets(ph);
     if (page === 'shop') renderShop();
