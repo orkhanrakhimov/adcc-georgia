@@ -247,7 +247,10 @@
       el('span', { class: 'fl' }, ['Weight rule notice']),
       el('p', { class: 'muted' }, ['A highlighted notice under the schedule. Leave the text empty to hide it.']),
       bi('Notice title', 'weighin.rule.title'),
-      bi('Notice text', 'weighin.rule.text', { area: true })
+      bi('Notice text', 'weighin.rule.text', { area: true }),
+      el('span', { class: 'fl' }, ['ID / passport notice']),
+      bi('Notice title', 'weighin.idnote.title'),
+      bi('Notice text', 'weighin.idnote.text', { area: true })
     ]));
 
     root.appendChild(section('Tickets', false, [

@@ -47,6 +47,16 @@
         "en": "There is no allowance for any grams over the weight limit. Athletes must weigh exactly the limit of their weight class or less. An athlete who is over the limit, even by a few grams, will be disqualified, and the entry fee will not be refunded.",
         "ka": "წონის ლიმიტის გადაჭარბება ერთი გრამითაც არ დაიშვება. სპორტსმენის წონა უნდა იყოს ზუსტად თავისი წონითი კატეგორიის ლიმიტის ტოლი ან მასზე ნაკლები. სპორტსმენი, რომლის წონაც ლიმიტს აღემატება, თუნდაც რამდენიმე გრამით, დისკვალიფიცირებული იქნება და მონაწილეობის საფასური არ დაუბრუნდება."
       }
+    },
+    "idnote": {
+      "title": {
+        "en": "Bring your ID or passport",
+        "ka": "წაიღეთ პირადობის მოწმობა ან პასპორტი"
+      },
+      "text": {
+        "en": "When you come to weigh in, bring an ID card or a passport. Your identity will be confirmed at the weigh-in.",
+        "ka": "აწონვაზე მოსვლისას თან იქონიეთ პირადობის მოწმობა ან პასპორტი. აწონვისას თქვენი ვინაობა დადასტურდება."
+      }
     }
   },
   "tickets": {

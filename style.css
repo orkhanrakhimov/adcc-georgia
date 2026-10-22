@@ -333,3 +333,5 @@ footer.site-foot{border-top:1px solid var(--line);padding:56px 0 0;color:var(--m
 .bl{text-decoration:underline;text-underline-offset:3px;font-weight:700;white-space:nowrap}
 .bx{position:absolute;right:14px;top:50%;transform:translateY(-50%);background:none;border:0;color:#fff;font-size:1.4rem;line-height:1;cursor:pointer;padding:4px 6px;opacity:.85}
 .bx:hover{opacity:1}
+.rule-note.info{border-color:var(--gold);background:#17150e}
+.rule-note.info .ico svg{stroke:var(--gold)}

@@ -510,6 +510,16 @@
     "en": "There is no allowance for any grams over the weight limit. Athletes must weigh exactly the limit of their weight class or less. An athlete who is over the limit, even by a few grams, will be disqualified, and the entry fee will not be refunded.",
     "ka": "წონის ლიმიტის გადაჭარბება ერთი გრამითაც არ დაიშვება. სპორტსმენის წონა უნდა იყოს ზუსტად თავისი წონითი კატეგორიის ლიმიტის ტოლი ან მასზე ნაკლები. სპორტსმენი, რომლის წონაც ლიმიტს აღემატება, თუნდაც რამდენიმე გრამით, დისკვალიფიცირებული იქნება და მონაწილეობის საფასური არ დაუბრუნდება."
    }
+  },
+  "idnote": {
+   "title": {
+    "en": "Bring your ID or passport",
+    "ka": "წაიღეთ პირადობის მოწმობა ან პასპორტი"
+   },
+   "text": {
+    "en": "When you come to weigh in, bring an ID card or a passport. Your identity will be confirmed at the weigh-in.",
+    "ka": "აწონვაზე მოსვლისას თან იქონიეთ პირადობის მოწმობა ან პასპორტი. აწონვისას თქვენი ვინაობა დადასტურდება."
+   }
   }
  },
  "tickets": {
@@ -782,6 +792,7 @@
     scale: '<path d="M12 4v15M7 20h10M5 7h14"/><path d="M5 7l-2.5 6h5zM19 7l-2.5 6h5z"/>',
     book: '<path d="M4 5.5A1.5 1.5 0 0 1 5.5 4H12v15H5.5A1.5 1.5 0 0 0 4 20.5z"/><path d="M20 5.5A1.5 1.5 0 0 0 18.5 4H12v15h6.5a1.5 1.5 0 0 1 1.5 1.5z"/>',
     alert: '<path d="M12 3.5L21.5 20h-19z"/><path d="M12 10v5M12 17.5v.01"/>',
+    id: '<rect x="3" y="5" width="18" height="14" rx="2.5"/><circle cx="9" cy="11" r="2"/><path d="M6 16c.6-1.6 1.7-2 3-2s2.4.4 3 2M14.5 10h3.5M14.5 13.5H17"/>',
     arrow: '<path d="M5 12h14M13 6l6 6-6 6"/>',
     bag: '<path d="M8.5 9V7.5a3.5 3.5 0 0 1 7 0V9"/><rect x="4" y="9" width="16" height="11" rx="3"/><path d="M4 14h16"/>',
     flag: '<path d="M5 21V4"/><path d="M5 4h12l-2.5 4 2.5 4H5"/>',
@@ -1202,12 +1213,16 @@
         h('div', { class: 'time' }, [d.from + ' – ' + d.to])
       ]));
     });
-    var rl = $('#wi-rule'), rule = DATA.weighin.rule || {}; clear(rl);
-    if (tx(rule.text)) {
-      rl.hidden = false;
-      rl.appendChild(icon('alert'));
-      rl.appendChild(h('div', null, [h('h3', null, [tx(rule.title)]), h('p', null, [tx(rule.text)])]));
-    } else rl.hidden = true;
+    [['#wi-rule', 'rule', 'alert'], ['#wi-id', 'idnote', 'id']].forEach(function (n) {
+      var box = $(n[0]), note = DATA.weighin[n[1]] || {};
+      if (!box) return;
+      clear(box);
+      if (tx(note.text)) {
+        box.hidden = false;
+        box.appendChild(icon(n[2]));
+        box.appendChild(h('div', null, [h('h3', null, [tx(note.title)]), h('p', null, [tx(note.text)])]));
+      } else box.hidden = true;
+    });
     setText('#wi-addr', ev.venue + ', ' + tx(ev.address) + ', ' + ui('georgia'));
     var m = $('#wi-map'); clear(m);
     if (url(ev.mapUrl)) m.appendChild(ext(url(ev.mapUrl), null, [ui('ev.map')]));
