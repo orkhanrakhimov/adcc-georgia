@@ -488,8 +488,8 @@
   "გააზიარეთ აწონვის ინფორმაცია"
  ],
  "share.native": [
-  "Share…",
-  "გაზიარება…"
+  "Share",
+  "გაზიარება"
  ],
  "share.wa": [
   "WhatsApp",
@@ -1643,8 +1643,6 @@
       nb.addEventListener('click', function () { navigator.share({ title: ev.name, text: text, url: link }).catch(function () {}); });
       acts.appendChild(nb);
     }
-    acts.appendChild(h('a', { class: 'btn ghost sm', href: 'https://wa.me/?text=' + encodeURIComponent(text + '\n' + link), target: '_blank', rel: 'noopener' }, [ui('share.wa')]));
-    acts.appendChild(h('a', { class: 'btn ghost sm', href: 'https://www.facebook.com/sharer/sharer.php?u=' + encodeURIComponent(link), target: '_blank', rel: 'noopener' }, [ui('share.fb')]));
     var cb = h('button', { type: 'button', class: 'btn ghost sm' }, [ui('share.copy')]);
     cb.addEventListener('click', function () {
       function done() { cb.textContent = ui('share.copied'); setTimeout(function () { cb.textContent = ui('share.copy'); }, 2000); }
