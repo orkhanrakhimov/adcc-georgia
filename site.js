@@ -1563,7 +1563,12 @@
     return d.toISOString().replace(/[-:]/g, '').replace(/\.\d{3}/, '');
   }
   function renderCal(ph) {
-    var box = $('#ev-cal'); if (!box) return;
+    var box = $('#ev-cal');
+    if (!box) {   // older cached HTML without the placeholder: create it under the detail cards
+      var anchor = $('#hub-cards'); if (!anchor || !anchor.parentNode) return;
+      box = h('div', { class: 'cal', id: 'ev-cal', hidden: 'hidden' });
+      anchor.parentNode.insertBefore(box, anchor);
+    }
     var ev = DATA.event || {}; clear(box);
     var st = normTime(ev.time) || '10:00', en = normTime(ev.endTime);
     if (!en || en <= st) { var hh = +st.slice(0, 2) + 8; en = hh > 23 ? '23:59' : pad(hh) + st.slice(2); }
