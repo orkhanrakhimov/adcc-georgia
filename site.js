@@ -471,6 +471,30 @@
   "Contact",
   "კონტაქტი"
  ],
+ "share.t": [
+  "Share this event",
+  "გააზიარეთ ღონისძიება"
+ ],
+ "share.native": [
+  "Share…",
+  "გაზიარება…"
+ ],
+ "share.wa": [
+  "WhatsApp",
+  "WhatsApp"
+ ],
+ "share.fb": [
+  "Facebook",
+  "Facebook"
+ ],
+ "share.copy": [
+  "Copy link",
+  "ბმულის კოპირება"
+ ],
+ "share.copied": [
+  "Link copied!",
+  "ბმული დაკოპირდა!"
+ ],
  "cal.t": [
   "Add to your calendar",
   "დაამატეთ კალენდარში"
@@ -1543,6 +1567,7 @@
       act.appendChild(h('a', { class: 'btn ghost', href: 'event' }, [ui('hub.event.t')]));
     }
 
+    renderShare(ph);
     hubCards($('#hub-cards'), ['event', 'weighin', 'tickets', 'rules', 'shop', 'join']);
 
     fillGallery($('#gallery'), 3);
@@ -1593,9 +1618,39 @@
     box.appendChild(h('div', { class: 'actions' }, [icsBtn, h('a', { class: 'btn ghost sm', href: gcal, target: '_blank', rel: 'noopener' }, [ui('cal.g')])]));
   }
 
+  function renderShare(ph) {
+    var old = $('#share-bar'); if (old && old.parentNode) old.parentNode.removeChild(old);
+    var ev = DATA.event || {}, link = SITE + (page === 'event' ? '/event' : '/');
+    var text = [ev.name, dateLong(ev.date), venueLine(ev)].filter(Boolean).join(' · ');
+    var bar = h('div', { class: 'share', id: 'share-bar' }, [h('b', null, [ui('share.t')])]);
+    var acts = h('div', { class: 'actions' });
+    if (navigator.share) {
+      var nb = h('button', { type: 'button', class: 'btn ghost sm' }, [ui('share.native')]);
+      nb.addEventListener('click', function () { navigator.share({ title: ev.name, text: text, url: link }).catch(function () {}); });
+      acts.appendChild(nb);
+    }
+    acts.appendChild(h('a', { class: 'btn ghost sm', href: 'https://wa.me/?text=' + encodeURIComponent(text + '\n' + link), target: '_blank', rel: 'noopener' }, [ui('share.wa')]));
+    acts.appendChild(h('a', { class: 'btn ghost sm', href: 'https://www.facebook.com/sharer/sharer.php?u=' + encodeURIComponent(link), target: '_blank', rel: 'noopener' }, [ui('share.fb')]));
+    var cb = h('button', { type: 'button', class: 'btn ghost sm' }, [ui('share.copy')]);
+    cb.addEventListener('click', function () {
+      function done() { cb.textContent = ui('share.copied'); setTimeout(function () { cb.textContent = ui('share.copy'); }, 2000); }
+      function fallback() {
+        var ta = h('textarea', { style: 'position:fixed;opacity:0' }); ta.value = link; document.body.appendChild(ta); ta.select();
+        try { document.execCommand('copy'); done(); } catch (e) {} document.body.removeChild(ta);
+      }
+      if (navigator.clipboard && navigator.clipboard.writeText) navigator.clipboard.writeText(link).then(done, fallback); else fallback();
+    });
+    acts.appendChild(cb);
+    bar.appendChild(acts);
+    var anchor = page === 'event' ? ($('#ev-cal') || $('#hub-cards')) : $('#hero-actions');
+    if (!anchor || !anchor.parentNode) return;
+    anchor.parentNode.insertBefore(bar, anchor.nextSibling);
+  }
+
   function renderEvent(ph) {
     eventCard(ph);
     renderCal(ph);
+    renderShare(ph);
     hubCards($('#hub-cards'), ['weighin', 'tickets', 'rules']);
   }
 

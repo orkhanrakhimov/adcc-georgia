@@ -377,3 +377,8 @@ footer.site-foot{border-top:1px solid var(--line);padding:56px 0 0;color:var(--m
 
 .cal{margin-top:24px;display:flex;align-items:center;gap:16px;flex-wrap:wrap;padding:18px 22px;border:1px solid var(--line);border-radius:8px;background:var(--panel)}
 .cal[hidden]{display:none}.cal b{font-family:Oswald,sans-serif;text-transform:uppercase;letter-spacing:.05em}.cal .actions{margin:0}
+
+.share{margin-top:16px;display:flex;align-items:center;gap:16px;flex-wrap:wrap;padding:18px 22px;border:1px solid var(--line);border-radius:8px;background:var(--panel)}
+.share b{font-family:Oswald,sans-serif;text-transform:uppercase;letter-spacing:.05em}.share .actions{margin:0}
+.hero .share{background:rgba(20,20,22,.6);width:fit-content;max-width:100%;padding:12px 16px;margin-top:20px}
+.share .actions,.cal .actions{align-items:center}.share .btn,.cal .btn{line-height:1.2}
