@@ -475,6 +475,18 @@
   "Share this event",
   "გააზიარეთ ღონისძიება"
  ],
+ "share.wn": [
+  "Weigh-in",
+  "აწონვა"
+ ],
+ "wi.share.id": [
+  "Bring an ID or passport",
+  "წაიღეთ პირადობის მოწმობა ან პასპორტი"
+ ],
+ "share.tw": [
+  "Share the weigh-in info",
+  "გააზიარეთ აწონვის ინფორმაცია"
+ ],
  "share.native": [
   "Share…",
   "გაზიარება…"
@@ -1620,9 +1632,11 @@
 
   function renderShare(ph) {
     var old = $('#share-bar'); if (old && old.parentNode) old.parentNode.removeChild(old);
-    var ev = DATA.event || {}, link = SITE + (page === 'event' ? '/event' : '/');
-    var text = [ev.name, dateLong(ev.date), venueLine(ev)].filter(Boolean).join(' · ');
-    var bar = h('div', { class: 'share', id: 'share-bar' }, [h('b', null, [ui('share.t')])]);
+    var ev = DATA.event || {}, wi = page === 'weigh-in', link = SITE + (wi ? '/weigh-in' : page === 'event' ? '/event' : '/');
+    var text = wi
+      ? [ui('share.wn') + ' – ' + ev.name, weighText(), (DATA.weighin.rule && tx(DATA.weighin.rule.title)) || '', ui('wi.share.id'), venueLine(ev)].filter(Boolean).join(' · ')
+      : [ev.name, dateLong(ev.date), venueLine(ev)].filter(Boolean).join(' · ');
+    var bar = h('div', { class: 'share', id: 'share-bar' }, [h('b', null, [ui(wi ? 'share.tw' : 'share.t')])]);
     var acts = h('div', { class: 'actions' });
     if (navigator.share) {
       var nb = h('button', { type: 'button', class: 'btn ghost sm' }, [ui('share.native')]);
@@ -1642,7 +1656,7 @@
     });
     acts.appendChild(cb);
     bar.appendChild(acts);
-    var anchor = page === 'event' ? ($('#ev-cal') || $('#hub-cards')) : $('#hero-actions');
+    var anchor = wi ? ($('#wi-waiver') || $('#wi-id') || $('#wi-cards')) : page === 'event' ? ($('#ev-cal') || $('#hub-cards')) : $('#hero-actions');
     if (!anchor || !anchor.parentNode) return;
     anchor.parentNode.insertBefore(bar, anchor.nextSibling);
   }
@@ -1796,6 +1810,7 @@
 
   function renderWeighin(ph) {
     var wb = $('#wi-waiver');
+    renderShare(ph);
     if (wb) {
       clear(wb);
       wb.appendChild(icon('book'));
