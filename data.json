@@ -497,7 +497,33 @@
   },
   "previous": {
     "name": "ADCC Georgia Open 2025",
-    "resultsUrl": "https://adcombat.com/adcc-events/adcc-georgia-open-2025/"
+    "resultsUrl": "https://adcombat.com/adcc-events/adcc-georgia-open-2025/",
+    "events": [
+      {
+        "name": "ADCC Georgia Nationals Open 2026",
+        "date": "2026-10-25",
+        "venue": "Gymnastic Venue, Tbilisi",
+        "summary": {
+          "en": "",
+          "ka": ""
+        },
+        "resultsUrl": "",
+        "winners": "",
+        "photos": []
+      },
+      {
+        "name": "ADCC Georgia Open 2025",
+        "date": "",
+        "venue": "Tbilisi",
+        "summary": {
+          "en": "",
+          "ka": ""
+        },
+        "resultsUrl": "https://adcombat.com/adcc-events/adcc-georgia-open-2025/",
+        "winners": "",
+        "photos": []
+      }
+    ]
   },
   "gallery": []
 }

@@ -67,7 +67,7 @@
 
 <main class="wrap adm">
   <h1>Site admin</h1>
-  <p class="muted">Edit the announcement banner, event, weigh-in, tickets, shop, join forms, contacts and photos here. Changes are saved to your GitHub repository and appear on the site within 1–2 minutes. No code needed.</p>
+  <p class="muted">Edit the announcement banner, event, weigh-in, tickets, shop, join forms, contacts and previous events here. Changes are saved to your GitHub repository and appear on the site within 1–2 minutes. No code needed.</p>
 
   <!-- ============ CONNECT (first time only) ============ -->
   <section id="connect" class="box">
@@ -98,7 +98,7 @@
   </div>
 </main>
 
-<script src="site.js?v=202610201745"></script>
+<script src="site.js?v=202610272306"></script>
 <script>
 (function () {
   'use strict';
@@ -208,6 +208,46 @@
     });
     box.appendChild(el('span', { class: 'fl' }, ['Photo (optional)']));
     box.appendChild(file);
+    draw();
+    return box;
+  }
+
+  function eventPhotos(path) {
+    var box = el('div', { class: 'f' }), grid = el('div', { class: 'thumbs' });
+    var file = el('input', { type: 'file', accept: 'image/*', multiple: 'multiple' });
+    function arr() { var a = get(path); if (!Array.isArray(a)) { set(path, []); a = get(path); } return a; }
+    function draw() {
+      clear(grid);
+      var a = arr();
+      a.forEach(function (src, i) {
+        var rm = el('button', { type: 'button' }, ['Remove']);
+        rm.addEventListener('click', function () { a.splice(i, 1); markDirty(); draw(); });
+        var kids = [el('img', { src: thumbs[src] || src, alt: '' }), rm];
+        if (i > 0) {
+          var cv = el('button', { type: 'button' }, ['Make cover']);
+          cv.addEventListener('click', function () { a.unshift(a.splice(i, 1)[0]); markDirty(); draw(); });
+          kids.push(cv);
+        } else kids.push(el('small', null, ['Cover photo']));
+        grid.appendChild(el('div', { class: 'thumb' }, kids));
+      });
+      if (!a.length) grid.appendChild(el('p', { class: 'muted' }, ['No photos yet.']));
+    }
+    file.addEventListener('change', async function () {
+      var files = [].slice.call(file.files); file.value = ''; if (!files.length) return;
+      var stamp = Date.now().toString(36), done = 0;
+      for (var i = 0; i < files.length; i++) {
+        status('Uploading photo ' + (i + 1) + ' of ' + files.length + '…');
+        try {
+          var blob = await toJpeg(files[i]), p = 'photos/' + stamp + '-' + (i + 1) + '.jpg';
+          await putFile(p, await blobB64(blob), 'Add event photo (admin panel)');
+          thumbs[p] = URL.createObjectURL(blob); arr().push(p); done++;
+        } catch (e) { status('Photo ' + (i + 1) + ' failed: ' + (e.message || 'could not read this image'), 'err'); draw(); return; }
+      }
+      draw(); markDirty();
+      status(done + ' photo' + (done > 1 ? 's' : '') + ' uploaded. Press “Save changes” to show ' + (done > 1 ? 'them' : 'it') + ' on the site.', 'warn');
+    });
+    box.appendChild(el('span', { class: 'fl' }, ['Photos (the first one is the cover)']));
+    box.appendChild(file); box.appendChild(grid);
     draw();
     return box;
   }
@@ -347,29 +387,20 @@
       bi('Privacy agreement (checkbox text)', 'join.privacy', { area: true })
     ]));
 
-    root.appendChild(section('Previous event', false, [
-      field('Last event name', inp('previous.name'), 'Shown in “Our last event was …”.'),
-      field('Results link', inp('previous.resultsUrl', { type: 'url', ph: 'https://…' }), 'Leave empty to hide the results button.')
+    root.appendChild(section('Previous events', false, [
+      el('p', { class: 'muted' }, ['Each event appears as a card on the Previous events page. Visitors click a card to see its details, winners and photos. The newest event comes first.']),
+      listBox('previous.events', function (p) {
+        return [
+          field('Event name', inp(p + '.name')),
+          el('div', { class: 'row2' }, [field('Date (optional)', inp(p + '.date', { type: 'date' })), field('Venue', inp(p + '.venue'))]),
+          bi('Summary (optional)', p + '.summary', { area: true }),
+          field('Official results link (optional)', inp(p + '.resultsUrl', { type: 'url', ph: 'https://…' })),
+          field('Winners (optional)', inp(p + '.winners', { area: true, ph: '# Black belt\nMen -77 kg | Giorgi Beridze | Team name\nWomen -60 kg | Nino Kapanadze | Team name' }),
+            'One winner per line: Division | Winner | Team. A line starting with # becomes a heading.'),
+          eventPhotos(p + '.photos')
+        ];
+      }, function () { return { name: '', date: '', venue: '', summary: { en: '', ka: '' }, resultsUrl: '', winners: '', photos: [] }; }, 'Add event', 'Event')
     ]));
-
-    // photos
-    var thumbsBox = el('div', { class: 'thumbs' });
-    function drawThumbs() {
-      clear(thumbsBox);
-      get('gallery').forEach(function (g, i) {
-        var rm = el('button', { type: 'button' }, ['Remove']);
-        rm.addEventListener('click', function () { get('gallery').splice(i, 1); markDirty(); drawThumbs(); });
-        thumbsBox.appendChild(el('div', { class: 'thumb' }, [el('img', { src: thumbs[g.src] || g.src, alt: '' }), rm]));
-      });
-      if (!get('gallery').length) thumbsBox.appendChild(el('p', { class: 'muted' }, ['No photos yet.']));
-    }
-    var file = el('input', { type: 'file', accept: 'image/*', multiple: 'multiple' });
-    file.addEventListener('change', function () { uploadPhotos([].slice.call(file.files), drawThumbs); file.value = ''; });
-    root.appendChild(section('Photos (Previous events)', false, [
-      el('p', { class: 'muted' }, ['Choose photos from your phone or computer. They are resized automatically and uploaded to your repository. Press “Save changes” afterwards to show them on the site.']),
-      file, thumbsBox
-    ]));
-    drawThumbs();
 
     // backup
     var dl = el('button', { type: 'button', class: 'btn ghost sm' }, ['Download backup']);
@@ -470,7 +501,10 @@
     [['mapUrl', 'Map link'], ['registerUrl', 'Registration link'], ['rulesUrl', 'Official rules link']].forEach(function (x) {
       var v = d.event[x[0]]; if (v && !/^https?:\/\//i.test(v)) e.push(x[1] + ' must start with https://');
     });
-    if (d.previous.resultsUrl && !/^https?:\/\//i.test(d.previous.resultsUrl)) e.push('Results link must start with https://');
+    (d.previous.events || []).forEach(function (x, i) {
+      if (!String(x.name || '').trim()) e.push('Previous event ' + (i + 1) + ': enter a name.');
+      if (x.resultsUrl && !/^https?:\/\//i.test(x.resultsUrl)) e.push('Previous event ' + (i + 1) + ': the results link must start with https://');
+    });
     d.weighin.days.forEach(function (x, i) {
       if (!D.test(x.date) || !T.test(x.from) || !T.test(x.to)) e.push('Weigh-in session ' + (i + 1) + ': fill in date, from and to.');
     });

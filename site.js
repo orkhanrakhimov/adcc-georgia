@@ -471,6 +471,42 @@
   "Contact",
   "კონტაქტი"
  ],
+ "past.view": [
+  "View event →",
+  "ღონისძიების ნახვა →"
+ ],
+ "past.back": [
+  "← All events",
+  "← ყველა ღონისძიება"
+ ],
+ "past.winners": [
+  "Winners",
+  "გამარჯვებულები"
+ ],
+ "past.photos": [
+  "Photos",
+  "ფოტოები"
+ ],
+ "past.resbtn": [
+  "Official results",
+  "ოფიციალური შედეგები"
+ ],
+ "past.soon": [
+  "Results and photos will be added soon.",
+  "შედეგები და ფოტოები მალე დაემატება."
+ ],
+ "lb.close": [
+  "Close",
+  "დახურვა"
+ ],
+ "lb.prev": [
+  "Previous photo",
+  "წინა ფოტო"
+ ],
+ "lb.next": [
+  "Next photo",
+  "შემდეგი ფოტო"
+ ],
  "share.t": [
   "Share this event",
   "გააზიარეთ ღონისძიება"
@@ -1135,7 +1171,33 @@
  },
  "previous": {
   "name": "ADCC Georgia Open 2025",
-  "resultsUrl": "https://adcombat.com/adcc-events/adcc-georgia-open-2025/"
+  "resultsUrl": "https://adcombat.com/adcc-events/adcc-georgia-open-2025/",
+  "events": [
+   {
+    "name": "ADCC Georgia Nationals Open 2026",
+    "date": "2026-10-25",
+    "venue": "Gymnastic Venue, Tbilisi",
+    "summary": {
+     "en": "",
+     "ka": ""
+    },
+    "resultsUrl": "",
+    "winners": "",
+    "photos": []
+   },
+   {
+    "name": "ADCC Georgia Open 2025",
+    "date": "",
+    "venue": "Tbilisi",
+    "summary": {
+     "en": "",
+     "ka": ""
+    },
+    "resultsUrl": "https://adcombat.com/adcc-events/adcc-georgia-open-2025/",
+    "winners": "",
+    "photos": []
+   }
+  ]
  },
  "gallery": []
 };  // fallback content (same as data.json)
@@ -1504,9 +1566,11 @@
   function fillGallery(g, max) {
     clear(g);
     var shown = 0;
-    (DATA.gallery || []).forEach(function (p) {
+    var srcs = [];
+    pastEvents().forEach(function (e) { srcs = srcs.concat(evPhotos(e)); });
+    (DATA.gallery || []).forEach(function (p) { srcs.push(String(p && p.src || '')); });
+    srcs.forEach(function (src) {
       if (max && shown >= max) return;
-      var src = String(p && p.src || '');
       if (!/^(photos\/[\w.\-]+|https:\/\/[^\s"'<>]+)$/.test(src)) return;
       var img = h('img', { src: src, alt: 'ADCC Georgia', loading: 'lazy' });
       var shot = h('div', { class: 'shot' }, [img]);
@@ -1533,8 +1597,9 @@
     if (ph.name !== 'over' && reg) card.appendChild(h('div', { class: 'actions' }, [ext(reg, 'btn', [ui('ev.cta')])]));
   }
   function pastText(pa) {
-    var pv = DATA.previous || {}, c = DATA.contact || {};
-    var pp = $('#past-p'); if (pp) { clear(pp); if (pv.name) pp.appendChild(document.createTextNode(ui('past.p', { name: pv.name }))); }
+    var pv = DATA.previous || {}, c = DATA.contact || {}, last = pastEvents()[0];
+    var nm = (last && last.name) || pv.name;
+    var pp = $('#past-p'); if (pp) { clear(pp); if (nm) pp.appendChild(document.createTextNode(ui('past.p', { name: nm }))); }
     return pv;
   }
   function contactTiles() {
@@ -1666,14 +1731,102 @@
     hubCards($('#hub-cards'), ['weighin', 'tickets', 'rules']);
   }
 
+  // ---- previous events
+  var PHOTO_RE = /^(photos\/[\w.\-]+|https:\/\/[^\s"'<>]+)$/;
+  function evPhotos(e) { return ((e && e.photos) || []).map(function (x) { return String((x && x.src) || x || ''); }).filter(function (x) { return PHOTO_RE.test(x); }); }
+  function pastEvents() {
+    var list = (((DATA.previous || {}).events) || []).filter(function (e) { return e && e.name; }).map(function (e, i) { return { e: e, i: i }; });
+    list.sort(function (a, b) {
+      var da = parts(a.e.date) ? a.e.date : '', db = parts(b.e.date) ? b.e.date : '';
+      if (da && db) return da < db ? 1 : da > db ? -1 : a.i - b.i;
+      if (da) return -1; if (db) return 1; return a.i - b.i;
+    });
+    var used = {};
+    return list.map(function (x) {
+      var base = String(x.e.name).toLowerCase().replace(/[^a-z0-9]+/g, '-').replace(/^-+|-+$/g, '') || 'event', id = base, n = 2;
+      while (used[id]) id = base + '-' + (n++);
+      used[id] = 1; x.e._id = id; return x.e;
+    });
+  }
+  function openLightbox(photos, start) {
+    var i = start, old = $('#lb'); if (old) old.parentNode.removeChild(old);
+    var img = h('img', { alt: '' });
+    var box = h('div', { class: 'lb', id: 'lb', role: 'dialog', 'aria-modal': 'true' });
+    function show() { img.src = photos[i]; }
+    function close() { document.removeEventListener('keydown', key); if (box.parentNode) box.parentNode.removeChild(box); document.body.style.overflow = ''; }
+    function go(d) { i = (i + d + photos.length) % photos.length; show(); }
+    function key(e) { if (e.key === 'Escape') close(); else if (e.key === 'ArrowLeft') go(-1); else if (e.key === 'ArrowRight') go(1); }
+    var bc = h('button', { type: 'button', class: 'lb-x', 'aria-label': ui('lb.close') }, ['×']);
+    bc.addEventListener('click', close);
+    box.appendChild(bc);
+    if (photos.length > 1) {
+      var bp = h('button', { type: 'button', class: 'lb-p', 'aria-label': ui('lb.prev') }, ['‹']), bn = h('button', { type: 'button', class: 'lb-n', 'aria-label': ui('lb.next') }, ['›']);
+      bp.addEventListener('click', function (e) { e.stopPropagation(); go(-1); }); bn.addEventListener('click', function (e) { e.stopPropagation(); go(1); });
+      box.appendChild(bp); box.appendChild(bn);
+    }
+    box.appendChild(img);
+    box.addEventListener('click', function (e) { if (e.target === box) close(); });
+    var sx = null;
+    box.addEventListener('touchstart', function (e) { sx = e.touches[0].clientX; }, { passive: true });
+    box.addEventListener('touchend', function (e) { if (sx === null || photos.length < 2) return; var dx = e.changedTouches[0].clientX - sx; if (Math.abs(dx) > 50) go(dx < 0 ? 1 : -1); sx = null; });
+    document.addEventListener('keydown', key);
+    document.body.style.overflow = 'hidden';
+    show(); document.body.appendChild(box); bc.focus();
+  }
+  function winnersBlock(txt) {
+    var wrap = h('div', { class: 'pe-win' }), any = false;
+    String(txt || '').split(/\r?\n/).forEach(function (line) {
+      line = line.trim(); if (!line) return;
+      if (line.charAt(0) === '#') { wrap.appendChild(h('h4', null, [line.replace(/^#+\s*/, '')])); any = true; return; }
+      var c = line.split('|').map(function (x) { return x.trim(); });
+      wrap.appendChild(h('div', { class: 'pe-row' }, [h('span', { class: 'pe-div' }, [c[0] || '']), h('b', null, [c[1] || '']), h('span', { class: 'pe-team' }, [c[2] || ''])]));
+      any = true;
+    });
+    return any ? wrap : null;
+  }
   function renderPrevious() {
-    var c = DATA.contact || {}, pv = DATA.previous || {};
-    fillGallery($('#gallery'), 0);
-    pastText();
-    var pa = $('#past-actions'); clear(pa);
+    var c = DATA.contact || {}, evs = pastEvents();
+    var id = decodeURIComponent((location.hash || '').replace(/^#/, '')), cur = null;
+    evs.forEach(function (e) { if (e._id === id) cur = e; });
+    var list = $('#pe-list'), det = $('#pe-detail'), pa = $('#past-actions');
+    clear(list); clear(det); clear(pa);
+    if (!window._peHash) { window._peHash = 1; window.addEventListener('hashchange', function () { renderPrevious(); markKa(); window.scrollTo(0, 0); }); }
+    if (cur) {
+      list.hidden = true; det.hidden = false;
+      det.appendChild(h('a', { class: 'pe-back', href: 'previous-events#' }, [ui('past.back')]));
+      det.appendChild(h('h2', { class: 'pe-title' }, [cur.name]));
+      var meta = [parts(cur.date) ? dateLong(cur.date) : '', cur.venue || ''].filter(Boolean).join(' · ');
+      if (meta) det.appendChild(h('p', { class: 'pe-meta' }, [meta]));
+      var shown = false;
+      if (tx(cur.summary)) { det.appendChild(h('p', { class: 'pe-sum' }, [tx(cur.summary)])); shown = true; }
+      if (url(cur.resultsUrl)) { det.appendChild(h('p', null, [ext(url(cur.resultsUrl), 'btn', [ui('past.resbtn')])])); shown = true; }
+      var wb = winnersBlock(cur.winners);
+      if (wb) { det.appendChild(h('h3', { class: 'pe-h' }, [ui('past.winners')])); det.appendChild(wb); shown = true; }
+      var ph = evPhotos(cur);
+      if (ph.length) {
+        det.appendChild(h('h3', { class: 'pe-h' }, [ui('past.photos')]));
+        var g = h('div', { class: 'gallery' });
+        ph.forEach(function (src, i) {
+          var b = h('button', { type: 'button', class: 'shot', 'aria-label': cur.name }, [h('img', { src: src, alt: cur.name, loading: 'lazy' })]);
+          b.addEventListener('click', function () { openLightbox(ph, i); });
+          g.appendChild(b);
+        });
+        det.appendChild(g); shown = true;
+      }
+      if (!shown) det.appendChild(h('p', { class: 'pe-sum' }, [ui('past.soon')]));
+      return;
+    }
+    det.hidden = true; list.hidden = false;
+    evs.forEach(function (e) {
+      var ph = evPhotos(e), meta = [parts(e.date) ? dateLong(e.date) : '', e.venue || ''].filter(Boolean).join(' · ');
+      var cover = ph.length ? h('img', { src: ph[0], alt: '', loading: 'lazy' }) : h('span', { class: 'pe-ph' }, [h('img', { src: 'logo-white.jpg', alt: '' })]);
+      list.appendChild(h('a', { class: 'pe-card', href: 'previous-events#' + e._id }, [
+        h('span', { class: 'pe-cover' }, [cover]),
+        h('span', { class: 'pe-body' }, [h('b', null, [e.name]), meta ? h('small', null, [meta]) : null, h('span', { class: 'pe-go' }, [ui('past.view')])])
+      ]));
+    });
     var fb = String(c.facebook || '').trim();
     if (fb) pa.appendChild(ext('https://www.facebook.com/' + encodeURIComponent(fb), 'btn ghost', [ui('past.fb')]));
-    if (url(pv.resultsUrl)) pa.appendChild(ext(url(pv.resultsUrl), 'btn ghost', [ui('past.res', { name: pv.name || '' })]));
   }
 
   function renderContact() {
