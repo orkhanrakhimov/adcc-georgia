@@ -395,8 +395,8 @@
           el('div', { class: 'row2' }, [field('Date (optional)', inp(p + '.date', { type: 'date' })), field('Venue', inp(p + '.venue'))]),
           bi('Summary (optional)', p + '.summary', { area: true }),
           field('Official results link (optional)', inp(p + '.resultsUrl', { type: 'url', ph: 'https://…' })),
-          field('Winners (optional)', inp(p + '.winners', { area: true, ph: '# Black belt\nMen -77 kg | Giorgi Beridze | Team name\nWomen -60 kg | Nino Kapanadze | Team name' }),
-            'One winner per line: Division | Winner | Team. A line starting with # becomes a heading.'),
+          field('Winners (optional)', inp(p + '.winners', { area: true, ph: '# Men -77 kg\n1 | Giorgi Beridze | Georgia · Team name\n2 | Name | Country · Team\n3 | Name | Country · Team' }),
+            'A line starting with # starts a division card. Under it, one line per medalist: 1 | Name | Country · Team (then 2 and 3). Other lines are shown as plain rows: Division | Winner | Team.'),
           eventPhotos(p + '.photos')
         ];
       }, function () { return { name: '', date: '', venue: '', summary: { en: '', ka: '' }, resultsUrl: '', winners: '', photos: [] }; }, 'Add event', 'Event')

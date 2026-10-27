@@ -475,6 +475,10 @@
   "View event →",
   "ღონისძიების ნახვა →"
  ],
+ "past.search": [
+  "Search athlete, team or country",
+  "მოძებნეთ სპორტსმენი, გუნდი ან ქვეყანა"
+ ],
  "past.back": [
   "← All events",
   "← ყველა ღონისძიება"
@@ -1187,11 +1191,11 @@
    },
    {
     "name": "ADCC Georgia Open 2025",
-    "date": "",
-    "venue": "Tbilisi",
+    "date": "2025-10-12",
+    "venue": "Rustavi Sport Palace, Rustavi",
     "summary": {
-     "en": "",
-     "ka": ""
+     "en": "Held on 12 October 2025 at Rustavi Sport Palace. Medals and diplomas went to the top three in every weight class, and the team with the most points won the Best Team Cup (5 points for 1st place, 3 for 2nd, 1 for 3rd). Admission was free for the public.",
+     "ka": "ჩატარდა 2025 წლის 12 ოქტომბერს რუსთავის სპორტის სასახლეში. თითოეულ წონით კატეგორიაში პირველ სამ ადგილს მედლები და დიპლომები გადაეცა, ხოლო ყველაზე მეტი ქულის მქონე გუნდმა მოიგო საუკეთესო გუნდის თასი (1-ლი ადგილი 5 ქულა, მე-2 – 3 ქულა, მე-3 – 1 ქულა). საზოგადოებისთვის შესვლა უფასო იყო."
     },
     "resultsUrl": "https://adcombat.com/adcc-events/adcc-georgia-open-2025/",
     "winners": "",
@@ -1774,16 +1778,38 @@
     show(); document.body.appendChild(box); bc.focus();
   }
   function winnersBlock(txt) {
-    var wrap = h('div', { class: 'pe-win' }), any = false;
+    // Lines: "# Division" starts a card; "1 | Name | Country · Team" is a podium row (1-3);
+    // any other "A | B | C" line is a plain row.
+    var blocks = [], cur = null;
     String(txt || '').split(/\r?\n/).forEach(function (line) {
       line = line.trim(); if (!line) return;
-      if (line.charAt(0) === '#') { wrap.appendChild(h('h4', null, [line.replace(/^#+\s*/, '')])); any = true; return; }
-      var c = line.split('|').map(function (x) { return x.trim(); });
-      wrap.appendChild(h('div', { class: 'pe-row' }, [h('span', { class: 'pe-div' }, [c[0] || '']), h('b', null, [c[1] || '']), h('span', { class: 'pe-team' }, [c[2] || ''])]));
-      any = true;
+      if (line.charAt(0) === '#') { cur = { t: line.replace(/^#+\s*/, ''), r: [] }; blocks.push(cur); return; }
+      if (!cur) { cur = { t: '', r: [] }; blocks.push(cur); }
+      cur.r.push(line.split('|').map(function (x) { return x.trim(); }));
     });
-    return any ? wrap : null;
+    if (!blocks.length) return null;
+    var wrap = h('div', { class: 'pe-win' });
+    var search = h('input', { type: 'search', class: 'pe-search', placeholder: ui('past.search'), 'aria-label': ui('past.search') });
+    var grid = h('div', { class: 'pe-divs' });
+    blocks.forEach(function (bl) {
+      var card = h('div', { class: 'pe-dv' });
+      if (bl.t) card.appendChild(h('h4', null, [bl.t]));
+      bl.r.forEach(function (c) {
+        var pl = /^[123]$/.test(c[0] || '');
+        if (pl) card.appendChild(h('div', { class: 'pe-pl' }, [h('i', { class: 'm' + c[0] }, [c[0]]), h('span', null, [h('b', null, [c[1] || '']), c[2] ? h('small', null, [c[2]]) : null])]));
+        else card.appendChild(h('div', { class: 'pe-row' }, [h('span', { class: 'pe-div' }, [c[0] || '']), h('b', null, [c[1] || '']), h('span', { class: 'pe-team' }, [c[2] || ''])]));
+      });
+      card._q = (bl.t + ' ' + card.textContent).toLowerCase();
+      grid.appendChild(card);
+    });
+    search.addEventListener('input', function () {
+      var q = search.value.trim().toLowerCase();
+      [].forEach.call(grid.children, function (c) { c.hidden = !!q && c._q.indexOf(q) < 0; });
+    });
+    wrap.appendChild(search); wrap.appendChild(grid);
+    return wrap;
   }
+
   function renderPrevious() {
     var c = DATA.contact || {}, evs = pastEvents();
     var id = decodeURIComponent((location.hash || '').replace(/^#/, '')), cur = null;
