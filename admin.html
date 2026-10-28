@@ -98,7 +98,7 @@
   </div>
 </main>
 
-<script src="site.js?v=202610282336"></script>
+<script src="site.js?v=202610282342"></script>
 <script>
 (function () {
   'use strict';
@@ -400,6 +400,9 @@
           eventPhotos(p + '.photos')
         ];
       }, function () { return { name: '', date: '', venue: '', summary: { en: '', ka: '' }, resultsUrl: '', winners: '', photos: [] }; }, 'Add event', 'Event')
+  ,
+      field('Team names (optional)', inp('previous.teamAliases', { area: true, ph: 'Old team name = New team name' }),
+        'Used for the Team rankings. If a team changed its name, write one line per old name: Old name = New name. Their medals are then counted together. Capital letters and quotation marks are ignored automatically.')
     ]));
 
     // backup

@@ -423,3 +423,14 @@ button.shot{padding:0;border:0;cursor:zoom-in;display:block;width:100%}
 .pe-hit:hover{border-color:var(--accent)}
 .pe-where{display:block;margin-top:8px;color:var(--muted,#9a9aa3)}
 #pe-gres{margin-bottom:32px}
+.pe-rankbox{margin-bottom:28px}
+.pe-tabs{display:flex;flex-wrap:wrap;gap:8px;margin:0 0 14px}
+.pe-tab{background:var(--panel);border:1px solid var(--line);color:var(--text);border-radius:999px;padding:7px 14px;font:inherit;font-size:.9rem;cursor:pointer}
+.pe-tab.on{border-color:var(--accent);background:#2a1417}
+.pe-rank{width:100%;border-collapse:collapse;background:var(--panel);border:1px solid var(--line);border-radius:8px;overflow:hidden}
+.pe-rank th,.pe-rank td{padding:9px 12px;text-align:center;border-bottom:1px solid var(--line)}
+.pe-rank th:nth-child(2),.pe-rank td:nth-child(2){text-align:left;width:100%}
+.pe-rank th{font-size:.8rem;color:var(--muted,#9a9aa3);text-transform:uppercase}
+.pe-rank .g{color:#e8b93a;font-weight:700}.pe-rank .s{color:#c3c6cc;font-weight:700}.pe-rank .b{color:#cd8a5a;font-weight:700}.pe-rank .tot{font-weight:700}
+.pe-tl{color:var(--text);text-decoration:none;font-weight:600}.pe-tl:hover{color:var(--accent)}
+.pe-note{color:var(--muted,#9a9aa3);font-size:.85rem;margin-top:8px}
