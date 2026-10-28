@@ -196,8 +196,8 @@
   "წესები და რეგულაციები"
  ],
  "hero.results": [
-  "Photos & results",
-  "ფოტოები და შედეგები"
+  "See results",
+  "შედეგების ნახვა"
  ],
  "hero.follow": [
   "Follow us",
@@ -1180,7 +1180,7 @@
    {
     "name": "ADCC Georgia Nationals Open 2026",
     "date": "2026-10-25",
-    "venue": "Gymnastic Venue, Tbilisi",
+    "venue": "Gymnastic Venue, Dighomi, Tbilisi",
     "summary": {
      "en": "",
      "ka": ""
@@ -1194,8 +1194,8 @@
     "date": "2025-10-12",
     "venue": "Rustavi Sport Palace, Rustavi",
     "summary": {
-     "en": "Held on 12 October 2025 at Rustavi Sport Palace. Medals and diplomas went to the top three in every weight class, and the team with the most points won the Best Team Cup (5 points for 1st place, 3 for 2nd, 1 for 3rd). Admission was free for the public.",
-     "ka": "ჩატარდა 2025 წლის 12 ოქტომბერს რუსთავის სპორტის სასახლეში. თითოეულ წონით კატეგორიაში პირველ სამ ადგილს მედლები და დიპლომები გადაეცა, ხოლო ყველაზე მეტი ქულის მქონე გუნდმა მოიგო საუკეთესო გუნდის თასი (1-ლი ადგილი 5 ქულა, მე-2 – 3 ქულა, მე-3 – 1 ქულა). საზოგადოებისთვის შესვლა უფასო იყო."
+     "en": "",
+     "ka": ""
     },
     "resultsUrl": "https://adcombat.com/adcc-events/adcc-georgia-open-2025/",
     "winners": "",
