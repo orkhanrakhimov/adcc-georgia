@@ -516,6 +516,18 @@
   "← All events",
   "← ყველა ღონისძიება"
  ],
+ "past.gsearch": [
+  "Search all events: athlete, team or country",
+  "მოძებნეთ ყველა ღონისძიებაში: სპორტსმენი, გუნდი ან ქვეყანა"
+ ],
+ "past.none": [
+  "No results found.",
+  "შედეგი ვერ მოიძებნა."
+ ],
+ "past.tot": [
+  "{g} gold · {s} silver · {b} bronze",
+  "{g} ოქრო · {s} ვერცხლი · {b} ბრინჯაო"
+ ],
  "past.winners": [
   "Winners",
   "გამარჯვებულები"
@@ -1847,6 +1859,46 @@
     return wrap;
   }
 
+  function podiumRows(evs) {
+    var out = [];
+    evs.forEach(function (e) {
+      var cur = '';
+      String(e.winners || '').split(/\r?\n/).forEach(function (line) {
+        line = line.trim(); if (!line) return;
+        if (line.charAt(0) === '#') { cur = line.replace(/^#+\s*/, ''); return; }
+        var c = line.split('|').map(function (x) { return x.trim(); });
+        if (/^[123]$/.test(c[0] || '') && c[1]) out.push({ p: +c[0], name: c[1], sub: c[2] || '', div: cur, ev: e });
+      });
+    });
+    return out;
+  }
+  function globalSearch(evs, list, box) {
+    var rows = podiumRows(evs);
+    if (!rows.length) return null;
+    var inp = h('input', { type: 'search', class: 'pe-search', placeholder: ui('past.gsearch'), 'aria-label': ui('past.gsearch') });
+    inp.addEventListener('input', function () {
+      var q = inp.value.trim().toLowerCase();
+      clear(box);
+      list.hidden = q.length > 1;
+      if (q.length < 2) { box.hidden = true; return; }
+      var hit = rows.filter(function (r) { return (r.name + ' ' + r.sub + ' ' + r.div).toLowerCase().indexOf(q) >= 0; });
+      box.hidden = false;
+      if (!hit.length) { box.appendChild(h('p', { class: 'pe-sum' }, [ui('past.none')])); return; }
+      var n = [0, 0, 0, 0]; hit.forEach(function (r) { n[r.p]++; });
+      box.appendChild(h('p', { class: 'pe-tot' }, [ui('past.tot', { g: n[1], s: n[2], b: n[3] })]));
+      var grid = h('div', { class: 'pe-divs' });
+      hit.slice(0, 120).forEach(function (r) {
+        grid.appendChild(h('a', { class: 'pe-dv pe-hit', href: 'previous-events#' + r.ev._id }, [
+          h('div', { class: 'pe-pl' }, [h('i', { class: 'm' + r.p }, [String(r.p)]), h('span', null, [h('b', null, [r.name]), r.sub ? h('small', null, [r.sub]) : null])]),
+          h('small', { class: 'pe-where' }, [(r.div ? r.div + ' · ' : '') + r.ev.name])
+        ]));
+      });
+      box.appendChild(grid);
+      markKa();
+    });
+    return inp;
+  }
+
   function renderPrevious() {
     var c = DATA.contact || {}, evs = pastEvents();
     var id = decodeURIComponent((location.hash || '').replace(/^#/, '')), cur = null;
@@ -1854,6 +1906,7 @@
     var list = $('#pe-list'), det = $('#pe-detail'), pa = $('#past-actions');
     clear(list); clear(det); clear(pa);
     if (!window._peHash) { window._peHash = 1; window.addEventListener('hashchange', function () { renderPrevious(); markKa(); window.scrollTo(0, 0); }); }
+    var gw0 = $('#pe-gsearch'), gr0 = $('#pe-gres'); if (gw0) { clear(gw0); } if (gr0) { gr0.hidden = true; }
     if (cur) {
       list.hidden = true; det.hidden = false;
       det.appendChild(h('a', { class: 'pe-back', href: 'previous-events#' }, [ui('past.back')]));
@@ -1880,6 +1933,8 @@
       return;
     }
     det.hidden = true; list.hidden = false;
+    var gbox = $('#pe-gres'), gwrap = $('#pe-gsearch');
+    if (gbox && gwrap) { clear(gwrap); gbox.hidden = true; clear(gbox); var gi = globalSearch(evs, list, gbox); if (gi) gwrap.appendChild(gi); }
     evs.forEach(function (e) {
       var ph = evPhotos(e), meta = [parts(e.date) ? dateLong(e.date) : '', e.venue || ''].filter(Boolean).join(' · ');
       var cover = ph.length ? h('img', { src: ph[0], alt: '', loading: 'lazy' }) : h('span', { class: 'pe-ph' }, [h('img', { src: 'logo-white.jpg', alt: '' })]);
