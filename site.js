@@ -98,37 +98,38 @@
  "privacy.t4": "რა ინფორმაციას ვაგროვებთ",
  "privacy.t5": "ჩვენ ვაგროვებთ მხოლოდ იმას, რასაც თავად გვიგზავნით:",
  "privacy.t6": "განაცხადის ფორმები („შემოგვიერთდით გუნდში“): თქვენი სახელი და გვარი, ელფოსტა, ტელეფონი ან WhatsApp ნომერი, ქალაქი, ენები, სოციალური ქსელის ან პორტფოლიოს ბმულები, გამოცდილება და ჩვენს კითხვებზე პასუხები.",
- "privacy.t7": "შეტყობინებები: ყველაფერი, რასაც გვწერთ ელფოსტით, WhatsApp-ით, Instagram-ით ან Facebook-ით, მათ შორის საკონტაქტო მონაცემები და, ბილეთების ან მერჩის შემთხვევაში, შეკვეთის დეტალები.",
- "privacy.t8": "ეს ვებგვერდი არ იყენებს სარეკლამო ან თვალთვალის ქუქი-ფაილებს და არ აქვს ანალიტიკა. თქვენი ენის არჩევანი ინახება მხოლოდ თქვენს ბრაუზერში და ჩვენთან არ იგზავნება.",
- "privacy.t9": "როგორ ვიყენებთ თქვენს ინფორმაციას",
- "privacy.t10": "თქვენი განაცხადის განსახილველად და მსაჯების, საორგანიზაციო გუნდის წევრებისა და მედიააკრედიტაციის შესახებ გადაწყვეტილების მისაღებად.",
- "privacy.t11": "თქვენთან დასაკავშირებლად განაცხადის, ღონისძიების ან თქვენი შეკითხვის თაობაზე.",
- "privacy.t12": "ჩვენი ღონისძიებების ორგანიზებისა და ჩასატარებლად.",
- "privacy.t13": "ჩვენ არ ვყიდით თქვენს ინფორმაციას და არ გიგზავნით სარეკლამო შეტყობინებებს, თუ ამას თავად არ მოგვთხოვთ.",
- "privacy.t14": "სამართლებრივი საფუძველი",
- "privacy.t15": "თქვენს ინფორმაციას ვამუშავებთ თქვენი თანხმობის საფუძველზე, რომელსაც გვაძლევთ ფორმებზე ველის მონიშვნით, და თქვენს მოთხოვნებზე საპასუხოდ. თანხმობის გამოხმობა ნებისმიერ დროს შეგიძლიათ.",
- "privacy.t16": "ვის გადაეცემა თქვენი ინფორმაცია",
- "privacy.t17": "ვებგვერდის მუშაობისთვის ვიყენებთ სანდო სერვისებს. ისინი მონაცემებს ამუშავებენ მხოლოდ თავიანთი სერვისის გასაწევად:",
- "privacy.t18": "Web3Forms განაცხადის ფორმებს ჩვენს ელფოსტაზე აგზავნის.",
- "privacy.t19": "Google (Gmail) ინახავს ჩვენს ელფოსტას.",
- "privacy.t20": "GitHub (GitHub Pages) ინახავს ამ ვებგვერდს და შეიძლება აღრიცხავდეს ტექნიკურ მონაცემებს, მაგალითად თქვენს IP მისამართს, ვიზიტისას.",
- "privacy.t21": "Google Fonts გვთავაზობს ვებგვერდის შრიფტებს, ამიტომ თქვენი ბრაუზერი უკავშირდება Google-ის სერვერებს და მათთვის თქვენი IP მისამართი ჩანს.",
- "privacy.t22": "Smoothcomp ღონისძიების რეგისტრაციას თავის ვებგვერდზე და საკუთარი კონფიდენციალურობის პოლიტიკით ამუშავებს.",
- "privacy.t23": "WhatsApp, Instagram და Facebook (Meta) ამუშავებენ თქვენს შეტყობინებებს, თუ ჩვენ მათ მეშვეობით გვიკავშირდებით.",
- "privacy.t24": "ინფორმაცია შეიძლება გავცეთ იმ შემთხვევაშიც, როცა ამას კანონი მოითხოვს. პერსონალურ მონაცემებს არ ვყიდით.",
- "privacy.t25": "რამდენ ხანს ვინახავთ",
- "privacy.t26": "განაცხადებსა და შეტყობინებებს ვინახავთ მხოლოდ იმდენ ხანს, რამდენიც საჭიროა თქვენი განაცხადის განსახილველად, ღონისძიებების დასაგეგმად და თქვენთვის პასუხის გასაცემად. ვშლით, როცა აღარ გვჭირდება ან როცა ამას მოგვთხოვთ.",
- "privacy.t27": "თქვენი უფლებები",
- "privacy.t28": "შეგიძლიათ მოგვთხოვოთ, გაჩვენოთ თქვენ შესახებ არსებული ინფორმაცია, შევასწოროთ ის, წავშალოთ ან შევწყვიტოთ მისი გამოყენება, ასევე ნებისმიერ დროს გამოიხმოთ თანხმობა. მოგვწერეთ: <a class=\"js-email\" href=\"#\"></a> და რაც შეიძლება სწრაფად გიპასუხებთ. გაქვთ უფლება, ასევე მიმართოთ საქართველოს პერსონალურ მონაცემთა დაცვის სამსახურს.",
- "privacy.t29": "ფოტო და ვიდეო ჩვენს ღონისძიებებზე",
- "privacy.t30": "ჩვენი ღონისძიებები საჯაროა. ჩვენ და აკრედიტებულ მედიას შეგვიძლია გადავიღოთ ფოტოები და ვიდეოები ღონისძიებებზე და გამოვაქვეყნოთ ისინი ამ ვებგვერდზე და ჩვენს სოციალურ ქსელებში ADCC Georgia-ს პოპულარიზაციისთვის. თუ არ გსურთ ფოტოზე ან ვიდეოზე გამოჩნდეთ, ან გსურთ მისი წაშლა, მოგვწერეთ ელფოსტით და მასზე ბმულს გამოგვიგზავნეთ — წავშლით.",
- "privacy.t31": "უსაფრთხოება და არასრულწლოვნები",
- "privacy.t32": "თქვენი ინფორმაციის დასაცავად გონივრულ ზომებს ვიღებთ, თუმცა გადაცემისა და შენახვის არც ერთი მეთოდი არ არის სრულად უსაფრთხო. ამ ვებგვერდზე არსებული განაცხადის ფორმები განკუთვნილია ზრდასრულებისთვის (18 წლის და უფროსი). სპორტსმენები რეგისტრაციას გადიან Smoothcomp-ზე.",
- "privacy.t33": "გარე ბმულები",
- "privacy.t34": "ეს ვებგვერდი შეიცავს ბმულებს სხვა საიტებზე, მაგალითად Smoothcomp, Facebook, Instagram და WhatsApp. ჩვენ არ ვართ პასუხისმგებელი მათ კონფიდენციალურობის პრაქტიკაზე.",
- "privacy.t35": "პოლიტიკის ცვლილებები",
- "privacy.t36": "ჩვენ შეიძლება განვაახლოთ ეს პოლიტიკა. გვერდის თავში მითითებული თარიღი აჩვენებს ბოლო ცვლილების დროს.",
- "privacy.t37": "ინგლისური და ქართული ტექსტის განსხვავების შემთხვევაში უპირატესობა ენიჭება ინგლისურ ვერსიას.",
+ "privacy.t7": "მომდევნო ღონისძიების შეტყობინების სია: თქვენი ელფოსტა და, თუ მიუთითებთ, სახელი, რათა შემდეგი ღონისძიების გამოცხადებისას გაგაგებინოთ. ნებისმიერ დროს შეგიძლიათ მოითხოვოთ თქვენი წაშლა.",
+ "privacy.t8": "შეტყობინებები: ყველაფერი, რასაც გვწერთ ელფოსტით, WhatsApp-ით, Instagram-ით ან Facebook-ით, მათ შორის საკონტაქტო მონაცემები და, ბილეთების ან მერჩის შემთხვევაში, შეკვეთის დეტალები.",
+ "privacy.t9": "ეს ვებგვერდი არ იყენებს სარეკლამო ან თვალთვალის ქუქი-ფაილებს და არ აქვს ანალიტიკა. თქვენი ენის არჩევანი ინახება მხოლოდ თქვენს ბრაუზერში და ჩვენთან არ იგზავნება.",
+ "privacy.t10": "როგორ ვიყენებთ თქვენს ინფორმაციას",
+ "privacy.t11": "თქვენი განაცხადის განსახილველად და მსაჯების, საორგანიზაციო გუნდის წევრებისა და მედიააკრედიტაციის შესახებ გადაწყვეტილების მისაღებად.",
+ "privacy.t12": "თქვენთან დასაკავშირებლად განაცხადის, ღონისძიების ან თქვენი შეკითხვის თაობაზე.",
+ "privacy.t13": "ჩვენი ღონისძიებების ორგანიზებისა და ჩასატარებლად.",
+ "privacy.t14": "ჩვენ არ ვყიდით თქვენს ინფორმაციას და არ გიგზავნით სარეკლამო შეტყობინებებს, თუ ამას თავად არ მოგვთხოვთ.",
+ "privacy.t15": "სამართლებრივი საფუძველი",
+ "privacy.t16": "თქვენს ინფორმაციას ვამუშავებთ თქვენი თანხმობის საფუძველზე, რომელსაც გვაძლევთ ფორმებზე ველის მონიშვნით, და თქვენს მოთხოვნებზე საპასუხოდ. თანხმობის გამოხმობა ნებისმიერ დროს შეგიძლიათ.",
+ "privacy.t17": "ვის გადაეცემა თქვენი ინფორმაცია",
+ "privacy.t18": "ვებგვერდის მუშაობისთვის ვიყენებთ სანდო სერვისებს. ისინი მონაცემებს ამუშავებენ მხოლოდ თავიანთი სერვისის გასაწევად:",
+ "privacy.t19": "Web3Forms განაცხადის ფორმებს ჩვენს ელფოსტაზე აგზავნის.",
+ "privacy.t20": "Google (Gmail) ინახავს ჩვენს ელფოსტას.",
+ "privacy.t21": "GitHub (GitHub Pages) ინახავს ამ ვებგვერდს და შეიძლება აღრიცხავდეს ტექნიკურ მონაცემებს, მაგალითად თქვენს IP მისამართს, ვიზიტისას.",
+ "privacy.t22": "Google Fonts გვთავაზობს ვებგვერდის შრიფტებს, ამიტომ თქვენი ბრაუზერი უკავშირდება Google-ის სერვერებს და მათთვის თქვენი IP მისამართი ჩანს.",
+ "privacy.t23": "Smoothcomp ღონისძიების რეგისტრაციას თავის ვებგვერდზე და საკუთარი კონფიდენციალურობის პოლიტიკით ამუშავებს.",
+ "privacy.t24": "WhatsApp, Instagram და Facebook (Meta) ამუშავებენ თქვენს შეტყობინებებს, თუ ჩვენ მათ მეშვეობით გვიკავშირდებით.",
+ "privacy.t25": "ინფორმაცია შეიძლება გავცეთ იმ შემთხვევაშიც, როცა ამას კანონი მოითხოვს. პერსონალურ მონაცემებს არ ვყიდით.",
+ "privacy.t26": "რამდენ ხანს ვინახავთ",
+ "privacy.t27": "განაცხადებსა და შეტყობინებებს ვინახავთ მხოლოდ იმდენ ხანს, რამდენიც საჭიროა თქვენი განაცხადის განსახილველად, ღონისძიებების დასაგეგმად და თქვენთვის პასუხის გასაცემად. ვშლით, როცა აღარ გვჭირდება ან როცა ამას მოგვთხოვთ.",
+ "privacy.t28": "თქვენი უფლებები",
+ "privacy.t29": "შეგიძლიათ მოგვთხოვოთ, გაჩვენოთ თქვენ შესახებ არსებული ინფორმაცია, შევასწოროთ ის, წავშალოთ ან შევწყვიტოთ მისი გამოყენება, ასევე ნებისმიერ დროს გამოიხმოთ თანხმობა. მოგვწერეთ: <a class=\"js-email\" href=\"#\"></a> და რაც შეიძლება სწრაფად გიპასუხებთ. გაქვთ უფლება, ასევე მიმართოთ საქართველოს პერსონალურ მონაცემთა დაცვის სამსახურს.",
+ "privacy.t30": "ფოტო და ვიდეო ჩვენს ღონისძიებებზე",
+ "privacy.t31": "ჩვენი ღონისძიებები საჯაროა. ჩვენ და აკრედიტებულ მედიას შეგვიძლია გადავიღოთ ფოტოები და ვიდეოები ღონისძიებებზე და გამოვაქვეყნოთ ისინი ამ ვებგვერდზე და ჩვენს სოციალურ ქსელებში ADCC Georgia-ს პოპულარიზაციისთვის. თუ არ გსურთ ფოტოზე ან ვიდეოზე გამოჩნდეთ, ან გსურთ მისი წაშლა, მოგვწერეთ ელფოსტით და მასზე ბმულს გამოგვიგზავნეთ — წავშლით.",
+ "privacy.t32": "უსაფრთხოება და არასრულწლოვნები",
+ "privacy.t33": "თქვენი ინფორმაციის დასაცავად გონივრულ ზომებს ვიღებთ, თუმცა გადაცემისა და შენახვის არც ერთი მეთოდი არ არის სრულად უსაფრთხო. ამ ვებგვერდზე არსებული განაცხადის ფორმები განკუთვნილია ზრდასრულებისთვის (18 წლის და უფროსი). სპორტსმენები რეგისტრაციას გადიან Smoothcomp-ზე.",
+ "privacy.t34": "გარე ბმულები",
+ "privacy.t35": "ეს ვებგვერდი შეიცავს ბმულებს სხვა საიტებზე, მაგალითად Smoothcomp, Facebook, Instagram და WhatsApp. ჩვენ არ ვართ პასუხისმგებელი მათ კონფიდენციალურობის პრაქტიკაზე.",
+ "privacy.t36": "პოლიტიკის ცვლილებები",
+ "privacy.t37": "ჩვენ შეიძლება განვაახლოთ ეს პოლიტიკა. გვერდის თავში მითითებული თარიღი აჩვენებს ბოლო ცვლილების დროს.",
+ "privacy.t38": "ინგლისური და ქართული ტექსტის განსხვავების შემთხვევაში უპირატესობა ენიჭება ინგლისურ ვერსიას.",
  "title.privacy": "კონფიდენციალურობის პოლიტიკა – ADCC Georgia",
  "privacy.h1": "კონფიდენციალურობის <em>პოლიტიკა</em>",
  "terms.intro": "ამ ვებგვერდით სარგებლობით თქვენ ეთანხმებით ამ პირობებს. თუ არ ეთანხმებით, გთხოვთ, ნუ გამოიყენებთ ვებგვერდს.",
@@ -318,6 +319,34 @@
  "over.note": [
   "The information on this page is from the event that has finished. The next event will be announced here. Follow us on social media to be the first to know.",
   "ამ გვერდზე მოცემული ინფორმაცია დასრულებულ ღონისძიებას ეხება. შემდეგი ღონისძიება აქ გამოვაცხადებთ. თვალი ადევნეთ ჩვენს სოციალურ ქსელებს, რომ პირველებმა გაიგოთ."
+ ],
+ "nt.h": [
+  "Get notified about the next event",
+  "მიიღეთ შეტყობინება შემდეგ ღონისძიებაზე"
+ ],
+ "nt.p": [
+  "Leave your email and we will message you as soon as the next ADCC Georgia event and registration are announced. No spam.",
+  "დატოვეთ ელფოსტა და შემდეგი ADCC Georgia-ს ღონისძიებისა და რეგისტრაციის გამოცხადებისთანავე მოგწერთ. სპამი არ იქნება."
+ ],
+ "nt.email": [
+  "Email",
+  "ელფოსტა"
+ ],
+ "nt.name": [
+  "Name (optional)",
+  "სახელი (სურვილისამებრ)"
+ ],
+ "nt.send": [
+  "Notify me",
+  "შემატყობინეთ"
+ ],
+ "nt.ok.p": [
+  "You are on the list. We will email you when the next event is announced.",
+  "თქვენ სიაში ხართ. შემდეგი ღონისძიების გამოცხადებისთანავე მოგწერთ ელფოსტაზე."
+ ],
+ "nt.consent": [
+  "I agree that ADCC Georgia may use my email only to tell me about upcoming events. I can ask to be removed at any time.",
+  "ვეთანხმები, რომ ADCC Georgia-მ ჩემი ელფოსტა გამოიყენოს მხოლოდ მომავალი ღონისძიებების შესახებ შესატყობინებლად. ნებისმიერ დროს შემიძლია მოვითხოვო წაშლა."
  ],
  "lk.shop.t": [
   "Merch & gear",
@@ -2346,6 +2375,60 @@
       });
   }
 
+  var ntVals = {}, ntSent = false;
+  function renderNotify() {
+    var J = DATA.join || {};
+    $$('.notify-slot').forEach(function (box) {
+      clear(box);
+      if (ntSent) { box.appendChild(h('div', { class: 'card join-ok' }, [h('h3', null, [ui('join.ok.t')]), h('p', null, [ui('nt.ok.p')])])); return; }
+      var fields = [
+        { n: 'email', t: 'email', req: 1, l: L2('nt.email'), ac: 'email' },
+        { n: 'name', t: 'text', l: L2('nt.name'), ac: 'name' },
+        { n: 'privacy', t: 'consent', req: 1, text: L2('nt.consent') }
+      ];
+      var errs = {}, form = h('form', { class: 'jform card notify', novalidate: 'novalidate' }, [h('h2', { class: 'jt' }, [ui('nt.h')]), h('p', { class: 'jnote' }, [ui('nt.p')])]);
+      fields.forEach(function (f) { form.appendChild(jField(f, ntVals, 'nt', errs)); });
+      form.appendChild(h('input', { type: 'text', name: 'website2', class: 'hp', tabindex: '-1', autocomplete: 'off', 'aria-hidden': 'true' }));
+      var msg = h('p', { class: 'jmsg', role: 'status' }), btn = h('button', { type: 'submit', class: 'btn' }, [ui('nt.send')]);
+      form.appendChild(msg); form.appendChild(h('div', { class: 'actions' }, [btn]));
+      form.addEventListener('submit', function (e) { e.preventDefault(); sendNotify(fields, errs, form, btn, msg, J); });
+      box.appendChild(form);
+    });
+  }
+  function sendNotify(fields, errs, form, btn, msg, J) {
+    var first = null;
+    fields.forEach(function (f) {
+      var v = ntVals[f.n], m = '', empty = f.t === 'consent' ? !v : !String(v || '').trim();
+      if (f.req && empty) m = f.t === 'consent' ? ui('join.agree') : ui('join.req');
+      else if (!empty && f.t === 'email' && !/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(String(v).trim())) m = ui('join.bademail');
+      var e = errs[f.n]; e.el.textContent = m; e.el.hidden = !m;
+      e.box.className = e.box.className.replace(' bad', '') + (m ? ' bad' : '');
+      if (m && !first) first = e.box;
+    });
+    msg.textContent = '';
+    if (first) { msg.textContent = ui('join.fix'); return; }
+    if (String((form.elements.website2 || {}).value || '').trim()) { ntSent = true; renderNotify(); markKa(); return; }
+    var email = String(ntVals.email).trim(), key = String(J.accessKey || '').trim(), mail = String((DATA.contact || {}).email || '').trim();
+    var subject = 'ADCC Georgia – Next event notify – ' + email;
+    function viaEmail() { window.location.href = 'mailto:' + mail + '?subject=' + encodeURIComponent(subject) + '&body=' + encodeURIComponent('Please notify me about the next event.\nEmail: ' + email); }
+    if (!key) { if (mail) viaEmail(); return; }
+    btn.disabled = true; btn.textContent = ui('join.sending');
+    var data = { access_key: key, subject: subject, from_name: 'ADCC Georgia website', email: email, botcheck: false, 'Form': 'Next event notification list', 'Name': String(ntVals.name || '').trim(), 'Site language': lang === 'ka' ? 'Georgian' : 'English' };
+    fetch('https://api.web3forms.com/submit', { method: 'POST', headers: { 'Content-Type': 'application/json', 'Accept': 'application/json' }, body: JSON.stringify(data) })
+      .then(function (res) { return res.json().catch(function () { return {}; }).then(function (j) { return res.ok && j.success !== false; }); })
+      .catch(function () { return false; })
+      .then(function (ok) {
+        if (ok) { ntSent = true; ntVals = {}; renderNotify(); markKa(); return; }
+        btn.disabled = false; btn.textContent = ui('nt.send'); msg.textContent = ui('join.err');
+        if (mail && !$('.jmail', form)) {
+          var a = h('button', { type: 'button', class: 'btn ghost sm jmail' }, [ui('join.mail')]);
+          a.addEventListener('click', viaEmail);
+          msg.parentNode.appendChild(h('div', { class: 'actions', style: 'margin-top:10px' }, [a]));
+        }
+        markKa();
+      });
+  }
+
   function renderAll() {
     if (!DATA) return;
     var ph = phase(DATA.event, Date.now());
@@ -2362,6 +2445,7 @@
     if (page === 'tickets') renderTickets(ph);
     if (page === 'shop') renderShop();
     if (page === 'join') renderJoin();
+    if (page === 'index' || page === 'event' || page === 'previous-events') renderNotify();
     tickCountdown(true);
     markKa();
     document.body.classList.remove('loading');
