@@ -311,9 +311,13 @@
   "Message us on WhatsApp",
   "მოგვწერეთ WhatsApp-ზე"
  ],
+ "over.t": [
+  "This event is over",
+  "ეს ღონისძიება დასრულდა"
+ ],
  "over.note": [
-  "This event has finished. Follow us on social media for the next one.",
-  "ეს ღონისძიება დასრულდა. შემდეგი ღონისძიების შესახებ იხილეთ ჩვენს სოციალურ ქსელებში."
+  "The information on this page is from the event that has finished. The next event will be announced here. Follow us on social media to be the first to know.",
+  "ამ გვერდზე მოცემული ინფორმაცია დასრულებულ ღონისძიებას ეხება. შემდეგი ღონისძიება აქ გამოვაცხადებთ. თვალი ადევნეთ ჩვენს სოციალურ ქსელებს, რომ პირველებმა გაიგოთ."
  ],
  "lk.shop.t": [
   "Merch & gear",
@@ -1433,7 +1437,9 @@
   function overNote(ph) {
     var n = $('#over-note'); if (!n) return;
     n.hidden = ph.name !== 'over';
-    n.textContent = ui('over.note');
+    clear(n);
+    n.appendChild(h('strong', { style: 'display:block;margin-bottom:4px' }, [ui('over.t')]));
+    n.appendChild(h('span', null, [ui('over.note')]));
   }
 
   function row(dl, label, content) {
@@ -1730,6 +1736,8 @@
 
   function renderEvent(ph) {
     eventCard(ph);
+    overNote(ph);
+    var how = $('#ev-how'); if (how) how.hidden = ph.name === 'over';
     renderCal(ph);
     renderShare(ph);
     hubCards($('#hub-cards'), ['weighin', 'tickets', 'rules']);
