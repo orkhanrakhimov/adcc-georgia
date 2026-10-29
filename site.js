@@ -528,22 +528,6 @@
   "{g} gold · {s} silver · {b} bronze",
   "{g} ოქრო · {s} ვერცხლი · {b} ბრინჯაო"
  ],
- "past.rank": [
-  "Team rankings",
-  "გუნდების რეიტინგი"
- ],
- "past.rank.all": [
-  "All events",
-  "ყველა ღონისძიება"
- ],
- "past.rank.team": [
-  "Team",
-  "გუნდი"
- ],
- "past.rank.note": [
-  "Ranked by gold, then silver, then bronze medals. Click a team to see its medals.",
-  "რეიტინგი ითვლება ოქროს, შემდეგ ვერცხლის, შემდეგ ბრინჯაოს მედლების მიხედვით. გუნდზე დაჭერით ნახავთ მის მედლებს."
- ],
  "past.winners": [
   "Winners",
   "გამარჯვებულები"
@@ -1237,7 +1221,6 @@
  "previous": {
   "name": "ADCC Georgia Open 2025",
   "resultsUrl": "https://adcombat.com/adcc-events/adcc-georgia-open-2025/",
-  "teamAliases": "",
   "events": [
    {
     "name": "ADCC Georgia Nationals Open 2026",
@@ -1916,59 +1899,6 @@
     return inp;
   }
 
-  function teamKey(s) { return String(s || '').toLowerCase().replace(/["'`\u201c\u201d\u2018\u2019]/g, '').replace(/\s+/g, ' ').trim(); }
-  function teamRank(evs, evFilter) {
-    var al = {};
-    String((DATA.previous || {}).teamAliases || '').split(/\r?\n/).forEach(function (l) {
-      var i = l.indexOf('='); if (i < 1) return;
-      var a = teamKey(l.slice(0, i)), c = l.slice(i + 1).trim(); if (a && c) al[a] = c;
-    });
-    var map = {};
-    podiumRows(evs).forEach(function (r) {
-      if (evFilter && r.ev !== evFilter) return;
-      var s = r.sub.split(' \u00b7 '); if (s.length < 2) return;
-      var team = s.slice(1).join(' \u00b7 ').trim(), k = teamKey(team); if (!k) return;
-      if (al[k]) { team = al[k]; k = teamKey(team); }
-      var o = map[k] || (map[k] = { team: team, m: [0, 0, 0, 0] }); o.m[r.p]++;
-    });
-    return Object.keys(map).map(function (k) { return map[k]; }).sort(function (a, b) {
-      return b.m[1] - a.m[1] || b.m[2] - a.m[2] || b.m[3] - a.m[3] || (a.team.toLowerCase() < b.team.toLowerCase() ? -1 : 1);
-    });
-  }
-  function renderRank(evs) {
-    var box = $('#pe-rank'); if (!box) return; clear(box);
-    if (!podiumRows(evs).length) return;
-    var sel = null, wrap = h('div', { class: 'pe-rankbox' }), tabs = h('div', { class: 'pe-tabs' }), tbl = h('div');
-    function draw() {
-      clear(tbl);
-      var rows = teamRank(evs, sel), t = h('table', { class: 'pe-rank' });
-      t.appendChild(h('thead', null, [h('tr', null, [h('th', null, ['#']), h('th', null, [ui('past.rank.team')]), h('th', { class: 'g' }, ['1']), h('th', { class: 's' }, ['2']), h('th', { class: 'b' }, ['3']), h('th', null, ['\u03a3'])])]));
-      var tb = h('tbody');
-      rows.slice(0, 30).forEach(function (r, i) {
-        var a = h('a', { href: '#', class: 'pe-tl' }, [r.team]);
-        a.addEventListener('click', function (e) {
-          e.preventDefault();
-          var inp = $('#pe-gsearch input'); if (!inp) return;
-          inp.value = r.team; inp.dispatchEvent(new Event('input')); inp.scrollIntoView({ behavior: 'smooth', block: 'center' });
-        });
-        tb.appendChild(h('tr', null, [h('td', null, [String(i + 1)]), h('td', null, [a]), h('td', { class: 'g' }, [String(r.m[1])]), h('td', { class: 's' }, [String(r.m[2])]), h('td', { class: 'b' }, [String(r.m[3])]), h('td', { class: 'tot' }, [String(r.m[1] + r.m[2] + r.m[3])])]));
-      });
-      t.appendChild(tb); tbl.appendChild(t);
-      [].forEach.call(tabs.children, function (b, i) { b.className = 'pe-tab' + ((i === 0 ? !sel : evs[i - 1] === sel) ? ' on' : ''); });
-    }
-    function tab(label, ev) {
-      var b = h('button', { type: 'button', class: 'pe-tab' }, [label]);
-      b.addEventListener('click', function () { sel = ev; draw(); });
-      tabs.appendChild(b);
-    }
-    tab(ui('past.rank.all'), null);
-    evs.forEach(function (e) { tab(e.name, e); });
-    wrap.appendChild(h('h3', { class: 'pe-h' }, [ui('past.rank')]));
-    wrap.appendChild(tabs); wrap.appendChild(tbl);
-    wrap.appendChild(h('p', { class: 'pe-note' }, [ui('past.rank.note')]));
-    box.appendChild(wrap); draw();
-  }
-
   function renderPrevious() {
     var c = DATA.contact || {}, evs = pastEvents();
     var id = decodeURIComponent((location.hash || '').replace(/^#/, '')), cur = null;
@@ -1976,7 +1906,7 @@
     var list = $('#pe-list'), det = $('#pe-detail'), pa = $('#past-actions');
     clear(list); clear(det); clear(pa);
     if (!window._peHash) { window._peHash = 1; window.addEventListener('hashchange', function () { renderPrevious(); markKa(); window.scrollTo(0, 0); }); }
-    var gw0 = $('#pe-gsearch'), gr0 = $('#pe-gres'), rk0 = $('#pe-rank'); if (rk0) clear(rk0); if (gw0) { clear(gw0); } if (gr0) { gr0.hidden = true; }
+    var gw0 = $('#pe-gsearch'), gr0 = $('#pe-gres'); if (gw0) { clear(gw0); } if (gr0) { gr0.hidden = true; }
     if (cur) {
       list.hidden = true; det.hidden = false;
       det.appendChild(h('a', { class: 'pe-back', href: 'previous-events#' }, [ui('past.back')]));
@@ -2003,7 +1933,6 @@
       return;
     }
     det.hidden = true; list.hidden = false;
-    renderRank(evs);
     var gbox = $('#pe-gres'), gwrap = $('#pe-gsearch');
     if (gbox && gwrap) { clear(gwrap); gbox.hidden = true; clear(gbox); var gi = globalSearch(evs, list, gbox); if (gi) gwrap.appendChild(gi); }
     evs.forEach(function (e) {
