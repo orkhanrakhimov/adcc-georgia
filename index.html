@@ -23,7 +23,7 @@
 <meta name="twitter:image" content="https://www.adcc.ge/og.jpg">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Noto+Sans+Georgian:wght@400;500;600;700&family=Oswald:wght@500;600;700&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="style.css?v=202610291308">
+<link rel="stylesheet" href="style.css?v=202611071732">
 <noscript><style>body.loading main{visibility:visible}</style></noscript>
 </head>
 <body data-page="index" class="loading">
@@ -54,7 +54,14 @@
 
 <main id="top">
 
-  <section class="hero">
+  <section class="hero" id="hero">
+    <div class="hero-art" id="hero-art" hidden>
+      <picture class="hero-cover">
+        <source id="hero-cover-m" media="(max-width: 700px)" srcset="">
+        <img id="hero-cover-img" src="" alt="" width="1920" height="1080" fetchpriority="high">
+      </picture>
+      <div class="cover-presents" id="cover-presents"></div>
+    </div>
     <div class="wrap">
       <div class="eyebrow" id="hero-eyebrow"></div>
       <h1 id="hero-title"></h1>
@@ -128,6 +135,6 @@
     if(m) location.replace(m);
   })();
 </script>
-<script src="site.js?v=202610291308"></script>
+<script src="site.js?v=202611071732"></script>
 </body>
 </html>

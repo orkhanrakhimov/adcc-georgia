@@ -98,7 +98,7 @@
   </div>
 </main>
 
-<script src="site.js?v=202610291308"></script>
+<script src="site.js?v=202611071732"></script>
 <script>
 (function () {
   'use strict';
@@ -266,8 +266,12 @@
 
     root.appendChild(section('Event', true, [
       field('Event name', inp('event.name'), 'Shown as the big title and on every page.'),
-      field('Highlighted words (red part of the title)', inp('event.highlight'), 'Optional. Must be part of the event name, e.g. “Nationals Open”.'),
-      el('div', { class: 'row2' }, [field('Date', inp('event.date', { type: 'date' })), field('Start time', inp('event.time', { type: 'time' }), 'Tbilisi time')]),
+      bi('Line above the name (optional)', 'event.presents'),
+      field('Highlighted words (red part of the title)', inp('event.highlight'), 'Optional. Must be part of the event name. When the home page has a cover image, these words are already in the picture, so they are hidden in the text title.'),
+      field('Home page cover image, wide (desktop)', inp('event.cover.wide', { ph: 'photos/…' }), 'Path of an image uploaded to the site, 1920×1080. Leave both cover fields empty for a text-only home page.'),
+      field('Home page cover image, tall (mobile)', inp('event.cover.mobile', { ph: 'photos/…' }), '1080×1920.'),
+      bi('Date text while the exact date is not set', 'event.whenText'),
+      el('div', { class: 'row2' }, [field('Date', inp('event.date', { type: 'date' }), 'Leave EMPTY while the date is to be announced. The site then shows “coming soon” on the Event, Weigh-in and Tickets pages.'), field('Start time', inp('event.time', { type: 'time' }), 'Tbilisi time')]),
       field('End time (for the calendar button)', inp('event.endTime', { type: 'time' }), 'Tbilisi time. If empty, the calendar entry lasts 8 hours.'),
       field('Venue name', inp('event.venue')),
       bi('Address', 'event.address'),
@@ -497,8 +501,8 @@
   function validate(d) {
     var e = [], T = /^\d{1,2}:\d{2}$/, D = /^\d{4}-\d{2}-\d{2}$/;
     if (!d.event.name) e.push('Event name is required.');
-    if (!D.test(d.event.date)) e.push('Event date is required.');
-    if (!T.test(d.event.time)) e.push('Event start time is required.');
+    if (d.event.date && !D.test(d.event.date)) e.push('Event date is not valid.');
+    if (d.event.date && !T.test(d.event.time)) e.push('Event start time is required when a date is set.');
     [['mapUrl', 'Map link'], ['registerUrl', 'Registration link'], ['rulesUrl', 'Official rules link']].forEach(function (x) {
       var v = d.event[x[0]]; if (v && !/^https?:\/\//i.test(v)) e.push(x[1] + ' must start with https://');
     });

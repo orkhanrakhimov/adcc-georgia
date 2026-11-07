@@ -434,3 +434,22 @@ button.shot{padding:0;border:0;cursor:zoom-in;display:block;width:100%}
 .pe-rank .g{color:#e8b93a;font-weight:700}.pe-rank .s{color:#c3c6cc;font-weight:700}.pe-rank .b{color:#cd8a5a;font-weight:700}.pe-rank .tot{font-weight:700}
 .pe-tl{color:var(--text);text-decoration:none;font-weight:600}.pe-tl:hover{color:var(--accent)}
 .pe-note{color:var(--muted,#9a9aa3);font-size:.85rem;margin-top:8px}
+
+/* ---------- event cover (home hero) ---------- */
+.sr{position:absolute!important;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0);white-space:nowrap}
+.hero.has-cover{padding:0;background:#0b0809}
+.hero-art{position:relative;background:#0b0809}
+.hero-cover{display:block}
+.hero-cover img{display:block;width:100%;height:auto;max-height:92vh;object-fit:cover;object-position:center}
+.cover-presents{position:absolute;top:5.5%;left:0;right:0;text-align:center;color:#fff;font-weight:700;letter-spacing:.32em;text-indent:.32em;text-transform:uppercase;font-size:clamp(.62rem,1.7vw,1.15rem);text-shadow:0 2px 14px rgba(0,0,0,.8)}
+.hero.has-cover .wrap{padding:34px 20px 60px;text-align:center}
+.hero.has-cover .eyebrow{margin-bottom:10px}
+.hero.has-cover h1{text-transform:uppercase;letter-spacing:.08em;font-size:clamp(1.7rem,5.4vw,3.1rem);margin-bottom:4px}
+.hero.has-cover .actions{justify-content:center}
+.hero.has-cover .count{margin-left:auto;margin-right:auto}
+@media (max-width:700px){
+  .hero-cover img{aspect-ratio:1080/1920;max-height:84vh;object-position:center top}
+  .cover-presents{top:3.5%;letter-spacing:.22em;text-indent:.22em}
+}
+.hero.has-cover .share{margin-left:auto;margin-right:auto}
+@media (max-width:700px){.hero-cover img{max-height:76vh}}

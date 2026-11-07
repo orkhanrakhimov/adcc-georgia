@@ -176,6 +176,42 @@
   "Happening today",
   "დღეს იმართება"
  ],
+ "hero.eb.tba": [
+  "Coming in 2027",
+  "მოდის 2027 წელს"
+ ],
+ "tba.date": [
+  "Exact date to be announced",
+  "ზუსტი თარიღი მალე გამოცხადდება"
+ ],
+ "tba.t": [
+  "Details coming soon",
+  "დეტალები მალე გამოქვეყნდება"
+ ],
+ "tba.note": [
+  "The exact date, venue, registration and tickets will be announced soon. Leave your email on the home page and we will tell you first.",
+  "ზუსტი თარიღი, ადგილი, რეგისტრაცია და ბილეთები მალე გამოცხადდება. დატოვეთ ელფოსტა მთავარ გვერდზე და პირველებს გაგაგებინებთ."
+ ],
+ "tba.cards": [
+  "To be announced",
+  "მალე გამოცხადდება"
+ ],
+ "tba.wi": [
+  "Weigh-in details will be announced closer to the event.",
+  "აწონვის დეტალები ღონისძიებასთან უფრო ახლოს გამოცხადდება."
+ ],
+ "tba.tk": [
+  "Ticket prices will be announced soon.",
+  "ბილეთების ფასები მალე გამოცხადდება."
+ ],
+ "hero.notify": [
+  "Notify me",
+  "შემატყობინეთ"
+ ],
+ "hero.prev": [
+  "Previous events",
+  "წინა ღონისძიებები"
+ ],
  "hero.eb.over": [
   "Event finished",
   "ღონისძიება დასრულდა"
@@ -723,45 +759,38 @@
 };              // dynamic text: key -> [English, Georgian]
   var DEFAULTS = {
  "event": {
-  "name": "ADCC Georgia Nationals Open 2026",
-  "highlight": "Nationals Open",
-  "date": "2026-10-25",
-  "time": "10:00",
-  "endTime": "18:00",
-  "venue": "Gymnastic Venue",
-  "address": {
-   "en": "Bob Walsh St., Dighomi, Tbilisi",
-   "ka": "ბობ უოლშის ქ., დიღომი, თბილისი"
+  "name": "Caucasus Championship 2027",
+  "highlight": "Caucasus",
+  "presents": {
+   "en": "ADCC Georgia Presents",
+   "ka": "ADCC Georgia წარმოგიდგენთ"
   },
-  "mapUrl": "https://share.google/y7GhtUI64T7QmOd2G",
-  "registerUrl": "https://smoothcomp.com/en/event/33419",
+  "whenText": {
+   "en": "July 2027",
+   "ka": "2027 წლის ივლისი"
+  },
+  "cover": {
+   "wide": "photos/cover-2027-wide.jpg",
+   "mobile": "photos/cover-2027-mobile.jpg"
+  },
+  "date": "",
+  "time": "",
+  "endTime": "",
+  "venue": "",
+  "address": {
+   "en": "",
+   "ka": ""
+  },
+  "mapUrl": "",
+  "registerUrl": "",
   "rulesUrl": "https://adcombat.com/adcc-rules-regulations/",
   "entry": {
-   "en": "Entry fees, divisions, weight classes and the registration deadline are all on the Smoothcomp event page.",
-   "ka": "მონაწილეობის საფასური, დივიზიები, წონითი კატეგორიები და რეგისტრაციის ბოლო ვადა მითითებულია Smoothcomp-ის გვერდზე."
+   "en": "Registration, divisions and entry fees will be announced soon.",
+   "ka": "რეგისტრაცია, დივიზიები და მონაწილეობის საფასური მალე გამოცხადდება."
   }
  },
  "weighin": {
-  "days": [
-   {
-    "date": "2026-10-24",
-    "from": "10:00",
-    "to": "13:00",
-    "label": {
-     "en": "Day before the event",
-     "ka": "ღონისძიების წინა დღე"
-    }
-   },
-   {
-    "date": "2026-10-25",
-    "from": "07:00",
-    "to": "08:00",
-    "label": {
-     "en": "Event day",
-     "ka": "ღონისძიების დღე"
-    }
-   }
-  ],
+  "days": [],
   "rule": {
    "title": {
     "en": "No weight tolerance",
@@ -784,47 +813,10 @@
   }
  },
  "tickets": {
-  "items": [
-   {
-    "name": {
-     "en": "Spectator",
-     "ka": "მაყურებელი"
-    },
-    "price": "10",
-    "desc": {
-     "en": "Watching only.",
-     "ka": "მხოლოდ საყურებლად."
-    },
-    "featured": false
-   },
-   {
-    "name": {
-     "en": "VIP",
-     "ka": "VIP"
-    },
-    "price": "30",
-    "desc": {
-     "en": "Includes access to the warm-up area and the right to corner a fighter.",
-     "ka": "მოიცავს გახურების ზონაში შესვლას და მებრძოლის კუთხეში ყოფნის უფლებას."
-    },
-    "featured": true
-   },
-   {
-    "name": {
-     "en": "Coaches",
-     "ka": "მწვრთნელები"
-    },
-    "price": "",
-    "desc": {
-     "en": "Up to 2 coaches.",
-     "ka": "მაქსიმუმ 2 მწვრთნელი."
-    },
-    "featured": false
-   }
-  ],
+  "items": [],
   "door": {
-   "en": "Tickets can be bought at the door.",
-   "ka": "ბილეთები იყიდება შესასვლელთან."
+   "en": "",
+   "ka": ""
   }
  },
  "faq": {
@@ -1369,7 +1361,7 @@
   // Event phase, always judged in Tbilisi time (UTC+4)
   function phase(ev, now) {
     var tm = normTime(ev.time) || '10:00';
-    if (!parts(ev.date)) return { name: 'before', start: now + 864e5 };
+    if (!parts(ev.date)) return { name: 'tba', start: 0 };
     var dayStart = Date.parse(ev.date + 'T00:00:00+04:00');
     var start = Date.parse(ev.date + 'T' + tm + ':00+04:00');
     var dayEnd = dayStart + 864e5;
@@ -1477,17 +1469,22 @@
 
   function overNote(ph) {
     var n = $('#over-note'); if (!n) return;
-    n.hidden = ph.name !== 'over';
+    var tba = ph.name === 'tba';
+    n.hidden = ph.name !== 'over' && !tba;
     clear(n);
-    n.appendChild(h('strong', { style: 'display:block;margin-bottom:4px' }, [ui('over.t')]));
-    n.appendChild(h('span', null, [ui('over.note')]));
+    n.appendChild(h('strong', { style: 'display:block;margin-bottom:4px' }, [ui(tba ? 'tba.t' : 'over.t')]));
+    n.appendChild(h('span', null, [ui(tba ? 'tba.note' : 'over.note')]));
   }
 
   function row(dl, label, content) {
     dl.appendChild(h('dt', null, [label]));
     dl.appendChild(h('dd', null, Array.isArray(content) ? content : [content]));
   }
-  function venueLine(ev) { return ev.venue + ', ' + tx(ev.address); }
+  function venueLine(ev) { return [ev.venue, tx(ev.address)].filter(Boolean).join(', '); }
+  function whenLine(ev) {
+    if (!parts(ev.date)) return [tx(ev.whenText), ui('tba.date')].filter(Boolean).join(' · ');
+    return dateLong(ev.date) + (normTime(ev.time) ? ' · ' + normTime(ev.time) : '');
+  }
   function priceText(t) {
     var p = String(t.price === undefined || t.price === null ? '' : t.price).trim();
     return p ? p + ' ' + ui('cur') : ui('free');
@@ -1606,7 +1603,7 @@
     clear(box);
     var ev = DATA.event, sh = shopInfo();
     which.forEach(function (k) {
-      if (k === 'event') box.appendChild(hubCard('event', 'calendar', ui('hub.event.t'), dateLong(ev.date) + ' · ' + (normTime(ev.time) || ev.time)));
+      if (k === 'event') box.appendChild(hubCard('event', 'calendar', ui('hub.event.t'), whenLine(ev)));
       if (k === 'weighin' && (DATA.weighin.days || []).length) box.appendChild(hubCard('weigh-in', 'scale', ui('lk.weigh.t'), weighText()));
       if (k === 'tickets' && (DATA.tickets.items || []).length) box.appendChild(hubCard('tickets', 'ticket', ui('lk.tick.t'), ticketText()));
       if (k === 'rules') box.appendChild(hubCard('rules', 'book', ui('hub.rules.t'), ui('hub.rules.p')));
@@ -1635,11 +1632,13 @@
     var card = $('#ev-card'); clear(card);
     card.appendChild(h('span', { class: 'tag' }, [ev.name]));
     var dl = h('dl');
-    row(dl, ui('ev.date'), dateLong(ev.date));
-    row(dl, ui('ev.start'), normTime(ev.time) || ev.time);
-    var vk = [ev.venue, h('br'), tx(ev.address)];
-    if (url(ev.mapUrl)) { vk.push(h('br')); vk.push(ext(url(ev.mapUrl), null, [ui('ev.map')])); }
-    row(dl, ui('ev.venue'), vk);
+    row(dl, ui('ev.date'), whenLine(ev));
+    if (normTime(ev.time)) row(dl, ui('ev.start'), normTime(ev.time));
+    if (ev.venue || tx(ev.address)) {
+      var vk = [ev.venue, h('br'), tx(ev.address)];
+      if (url(ev.mapUrl)) { vk.push(h('br')); vk.push(ext(url(ev.mapUrl), null, [ui('ev.map')])); }
+      row(dl, ui('ev.venue'), vk);
+    } else row(dl, ui('ev.venue'), ui('tba.cards'));
     var rk = [ui('ev.rules.v'), h('br'), h('a', { href: 'rules' }, [ui('ev.rules.exp')])];
     if (url(ev.rulesUrl)) { rk.push(h('br')); rk.push(ext(url(ev.rulesUrl), null, [ui('ev.rules.off')])); }
     row(dl, ui('ev.rules'), rk);
@@ -1672,13 +1671,28 @@
   function renderIndex(ph) {
     var ev = DATA.event, c = DATA.contact, pv = DATA.previous;
 
-    setText('#hero-eyebrow', ph.name === 'over' ? ui('hero.eb.over') : ph.name === 'before' ? ui('hero.eb') : ui('hero.eb.today'));
+    var tbaP = ph.name === 'tba', cov = ev.cover || {}, wide = PHOTO_RE.test(String(cov.wide || '')) ? cov.wide : '', mob = PHOTO_RE.test(String(cov.mobile || '')) ? cov.mobile : wide;
+    var heroEl = $('#hero'), art = $('#hero-art');
+    if (heroEl) heroEl.className = 'hero' + (wide ? ' has-cover' : '');
+    if (art) {
+      art.hidden = !wide;
+      if (wide) {
+        $('#hero-cover-img').src = wide; $('#hero-cover-img').alt = [tx(ev.presents), ev.name].filter(Boolean).join(' ');
+        $('#hero-cover-m').setAttribute('srcset', mob);
+        var pr = $('#cover-presents'); clear(pr); pr.textContent = tx(ev.presents); pr.hidden = !tx(ev.presents);
+      }
+    }
+    setText('#hero-eyebrow', ph.name === 'over' ? ui('hero.eb.over') : tbaP ? ui('hero.eb.tba') : ph.name === 'before' ? ui('hero.eb') : ui('hero.eb.today'));
     var t = $('#hero-title'); clear(t);
     var name = ev.name || '', hl = ev.highlight || '', i = hl ? name.indexOf(hl) : -1;
-    if (i >= 0) { t.appendChild(document.createTextNode(name.slice(0, i))); t.appendChild(h('em', null, [hl])); t.appendChild(document.createTextNode(name.slice(i + hl.length))); }
-    else t.appendChild(document.createTextNode(name));
-    setText('#hero-when', dateLong(ev.date) + ' · ' + (normTime(ev.time) || ev.time));
+    if (i >= 0) {
+      t.appendChild(document.createTextNode(name.slice(0, i)));
+      t.appendChild(h('em', wide ? { class: 'sr' } : null, [hl]));
+      t.appendChild(document.createTextNode(name.slice(i + hl.length)));
+    } else t.appendChild(document.createTextNode(name));
+    setText('#hero-when', whenLine(ev));
     setText('#hero-where', venueLine(ev));
+    $('#hero-where').style.display = venueLine(ev) ? '' : 'none';
 
     var count = $('#count'), msg = $('#count-msg');
     count.style.display = (ph.name === 'before' || ph.name === 'today') ? '' : 'none';
@@ -1690,6 +1704,9 @@
     if (ph.name === 'over') {
       act.appendChild(h('a', { class: 'btn', href: 'previous-events' }, [ui('hero.results')]));
       act.appendChild(h('a', { class: 'btn ghost', href: 'contact' }, [ui('hero.follow')]));
+    } else if (tbaP) {
+      act.appendChild(h('a', { class: 'btn', href: '#notify' }, [ui('hero.notify')]));
+      act.appendChild(h('a', { class: 'btn ghost', href: 'previous-events' }, [ui('hero.prev')]));
     } else {
       if (reg) act.appendChild(ext(reg, 'btn', [ui('hero.register')]));
       act.appendChild(h('a', { class: 'btn ghost', href: 'event' }, [ui('hub.event.t')]));
@@ -1751,7 +1768,7 @@
     var ev = DATA.event || {}, wi = page === 'weigh-in', link = SITE + (wi ? '/weigh-in' : page === 'event' ? '/event' : '/');
     var text = wi
       ? [ui('share.wn') + ' – ' + ev.name, weighText(), (DATA.weighin.rule && tx(DATA.weighin.rule.title)) || '', ui('wi.share.id'), venueLine(ev)].filter(Boolean).join(' · ')
-      : [ev.name, dateLong(ev.date), venueLine(ev)].filter(Boolean).join(' · ');
+      : [(tx(ev.presents) ? tx(ev.presents) + ' ' : '') + ev.name, parts(ev.date) ? dateLong(ev.date) : tx(ev.whenText), venueLine(ev)].filter(Boolean).join(' · ');
     var bar = h('div', { class: 'share', id: 'share-bar' }, [h('b', null, [ui(wi ? 'share.tw' : 'share.t')])]);
     var acts = h('div', { class: 'actions' });
     if (navigator.share) {
@@ -1778,7 +1795,7 @@
   function renderEvent(ph) {
     eventCard(ph);
     overNote(ph);
-    var how = $('#ev-how'); if (how) how.hidden = ph.name === 'over';
+    var how = $('#ev-how'); if (how) how.hidden = ph.name === 'over' || ph.name === 'tba';
     renderCal(ph);
     renderShare(ph);
     hubCards($('#hub-cards'), ['weighin', 'tickets', 'rules']);
@@ -2087,7 +2104,9 @@
         h('p', { style: 'margin-top:12px' }, [h('a', { class: 'btn sm', href: 'waiver' }, [ui('wi.waiver.b')])])]));
     }
     var ev = DATA.event;
-    setText('#wi-intro', ui('wi.p'));
+    var tba = ph.name === 'tba';
+    setText('#wi-intro', tba ? ui('tba.wi') : ui('wi.p'));
+    ['#wi-addr', '#wi-note', '#wi-actions'].forEach(function (s) { var x = $(s); var blk = x && (x.closest('.block') || x.parentNode); if (blk) blk.hidden = tba; });
     var box = $('#wi-cards'); clear(box);
     (DATA.weighin.days || []).forEach(function (d) {
       box.appendChild(h('div', { class: 'card sched' }, [
@@ -2106,7 +2125,8 @@
         box.appendChild(h('div', null, [h('h3', null, [tx(note.title)]), h('p', null, [tx(note.text)])]));
       } else box.hidden = true;
     });
-    setText('#wi-addr', ev.venue + ', ' + tx(ev.address) + ', ' + ui('georgia'));
+    if (tba) { overNote(ph); return; }
+    setText('#wi-addr', venueLine(ev) + ', ' + ui('georgia'));
     var m = $('#wi-map'); clear(m);
     if (url(ev.mapUrl)) m.appendChild(ext(url(ev.mapUrl), null, [ui('ev.map')]));
     setText('#wi-note', ui('wi.note', { time: normTime(ev.time) || ev.time, date: dateOn(ev.date) }));
@@ -2117,7 +2137,7 @@
 
   function renderTickets(ph) {
     var ev = DATA.event, tk = DATA.tickets;
-    setText('#tk-intro', ui('tk.p', { date: dateLong(ev.date), venue: ev.venue, addr: tx(ev.address) }));
+    setText('#tk-intro', ph.name === 'tba' || !(tk.items || []).length ? ui('tba.tk') : ui('tk.p', { date: dateLong(ev.date), venue: ev.venue, addr: tx(ev.address) }));
     var box = $('#tk-cards'); clear(box);
     (tk.items || []).forEach(function (it) {
       var p = String(it.price === undefined || it.price === null ? '' : it.price).trim();
