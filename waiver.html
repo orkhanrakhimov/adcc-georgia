@@ -23,7 +23,7 @@
 <meta name="twitter:image" content="https://www.adcc.ge/og.jpg">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Noto+Sans+Georgian:wght@400;500;600;700&family=Oswald:wght@500;600;700&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="style.css?v=202611071732">
+<link rel="stylesheet" href="style.css?v=202611071742">
 <noscript><style>body.loading main{visibility:visible}</style></noscript>
 </head>
 <body data-page="waiver" class="loading">
@@ -63,7 +63,7 @@
 
   <div class="wrap page">
     <div class="noprint wv-help">
-      <p data-i18n="wv.help">Fill in your details on screen if you like, then print the page, sign it by hand and bring it to the weigh-in. You can also print it empty and fill it in with a pen.</p>
+      <p data-i18n="wv.help">Fill in your details on screen if you like, then print the page, sign it by hand and bring it to the weigh-in. You can also print it empty and fill it in with a pen. Write your ID or passport number. If the athlete is under 18, the parent or guardian must also write their own ID or passport number and sign.</p>
       <div class="actions">
         <button type="button" class="btn" id="wv-print"><span data-i18n="wv.print">Print / Save as PDF</span></button>
         <button type="button" class="btn ghost" id="wv-clear"><span data-i18n="wv.clear">Clear the form</span></button>
@@ -97,6 +97,9 @@
         <h3 data-i18n="wv.g.h">Parent or guardian (athletes under 18)</h3>
         <div class="wv-fields">
       <label class="wf wide"><span data-i18n="wv.g.name">Parent / guardian full name</span><input type="text" name="gname" autocomplete="off"></label>
+      <label class="wf "><span data-i18n="wv.g.id">Parent / guardian ID / passport number</span><input type="text" name="gid" autocomplete="off"></label>
+      <label class="wf "><span data-i18n="wv.g.rel">Relationship to the athlete</span><input type="text" name="grel" autocomplete="off"></label>
+      <label class="wf "><span data-i18n="wv.g.phone">Parent / guardian phone</span><input type="tel" name="gphone" autocomplete="off"></label>
         </div>
         <div class="wv-sign">
           <div class="sig"><span class="line"></span><span data-i18n="wv.s.gu">Parent / guardian signature</span></div>
@@ -127,6 +130,6 @@
   </div>
 </footer>
 
-<script src="site.js?v=202611071732"></script>
+<script src="site.js?v=202611071742"></script>
 </body>
 </html>

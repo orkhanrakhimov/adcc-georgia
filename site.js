@@ -76,7 +76,10 @@
  "wv.f.em": "საკონტაქტო პირი საგანგებო შემთხვევისთვის (სახელი)",
  "wv.f.emp": "საკონტაქტო პირის ტელეფონი",
  "wv.g.name": "მშობლის / მეურვის სახელი და გვარი",
- "wv.help": "სურვილისამებრ შეავსეთ მონაცემები ეკრანზე, შემდეგ დაბეჭდეთ გვერდი, ხელით მოაწერეთ ხელი და წამოიღეთ აწონვაზე. შეგიძლიათ ცარიელიც დაბეჭდოთ და კალმით შეავსოთ.",
+ "wv.g.id": "მშობლის / მეურვის პირადობის / პასპორტის ნომერი",
+ "wv.g.rel": "კავშირი სპორტსმენთან",
+ "wv.g.phone": "მშობლის / მეურვის ტელეფონი",
+ "wv.help": "სურვილისამებრ შეავსეთ მონაცემები ეკრანზე, შემდეგ დაბეჭდეთ გვერდი, ხელით მოაწერეთ ხელი და წამოიღეთ აწონვაზე. შეგიძლიათ ცარიელიც დაბეჭდოთ და კალმით შეავსოთ. მიუთითეთ პირადობის ან პასპორტის ნომერი. თუ სპორტსმენი 18 წლამდეა, მშობელმაც ან მეურვემაც უნდა მიუთითოს თავისი პირადობის ან პასპორტის ნომერი და ხელი მოაწეროს.",
  "wv.print": "ბეჭდვა / PDF-ად შენახვა",
  "wv.clear": "ფორმის გასუფთავება",
  "wv.s.ath": "სპორტსმენის ხელმოწერა",
@@ -725,8 +728,8 @@
   "წაიკითხეთ და ხელი მოაწერეთ განაცხადს"
  ],
  "wi.waiver.p": [
-  "Open the waiver, fill in your details, print it and sign it by hand. Bring the signed copy to the weigh-in.",
-  "გახსენით განაცხადი, შეავსეთ თქვენი მონაცემები, დაბეჭდეთ და ხელით მოაწერეთ ხელი. ხელმოწერილი ეგზემპლარი წამოიღეთ აწონვაზე."
+  "Open the waiver, fill in your details including your ID or passport number, print it and sign it by hand. Bring the signed copy to the weigh-in. Athletes under 18 also need a parent or guardian to fill in their own ID or passport number and sign.",
+  "გახსენით განაცხადი, შეავსეთ თქვენი მონაცემები პირადობის ან პასპორტის ნომრის ჩათვლით, დაბეჭდეთ და ხელით მოაწერეთ ხელი. ხელმოწერილი ეგზემპლარი წამოიღეთ აწონვაზე. 18 წლამდე სპორტსმენებისთვის მშობელმა ან მეურვემაც უნდა მიუთითოს თავისი პირადობის ან პასპორტის ნომერი და ხელი მოაწეროს."
  ],
  "wi.waiver.b": [
   "Open the waiver",
@@ -911,8 +914,8 @@
      "ka": "ნებაყოფლობითი მონაწილეობა"
     },
     "text": {
-     "en": "I am entering this event of my own free will. I have read and understood this waiver and I agree to follow the rules of the event and the instructions of the referees and organisers.",
-     "ka": "მე ღონისძიებაში ვმონაწილეობ საკუთარი ნებით. წავიკითხე და გავიგე ეს განაცხადი და ვთანხმდები დავიცვა ღონისძიების წესები და მსაჯებისა და ორგანიზატორების მითითებები."
+     "en": "I am entering this event of my own free will. I have read and understood this waiver, I have had the chance to ask questions, and I agree to follow the rules of the event and the instructions of the referees, medical staff and organisers. I understand that I can be disqualified or removed from the event if I do not.",
+     "ka": "მე ღონისძიებაში ვმონაწილეობ საკუთარი ნებით. წავიკითხე და გავიგე ეს განაცხადი, მქონდა კითხვების დასმის შესაძლებლობა და ვთანხმდები დავიცვა ღონისძიების წესები და მსაჯების, სამედიცინო პერსონალისა და ორგანიზატორების მითითებები. მესმის, რომ წესების დარღვევის შემთხვევაში შეიძლება დისკვალიფიცირებული ვიყო ან ღონისძიებიდან მოვიხსნა."
     }
    },
    {
@@ -921,38 +924,78 @@
      "ka": "ტრავმის რისკი"
     },
     "text": {
-     "en": "I understand that submission grappling is a contact sport with a risk of injury, including serious injury. I accept these risks and take part at my own risk.",
-     "ka": "მესმის, რომ სუბმიშენ გრეპლინგი კონტაქტური სპორტია და არსებობს ტრავმის, მათ შორის მძიმე ტრავმის, რისკი. ამ რისკებს ვიღებ და მონაწილეობას ვიღებ საკუთარი პასუხისმგებლობით."
+     "en": "I understand that submission grappling is a full-contact combat sport. It carries a real risk of injury, including serious injury, permanent disability and death, from submissions, throws, falls, contact with opponents and other participants, the mats and the venue. I know these risks, I accept them, and I take part entirely at my own risk.",
+     "ka": "მესმის, რომ სუბმიშენ გრეპლინგი სრული კონტაქტის საბრძოლო სპორტია. არსებობს ტრავმის რეალური რისკი, მათ შორის მძიმე ტრავმის, მუდმივი ინვალიდობისა და სიკვდილის, რომელიც შეიძლება გამოიწვიოს ჩაჭერებმა, გადაგდებებმა, დაცემებმა, მეტოქეებთან და სხვა მონაწილეებთან კონტაქტმა, ხალიჩებმა და ღონისძიების ადგილმა. ეს რისკები მეცოდინება, ვიღებ მათ და მონაწილეობას სრულად საკუთარი პასუხისმგებლობით ვიღებ."
     }
    },
    {
     "title": {
-     "en": "Health",
-     "ka": "ჯანმრთელობა"
+     "en": "Health and fitness",
+     "ka": "ჯანმრთელობა და ფიზიკური მზადყოფნა"
     },
     "text": {
-     "en": "I confirm that I am in good health and fit to compete, and that I have no medical condition that makes it unsafe for me to take part. I will tell the organisers or the medical staff at once if this changes.",
-     "ka": "ვადასტურებ, რომ ჯანმრთელი ვარ და შემიძლია შეჯიბრში მონაწილეობა, და არ მაქვს ისეთი სამედიცინო მდგომარეობა, რომელიც მონაწილეობას საფრთხეს უქმნის. თუ ეს შეიცვლება, დაუყოვნებლივ შევატყობინებ ორგანიზატორებს ან სამედიცინო პერსონალს."
+     "en": "I confirm that I am in good health and fit to compete, and that I have no medical condition, injury or illness that makes it unsafe for me or for others to take part. I have trained properly for this event. I will not compete if I am injured, ill or unwell, and I will tell the organisers or the medical staff at once if my condition changes. I am responsible for getting any medical advice I need before I compete.",
+     "ka": "ვადასტურებ, რომ ჯანმრთელი ვარ და შემიძლია შეჯიბრში მონაწილეობა, და არ მაქვს ისეთი სამედიცინო მდგომარეობა, ტრავმა ან ავადმყოფობა, რომელიც მონაწილეობას საფრთხეს უქმნის ჩემთვის ან სხვებისთვის. ამ ღონისძიებისთვის სათანადოდ ვვარჯიშობდი. ტრავმის, ავადმყოფობის ან ცუდად ყოფნის შემთხვევაში არ ვიასპარეზებ და თუ ჩემი მდგომარეობა შეიცვლება, დაუყოვნებლივ შევატყობინებ ორგანიზატორებს ან სამედიცინო პერსონალს. შეჯიბრამდე საჭირო სამედიცინო კონსულტაციის მიღება ჩემი პასუხისმგებლობაა."
     }
    },
    {
     "title": {
-     "en": "Weigh-in and identity",
-     "ka": "აწონვა და პიროვნების დადასტურება"
+     "en": "Emergency medical treatment",
+     "ka": "გადაუდებელი სამედიცინო დახმარება"
     },
     "text": {
-     "en": "I will bring an ID card or passport to the weigh-in. I understand that there is no weight tolerance, and that if I am over the limit of my weight class I will be disqualified and the entry fee will not be refunded.",
-     "ka": "აწონვაზე თან მექნება პირადობის მოწმობა ან პასპორტი. მესმის, რომ წონაში ტოლერანტობა არ არის და თუ ჩემი წონითი კატეგორიის ლიმიტს გადავაჭარბებ, დისკვალიფიცირებული ვიქნები და მონაწილეობის საფასური არ დამიბრუნდება."
+     "en": "If I am injured or fall ill, I allow the organisers and the medical staff to give me first aid and to call an ambulance or take me to a hospital if they think it is needed. I understand that the organisers are not responsible for the cost of any treatment or transport, and that I (or my parent or guardian) will pay for it.",
+     "ka": "ტრავმის ან ავადმყოფობის შემთხვევაში ორგანიზატორებს და სამედიცინო პერსონალს ვაძლევ უფლებას, გამიწიონ პირველადი დახმარება და, თუ საჭიროდ ჩათვლიან, გამოიძახონ სასწრაფო დახმარება ან საავადმყოფოში გადამიყვანონ. მესმის, რომ ორგანიზატორები არ აგებენ პასუხს მკურნალობისა და ტრანსპორტირების ხარჯებზე და მას მე (ან ჩემი მშობელი ან მეურვე) გადავიხდი."
     }
    },
    {
     "title": {
-     "en": "Release of liability",
-     "ka": "პასუხისმგებლობისგან გათავისუფლება"
+     "en": "Weigh-in, identity and accurate details",
+     "ka": "აწონვა, პიროვნების დადასტურება და სწორი მონაცემები"
     },
     "text": {
-     "en": "To the fullest extent allowed by law, I release ADCC Georgia, its organisers, referees, staff, volunteers and the venue from claims for injury, loss or damage that arise from my taking part, except where the law does not allow this.",
-     "ka": "კანონით დაშვებული მაქსიმალური ფარგლებით, ვათავისუფლებ ADCC Georgia-ს, მის ორგანიზატორებს, მსაჯებს, პერსონალს, მოხალისეებსა და ღონისძიების ადგილს ჩემი მონაწილეობით გამოწვეული ტრავმის, ზიანის ან დანაკარგის გამო პრეტენზიებისგან, გარდა იმ შემთხვევებისა, როცა კანონი ამას არ უშვებს."
+     "en": "I will bring an ID card or passport to the weigh-in. The details I give on this form, including my date of birth and my ID or passport number, are true and are mine. If I give false details, including a false age or identity, I can be disqualified and I will not get my entry fee back. I understand that there is no weight tolerance, and that if I am over the limit of my weight class I will be disqualified and the entry fee will not be refunded.",
+     "ka": "აწონვაზე თან მექნება პირადობის მოწმობა ან პასპორტი. ამ ფორმაზე მითითებული მონაცემები, მათ შორის დაბადების თარიღი და პირადობის ან პასპორტის ნომერი, სწორია და ჩემია. თუ მცდარ მონაცემებს, მათ შორის მცდარ ასაკს ან პიროვნებას, მივუთითებ, შეიძლება დისკვალიფიცირებული ვიყო და მონაწილეობის საფასური არ დამიბრუნდება. მესმის, რომ წონაში ტოლერანტობა არ არის და თუ ჩემი წონითი კატეგორიის ლიმიტს გადავაჭარბებ, დისკვალიფიცირებული ვიქნები და მონაწილეობის საფასური არ დამიბრუნდება."
+    }
+   },
+   {
+    "title": {
+     "en": "Conduct and fair play",
+     "ka": "ქცევა და სამართლიანი თამაში"
+    },
+    "text": {
+     "en": "I will compete fairly and respectfully, follow the rules, and treat opponents, referees, staff and spectators with respect. I understand that the organisers and referees can disqualify me, or remove me and my team from the venue, for unsafe, aggressive or unsporting behaviour, and that no entry fee will be refunded in that case.",
+     "ka": "ვიასპარეზებ სამართლიანად და პატივისცემით, დავიცავ წესებს და პატივისცემით მოვეპყრობი მეტოქეებს, მსაჯებს, პერსონალსა და მაყურებელს. მესმის, რომ ორგანიზატორებს და მსაჯებს შეუძლიათ დამადისკვალიფიცირონ ან მე და ჩემი გუნდი ღონისძიების ადგილიდან გაგვაძევონ სახიფათო, აგრესიული ან არასპორტული საქციელისთვის და ამ შემთხვევაში მონაწილეობის საფასური არ დაბრუნდება."
+    }
+   },
+   {
+    "title": {
+     "en": "Release of liability and waiver of claims",
+     "ka": "პასუხისმგებლობისგან გათავისუფლება და პრეტენზიებზე უარის თქმა"
+    },
+    "text": {
+     "en": "To the fullest extent allowed by law, I release ADCC Georgia, its organisers, referees, staff, volunteers, sponsors and partners, and the owners and operators of the venue, from all claims, demands and liability for injury, illness, death, loss or damage that arise from my taking part in or attending this event, including claims based on their ordinary negligence. I waive these claims for myself, my heirs and my family, and I agree not to bring a claim against them. This does not apply where the law does not allow liability to be excluded, such as for intentional harm.",
+     "ka": "კანონით დაშვებული მაქსიმალური ფარგლებით, ვათავისუფლებ ADCC Georgia-ს, მის ორგანიზატორებს, მსაჯებს, პერსონალს, მოხალისეებს, სპონსორებსა და პარტნიორებს, ასევე ღონისძიების ადგილის მფლობელებსა და ოპერატორებს ყველა პრეტენზიის, მოთხოვნისა და პასუხისმგებლობისგან, რომელიც უკავშირდება ტრავმას, ავადმყოფობას, სიკვდილს, დანაკარგს ან ზიანს და გამოწვეულია ჩემი მონაწილეობით ან ღონისძიებაზე ყოფნით, მათ შორის პრეტენზიებისგან, რომლებიც მათ ჩვეულებრივ დაუდევრობას ეფუძნება. ამ პრეტენზიებზე უარს ვამბობ ჩემი, ჩემი მემკვიდრეებისა და ჩემი ოჯახის სახელით და ვთანხმდები, მათ წინააღმდეგ პრეტენზია არ წავუყენო. ეს არ ვრცელდება შემთხვევებზე, როდესაც კანონი პასუხისმგებლობის გამორიცხვას არ უშვებს, მაგალითად, განზრახ ზიანის შემთხვევაში."
+    }
+   },
+   {
+    "title": {
+     "en": "Responsibility for damage",
+     "ka": "ზიანზე პასუხისმგებლობა"
+    },
+    "text": {
+     "en": "I am responsible for any damage or injury that I cause to other people, to the venue or to the equipment, and I will pay for it where the law makes me responsible.",
+     "ka": "პასუხისმგებელი ვარ ნებისმიერ ზიანსა და ტრავმაზე, რომელსაც სხვა ადამიანებს, ღონისძიების ადგილს ან აღჭურვილობას მივაყენებ და მას ვაანაზღაურებ იმ შემთხვევაში, როცა კანონი ამას მავალდებულებს."
+    }
+   },
+   {
+    "title": {
+     "en": "Personal belongings",
+     "ka": "პირადი ნივთები"
+    },
+    "text": {
+     "en": "I look after my own belongings. The organisers and the venue are not responsible for lost, stolen or damaged items.",
+     "ka": "პირად ნივთებზე თვითონ ვზრუნავ. ორგანიზატორები და ღონისძიების ადგილი პასუხს არ აგებენ დაკარგულ, მოპარულ ან დაზიანებულ ნივთებზე."
     }
    },
    {
@@ -961,8 +1004,8 @@
      "ka": "ფოტო და ვიდეო"
     },
     "text": {
-     "en": "I agree that photos and video taken at the event, in which I may appear, can be used by ADCC Georgia and its partners to promote the event and the sport.",
-     "ka": "ვთანხმდები, რომ ღონისძიებაზე გადაღებული ფოტო და ვიდეო მასალა, რომელზეც შესაძლოა ვჩანდე, ADCC Georgia-მ და მისმა პარტნიორებმა შეიძლება გამოიყენონ ღონისძიებისა და სპორტის პოპულარიზაციისთვის."
+     "en": "I agree that photos and video taken at the event, in which I may appear, can be used by ADCC Georgia and its partners to promote the event and the sport, including online and on social media, without payment to me.",
+     "ka": "ვთანხმდები, რომ ღონისძიებაზე გადაღებული ფოტო და ვიდეო მასალა, რომელზეც შესაძლოა ვჩანდე, ADCC Georgia-მ და მისმა პარტნიორებმა შეიძლება გამოიყენონ ღონისძიებისა და სპორტის პოპულარიზაციისთვის, მათ შორის ინტერნეტსა და სოციალურ ქსელებში, ჩემთვის ანაზღაურების გარეშე."
     }
    },
    {
@@ -971,8 +1014,8 @@
      "ka": "პერსონალური მონაცემები"
     },
     "text": {
-     "en": "I agree that ADCC Georgia may keep the details on this form to run the event and to contact me or my emergency contact if needed.",
-     "ka": "ვთანხმდები, რომ ADCC Georgia-მ ამ ფორმაზე მითითებული მონაცემები შეინახოს ღონისძიების ორგანიზებისთვის და საჭიროების შემთხვევაში ჩემთან ან ჩემს საკონტაქტო პირთან დასაკავშირებლად."
+     "en": "I agree that ADCC Georgia may keep and use the details on this form, including my ID or passport number, to check my identity and age, to run the event, and to contact me or my emergency contact if needed. ADCC Georgia will use these details only for the event and will not share them with anyone else except where the law requires it.",
+     "ka": "ვთანხმდები, რომ ADCC Georgia-მ ამ ფორმაზე მითითებული მონაცემები, მათ შორის პირადობის ან პასპორტის ნომერი, შეინახოს და გამოიყენოს ჩემი ვინაობისა და ასაკის დასადასტურებლად, ღონისძიების ორგანიზებისთვის და საჭიროების შემთხვევაში ჩემთან ან ჩემს საკონტაქტო პირთან დასაკავშირებლად. ADCC Georgia ამ მონაცემებს მხოლოდ ღონისძიებისთვის გამოიყენებს და სხვას არ გადასცემს, გარდა იმ შემთხვევისა, როცა ამას კანონი მოითხოვს."
     }
    },
    {
@@ -981,8 +1024,18 @@
      "ka": "18 წლამდე სპორტსმენები"
     },
     "text": {
-     "en": "If the athlete is under 18, a parent or legal guardian must also read and sign this waiver and accepts it on the athlete's behalf.",
-     "ka": "თუ სპორტსმენი 18 წლამდეა, ამ განაცხადს უნდა გაეცნოს და ხელი მოაწეროს მშობელმა ან კანონიერმა წარმომადგენელმა, რომელიც მას სპორტსმენის სახელით ეთანხმება."
+     "en": "If the athlete is under 18, a parent or legal guardian must also read, fill in and sign this waiver, and must write their own full name and ID or passport number. By signing, the parent or guardian confirms that they have the legal right to act for the athlete, agrees to everything in this waiver for the athlete and for themselves, including the release of liability, and accepts responsibility for the athlete. A parent or guardian must be reachable by phone during the event. Without the parent's or guardian's signature and ID or passport number, the athlete cannot compete.",
+     "ka": "თუ სპორტსმენი 18 წლამდეა, ამ განაცხადს უნდა გაეცნოს, შეავსოს და ხელი მოაწეროს მშობელმა ან კანონიერმა წარმომადგენელმა, რომელმაც უნდა მიუთითოს თავისი სახელი, გვარი და პირადობის ან პასპორტის ნომერი. ხელმოწერით მშობელი ან მეურვე ადასტურებს, რომ აქვს სპორტსმენის სახელით მოქმედების კანონიერი უფლება, სპორტსმენისა და საკუთარი სახელით ეთანხმება ამ განაცხადის ყველა პირობას, მათ შორის პასუხისმგებლობისგან გათავისუფლებას, და იღებს პასუხისმგებლობას სპორტსმენზე. მშობელი ან მეურვე ღონისძიების განმავლობაში ტელეფონით ხელმისაწვდომი უნდა იყოს. მშობლის ან მეურვის ხელმოწერისა და პირადობის ან პასპორტის ნომრის გარეშე სპორტსმენი შეჯიბრში ვერ მიიღებს მონაწილეობას."
+    }
+   },
+   {
+    "title": {
+     "en": "General",
+     "ka": "ზოგადი დებულებები"
+    },
+    "text": {
+     "en": "If any part of this waiver is found to be invalid, the rest stays in force. This waiver is governed by the laws of Georgia. By signing, I confirm that I have read it carefully, that I understand it, and that I sign it voluntarily.",
+     "ka": "თუ ამ განაცხადის რომელიმე ნაწილი ბათილად იქნება მიჩნეული, დანარჩენი ძალაში რჩება. ეს განაცხადი რეგულირდება საქართველოს კანონმდებლობით. ხელმოწერით ვადასტურებ, რომ ყურადღებით წავიკითხე, გავიგე და ნებაყოფლობით ვაწერ ხელს."
     }
    }
   ]
