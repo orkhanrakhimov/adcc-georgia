@@ -453,3 +453,12 @@ button.shot{padding:0;border:0;cursor:zoom-in;display:block;width:100%}
 }
 .hero.has-cover .share{margin-left:auto;margin-right:auto}
 @media (max-width:700px){.hero-cover img{max-height:76vh}}
+
+/* blend the cover into the page */
+.hero.has-cover{background:var(--bg)}
+.hero-art{background:var(--bg)}
+.hero-art::after{content:"";position:absolute;left:0;right:0;bottom:-1px;height:28%;pointer-events:none;background:linear-gradient(to bottom,rgba(11,11,12,0) 0%,rgba(11,11,12,.55) 55%,var(--bg) 100%)}
+.hero-art::before{content:"";position:absolute;left:0;right:0;top:0;height:14%;z-index:1;pointer-events:none;background:linear-gradient(to bottom,var(--bg),rgba(11,11,12,0))}
+.cover-presents{z-index:2}
+.hero.has-cover .wrap{position:relative;margin-top:-34px;padding-top:0}
+@media (max-width:700px){.hero-art::after{height:30%}.hero.has-cover .wrap{margin-top:-26px}}
