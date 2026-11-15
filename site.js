@@ -593,8 +593,12 @@
   "ფოტოები"
  ],
  "past.resbtn": [
-  "Official results",
-  "ოფიციალური შედეგები"
+  "View official results",
+  "ოფიციალური შედეგების ნახვა"
+ ],
+ "past.resopen": [
+  "Opens {host} in a new tab",
+  "იხსნება {host} ახალ ჩანართში"
  ],
  "past.soon": [
   "Results and photos will be added soon.",
@@ -2115,7 +2119,11 @@
       if (meta) det.appendChild(h('p', { class: 'pe-meta' }, [meta]));
       var shown = false;
       if (tx(cur.summary)) { det.appendChild(h('p', { class: 'pe-sum' }, [tx(cur.summary)])); shown = true; }
-      if (url(cur.resultsUrl)) { det.appendChild(h('p', null, [ext(url(cur.resultsUrl), 'btn', [ui('past.resbtn')])])); shown = true; }
+      if (url(cur.resultsUrl)) {
+        var rh = ''; try { rh = new URL(url(cur.resultsUrl)).hostname.replace(/^www\./, ''); } catch (e) {}
+        det.appendChild(h('p', null, [ext(url(cur.resultsUrl), 'btn out-link', [h('span', null, [ui('past.resbtn'), rh ? h('small', null, [ui('past.resopen', { host: rh })]) : null]), h('span', { class: 'arr', 'aria-hidden': 'true' }, ['\u2197'])])]));
+        shown = true;
+      }
       var wb = winnersBlock(cur.winners);
       if (wb) { det.appendChild(h('h3', { class: 'pe-h' }, [ui('past.winners')])); det.appendChild(wb); shown = true; }
       var ph = evPhotos(cur);
