@@ -1974,7 +1974,8 @@
     var i = start, old = $('#lb'); if (old) old.parentNode.removeChild(old);
     var img = h('img', { alt: '' });
     var box = h('div', { class: 'lb', id: 'lb', role: 'dialog', 'aria-modal': 'true' });
-    function show() { img.src = photos[i]; }
+    var cnt = h('div', { class: 'lb-c' });
+    function show() { img.classList.remove('lb-in'); void img.offsetWidth; img.src = photos[i]; img.classList.add('lb-in'); cnt.textContent = photos.length > 1 ? (i + 1) + ' / ' + photos.length : ''; }
     function close() { document.removeEventListener('keydown', key); if (box.parentNode) box.parentNode.removeChild(box); document.body.style.overflow = ''; }
     function go(d) { i = (i + d + photos.length) % photos.length; show(); }
     function key(e) { if (e.key === 'Escape') close(); else if (e.key === 'ArrowLeft') go(-1); else if (e.key === 'ArrowRight') go(1); }
@@ -1986,7 +1987,7 @@
       bp.addEventListener('click', function (e) { e.stopPropagation(); go(-1); }); bn.addEventListener('click', function (e) { e.stopPropagation(); go(1); });
       box.appendChild(bp); box.appendChild(bn);
     }
-    box.appendChild(img);
+    box.appendChild(img); box.appendChild(cnt);
     box.addEventListener('click', function (e) { if (e.target === box) close(); });
     var sx = null;
     box.addEventListener('touchstart', function (e) { sx = e.touches[0].clientX; }, { passive: true });
@@ -2805,7 +2806,30 @@
     $$('a', menu).forEach(function (a) {
       a.addEventListener('click', function () { document.body.classList.remove('menu-open'); burger.setAttribute('aria-expanded', 'false'); });
     });
+    document.addEventListener('keydown', function (e) { if (e.key === 'Escape' && document.body.classList.contains('menu-open')) { document.body.classList.remove('menu-open'); burger.setAttribute('aria-expanded', 'false'); burger.focus(); } });
   }
+  (function () {   // header gets a solid look once the page scrolls
+    var hd = $('header.top'); if (!hd) return;
+    var on = null;
+    function chk() { var s = (window.scrollY || window.pageYOffset) > 8; if (s !== on) { on = s; hd.classList.toggle('scrolled', s); } }
+    window.addEventListener('scroll', chk, { passive: true }); chk();
+  })();
+  (function () {   // rules: highlight the section you are reading in the chip bar
+    var toc = $('.toc'); if (!toc || !window.IntersectionObserver) return;
+    var links = $$('a[href^="#"]', toc), map = {};
+    links.forEach(function (a) { var s = document.getElementById(a.getAttribute('href').slice(1)); if (s) map[s.id] = a; });
+    var vis = {};
+    var io = new IntersectionObserver(function (en) {
+      en.forEach(function (e) { vis[e.target.id] = e.isIntersecting ? e.boundingClientRect.top : null; });
+      var best = null, bt = Infinity;
+      Object.keys(vis).forEach(function (k) { if (vis[k] !== null && vis[k] < bt) { bt = vis[k]; best = k; } });
+      if (!best) return;
+      links.forEach(function (a) { a.classList.toggle('on', a === map[best]); });
+      var a = map[best], w = $('.wrap', toc);
+      if (a && w) w.scrollTo({ left: a.offsetLeft - 20, behavior: NOMOTION ? 'auto' : 'smooth' });
+    }, { rootMargin: '-140px 0px -55% 0px' });
+    Object.keys(map).forEach(function (id) { io.observe(document.getElementById(id)); });
+  })();
 
   var ticking = false;
   function start(data) {
