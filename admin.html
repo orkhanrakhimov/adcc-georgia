@@ -98,7 +98,7 @@
   </div>
 </main>
 
-<script src="site.js?v=202611071742"></script>
+<script src="site.js?v=202611152238"></script>
 <script>
 (function () {
   'use strict';
@@ -256,6 +256,10 @@
   function buildForm() {
     var root = $('#sections'); clear(root);
 
+    root.appendChild(section('Home page extras', false, [
+      field('Highlights video (YouTube link)', inp('home.video', { ph: 'https://www.youtube.com/watch?v=…' }), 'Paste a YouTube link to show a highlights video on the home page. Leave empty to hide it.'),
+      field('Visitor statistics code (GoatCounter)', inp('site.goatcounter', { ph: 'adccgeorgia' }), 'The name you chose when signing up at goatcounter.com (the part before .goatcounter.com). Leave empty to turn statistics off.')
+    ]));
     root.appendChild(section('Announcement banner', false, [
       el('p', { class: 'muted' }, ['A coloured bar at the top of every page, for example “Registration closes October 22”. Visitors can close it.']),
       chk('banner.enabled', 'Show the banner on every page'),
@@ -267,6 +271,7 @@
     root.appendChild(section('Event', true, [
       field('Event name', inp('event.name'), 'Shown as the big title and on every page.'),
       bi('Line above the name (optional)', 'event.presents'),
+      bi('Short description under the title (optional)', 'event.tagline'),
       field('Highlighted words (red part of the title)', inp('event.highlight'), 'Optional. Must be part of the event name. When the home page has a cover image, these words are already in the picture, so they are hidden in the text title.'),
       field('Home page cover image, wide (desktop)', inp('event.cover.wide', { ph: 'photos/…' }), 'Path of an image uploaded to the site, 1920×1080. Leave both cover fields empty for a text-only home page.'),
       field('Home page cover image, tall (mobile)', inp('event.cover.mobile', { ph: 'photos/…' }), '1080×1920.'),

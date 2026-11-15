@@ -103,7 +103,7 @@
  "privacy.t6": "განაცხადის ფორმები („შემოგვიერთდით გუნდში“): თქვენი სახელი და გვარი, ელფოსტა, ტელეფონი ან WhatsApp ნომერი, ქალაქი, ენები, სოციალური ქსელის ან პორტფოლიოს ბმულები, გამოცდილება და ჩვენს კითხვებზე პასუხები.",
  "privacy.t7": "მომდევნო ღონისძიების შეტყობინების სია: თქვენი ელფოსტა და, თუ მიუთითებთ, სახელი, რათა შემდეგი ღონისძიების გამოცხადებისას გაგაგებინოთ. ნებისმიერ დროს შეგიძლიათ მოითხოვოთ თქვენი წაშლა.",
  "privacy.t8": "შეტყობინებები: ყველაფერი, რასაც გვწერთ ელფოსტით, WhatsApp-ით, Instagram-ით ან Facebook-ით, მათ შორის საკონტაქტო მონაცემები და, ბილეთების ან მერჩის შემთხვევაში, შეკვეთის დეტალები.",
- "privacy.t9": "ეს ვებგვერდი არ იყენებს სარეკლამო ან თვალთვალის ქუქი-ფაილებს და არ აქვს ანალიტიკა. თქვენი ენის არჩევანი ინახება მხოლოდ თქვენს ბრაუზერში და ჩვენთან არ იგზავნება.",
+ "privacy.t9": "ეს ვებგვერდი არ იყენებს სარეკლამო ან თვალთვალის ქუქი-ფაილებს. ვიზიტების დასათვლელად შეიძლება გამოვიყენოთ კონფიდენციალურობაზე ორიენტირებული სტატისტიკის ინსტრუმენტი, რომელიც არ იყენებს ქუქი-ფაილებს და თქვენს ვინაობას არ ადგენს. თქვენი ენის არჩევანი ინახება მხოლოდ თქვენს ბრაუზერში და ჩვენთან არ იგზავნება.",
  "privacy.t10": "როგორ ვიყენებთ თქვენს ინფორმაციას",
  "privacy.t11": "თქვენი განაცხადის განსახილველად და მსაჯების, საორგანიზაციო გუნდის წევრებისა და მედიააკრედიტაციის შესახებ გადაწყვეტილების მისაღებად.",
  "privacy.t12": "თქვენთან დასაკავშირებლად განაცხადის, ღონისძიების ან თქვენი შეკითხვის თაობაზე.",
@@ -168,9 +168,24 @@
  "nf.p": "გვერდი, რომელსაც ეძებთ, არ არსებობს ან გადატანილია.",
  "nf.home": "მთავარ გვერდზე გადასვლა",
  "nf.event": "ღონისძიების დეტალები",
- "nf.contact": "დაგვიკავშირდით"
+ "nf.contact": "დაგვიკავშირდით",
+ "vid.h": "საუკეთესო მომენტები"
 };              // static page text: key -> Georgian
   var UI = {
+ "st.events": ["Events held", "ჩატარებული ღონისძიება"],
+ "st.medals": ["Medals awarded", "გაცემული მედალი"],
+ "st.ath": ["Medalists", "მედალოსანი"],
+ "st.divs": ["Divisions", "დივიზიონი"],
+ "vid.play": ["Play video", "ვიდეოს ჩართვა"],
+ "vid.h": ["Highlights", "საუკეთესო მომენტები"],
+ "nbar.x": ["Close", "დახურვა"],
+ "ath.back": ["← All previous events", "← ყველა წინა ღონისძიება"],
+ "ath.medals": ["Medals at ADCC Georgia events", "მედლები ADCC Georgia-ს ღონისძიებებზე"],
+ "ath.none": ["No results found for this athlete.", "ამ სპორტსმენის შედეგები ვერ მოიძებნა."],
+ "ath.copy": ["Copy link to this page", "ამ გვერდის ბმულის კოპირება"],
+ "ath.copied": ["Link copied", "ბმული დაკოპირდა"],
+ "ath.hint": ["Tap a name to see all of that athlete's medals.", "დააჭირეთ სახელს სპორტსმენის ყველა მედლის სანახავად."],
+ "past.last": ["Results: {name}", "შედეგები: {name}"],
  "hero.eb": [
   "Next event",
   "უახლოესი ღონისძიება"
@@ -772,6 +787,10 @@
    "en": "July 2027",
    "ka": "2027 წლის ივლისი"
   },
+  "tagline": {
+   "en": "Submission grappling under ADCC rules. Athletes and teams from across the region on one mat.",
+   "ka": "სუბმიშენ გრეპლინგი ADCC-ის წესებით. სპორტსმენები და გუნდები მთელი რეგიონიდან ერთ ხალიჩაზე."
+  },
   "cover": {
    "wide": "photos/cover-2027-wide.jpg",
    "mobile": "photos/cover-2027-mobile.jpg"
@@ -1251,6 +1270,12 @@
    "ka": "ვეთანხმები, რომ ADCC Georgia-მ ამ ფორმაში მითითებული ინფორმაცია შეინახოს და გამოიყენოს მხოლოდ ჩემი განაცხადის განსახილველად და ჩემთან დასაკავშირებლად."
   }
  },
+ "home": {
+  "video": ""
+ },
+ "site": {
+  "goatcounter": ""
+ },
  "banner": {
   "enabled": false,
   "text": {
@@ -1474,6 +1499,8 @@
     var eb = $('#page-eyebrow');
     if (eb && (page === 'event' || page === 'weigh-in' || page === 'tickets')) eb.textContent = ev.name;
     renderWhatsApp();
+    renderNbar(ph);
+    renderStatsScript();
     renderFooter();
     renderBanner();
     renderSchema();
@@ -1766,11 +1793,17 @@
     }
 
     renderShare(ph);
+    var tg = $('#hero-tag'); if (tg) { tg.textContent = tx(ev.tagline); tg.style.display = tx(ev.tagline) ? '' : 'none'; }
     hubCards($('#hub-cards'), ['event', 'weighin', 'tickets', 'rules', 'shop', 'join']);
+    var hub = $('#hub'); if (hub) hub.classList.toggle('compact', tbaP);
 
-    fillGallery($('#gallery'), 3);
+    renderStats();
+    renderStrip();
+    renderVideo();
     pastText();
     var pa = $('#past-actions'); clear(pa);
+    var lastEv = pastEvents()[0];
+    if (lastEv && String(lastEv.winners || '').trim()) pa.appendChild(h('a', { class: 'btn', href: 'previous-events#' + lastEv._id }, [ui('past.last', { name: lastEv.name })]));
     pa.appendChild(h('a', { class: 'btn ghost', href: 'previous-events' }, [ui('past.all')]));
 
     var ca = $('#ct-actions'); clear(ca);
@@ -1778,6 +1811,53 @@
     if (w0) ca.appendChild(ext(waHref(w0.number), 'btn', [ui('tk.wa')]));
     if (ig) ca.appendChild(ext('https://www.instagram.com/' + encodeURIComponent(ig), 'btn ghost', [ui('shop.ig')]));
     ca.appendChild(h('a', { class: 'btn ghost', href: 'contact' }, [ui('ct.all')]));
+  }
+
+  function renderStats() {
+    var sec = $('#stats'), box = $('#stats-box'); if (!sec || !box) return;
+    var evs = pastEvents(), rows = podiumRows(evs).filter(function (r) { return !/team/i.test(r.div); });
+    clear(box);
+    if (!rows.length) { sec.hidden = true; return; }
+    var names = {}, divs = {};
+    rows.forEach(function (r) { names[r.name.toLowerCase()] = 1; divs[r.ev._id + '|' + r.div] = 1; });
+    [[evs.length, 'st.events'], [rows.length, 'st.medals'], [Object.keys(names).length, 'st.ath'], [Object.keys(divs).length, 'st.divs']].forEach(function (s) {
+      box.appendChild(h('div', { class: 'stat' }, [h('b', { 'data-n': String(s[0]) }, [String(s[0])]), h('small', null, [ui(s[1])])]));
+    });
+    sec.hidden = false;
+  }
+  function renderStrip() {
+    var strip = $('#strip'), track = $('#strip-track'); if (!strip || !track) return;
+    clear(track);
+    var items = [];
+    pastEvents().forEach(function (e) { evPhotos(e).forEach(function (src) { items.push({ src: src, ev: e }); }); });
+    if (items.length < 4) { strip.hidden = true; return; }
+    function add(copy) {
+      items.forEach(function (it) {
+        track.appendChild(h('a', { class: 'strip-item', href: 'previous-events#' + it.ev._id, 'aria-hidden': copy ? 'true' : null, tabindex: copy ? '-1' : null }, [timg(it.src, copy ? '' : it.ev.name)]));
+      });
+    }
+    add(false); add(true);   // the second copy makes the loop seamless
+    track.style.animationDuration = Math.max(40, items.length * 5) + 's';
+    strip.hidden = false;
+  }
+  function ytId(u) {
+    var m = /(?:youtu\.be\/|youtube\.com\/(?:watch\?(?:.*&)?v=|shorts\/|embed\/|live\/))([\w-]{11})/.exec(String(u || ''));
+    return m ? m[1] : '';
+  }
+  function renderVideo() {
+    var sec = $('#video'), box = $('#video-box'); if (!sec || !box) return;
+    var id = ytId((DATA.home || {}).video);
+    if (!id) { sec.hidden = true; clear(box); box._id = ''; return; }
+    sec.hidden = false;
+    if (box._id === id) return;
+    clear(box); box._id = id;
+    var btn = h('button', { type: 'button', class: 'video-btn', 'aria-label': ui('vid.play') }, [
+      h('img', { src: 'https://i.ytimg.com/vi/' + id + '/hqdefault.jpg', alt: '', loading: 'lazy', decoding: 'async' }), h('span', { class: 'video-play' })]);
+    btn.addEventListener('click', function () {
+      clear(box);
+      box.appendChild(h('iframe', { src: 'https://www.youtube-nocookie.com/embed/' + id + '?autoplay=1&rel=0', title: ui('vid.h'), allow: 'autoplay; encrypted-media; picture-in-picture; fullscreen', allowfullscreen: 'allowfullscreen' }));
+    });
+    box.appendChild(btn);
   }
 
   function calStamp(ev, hhmm) {   // Tbilisi (UTC+4) -> UTC stamp
@@ -1857,6 +1937,13 @@
   // ---- previous events
   var PHOTO_RE = /^(photos\/[\w.\-]+|https:\/\/[^\s"'<>]+)$/;
   function evPhotos(e) { return ((e && e.photos) || []).map(function (x) { return String((x && x.src) || x || ''); }).filter(function (x) { return PHOTO_RE.test(x); }); }
+  function thumb(src) { return /^photos\/[\w.\-]+$/.test(src) ? src.replace(/^photos\//, 'photos/t/') : src; }
+  function timg(src, alt) {   // small version first; the full file if no small version exists
+    var img = h('img', { src: thumb(src), alt: alt || '', loading: 'lazy', decoding: 'async' });
+    img.addEventListener('error', function () { if (!img._fb && thumb(src) !== src) { img._fb = 1; img.src = src; } });
+    return img;
+  }
+  function athHref(name) { return 'previous-events#athlete/' + encodeURIComponent(name); }
   function pastEvents() {
     var list = (((DATA.previous || {}).events) || []).filter(function (e) { return e && e.name; }).map(function (e, i) { return { e: e, i: i }; });
     list.sort(function (a, b) {
@@ -1915,7 +2002,8 @@
       if (bl.t) card.appendChild(h('h4', null, [bl.t]));
       bl.r.forEach(function (c) {
         var pl = /^[123]$/.test(c[0] || '');
-        if (pl) card.appendChild(h('div', { class: 'pe-pl' }, [h('i', { class: 'm' + c[0] }, [c[0]]), h('span', null, [h('b', null, [c[1] || '']), c[2] ? h('small', null, [c[2]]) : null])]));
+        var nm = (/team/i.test(bl.t) || !c[1]) ? h('b', null, [c[1] || '']) : h('a', { class: 'pe-ath', href: athHref(c[1]) }, [h('b', null, [c[1]])]);
+        if (pl) card.appendChild(h('div', { class: 'pe-pl' }, [h('i', { class: 'm' + c[0] }, [c[0]]), h('span', null, [nm, c[2] ? h('small', null, [c[2]]) : null])]));
         else card.appendChild(h('div', { class: 'pe-row' }, [h('span', { class: 'pe-div' }, [c[0] || '']), h('b', null, [c[1] || '']), h('span', { class: 'pe-team' }, [c[2] || ''])]));
       });
       card._q = (bl.t + ' ' + card.textContent).toLowerCase();
@@ -1925,7 +2013,7 @@
       var q = search.value.trim().toLowerCase();
       [].forEach.call(grid.children, function (c) { c.hidden = !!q && c._q.indexOf(q) < 0; });
     });
-    wrap.appendChild(search); wrap.appendChild(grid);
+    wrap.appendChild(search); wrap.appendChild(h('p', { class: 'pe-hint' }, [ui('ath.hint')])); wrap.appendChild(grid);
     return wrap;
   }
 
@@ -1958,7 +2046,7 @@
       box.appendChild(h('p', { class: 'pe-tot' }, [ui('past.tot', { g: n[1], s: n[2], b: n[3] })]));
       var grid = h('div', { class: 'pe-divs' });
       hit.slice(0, 120).forEach(function (r) {
-        grid.appendChild(h('a', { class: 'pe-dv pe-hit', href: 'previous-events#' + r.ev._id }, [
+        grid.appendChild(h('a', { class: 'pe-dv pe-hit', href: /team/i.test(r.div) ? 'previous-events#' + r.ev._id : athHref(r.name) }, [
           h('div', { class: 'pe-pl' }, [h('i', { class: 'm' + r.p }, [String(r.p)]), h('span', null, [h('b', null, [r.name]), r.sub ? h('small', null, [r.sub]) : null])]),
           h('small', { class: 'pe-where' }, [(r.div ? r.div + ' · ' : '') + r.ev.name])
         ]));
@@ -1977,6 +2065,35 @@
     clear(list); clear(det); clear(pa);
     if (!window._peHash) { window._peHash = 1; window.addEventListener('hashchange', function () { renderPrevious(); markKa(); window.scrollTo(0, 0); }); }
     var gw0 = $('#pe-gsearch'), gr0 = $('#pe-gres'); if (gw0) { clear(gw0); } if (gr0) { gr0.hidden = true; }
+    if (id.indexOf('athlete/') === 0) {
+      list.hidden = true; det.hidden = false;
+      var an = id.slice(8).trim(), al = an.toLowerCase();
+      var mine = podiumRows(evs).filter(function (r) { return r.name.toLowerCase() === al && !/team/i.test(r.div); });
+      det.appendChild(h('a', { class: 'pe-back', href: 'previous-events#' }, [ui('ath.back')]));
+      det.appendChild(h('h2', { class: 'pe-title' }, [mine.length ? mine[0].name : an]));
+      if (!mine.length) { det.appendChild(h('p', { class: 'pe-sum' }, [ui('ath.none')])); return; }
+      var subs = []; mine.forEach(function (r) { if (r.sub && subs.indexOf(r.sub) < 0) subs.push(r.sub); });
+      if (subs.length) det.appendChild(h('p', { class: 'pe-meta' }, [subs.join('  /  ')]));
+      var cnt = [0, 0, 0, 0]; mine.forEach(function (r) { cnt[r.p]++; });
+      det.appendChild(h('div', { class: 'ath-tot' }, [1, 2, 3].map(function (p) { return h('div', { class: 'ath-m' }, [h('i', { class: 'm' + p }, [String(p)]), h('b', null, ['\u00d7 ' + cnt[p]])]); })));
+      det.appendChild(h('h3', { class: 'pe-h' }, [ui('ath.medals')]));
+      var ag = h('div', { class: 'pe-divs' });
+      mine.forEach(function (r) {
+        ag.appendChild(h('a', { class: 'pe-dv pe-hit', href: 'previous-events#' + r.ev._id }, [
+          h('div', { class: 'pe-pl' }, [h('i', { class: 'm' + r.p }, [String(r.p)]), h('span', null, [h('b', null, [r.div || r.ev.name]), r.sub ? h('small', null, [r.sub]) : null])]),
+          h('small', { class: 'pe-where' }, [r.ev.name + (parts(r.ev.date) ? ' \u00b7 ' + dateLong(r.ev.date) : '')])
+        ]));
+      });
+      det.appendChild(ag);
+      var cp = h('button', { type: 'button', class: 'btn ghost sm' }, [ui('ath.copy')]);
+      cp.addEventListener('click', function () {
+        var link = SITE + '/previous-events#athlete/' + encodeURIComponent(mine[0].name);
+        function done() { cp.textContent = ui('ath.copied'); markKa(); }
+        try { if (navigator.clipboard && navigator.clipboard.writeText) navigator.clipboard.writeText(link).then(done, function () {}); } catch (e) {}
+      });
+      det.appendChild(h('div', { class: 'actions', style: 'margin-top:24px' }, [cp]));
+      return;
+    }
     if (cur) {
       list.hidden = true; det.hidden = false;
       det.appendChild(h('a', { class: 'pe-back', href: 'previous-events#' }, [ui('past.back')]));
@@ -1993,7 +2110,7 @@
         det.appendChild(h('h3', { class: 'pe-h' }, [ui('past.photos')]));
         var g = h('div', { class: 'gallery' });
         ph.forEach(function (src, i) {
-          var b = h('button', { type: 'button', class: 'shot', 'aria-label': cur.name }, [h('img', { src: src, alt: cur.name, loading: 'lazy' })]);
+          var b = h('button', { type: 'button', class: 'shot', 'aria-label': cur.name }, [timg(src, cur.name)]);
           b.addEventListener('click', function () { openLightbox(ph, i); });
           g.appendChild(b);
         });
@@ -2007,7 +2124,7 @@
     if (gbox && gwrap) { clear(gwrap); gbox.hidden = true; clear(gbox); var gi = globalSearch(evs, list, gbox); if (gi) gwrap.appendChild(gi); }
     evs.forEach(function (e) {
       var ph = evPhotos(e), meta = [parts(e.date) ? dateLong(e.date) : '', e.venue || ''].filter(Boolean).join(' · ');
-      var cover = ph.length ? h('img', { src: ph[0], alt: '', loading: 'lazy' }) : h('span', { class: 'pe-ph' }, [h('img', { src: 'logo-white.jpg', alt: '' })]);
+      var cover = ph.length ? timg(ph[0], '') : h('span', { class: 'pe-ph' }, [h('img', { src: 'logo-white.jpg', alt: '' })]);
       list.appendChild(h('a', { class: 'pe-card', href: 'previous-events#' + e._id }, [
         h('span', { class: 'pe-cover' }, [cover]),
         h('span', { class: 'pe-body' }, [h('b', null, [e.name]), meta ? h('small', null, [meta]) : null, h('span', { class: 'pe-go' }, [ui('past.view')])])
@@ -2546,7 +2663,7 @@
       .then(function (res) { return res.json().catch(function () { return {}; }).then(function (j) { return res.ok && j.success !== false; }); })
       .catch(function () { return false; })
       .then(function (ok) {
-        if (ok) { ntSent = true; ntVals = {}; renderNotify(); markKa(); return; }
+        if (ok) { ntSent = true; ntVals = {}; try { if (ls()) ls().setItem('adcc-notified', '1'); } catch (e) {} renderNotify(); renderNbar(phase(DATA.event, Date.now())); markKa(); return; }
         btn.disabled = false; btn.textContent = ui('nt.send'); msg.textContent = ui('join.err');
         if (mail && !$('.jmail', form)) {
           var a = h('button', { type: 'button', class: 'btn ghost sm jmail' }, [ui('join.mail')]);
@@ -2555,6 +2672,69 @@
         }
         markKa();
       });
+  }
+
+  function renderNbar(ph) {
+    var old = $('#nbar'); if (old && old.parentNode) old.parentNode.removeChild(old);
+    document.body.classList.remove('has-nbar');
+    var ev = DATA.event || {}, st = ls(), ss = null;
+    try { ss = window.sessionStorage; } catch (e) {}
+    if (ph.name !== 'tba' && ph.name !== 'over') return;
+    try { if (page === 'waiver' || (st && st.getItem('adcc-notified')) || (ss && ss.getItem('adcc-nbar-x'))) return; } catch (e) {}
+    var go = h('a', { class: 'btn sm', href: page === 'index' ? '#notify' : './#notify' }, [ui('hero.notify')]);
+    var x = h('button', { type: 'button', class: 'nbar-x', 'aria-label': ui('nbar.x') }, ['\u00d7']);
+    var label = ph.name === 'tba' ? [ev.name, tx(ev.whenText)].filter(Boolean).join(' \u00b7 ') : ui('nt.h');
+    var bar = h('div', { class: 'nbar', id: 'nbar' }, [h('span', { class: 'nbar-t' }, [label]), go, x]);
+    x.addEventListener('click', function () { try { if (ss) ss.setItem('adcc-nbar-x', '1'); } catch (e) {} renderNbar(ph); });
+    document.body.appendChild(bar); document.body.classList.add('has-nbar');
+    var target = $('#notify');
+    if (target && window.IntersectionObserver) {
+      new IntersectionObserver(function (en) { bar.classList.toggle('off', en[0].isIntersecting); }, { threshold: 0.1 }).observe(target);
+    }
+  }
+  function renderStatsScript() {
+    var code = String(((DATA.site || {}).goatcounter) || '').trim().toLowerCase();
+    if (!/^[a-z0-9][a-z0-9-]{1,40}$/.test(code) || $('#gc-script')) return;
+    var s = document.createElement('script');
+    s.id = 'gc-script'; s.async = true; s.src = 'https://gc.zgo.at/count.js';
+    s.setAttribute('data-goatcounter', 'https://' + code + '.goatcounter.com/count');
+    document.head.appendChild(s);
+  }
+  var NOMOTION = !!(window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches), revealIO = null;
+  function reveal() {
+    if (NOMOTION || !window.IntersectionObserver) return;
+    if (!revealIO) {
+      revealIO = new IntersectionObserver(function (en) {
+        en.forEach(function (e) {
+          if (!e.isIntersecting) return;
+          e.target.classList.add('in'); revealIO.unobserve(e.target);
+          $$('b[data-n]', e.target).forEach(countUp);
+        });
+      }, { rootMargin: '0px 0px -6% 0px' });
+    }
+    $$('main section:not(.hero):not(.intro) .wrap > *, main .strip').forEach(function (el) {
+      if (el._rv) return;
+      el._rv = 1; el.classList.add('rv'); revealIO.observe(el);
+    });
+  }
+  function countUp(b) {
+    var n = +b.getAttribute('data-n'); if (!n || b._cu) return; b._cu = 1;
+    var t0 = null, dur = 1100;
+    function step(ts) { if (!t0) t0 = ts; var k = Math.min(1, (ts - t0) / dur); b.textContent = String(Math.round(n * (1 - Math.pow(1 - k, 3)))); if (k < 1) requestAnimationFrame(step); }
+    b.textContent = '0'; requestAnimationFrame(step);
+  }
+  function sparks() {
+    var art = $('#hero-art'); if (!art || art.hidden || NOMOTION || $('.sparks', art)) return;
+    var box = h('div', { class: 'sparks', 'aria-hidden': 'true' });
+    for (var i = 0; i < 26; i++) {
+      var s = h('i');
+      s.style.left = (Math.random() * 100).toFixed(1) + '%';
+      s.style.top = (30 + Math.random() * 65).toFixed(1) + '%';
+      s.style.animationDuration = (5 + Math.random() * 7).toFixed(1) + 's';
+      s.style.animationDelay = (-Math.random() * 12).toFixed(1) + 's';
+      box.appendChild(s);
+    }
+    art.appendChild(box);
   }
 
   function renderAll() {
@@ -2577,6 +2757,8 @@
     tickCountdown(true);
     markKa();
     document.body.classList.remove('loading');
+    if (page === 'index') sparks();
+    reveal();
   }
 
   function tickCountdown(force) {

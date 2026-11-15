@@ -21,9 +21,11 @@
 <meta name="twitter:title" content="ADCC Georgia – Submission Grappling in Tbilisi">
 <meta name="twitter:description" content="ADCC Georgia – submission grappling events in Tbilisi. Registration, weigh-in, tickets, rules, past events and contact.">
 <meta name="twitter:image" content="https://www.adcc.ge/og.jpg">
+<link rel="preload" as="image" href="photos/cover-2027-wide.jpg" media="(min-width: 701px)">
+<link rel="preload" as="image" href="photos/cover-2027-mobile.jpg" media="(max-width: 700px)">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Noto+Sans+Georgian:wght@400;500;600;700&family=Oswald:wght@500;600;700&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="style.css?v=202611071742">
+<link rel="stylesheet" href="style.css?v=202611152238">
 <noscript><style>body.loading main{visibility:visible}</style></noscript>
 </head>
 <body data-page="index" class="loading">
@@ -67,6 +69,7 @@
       <h1 id="hero-title"></h1>
       <p class="when" id="hero-when"></p>
       <p class="where" id="hero-where"></p>
+      <p class="tagline" id="hero-tag"></p>
 
       <div class="count" id="count" aria-live="polite">
         <div><b id="cd-d">--</b><small data-i18n="cd.days">Days</small></div>
@@ -80,7 +83,29 @@
     </div>
   </section>
 
-  <section id="hub">
+  <section id="notify" class="ridge"><div class="wrap"><div class="notify-slot"></div></div></section>
+
+  <section id="video" class="glow" hidden>
+    <div class="wrap">
+      <h2 data-i18n="vid.h">Highlights</h2>
+      <div class="video" id="video-box"></div>
+    </div>
+  </section>
+
+  <section id="stats" class="ridge" hidden>
+    <div class="wrap"><div class="stats" id="stats-box"></div></div>
+  </section>
+
+  <section id="past" class="glow">
+    <div class="wrap past">
+      <h2 data-i18n-html="past.h">Previous <span>events</span></h2>
+      <p id="past-p"></p>
+      <div class="actions" id="past-actions"></div>
+    </div>
+    <div class="strip" id="strip" hidden><div class="strip-track" id="strip-track"></div></div>
+  </section>
+
+  <section id="hub" class="ridge">
     <div class="wrap">
       <h2 data-i18n-html="hub.h">Everything <span>you need</span></h2>
       <p data-i18n="hub.sub" class="sub">Plan your day: event details, weigh-in, tickets, rules and more.</p>
@@ -88,18 +113,7 @@
     </div>
   </section>
 
-  <section id="notify"><div class="wrap"><div class="notify-slot"></div></div></section>
-
-  <section id="past">
-    <div class="wrap past">
-      <h2 data-i18n-html="past.h">Previous <span>events</span></h2>
-      <p id="past-p"></p>
-      <div class="gallery sm" id="gallery"></div>
-      <div class="actions" id="past-actions"></div>
-    </div>
-  </section>
-
-  <section id="contact-teaser">
+  <section id="contact-teaser" class="glow">
     <div class="wrap">
       <h2 data-i18n-html="ct.h">Get in <span>touch</span></h2>
       <p data-i18n="ct.sub" class="sub">Questions about registration or the event? Message us.</p>
@@ -135,6 +149,6 @@
     if(m) location.replace(m);
   })();
 </script>
-<script src="site.js?v=202611071742"></script>
+<script src="site.js?v=202611152238"></script>
 </body>
 </html>
