@@ -30,7 +30,7 @@
  "ct.h": "<span>დაგვიკავშირდით</span>",
  "ct.sub": "გაქვთ შეკითხვები რეგისტრაციის ან ღონისძიების შესახებ? მოგვწერეთ.",
  "nav.join.f": "შემოგვიერთდით გუნდში",
- "ft.about": "სუბმიშენ გრეპლინგის ღონისძიებები თბილისში, საქართველო.",
+ "ft.about": "სუბმიშენ გრეპლინგის ღონისძიებები საქართველოში ADCC-ის წესებით: ბავშვებისთვის, იუნიორებისთვის, ზრდასრულებისა და ვეტერანებისთვის. კავკასიის ჩემპიონატის სახლი.",
  "ft.rights": "© <span class=\"js-year\">2026</span> ADCC Georgia. ყველა უფლება დაცულია.",
  "ft.privacy": "კონფიდენციალურობის პოლიტიკა",
  "ft.terms": "პირობები და საავტორო უფლებები",
@@ -164,14 +164,16 @@
  "title.terms": "პირობები და საავტორო უფლებები – ADCC Georgia",
  "terms.h1": "პირობები და <em>საავტორო უფლებები</em>",
  "title.404": "გვერდი ვერ მოიძებნა – ADCC Georgia",
- "nf.h1": "გვერდი <em>ვერ მოიძებნა</em>",
- "nf.p": "გვერდი, რომელსაც ეძებთ, არ არსებობს ან გადატანილია.",
+ "nf.h1": "ეს გვერდი <em>დანებდა</em>",
+ "nf.p": "გვერდი, რომელსაც ეძებთ, არ არსებობს ან გადატანილია. დავბრუნდეთ ხალიჩაზე.",
  "nf.home": "მთავარ გვერდზე გადასვლა",
  "nf.event": "ღონისძიების დეტალები",
  "nf.contact": "დაგვიკავშირდით",
  "vid.h": "საუკეთესო მომენტები"
 };              // static page text: key -> Georgian
   var UI = {
+ "ft.next": ["Next event", "შემდეგი ღონისძიება"],
+ "ft.top": ["Back to top ↑", "ზემოთ ↑"],
  "st.events": ["Events held", "ჩატარებული ღონისძიება"],
  "st.medals": ["Medals awarded", "გაცემული მედალი"],
  "st.ath": ["Medalists", "მედალოსანი"],
@@ -763,8 +765,8 @@
   "საზოგადოება"
  ],
  "ft.about": [
-  "Submission grappling events in Tbilisi, Georgia.",
-  "სუბმიშენ გრეპლინგის ღონისძიებები თბილისში, საქართველო."
+  "Submission grappling events in Georgia under ADCC rules, for kids, juniors, adults and masters. Home of the Caucasus Championship.",
+  "სუბმიშენ გრეპლინგის ღონისძიებები საქართველოში ADCC-ის წესებით: ბავშვებისთვის, იუნიორებისთვის, ზრდასრულებისა და ვეტერანებისთვის. კავკასიის ჩემპიონატის სახლი."
  ],
  "ft.privacy": [
   "Privacy Policy",
@@ -1650,6 +1652,16 @@
       if (fb) sb('people', 'Facebook', 'https://www.facebook.com/' + encodeURIComponent(fb), true);
       var w0 = waList()[0]; if (w0) sb('phone', 'WhatsApp', waHref(w0.number), true);
       if (String(c.email || '').trim()) sb('mail', ui('ct.email'), 'mailto:' + c.email.trim(), false);
+    }
+    var fb2 = $('.fbottom');
+    if (fb2) {
+      var old = $('.fextra', fb2); if (old) fb2.removeChild(old);
+      var ev = DATA.event || {}, kids = [];
+      if (page !== 'index' && ev.name) kids.push(h('a', { class: 'fnext', href: './' }, [h('small', null, [ui('ft.next')]), ev.name + (tx(ev.whenText) && !parts(ev.date) ? ' \u00b7 ' + tx(ev.whenText) : parts(ev.date) ? ' \u00b7 ' + dateLong(ev.date) : '')]));
+      var top = h('a', { class: 'ftop', href: '#' }, [ui('ft.top')]);
+      top.addEventListener('click', function (e) { e.preventDefault(); window.scrollTo({ top: 0, behavior: NOMOTION ? 'auto' : 'smooth' }); });
+      kids.push(top);
+      fb2.insertBefore(h('span', { class: 'fextra' }, kids), fb2.firstChild);
     }
     if (lst) {
       clear(lst);
