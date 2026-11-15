@@ -600,7 +600,7 @@ body:not(.loading) main{animation:page-in .45s ease both}
 /* -- 2. type scale and spacing -- */
 :root{--r:12px;--line-soft:rgba(255,255,255,.07);--panel-2:#121214}
 body{font-size:16px;line-height:1.65;-webkit-font-smoothing:antialiased;text-rendering:optimizeLegibility}
-p{max-width:72ch}
+.page p,.det-body p{max-width:72ch}
 section{padding:88px 0;border-top-color:var(--line-soft)}
 h2{font-size:clamp(1.9rem,4.2vw,2.75rem);letter-spacing:.015em;margin-bottom:10px}
 h3{letter-spacing:.02em}
@@ -731,23 +731,23 @@ button.shot{border:0;padding:0;cursor:zoom-in}
 html.splashing{overflow:hidden}
 @media print{#splash{display:none!important}}
 
-/* ================= moving mountains on the cover ================= */
+/* ================= swords on the hill (Didgori), drawn over the bottom of the cover ================= */
 .hero-art{overflow:hidden}
-.mtn{position:absolute;left:0;bottom:0;width:calc(100vw + var(--tw));height:30%;background-repeat:repeat-x;background-size:var(--tw) 100%;pointer-events:none;will-change:transform;animation:mtn linear infinite;--tw:1600px}
-.mtn.m1{height:38%;bottom:5%;background-image:url("data:image/svg+xml,%3Csvg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 1600 300%22 preserveAspectRatio=%22none%22%3E%3Cdefs%3E%3ClinearGradient id=%22g%22 x1=%220%22 y1=%220%22 x2=%220%22 y2=%221%22%3E%3Cstop offset=%220%22 stop-color=%22rgba(120,16,24,.50)%22/%3E%3Cstop offset=%221%22 stop-color=%22rgba(30,6,9,.25)%22/%3E%3C/linearGradient%3E%3C/defs%3E%3Cpath d=%22M0,165.5 C38,148.9 76,76.5 114,69.6 C152,62.7 190,118.5 229,124.1 C267,129.7 305,97.2 343,103.3 C381,109.5 419,169.4 457,161.0 C495,152.6 533,61.9 571,53.2 C610,44.5 648,101.4 686,108.9 C724,116.4 762,93.6 800,98.0 C838,102.4 876,128.2 914,135.6 C952,142.9 990,134.9 1029,142.2 C1067,149.6 1105,183.3 1143,179.7 C1181,176.1 1219,129.2 1257,120.6 C1295,112.1 1333,120.4 1371,128.5 C1410,136.5 1448,162.8 1486,168.9 C1524,175.1 1562,182.0 1600,165.5 L1600,300 L0,300 Z%22 fill=%22url(%23g)%22/%3E%3Cpath d=%22M0,165.5 C38,148.9 76,76.5 114,69.6 C152,62.7 190,118.5 229,124.1 C267,129.7 305,97.2 343,103.3 C381,109.5 419,169.4 457,161.0 C495,152.6 533,61.9 571,53.2 C610,44.5 648,101.4 686,108.9 C724,116.4 762,93.6 800,98.0 C838,102.4 876,128.2 914,135.6 C952,142.9 990,134.9 1029,142.2 C1067,149.6 1105,183.3 1143,179.7 C1181,176.1 1219,129.2 1257,120.6 C1295,112.1 1333,120.4 1371,128.5 C1410,136.5 1448,162.8 1486,168.9 C1524,175.1 1562,182.0 1600,165.5%22 fill=%22none%22 stroke=%22rgba(232,60,70,.55)%22 stroke-width=%221.6%22 vector-effect=%22non-scaling-stroke%22/%3E%3C/svg%3E");animation-duration:150s;opacity:.75}
-.mtn.m2{height:27%;background-image:url("data:image/svg+xml,%3Csvg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 1600 300%22 preserveAspectRatio=%22none%22%3E%3Cdefs%3E%3ClinearGradient id=%22g%22 x1=%220%22 y1=%220%22 x2=%220%22 y2=%221%22%3E%3Cstop offset=%220%22 stop-color=%22rgba(70,10,16,.80)%22/%3E%3Cstop offset=%221%22 stop-color=%22rgba(11,11,12,.85)%22/%3E%3C/linearGradient%3E%3C/defs%3E%3Cpath d=%22M0,182.0 C53,179.9 107,128.4 160,126.1 C213,123.9 267,173.5 320,168.8 C373,164.1 427,97.3 480,98.1 C533,98.8 587,172.6 640,173.0 C693,173.5 747,91.8 800,100.9 C853,110.0 907,217.1 960,227.8 C1013,238.4 1067,176.5 1120,164.8 C1173,153.1 1227,161.6 1280,157.4 C1333,153.1 1387,135.0 1440,139.1 C1493,143.3 1547,184.2 1600,182.0 L1600,300 L0,300 Z%22 fill=%22url(%23g)%22/%3E%3Cpath d=%22M0,182.0 C53,179.9 107,128.4 160,126.1 C213,123.9 267,173.5 320,168.8 C373,164.1 427,97.3 480,98.1 C533,98.8 587,172.6 640,173.0 C693,173.5 747,91.8 800,100.9 C853,110.0 907,217.1 960,227.8 C1013,238.4 1067,176.5 1120,164.8 C1173,153.1 1227,161.6 1280,157.4 C1333,153.1 1387,135.0 1440,139.1 C1493,143.3 1547,184.2 1600,182.0%22 fill=%22none%22 stroke=%22rgba(255,80,84,.85)%22 stroke-width=%221.6%22 vector-effect=%22non-scaling-stroke%22/%3E%3C/svg%3E");animation-duration:80s}
-@keyframes mtn{to{transform:translate3d(calc(-1 * var(--tw)),0,0)}}
-@media (max-width:700px){.mtn{--tw:900px}.mtn.m1{height:26%;bottom:4%;animation-duration:110s}.mtn.m2{height:19%;animation-duration:60s}}
+.swords{position:absolute;left:0;right:0;bottom:0;width:100%;height:30%;z-index:1;pointer-events:none;display:block;-webkit-mask-image:linear-gradient(180deg,#000 62%,transparent 100%);mask-image:linear-gradient(180deg,#000 62%,transparent 100%)}
+.swords.sw-m{display:none}
+@media (max-width:700px){.swords.sw-d{display:none}.swords.sw-m{display:block;height:29%}}
 
 /* ================= Georgian flag, in the site's glow style ================= */
 .logo span::after,.cover-presents::before,.geo-flag{content:"";display:inline-block;vertical-align:-.12em;width:1.5em;height:1em;border-radius:.14em;background:linear-gradient(105deg,transparent 35%,rgba(255,255,255,.55) 50%,transparent 65%) 200% 0/250% 100% no-repeat,url("data:image/svg+xml,%3Csvg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 300 200%22%3E%3Crect width=%22300%22 height=%22200%22 fill=%22%23f4efec%22/%3E%3Cpath d=%22M130,0h40v80h130v40H170v80h-40v-80H0V80h130z%22 fill=%22%23d4202f%22/%3E%3Cpath transform=%22translate(65,40)%22 d=%22M-4,-4 L-9,-20 L9,-20 L4,-4 L20,-9 L20,9 L4,4 L9,20 L-9,20 L-4,4 L-20,9 L-20,-9 Z%22 fill=%22%23d4202f%22/%3E%3Cpath transform=%22translate(235,40)%22 d=%22M-4,-4 L-9,-20 L9,-20 L4,-4 L20,-9 L20,9 L4,4 L9,20 L-9,20 L-4,4 L-20,9 L-20,-9 Z%22 fill=%22%23d4202f%22/%3E%3Cpath transform=%22translate(65,160)%22 d=%22M-4,-4 L-9,-20 L9,-20 L4,-4 L20,-9 L20,9 L4,4 L9,20 L-9,20 L-4,4 L-20,9 L-20,-9 Z%22 fill=%22%23d4202f%22/%3E%3Cpath transform=%22translate(235,160)%22 d=%22M-4,-4 L-9,-20 L9,-20 L4,-4 L20,-9 L20,9 L4,4 L9,20 L-9,20 L-4,4 L-20,9 L-20,-9 Z%22 fill=%22%23d4202f%22/%3E%3C/svg%3E") center/cover no-repeat;box-shadow:0 0 0 1px rgba(255,255,255,.12),0 0 14px rgba(212,32,47,.65),0 0 34px rgba(212,32,47,.3);animation:flag-sheen 5s ease-in-out infinite}
 .logo span::after{margin-left:.55em;font-size:.72em;letter-spacing:0}
 .cover-presents::before{margin-right:.9em;letter-spacing:0;text-indent:0;font-size:1.15em}
 @keyframes flag-sheen{0%,55%{background-position:200% 0,center}100%{background-position:-100% 0,center}}
-@media (prefers-reduced-motion:reduce){.mtn{animation:none}.logo span::after,.cover-presents::before,.geo-flag{animation:none}}
+@media (prefers-reduced-motion:reduce){.logo span::after,.cover-presents::before,.geo-flag{animation:none}}
 
 /* official results button: clearly a link that opens another site */
 .btn.out-link{display:inline-flex;align-items:center;gap:12px;text-align:left}
 .btn.out-link small{display:block;font:500 .72rem/1.2 Inter,'Noto Sans Georgian',sans-serif;letter-spacing:.02em;text-transform:none;opacity:.85;margin-top:3px}
 .btn.out-link .arr{flex:none;width:30px;height:30px;border-radius:50%;background:rgba(255,255,255,.18);display:flex;align-items:center;justify-content:center;font-size:1.05rem;line-height:1;transition:transform .2s,background .2s}
 .btn.out-link:hover .arr{transform:translate(2px,-2px);background:rgba(255,255,255,.3)}
+.hero.has-cover .when,.hero.has-cover .where,.hero.has-cover .tagline{margin-left:auto;margin-right:auto;text-align:center}
+.hero.has-cover .wrap{margin-top:0;padding-top:26px}
