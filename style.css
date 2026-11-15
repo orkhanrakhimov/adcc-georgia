@@ -719,17 +719,47 @@ button.shot{border:0;padding:0;cursor:zoom-in}
   body.menu-open .nbar,body.menu-open .wa-wrap{display:none}
 }
 
-/* ================= opening logo animation (first visit of a session) ================= */
-#splash{position:fixed;inset:0;z-index:2000;display:flex;align-items:center;justify-content:center;background:radial-gradient(60% 50% at 50% 50%,#1a0a0c 0%,#0b0b0c 70%);transition:opacity .6s ease,visibility 0s .6s}
-#splash.out{opacity:0;visibility:hidden;pointer-events:none}
-#splash.out .sp-in{transform:scale(1.08);filter:blur(6px);transition:transform .6s ease,filter .6s ease}
-.sp-in{display:flex;flex-direction:column;align-items:center;gap:18px;width:min(64vw,420px)}
-.sp-in img{width:100%;height:auto;display:block;opacity:0;transform:scale(.86);filter:blur(10px) drop-shadow(0 0 0 rgba(212,32,47,0));animation:sp-logo .9s cubic-bezier(.2,.8,.2,1) .1s forwards}
-.sp-in span{font:600 clamp(.8rem,2.6vw,1rem)/1 Oswald,Impact,sans-serif;letter-spacing:.9em;text-indent:.9em;color:#f2f2f0;opacity:0;animation:sp-text .7s ease .55s forwards}
-.sp-in i{display:block;width:100%;height:2px;border-radius:2px;background:rgba(255,255,255,.08);position:relative;overflow:hidden;margin-top:6px}
-.sp-in i::after{content:"";position:absolute;inset:0;background:linear-gradient(90deg,transparent,#d4202f 40%,#ff6a55);transform:translateX(-101%);animation:sp-bar 1.25s cubic-bezier(.4,0,.2,1) .2s forwards;box-shadow:0 0 12px rgba(212,32,47,.9)}
-@keyframes sp-logo{60%{opacity:1;filter:blur(0) drop-shadow(0 0 34px rgba(212,32,47,.75))}100%{opacity:1;transform:scale(1);filter:blur(0) drop-shadow(0 0 18px rgba(212,32,47,.45))}}
-@keyframes sp-text{from{opacity:0;letter-spacing:1.4em}to{opacity:.9;letter-spacing:.9em}}
-@keyframes sp-bar{to{transform:translateX(0)}}
+/* ================= opening logo animation (first visit of a session) =================
+   transforms and opacity only: no CSS filters on the logo (they break in Safari) */
+#splash{position:fixed;inset:0;z-index:2000;display:flex;align-items:center;justify-content:center;overflow:hidden}
+.spx-door{position:absolute;top:0;bottom:0;width:50.5%;background:#070708;transition:transform .8s cubic-bezier(.7,0,.2,1)}
+.spx-door.l{left:0;background:linear-gradient(90deg,#070708 60%,#12080a)}
+.spx-door.r{right:0;background:linear-gradient(270deg,#070708 60%,#12080a)}
+.spx-door.l::after,.spx-door.r::after{content:"";position:absolute;top:0;bottom:0;width:2px;background:linear-gradient(180deg,transparent,#d4202f 30%,#ff6a55 50%,#d4202f 70%,transparent);opacity:0;box-shadow:0 0 18px #d4202f}
+.spx-door.l::after{right:0}.spx-door.r::after{left:0}
+/* embers */
+.spx-emb{position:absolute;inset:0}
+.spx-emb i{position:absolute;bottom:-12px;width:2px;height:9px;border-radius:2px;background:linear-gradient(#ffd27a,#ff5a1f);box-shadow:0 0 8px rgba(255,110,40,.9);opacity:0;animation:spx-ember linear infinite}
+@keyframes spx-ember{0%{opacity:0;transform:translate3d(0,0,0) rotate(10deg)}10%{opacity:.95}70%{opacity:.6}100%{opacity:0;transform:translate3d(var(--dx,20px),-105vh,0) rotate(24deg)}}
+/* light slash and impact flash */
+.spx-slash{position:absolute;top:50%;left:-60%;width:60%;height:3px;margin-top:-1px;background:linear-gradient(90deg,transparent,#ff3a3a 55%,#fff 96%,transparent);box-shadow:0 0 26px 4px rgba(212,32,47,.85);transform:rotate(-14deg);opacity:0;animation:spx-slash .5s cubic-bezier(.6,0,.3,1) .2s forwards}
+@keyframes spx-slash{0%{opacity:0;left:-60%}15%{opacity:1}85%{opacity:1}100%{opacity:0;left:110%}}
+.spx-flash{position:absolute;inset:0;background:radial-gradient(circle at 50% 50%,#fff 0%,#ff5a4a 22%,rgba(212,32,47,.35) 45%,transparent 70%);opacity:0;animation:spx-flash .55s ease-out .68s forwards}
+@keyframes spx-flash{0%{opacity:.95}100%{opacity:0}}
+/* logo block */
+.spx-in{position:relative;display:flex;flex-direction:column;align-items:center;gap:20px;width:min(72vw,520px);animation:spx-shake .42s linear .68s}
+@keyframes spx-shake{0%{transform:translate(0,0)}15%{transform:translate(-7px,5px)}30%{transform:translate(6px,-5px)}45%{transform:translate(-5px,-3px)}60%{transform:translate(4px,3px)}80%{transform:translate(-2px,1px)}100%{transform:none}}
+.spx-glow{position:absolute;left:50%;top:38%;width:170%;padding-bottom:95%;margin:-47% 0 0 -85%;border-radius:50%;background:radial-gradient(closest-side,rgba(212,32,47,.6) 0%,rgba(212,32,47,.22) 45%,transparent 100%);opacity:0;transform:scale(.3);animation:spx-glow 1.6s ease-out .68s forwards}
+@keyframes spx-glow{0%{opacity:0;transform:scale(.3)}18%{opacity:1;transform:scale(1.05)}100%{opacity:.75;transform:scale(1)}}
+.spx-ring{position:absolute;left:50%;top:38%;width:60%;padding-bottom:60%;margin:-30% 0 0 -30%;border-radius:50%;border:2px solid rgba(255,110,90,.95);box-shadow:0 0 30px rgba(212,32,47,.8),inset 0 0 30px rgba(212,32,47,.5);opacity:0;animation:spx-ring .9s cubic-bezier(.1,.7,.2,1) .68s forwards}
+.spx-ring.r2{border-width:1px;animation-delay:.8s;animation-duration:1.1s}
+@keyframes spx-ring{0%{opacity:1;transform:scale(.2)}100%{opacity:0;transform:scale(4.2)}}
+.spx-logo{position:relative;width:100%;opacity:0;transform:scale(3.2);animation:spx-slam .5s cubic-bezier(.9,0,.9,.4) .2s forwards}
+@keyframes spx-slam{0%{opacity:0;transform:scale(3.2)}35%{opacity:1}96%{opacity:1;transform:scale(.96)}100%{opacity:1;transform:scale(1)}}
+.spx-logo img{display:block;width:100%;height:auto}
+.spx-logo s{position:absolute;inset:0;-webkit-mask:url("logo.png") center/100% 100% no-repeat;mask:url("logo.png") center/100% 100% no-repeat;overflow:hidden;text-decoration:none}
+.spx-logo s::after{content:"";position:absolute;top:-20%;bottom:-20%;left:-45%;width:34%;background:linear-gradient(100deg,transparent,rgba(255,255,255,.9) 50%,transparent);transform:skewX(-18deg);animation:spx-shine .7s ease-in-out 1.15s forwards}
+@keyframes spx-shine{to{left:125%}}
+.spx-in span{position:relative;font:600 clamp(.85rem,2.8vw,1.15rem)/1 Oswald,Impact,sans-serif;letter-spacing:1.6em;text-indent:1.6em;color:#f2f2f0;opacity:0;animation:spx-text .7s cubic-bezier(.2,.8,.2,1) 1s forwards}
+@keyframes spx-text{to{opacity:.95;letter-spacing:.9em;text-indent:.9em}}
+.spx-in i{position:relative;display:block;width:0;height:2px;border-radius:2px;background:linear-gradient(90deg,transparent,#d4202f 20%,#ff6a55 50%,#d4202f 80%,transparent);box-shadow:0 0 14px rgba(212,32,47,.9);animation:spx-bar .8s cubic-bezier(.3,0,.2,1) 1.05s forwards}
+@keyframes spx-bar{to{width:100%}}
+/* exit: logo lifts away, doors open */
+#splash.out{pointer-events:none}
+#splash.out .spx-door.l{transform:translate3d(-101%,0,0)}
+#splash.out .spx-door.r{transform:translate3d(101%,0,0)}
+#splash.out .spx-door.l::after,#splash.out .spx-door.r::after{opacity:1}
+#splash.out .spx-in{opacity:0;transform:scale(1.25);transition:opacity .4s ease,transform .5s ease;animation:none}
+#splash.out .spx-emb,#splash.out .spx-flash,#splash.out .spx-slash{opacity:0;transition:opacity .3s}
 html.splashing{overflow:hidden}
 @media print{#splash{display:none!important}}
