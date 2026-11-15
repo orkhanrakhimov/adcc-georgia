@@ -321,8 +321,8 @@
   "უფასო"
  ],
  "past.p": [
-  "Our last event was {name}. Photos are on our Facebook page, and the official results are on the ADCC website.",
-  "ჩვენი ბოლო ღონისძიება იყო {name}. ფოტოები იხილეთ ჩვენს Facebook გვერდზე, ხოლო ოფიციალური შედეგები — ADCC-ის ვებგვერდზე."
+  "Our last event was {name}. See the full results, every medalist and photos from the day.",
+  "ჩვენი ბოლო ღონისძიება იყო {name}. იხილეთ სრული შედეგები, ყველა მედალოსანი და ფოტოები."
  ],
  "past.fb": [
   "See photos on Facebook",
