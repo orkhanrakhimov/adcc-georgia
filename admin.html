@@ -98,7 +98,7 @@
   </div>
 </main>
 
-<script src="site.js?v=202611152338r"></script>
+<script src="site.js?v=202611160913u"></script>
 <script>
 (function () {
   'use strict';
@@ -270,6 +270,8 @@
 
     root.appendChild(section('Event', true, [
       field('Event name', inp('event.name'), 'Shown as the big title and on every page.'),
+      field('Event name in Georgian (optional)', inp('event.nameKa'), 'Shown instead of the name above when the site is in Georgian.'),
+      field('Highlighted words in the Georgian name', inp('event.highlightKa'), 'Optional. Must be part of the Georgian name.'),
       bi('Line above the name (optional)', 'event.presents'),
       bi('Short description under the title (optional)', 'event.tagline'),
       field('Highlighted words (red part of the title)', inp('event.highlight'), 'Optional. Must be part of the event name. When the home page has a cover image, these words are already in the picture, so they are hidden in the text title.'),
