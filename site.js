@@ -103,7 +103,7 @@
  "privacy.t6": "განაცხადის ფორმები („შემოუერთდით ჩვენს გუნდს“): თქვენი სახელი და გვარი, ელფოსტა, ტელეფონი ან WhatsApp ნომერი, ქალაქი, ენები, სოციალური ქსელის ან პორტფოლიოს ბმულები, გამოცდილება და ჩვენს კითხვებზე პასუხები.",
  "privacy.t7": "მომდევნო ღონისძიების შესახებ შეტყობინების მისაღებად ვინახავთ თქვენს ელფოსტის მისამართს და, სურვილის შემთხვევაში, სახელს. ღონისძიების გამოცხადებისას ამ მისამართზე მოგწერთ. სიიდან ამოღება ნებისმიერ დროს შეგიძლიათ მოითხოვოთ.",
  "privacy.t8": "შეტყობინებები: ყველაფერი, რასაც გვწერთ ელფოსტით, WhatsApp-ით, Instagram-ით ან Facebook-ით, მათ შორის საკონტაქტო მონაცემები და, ბილეთების ან მერჩის შემთხვევაში, შეკვეთის დეტალები.",
- "privacy.t9": "ეს ვებგვერდი არ იყენებს სარეკლამო ან თვალთვალის ქუქი-ფაილებს. ვიზიტების დასათვლელად შეიძლება გამოვიყენოთ კონფიდენციალურობაზე ორიენტირებული სტატისტიკის ინსტრუმენტი, რომელიც არ იყენებს ქუქი-ფაილებს და თქვენს ვინაობას არ ადგენს. თქვენი ენის არჩევანი ინახება მხოლოდ თქვენს ბრაუზერში და ჩვენთან არ იგზავნება.",
+ "privacy.t9": "ეს ვებგვერდი არ იყენებს სარეკლამო ან თვალთვალის ქუქი-ფაილებს. ვიზიტებს ვითვლით საკუთარ სტატისტიკაში: გვერდი, საიდან მოხვდით საიტზე (მაგალითად, Instagram ან Google), მოწყობილობის ტიპი, ენა და დროის სარტყელი. ქუქი-ფაილები არ გამოიყენება, IP მისამართი არ ინახება და თქვენი ვინაობა არ დგინდება. თქვენი ენის არჩევანი ინახება მხოლოდ თქვენს ბრაუზერში და ჩვენთან არ იგზავნება.",
  "privacy.t10": "როგორ ვიყენებთ თქვენს ინფორმაციას",
  "privacy.t11": "თქვენი განაცხადის განსახილველად და მსაჯების, საორგანიზაციო გუნდის წევრებისა და მედიააკრედიტაციის შესახებ გადაწყვეტილების მისაღებად.",
  "privacy.t12": "თქვენთან დასაკავშირებლად განაცხადის, ღონისძიების ან თქვენი შეკითხვის თაობაზე.",
@@ -3072,6 +3072,35 @@
     });
     document.addEventListener('keydown', function (e) { if (e.key === 'Escape' && document.body.classList.contains('menu-open')) { document.body.classList.remove('menu-open'); burger.setAttribute('aria-expanded', 'false'); burger.focus(); } });
   }
+  var tracked = false;
+  function trackVisit() {   // visitor statistics: one anonymous count per page view, sent to our own Google Sheet (no cookies)
+    var api = apiUrl();
+    if (tracked || !api || navigator.webdriver || !/^(www\.)?adcc\.ge$/.test(location.hostname)) return;
+    tracked = true;
+    var ss = null, sid = '', first = false;
+    try { ss = window.sessionStorage; sid = ss.getItem('adcc-sid') || ''; } catch (e) {}
+    if (!sid) { sid = Math.random().toString(36).slice(2, 12) + Date.now().toString(36).slice(-4); first = true; try { if (ss) ss.setItem('adcc-sid', sid); } catch (e) {} }
+    var ref = document.referrer, src = 'Direct', host = '', utm = '';
+    try { utm = new URLSearchParams(location.search).get('utm_source') || ''; } catch (e) {}
+    try { host = ref ? new URL(ref).hostname.replace(/^www\./, '') : ''; } catch (e) {}
+    if (utm) { host = utm.toLowerCase(); src = utm.slice(0, 40); }
+    if (!utm && host === location.hostname.replace(/^www\./, '')) src = 'Internal';
+    else if (/instagram|^ig$/.test(host)) src = 'Instagram';
+    else if (/facebook|fb\./.test(host)) src = 'Facebook';
+    else if (/google/.test(host)) src = 'Google';
+    else if (/whatsapp|wa\.me/.test(host)) src = 'WhatsApp';
+    else if (/t\.me|telegram/.test(host)) src = 'Telegram';
+    else if (/smoothcomp/.test(host)) src = 'Smoothcomp';
+    else if (/adcombat/.test(host)) src = 'ADCC official site';
+    else if (/bing\.|yandex\.|duckduckgo/.test(host)) src = 'Other search';
+    else if (host && !utm) src = host;
+    var zone = ''; try { zone = Intl.DateTimeFormat().resolvedOptions().timeZone || ''; } catch (e) {}
+    var path = location.pathname.replace(/\.html$/, '').replace(/\/index$/, '/') || '/';
+    var w = window.innerWidth, payload = JSON.stringify({ action: 'visit', path: path, source: src, sid: sid, first: first,
+      device: w < 768 ? 'Mobile' : w < 1100 ? 'Tablet' : 'Desktop', lang: lang, zone: zone });
+    try { if (navigator.sendBeacon && navigator.sendBeacon(api, new Blob([payload], { type: 'text/plain' }))) return; } catch (e) {}
+    fetch(api, { method: 'POST', body: payload, keepalive: true }).catch(function () {});
+  }
   (function () {   // header gets a solid look once the page scrolls
     var hd = $('header.top'); if (!hd) return;
     var on = null;
@@ -3099,6 +3128,7 @@
   function start(data) {
     DATA = merge(DEFAULTS, data || {});
     renderAll();
+    if (data) trackVisit();
     if (!ticking) { ticking = true; setInterval(function () { tickCountdown(false); }, 1000); }
   }
   var timer = setTimeout(function () { start(null); }, 2500);   // never leave the page blank

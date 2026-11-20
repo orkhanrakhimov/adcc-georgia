@@ -116,6 +116,18 @@
     .mobile-who{display:flex!important}
   }
   .mobile-who{display:none;gap:10px;align-items:center;justify-content:space-between;margin-bottom:14px;color:var(--muted);font-size:.85rem}
+
+  .bars{display:flex;align-items:flex-end;gap:3px;height:170px;padding:10px 4px 0;border-bottom:1px solid rgba(255,255,255,.1)}
+  .bars i{flex:1;background:linear-gradient(180deg,#e0464f,#8d1520);border-radius:3px 3px 0 0;min-height:2px;position:relative}
+  .bars i:hover{background:#ff6a72}
+  .bars-x{display:flex;justify-content:space-between;color:var(--muted);font-size:.72rem;margin-top:6px}
+  .lists{display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:16px}
+  .hl{display:grid;gap:8px}
+  .hl div{display:grid;grid-template-columns:1fr auto;gap:10px;font-size:.88rem;position:relative;padding:6px 10px;border-radius:6px;overflow:hidden}
+  .hl div::before{content:"";position:absolute;inset:0;width:var(--w);background:rgba(212,32,47,.18);border-radius:6px}
+  .hl div span,.hl div b{position:relative}
+  .prog{height:8px;border-radius:8px;background:#26262b;overflow:hidden;margin:10px 0 4px}
+  .prog i{display:block;height:100%;background:var(--accent)}
 </style>
 </head>
 <body data-page="admin" class="adm-body">
@@ -165,7 +177,7 @@
 <div class="app" id="app" hidden>
   <aside class="side">
     <div class="brand"><img src="logo.png" alt="ADCC"><span>ADMIN</span></div>
-    <button type="button" class="nav-b" data-go="dash"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 13h8V3H3zM13 21h8V11h-8zM3 21h8v-6H3zM13 3v6h8V3z"/></svg><span>Dashboard</span><span class="cnt" data-cnt="dash" hidden></span></button><button type="button" class="nav-b" data-go="notify"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M18 8a6 6 0 0 0-12 0c0 7-3 9-3 9h18s-3-2-3-9"/><path d="M13.7 21a2 2 0 0 1-3.4 0"/></svg><span>Notify me signups</span><span class="cnt" data-cnt="notify" hidden></span></button><button type="button" class="nav-b" data-go="join"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M16 21v-2a4 4 0 0 0-4-4H6a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M22 21v-2a4 4 0 0 0-3-3.9M16 3.1a4 4 0 0 1 0 7.8"/></svg><span>Team applications</span><span class="cnt" data-cnt="join" hidden></span></button><button type="button" class="nav-b" data-go="sponsor"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 7H4a2 2 0 0 0-2 2v10a2 2 0 0 0 2 2h16a2 2 0 0 0 2-2V9a2 2 0 0 0-2-2z"/><path d="M16 21V5a2 2 0 0 0-2-2h-4a2 2 0 0 0-2 2v16"/></svg><span>Partner inquiries</span><span class="cnt" data-cnt="sponsor" hidden></span></button><button type="button" class="nav-b" data-go="content"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 20h9"/><path d="M16.5 3.5a2.1 2.1 0 0 1 3 3L7 19l-4 1 1-4z"/></svg><span>Website content</span><span class="cnt" data-cnt="content" hidden></span></button><button type="button" class="nav-b" data-go="settings"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="3"/><path d="M19.4 15a1.7 1.7 0 0 0 .3 1.8l.1.1a2 2 0 1 1-2.8 2.8l-.1-.1a1.7 1.7 0 0 0-1.8-.3 1.7 1.7 0 0 0-1 1.5V21a2 2 0 1 1-4 0v-.1a1.7 1.7 0 0 0-1.1-1.5 1.7 1.7 0 0 0-1.8.3l-.1.1a2 2 0 1 1-2.8-2.8l.1-.1a1.7 1.7 0 0 0 .3-1.8 1.7 1.7 0 0 0-1.5-1H3a2 2 0 1 1 0-4h.1a1.7 1.7 0 0 0 1.5-1.1 1.7 1.7 0 0 0-.3-1.8l-.1-.1a2 2 0 1 1 2.8-2.8l.1.1a1.7 1.7 0 0 0 1.8.3H9a1.7 1.7 0 0 0 1-1.5V3a2 2 0 1 1 4 0v.1a1.7 1.7 0 0 0 1 1.5 1.7 1.7 0 0 0 1.8-.3l.1-.1a2 2 0 1 1 2.8 2.8l-.1.1a1.7 1.7 0 0 0-.3 1.8V9a1.7 1.7 0 0 0 1.5 1H21a2 2 0 1 1 0 4h-.1a1.7 1.7 0 0 0-1.5 1z"/></svg><span>Settings</span><span class="cnt" data-cnt="settings" hidden></span></button>
+    <button type="button" class="nav-b" data-go="dash"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 13h8V3H3zM13 21h8V11h-8zM3 21h8v-6H3zM13 3v6h8V3z"/></svg><span>Dashboard</span><span class="cnt" data-cnt="dash" hidden></span></button><button type="button" class="nav-b" data-go="stats"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 3v18h18"/><path d="M7 15l4-4 3 3 6-7"/></svg><span>Visitor statistics</span></button><button type="button" class="nav-b" data-go="notify"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M18 8a6 6 0 0 0-12 0c0 7-3 9-3 9h18s-3-2-3-9"/><path d="M13.7 21a2 2 0 0 1-3.4 0"/></svg><span>Notify me signups</span><span class="cnt" data-cnt="notify" hidden></span></button><button type="button" class="nav-b" data-go="join"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M16 21v-2a4 4 0 0 0-4-4H6a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M22 21v-2a4 4 0 0 0-3-3.9M16 3.1a4 4 0 0 1 0 7.8"/></svg><span>Team applications</span><span class="cnt" data-cnt="join" hidden></span></button><button type="button" class="nav-b" data-go="sponsor"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 7H4a2 2 0 0 0-2 2v10a2 2 0 0 0 2 2h16a2 2 0 0 0 2-2V9a2 2 0 0 0-2-2z"/><path d="M16 21V5a2 2 0 0 0-2-2h-4a2 2 0 0 0-2 2v16"/></svg><span>Partner inquiries</span><span class="cnt" data-cnt="sponsor" hidden></span></button><button type="button" class="nav-b" data-go="announce"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 11v2a1 1 0 0 0 1 1h3l5 4V6L7 10H4a1 1 0 0 0-1 1z"/><path d="M16 9a3 3 0 0 1 0 6M19 6a7 7 0 0 1 0 12"/></svg><span>Send announcement</span></button><button type="button" class="nav-b" data-go="content"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 20h9"/><path d="M16.5 3.5a2.1 2.1 0 0 1 3 3L7 19l-4 1 1-4z"/></svg><span>Website content</span><span class="cnt" data-cnt="content" hidden></span></button><button type="button" class="nav-b" data-go="settings"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="3"/><path d="M19.4 15a1.7 1.7 0 0 0 .3 1.8l.1.1a2 2 0 1 1-2.8 2.8l-.1-.1a1.7 1.7 0 0 0-1.8-.3 1.7 1.7 0 0 0-1 1.5V21a2 2 0 1 1-4 0v-.1a1.7 1.7 0 0 0-1.1-1.5 1.7 1.7 0 0 0-1.8.3l-.1.1a2 2 0 1 1-2.8-2.8l.1-.1a1.7 1.7 0 0 0 .3-1.8 1.7 1.7 0 0 0-1.5-1H3a2 2 0 1 1 0-4h.1a1.7 1.7 0 0 0 1.5-1.1 1.7 1.7 0 0 0-.3-1.8l-.1-.1a2 2 0 1 1 2.8-2.8l.1.1a1.7 1.7 0 0 0 1.8.3H9a1.7 1.7 0 0 0 1-1.5V3a2 2 0 1 1 4 0v.1a1.7 1.7 0 0 0 1 1.5 1.7 1.7 0 0 0 1.8-.3l.1-.1a2 2 0 1 1 2.8 2.8l-.1.1a1.7 1.7 0 0 0-.3 1.8V9a1.7 1.7 0 0 0 1.5 1H21a2 2 0 1 1 0 4h-.1a1.7 1.7 0 0 0-1.5 1z"/></svg><span>Settings</span><span class="cnt" data-cnt="settings" hidden></span></button>
     <div class="who"><span id="who"></span>
       <div class="btnrow"><a class="btn ghost sm" href="./" target="_blank" rel="noopener">View site</a><button type="button" class="btn ghost sm" id="logout">Log out</button></div>
     </div>
@@ -181,6 +193,7 @@
         <button type="button" class="kpi" data-go="notify"><small>Notify me signups</small><b data-k="notify">–</b><span data-k7="notify"></span></button>
         <button type="button" class="kpi" data-go="join"><small>Team applications</small><b data-k="join">–</b><span data-k7="join"></span></button>
         <button type="button" class="kpi" data-go="sponsor"><small>Partner inquiries</small><b data-k="sponsor">–</b><span data-k7="sponsor"></span></button>
+        <button type="button" class="kpi" data-go="stats"><small>Visitors, last 7 days</small><b id="k-vis">–</b><span id="k-vis2"></span></button>
       </div>
       <div class="card2"><h2>Latest</h2><div class="recent" id="recent"><p class="muted">Loading…</p></div></div>
       <div class="card2"><h2>Quick actions</h2>
@@ -228,6 +241,41 @@
       <div class="tbl-wrap" data-tbl="sponsor"><p class="empty">Loading…</p></div>
     </div>
 
+    <div class="view" data-view="stats" hidden>
+      <h1>Visitor statistics</h1>
+      <p class="muted">Counted by the website itself, without cookies. A “visitor” is one visit (several pages in a row count once); “page views” counts every page opened.</p>
+      <div class="toolbar">
+        <select id="st-days" style="max-width:180px" aria-label="Period"><option value="7">Last 7 days</option><option value="30" selected>Last 30 days</option><option value="90">Last 90 days</option><option value="365">Last 12 months</option></select>
+        <span class="grow"></span>
+        <a class="btn ghost sm" data-sheet target="_blank" rel="noopener">Open in Google Sheets ↗</a>
+        <button type="button" class="btn ghost sm" id="st-reload">Refresh</button>
+      </div>
+      <div id="st-body"><p class="empty">Loading…</p></div>
+    </div>
+
+    <div class="view" data-view="announce" hidden>
+      <h1>Send announcement</h1>
+      <p class="muted">Email everyone on the “Notify me” list, for example when the date or registration is announced. People who chose Georgian on the website get the Georgian version (or the English one if you leave Georgian empty). Every email has an unsubscribe link.</p>
+      <div id="an-status"></div>
+      <form id="an-form" class="card2" novalidate style="display:grid;gap:16px">
+        <div class="cols">
+          <label class="f"><span class="fl">Subject (English)</span><input type="text" id="an-sen" maxlength="150" placeholder="Caucasus Championship 2027: registration is open"></label>
+          <label class="f"><span class="fl">Subject (ქართული, optional)</span><input type="text" id="an-ska" maxlength="150"></label>
+        </div>
+        <div class="cols">
+          <label class="f"><span class="fl">Message (English)</span><textarea id="an-ben" rows="9" placeholder="Hi! The date is set: …"></textarea><small>Leave an empty line between paragraphs.</small></label>
+          <label class="f"><span class="fl">Message (ქართული, optional)</span><textarea id="an-bka" rows="9"></textarea></label>
+        </div>
+        <div class="row3">
+          <label class="f"><span class="fl">Button link (optional)</span><input type="url" id="an-link" placeholder="https://www.adcc.ge/event"></label>
+          <label class="f"><span class="fl">Button text (English)</span><input type="text" id="an-bten" maxlength="60" placeholder="Register now"></label>
+          <label class="f"><span class="fl">Button text (ქართული)</span><input type="text" id="an-btka" maxlength="60" placeholder="დარეგისტრირდით"></label>
+        </div>
+        <div class="btnrow"><button type="button" class="btn ghost" id="an-test">Send a test to me</button><button type="button" class="btn" id="an-send">Send to everyone</button></div>
+        <div id="an-msg"></div>
+      </form>
+    </div>
+
     <div class="view" data-view="content" hidden>
       <h1>Website content</h1>
       <p class="muted">Edit the event, weigh-in, tickets, shop, FAQ, waiver, contacts and previous events. Press <b>Save changes</b> and the site updates within 1–2 minutes.</p>
@@ -260,7 +308,7 @@
   </main>
 </div>
 
-<script src="site.js?v=202611202006a"></script>
+<script src="site.js?v=202611202053b"></script>
 <script>
 (function () {
   'use strict';
@@ -707,7 +755,7 @@
     var who = sess ? sess.email : 'GitHub token (old method)';
     $('#who').textContent = who; $('#who-m').textContent = who;
     $$('[data-sheet]').forEach(function (a) { if (sheetUrl) a.href = sheetUrl; a.hidden = !sheetUrl; });
-    ['notify', 'join', 'sponsor'].forEach(function (k) { var b = $('.nav-b[data-go="' + k + '"]'); if (b) b.hidden = !sess; });
+    ['notify', 'join', 'sponsor', 'stats', 'announce'].forEach(function (k) { var b = $('.nav-b[data-go="' + k + '"]'); if (b) b.hidden = !sess; });
     $('#pw-card').hidden = !sess;
     $('#conn-info').textContent = sess
       ? 'Logged in through the Google Sheet backend. Saving the website and reading submissions both go through it. Backend: ' + sess.api
@@ -715,7 +763,7 @@
     state = A.merge(clone(A.defaults), siteData || {});
     buildForm(); dirty = false; status('');
     go(sess ? (location.hash.slice(1) || 'dash') : 'content');
-    if (sess) { loadAll(); linkSiteToBackend(); }
+    if (sess) { loadAll(); loadStats(); loadAnn(); linkSiteToBackend(); }
   }
   // the first time: store the backend address in data.json so the website forms send to the Sheet
   async function linkSiteToBackend() {
@@ -740,6 +788,7 @@
     if (history.replaceState) history.replaceState(null, '', '#' + v);
     window.scrollTo(0, 0);
     if (lists[v]) drawTable(v);
+    if (v === 'announce' && sess) loadAnn();
   }
 
   // ------------------------------------------------------------- submissions
@@ -926,6 +975,93 @@
     status(done + ' photo' + (done > 1 ? 's' : '') + ' uploaded. Press “Save changes” to show ' + (done > 1 ? 'them' : 'it') + ' on the site.', 'warn');
   }
 
+
+  // ---------------------------------------------------------- visitor stats
+  var PAGES = { '/': 'Home', '/event': 'Event', '/weigh-in': 'Weigh-in', '/tickets': 'Tickets', '/rules': 'Rules', '/faq': 'FAQ', '/waiver': 'Waiver', '/previous-events': 'Previous events', '/shop': 'Shop', '/join': 'Join the team', '/sponsors': 'Partners', '/contact': 'Contact', '/privacy': 'Privacy', '/terms': 'Terms' };
+  var stats = null;
+  async function loadStats() {
+    var b = $('#st-body'); if (!b) return;
+    try {
+      var j = await api('stats', { days: Number($('#st-days').value) || 30 });
+      if (!j.ok) throw new Error(j.error);
+      stats = j; drawStats();
+    } catch (e) { clear(b); b.appendChild(el('p', { class: 'empty' }, ['Could not load statistics: ' + e.message])); }
+    var k = $('#k-vis'), k2 = $('#k-vis2');
+    if (stats && k) { k.textContent = stats.totals.visitsWeek; k2.textContent = stats.totals.viewsWeek + ' page views'; }
+  }
+  function hlist(title, rows, total, label) {
+    var box = el('div', { class: 'hl' });
+    if (!rows.length) box.appendChild(el('p', { class: 'muted' }, ['No data yet.']));
+    rows.forEach(function (r) {
+      var d = el('div', null, [el('span', null, [label ? label(r[0]) : r[0]]), el('b', null, [String(r[1])])]);
+      d.style.setProperty('--w', Math.max(3, Math.round(100 * r[1] / (total || 1))) + '%');
+      box.appendChild(d);
+    });
+    return el('div', { class: 'card2' }, [el('h2', null, [title]), box]);
+  }
+  function drawStats() {
+    var b = $('#st-body'); clear(b); var j = stats, T = j.totals;
+    var k = el('div', { class: 'kpis' });
+    [['Visitors today', T.visitsToday, T.viewsToday + ' page views'], ['Visitors, last 7 days', T.visitsWeek, T.viewsWeek + ' page views'], ['Visitors, selected period', T.visitsPeriod, T.viewsPeriod + ' page views']].forEach(function (x) {
+      k.appendChild(el('div', { class: 'kpi', style: 'cursor:default' }, [el('small', null, [x[0]]), el('b', null, [String(x[1])]), el('span', { style: 'color:var(--muted)' }, [x[2]])]));
+    });
+    b.appendChild(k);
+    var max = Math.max.apply(null, j.daily.map(function (d) { return d[2]; }).concat([1]));
+    var bars = el('div', { class: 'bars' });
+    j.daily.forEach(function (d) {
+      var i = el('i', { title: d[0] + ': ' + d[2] + ' visitors, ' + d[1] + ' page views' });
+      i.style.height = Math.round(100 * d[2] / max) + '%'; bars.appendChild(i);
+    });
+    var fd = function (s) { var p = s.split('-'); return p[2] + '.' + p[1]; };
+    var xs = el('div', { class: 'bars-x' }, [el('span', null, [fd(j.daily[0][0])]), el('span', null, [fd(j.daily[Math.floor(j.daily.length / 2)][0])]), el('span', null, [fd(j.daily[j.daily.length - 1][0])])]);
+    b.appendChild(el('div', { class: 'card2' }, [el('h2', null, ['Visitors per day']), bars, xs]));
+    var vis = T.visitsPeriod, views = T.viewsPeriod;
+    b.appendChild(el('div', { class: 'lists' }, [
+      hlist('Where visitors come from', j.sources, vis),
+      hlist('Most viewed pages', j.pages, j.pages.length ? j.pages[0][1] : 1, function (p) { return PAGES[p] || p; }),
+      hlist('Countries (by time zone)', j.countries, vis),
+      hlist('Devices', j.devices, vis),
+      hlist('Website language', j.languages, vis, function (l) { return l === 'ka' ? 'Georgian' : l === 'en' ? 'English' : l; })
+    ]));
+  }
+
+  // ----------------------------------------------------------- announcements
+  var annTimer = null;
+  async function loadAnn() {
+    var box = $('#an-status'); if (!box) return;
+    try {
+      var j = await api('annStatus');
+      if (!j.ok) throw new Error(j.error);
+      clear(box);
+      var info = el('div', { class: 'card2' }, [el('p', { style: 'margin:0' }, [
+        el('b', null, [String(j.subscribers)]), ' people on the list · ', el('b', null, [String(j.quota)]), ' emails left today (Gmail allows about 100 a day; bigger lists are sent automatically over the next days)'])]);
+      if (j.job) {
+        var p = Math.round(100 * (j.job.sent + j.job.failed) / (j.job.total || 1));
+        info.appendChild(el('p', { class: 'muted', style: 'margin:14px 0 0' }, [(j.job.done ? 'Last announcement: ' : 'Sending now: ') + '“' + j.job.subject + '” – ' + j.job.sent + ' of ' + j.job.total + ' sent' + (j.job.failed ? ', ' + j.job.failed + ' failed' : '') + (j.job.done ? ' ✓' : '')]));
+        var bar = el('div', { class: 'prog' }, [el('i')]); bar.firstChild.style.width = p + '%'; info.appendChild(bar);
+      }
+      box.appendChild(info);
+      $('#an-send').textContent = 'Send to ' + j.subscribers + (j.subscribers === 1 ? ' person' : ' people');
+      $('#an-send').disabled = !!(j.job && !j.job.done) || !j.subscribers;
+      clearTimeout(annTimer);
+      if (j.job && !j.job.done) annTimer = setTimeout(function () { if (!$('.view[data-view="announce"]').hidden) loadAnn(); }, 30000);
+    } catch (e) { clear(box); box.appendChild(el('div', { class: 'flash err' }, ['Could not load: ' + e.message])); }
+  }
+  function annBody() {
+    return { subjectEn: $('#an-sen').value, subjectKa: $('#an-ska').value, bodyEn: $('#an-ben').value, bodyKa: $('#an-bka').value, link: $('#an-link').value, buttonEn: $('#an-bten').value, buttonKa: $('#an-btka').value };
+  }
+  async function sendAnn(test) {
+    var b = annBody();
+    if (!b.subjectEn.trim() || !b.bodyEn.trim()) { flash('#an-msg', 'err', 'Write at least the English subject and message.'); return; }
+    if (!test && !window.confirm('Send this announcement to everyone on the list now? This cannot be undone.')) return;
+    var btn = test ? $('#an-test') : $('#an-send'), old = btn.textContent; btn.disabled = true; btn.textContent = 'Sending…';
+    try {
+      var j = await api('announce', Object.assign({ test: !!test }, b));
+      if (!j.ok) throw new Error(j.error);
+      flash('#an-msg', 'ok', test ? 'Test sent to ' + j.to + '. Check your inbox (and spam folder).' : 'Announcement started: ' + j.job.sent + ' of ' + j.job.total + ' sent now' + (j.job.done ? '. All done ✓' : '. The rest are sent automatically every hour as Gmail allows.'));
+    } catch (e) { flash('#an-msg', 'err', e.message); }
+    btn.textContent = old; btn.disabled = false; loadAnn();
+  }
   // -------------------------------------------------------------------- start
   $('#login-form').addEventListener('submit', doLogin);
   $('#l-legacy').addEventListener('click', function () { show('legacy-view'); });
@@ -941,6 +1077,10 @@
   $$('[data-csv]').forEach(function (b) { b.addEventListener('click', function () { csv(b.getAttribute('data-csv')); }); });
   $$('[data-copy]').forEach(function (b) { b.addEventListener('click', function () { copyEmails(b.getAttribute('data-copy'), b); }); });
   $$('[data-reload]').forEach(function (b) { b.addEventListener('click', loadAll); });
+  $('#st-days').addEventListener('change', loadStats);
+  $('#st-reload').addEventListener('click', loadStats);
+  $('#an-test').addEventListener('click', function () { sendAnn(true); });
+  $('#an-send').addEventListener('click', function () { sendAnn(false); });
   window.addEventListener('beforeunload', function (e) { if (dirty) { e.preventDefault(); e.returnValue = ''; } });
   (async function () {
     await loadSite();

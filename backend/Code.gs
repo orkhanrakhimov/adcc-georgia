@@ -17,6 +17,11 @@
 var REPO = 'orkhanrakhimov/adcc-georgia';
 var BRANCH = 'main';
 var SESSION_DAYS = 7;
+var SITE_URL = 'https://www.adcc.ge';
+var INSTAGRAM = '@adccgeorgia';
+var MAIL_RESERVE = 15;          // daily emails kept free for thank-you messages while an announcement is sending
+var VISITS = { tab: 'Visits', first: ['Date', 'Page', 'Source', 'Device', 'Language', 'Time zone', 'Visit', 'New visit'] };
+var ANN = { tab: 'Announcements', first: ['Date', 'Announcement', 'Email', 'Language', 'Status'] };
 var FORMS = {
   notify:  { tab: 'Notify me',     first: ['Date', 'Email', 'Name', 'Site language'] },
   join:    { tab: 'Join the team', first: ['Date', 'Application for', 'Full name', 'Email', 'Phone / WhatsApp', 'City'] },
@@ -25,7 +30,9 @@ var FORMS = {
 
 /* ------------------------------------------------------------------ web app */
 
-function doGet() {
+function doGet(e) {
+  var p = (e && e.parameter) || {};
+  if (p.unsub) return unsubscribe_(String(p.unsub), String(p.s || ''));
   return out_({ ok: true, service: 'ADCC Georgia website API' });
 }
 
@@ -36,7 +43,11 @@ function doPost(e) {
   try {
     switch (req.action) {
       case 'submit':   return out_(submit_(req));
+      case 'visit':    return out_(visit_(req));
       case 'login':    return out_(login_(req));
+      case 'stats':    return out_(withAdmin_(req, function () { return stats_(req); }));
+      case 'announce': return out_(withAdmin_(req, function (who) { return announce_(req, who); }));
+      case 'annStatus':return out_(withAdmin_(req, function () { return annStatus_(); }));
       case 'me':       return out_(withAdmin_(req, function (who) { return { ok: true, email: who, sheetUrl: sheetUrl_() }; }));
       case 'list':     return out_(withAdmin_(req, function () { return list_(req); }));
       case 'commit':   return out_(withAdmin_(req, function (who) { return commit_(req, who); }));
@@ -95,6 +106,7 @@ function submit_(req) {
     var row = head.map(function (h) { return h === 'Date' ? new Date() : (clean[h] !== undefined ? clean[h] : ''); });
     sh.appendRow(row);
   } finally { lock.releaseLock(); }
+  if (email) { try { thankYou_(req.form, email, clean); } catch (err) { console.warn('thank-you email failed: ' + err); } }
   return { ok: true };
 }
 
@@ -341,4 +353,233 @@ function menuRemoveAdmin() {
 function menuLogoutAll() {
   PropertiesService.getScriptProperties().setProperty('SESSION_SECRET', Utilities.getUuid() + Utilities.getUuid());
   SpreadsheetApp.getUi().alert('Everyone has been logged out of the admin panel.');
+}
+
+
+/* ------------------------------------------------------------- emails */
+
+function lang_(fields) { return /georgian|ქართ/i.test(String(fields['Site language'] || '')) ? 'ka' : 'en'; }
+function esc_(t) { return String(t).replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;').replace(/"/g, '&quot;'); }
+function plainCell_(v) { v = String(v || ''); return v.charAt(0) === "'" ? v.slice(1) : v; }
+
+function mailHtml_(title, paragraphs, button, footer) {
+  var ps = paragraphs.map(function (p) { return '<p style="margin:0 0 16px;font-size:16px;line-height:1.6;color:#222">' + esc_(p).replace(/\n/g, '<br>') + '</p>'; }).join('');
+  var btn = button && button.url ? '<p style="margin:26px 0 8px"><a href="' + esc_(button.url) + '" style="background:#d4202f;color:#fff;text-decoration:none;font-weight:bold;padding:13px 26px;border-radius:6px;display:inline-block;font-family:Arial,sans-serif">' + esc_(button.text || button.url) + '</a></p>' : '';
+  return '<div style="background:#f3f3f3;padding:24px 12px;font-family:Arial,Helvetica,sans-serif">' +
+    '<div style="max-width:560px;margin:0 auto;background:#fff;border-radius:10px;overflow:hidden">' +
+    '<div style="background:#0b0b0c;padding:18px 26px;border-bottom:4px solid #d4202f"><span style="color:#fff;font:bold 20px Arial,sans-serif;letter-spacing:3px">ADCC <span style="color:#d4202f">GEORGIA</span></span></div>' +
+    '<div style="padding:28px 26px 12px">' + (title ? '<h1 style="margin:0 0 18px;font-size:22px;color:#111">' + esc_(title) + '</h1>' : '') + ps + btn + '</div>' +
+    '<div style="padding:16px 26px 22px;color:#888;font-size:12px;line-height:1.6;border-top:1px solid #eee">' + footer + '</div></div></div>';
+}
+
+function send_(to, subject, html, text) {
+  MailApp.sendEmail({ to: to, subject: subject, htmlBody: html, body: text, name: 'ADCC Georgia' });
+}
+
+var THANKS = {
+  notify: {
+    en: { s: 'You are on the list – ADCC Georgia', t: 'Thank you for signing up!', p: ['We will email you as soon as the date and registration for the next ADCC Georgia event are announced.', 'Until then, follow us on Instagram ' + INSTAGRAM + ' for news.'] },
+    ka: { s: 'თქვენ სიაში ხართ – ADCC Georgia', t: 'გმადლობთ რეგისტრაციისთვის!', p: ['შემდეგი ADCC Georgia-ს ღონისძიების თარიღისა და რეგისტრაციის გამოცხადებისთანავე მოგწერთ ელფოსტაზე.', 'მანამდე სიახლეებისთვის გამოგვყევით Instagram-ზე ' + INSTAGRAM + '.'] }
+  },
+  join: {
+    en: { s: 'We received your application – ADCC Georgia', t: 'Thank you for applying!', p: ['We have received your application to join the ADCC Georgia team{role}.', 'We read every application and will contact you by email or WhatsApp.'] },
+    ka: { s: 'თქვენი განაცხადი მიღებულია – ADCC Georgia', t: 'გმადლობთ განაცხადისთვის!', p: ['ADCC Georgia-ს გუნდში გაწევრიანების თქვენი განაცხადი მიღებულია{role}.', 'ყველა განაცხადს ვკითხულობთ და დაგიკავშირდებით ელფოსტით ან WhatsApp-ით.'] }
+  },
+  sponsor: {
+    en: { s: 'Thank you for your interest – ADCC Georgia', t: 'Thank you for reaching out!', p: ['We have received your partnership inquiry{company} and will get back to you soon.', 'If anything is urgent, simply reply to this email.'] },
+    ka: { s: 'გმადლობთ დაინტერესებისთვის – ADCC Georgia', t: 'გმადლობთ, რომ დაგვიკავშირდით!', p: ['თქვენი თანამშრომლობის მოთხოვნა მიღებულია{company} და მალე დაგიკავშირდებით.', 'თუ საკითხი სასწრაფოა, უბრალოდ უპასუხეთ ამ წერილს.'] }
+  }
+};
+
+function thankYou_(form, email, fields) {
+  var T = THANKS[form]; if (!T) return;
+  if (MailApp.getRemainingDailyQuota() < 2) return;
+  var L = lang_(fields), m = T[L];
+  var role = plainCell_(fields['Application for']), company = plainCell_(fields['Company name']);
+  var ps = m.p.map(function (p) {
+    return p.replace('{role}', role ? (L === 'ka' ? ' (' + role + ')' : ' as ' + role) : '').replace('{company}', company ? (L === 'ka' ? ' (' + company + ')' : ' for ' + company) : '');
+  });
+  var foot = (L === 'ka' ? 'ეს წერილი მიიღეთ, რადგან ფორმა შეავსეთ ' : 'You received this because you filled in a form on ') + '<a href="' + SITE_URL + '" style="color:#888">www.adcc.ge</a>.';
+  send_(email, m.s, mailHtml_(m.t, ps, null, foot), m.t + '\n\n' + ps.join('\n\n') + '\n\nADCC Georgia – ' + SITE_URL);
+}
+
+/* ----------------------------------------------------------- announcements */
+
+function annSig_(email) { return Utilities.base64EncodeWebSafe(Utilities.computeHmacSha256Signature('unsub|' + email, secret_())).slice(0, 22); }
+function unsubUrl_(email) {
+  var base = ScriptApp.getService().getUrl() || PropertiesService.getScriptProperties().getProperty('WEBAPP_URL') || '';
+  return base + '?unsub=' + encodeURIComponent(email) + '&s=' + annSig_(email);
+}
+
+function subscribers_() {
+  var sh = tab_(FORMS.notify), lr = sh.getLastRow(), lc = Math.max(sh.getLastColumn(), 1);
+  if (lr < 2) return [];
+  var vals = sh.getRange(1, 1, lr, lc).getValues(), head = vals.shift().map(String);
+  var ei = head.indexOf('Email'), li = head.indexOf('Site language'), ui = head.indexOf('Unsubscribed'), seen = {}, out = [];
+  vals.forEach(function (r) {
+    var e = plainCell_(r[ei]).trim().toLowerCase();
+    if (!e || seen[e] || (ui >= 0 && String(r[ui]).toLowerCase() === 'yes')) return;
+    seen[e] = 1; out.push({ email: e, lang: /georgian|ქართ/i.test(String(r[li] || '')) ? 'ka' : 'en' });
+  });
+  return out;
+}
+
+function annMail_(a, L, email, test) {
+  var subj = (L === 'ka' && a.subject.ka) ? a.subject.ka : a.subject.en;
+  var body = (L === 'ka' && a.body.ka) ? a.body.ka : a.body.en;
+  var btnText = (L === 'ka' && a.button.ka) ? a.button.ka : a.button.en;
+  var paras = String(body).split(/\n\s*\n/).map(function (x) { return x.trim(); }).filter(String);
+  var un = test ? '#' : unsubUrl_(email);
+  var foot = (L === 'ka'
+    ? 'ეს წერილი მიიღეთ, რადგან www.adcc.ge-ზე მოითხოვეთ შეტყობინება. <a href="' + un + '" style="color:#888">გამოწერის გაუქმება</a>'
+    : 'You received this because you asked to be notified on www.adcc.ge. <a href="' + un + '" style="color:#888">Unsubscribe</a>');
+  var html = mailHtml_('', paras, a.link ? { url: a.link, text: btnText || (L === 'ka' ? 'დეტალები' : 'Details') } : null, foot);
+  var text = paras.join('\n\n') + (a.link ? '\n\n' + a.link : '') + '\n\n' + (test ? '' : (L === 'ka' ? 'გამოწერის გაუქმება: ' : 'Unsubscribe: ') + un);
+  send_(email, (test ? '[TEST] ' : '') + subj, html, text);
+}
+
+function announce_(req, who) {
+  var a = {
+    subject: { en: String(req.subjectEn || '').trim().slice(0, 150), ka: String(req.subjectKa || '').trim().slice(0, 150) },
+    body: { en: String(req.bodyEn || '').trim().slice(0, 8000), ka: String(req.bodyKa || '').trim().slice(0, 8000) },
+    button: { en: String(req.buttonEn || '').trim().slice(0, 60), ka: String(req.buttonKa || '').trim().slice(0, 60) },
+    link: String(req.link || '').trim()
+  };
+  if (!a.subject.en || !a.body.en) return { ok: false, error: 'Write at least the English subject and message.' };
+  if (a.link && !/^https?:\/\/\S+$/i.test(a.link)) return { ok: false, error: 'The button link must start with https://' };
+  var url = ScriptApp.getService().getUrl(); if (url) PropertiesService.getScriptProperties().setProperty('WEBAPP_URL', url);
+  if (req.test) {
+    if (MailApp.getRemainingDailyQuota() < 2) return { ok: false, error: 'The daily email limit is used up. Try again tomorrow.' };
+    annMail_(a, 'en', who, true);
+    if (a.subject.ka && a.body.ka) annMail_(a, 'ka', who, true);
+    return { ok: true, test: true, to: who };
+  }
+  var props = PropertiesService.getScriptProperties(), job = JSON.parse(props.getProperty('ANN_JOB') || 'null');
+  if (job && !job.done) return { ok: false, error: 'The previous announcement is still being sent (' + job.sent + ' of ' + job.total + '). Wait until it finishes.' };
+  var list = subscribers_();
+  if (!list.length) return { ok: false, error: 'Nobody is on the Notify me list yet.' };
+  var lock = LockService.getScriptLock(); lock.waitLock(20000);
+  try {
+    var id = Utilities.formatDate(new Date(), 'Asia/Tbilisi', 'yyyyMMdd-HHmm'), now = new Date(), sh = tab_(ANN);
+    sh.getRange(sh.getLastRow() + 1, 1, list.length, 5).setValues(list.map(function (x) { return [now, id, x.email, x.lang, 'waiting']; }));
+    job = { id: id, a: a, total: list.length, sent: 0, failed: 0, by: who, started: now.toISOString(), done: false };
+    props.setProperty('ANN_JOB', JSON.stringify(job));
+  } finally { lock.releaseLock(); }
+  sendAnnouncementQueue();
+  job = JSON.parse(props.getProperty('ANN_JOB'));
+  if (!job.done) ensureTrigger_();
+  return { ok: true, job: jobInfo_(job) };
+}
+
+// runs right after "Send" and then every hour (trigger) until everyone has received the announcement
+function sendAnnouncementQueue() {
+  var props = PropertiesService.getScriptProperties(), job = JSON.parse(props.getProperty('ANN_JOB') || 'null');
+  if (!job || job.done) { removeTrigger_(); return; }
+  var lock = LockService.getScriptLock(); if (!lock.tryLock(10000)) return;
+  try {
+    var sh = tab_(ANN), lr = sh.getLastRow();
+    if (lr < 2) { job.done = true; props.setProperty('ANN_JOB', JSON.stringify(job)); return; }
+    var vals = sh.getRange(2, 1, lr - 1, 5).getValues(), t0 = Date.now();
+    for (var i = 0; i < vals.length; i++) {
+      if (vals[i][1] !== job.id || vals[i][4] !== 'waiting') continue;
+      if (MailApp.getRemainingDailyQuota() <= MAIL_RESERVE || Date.now() - t0 > 240000) break;
+      var status;
+      try { annMail_(job.a, vals[i][3], vals[i][2], false); status = 'sent'; job.sent++; }
+      catch (err) { status = 'failed: ' + String(err.message || err).slice(0, 80); job.failed++; }
+      sh.getRange(i + 2, 5).setValue(status);
+    }
+    if (job.sent + job.failed >= job.total) { job.done = true; job.finished = new Date().toISOString(); }
+    props.setProperty('ANN_JOB', JSON.stringify(job));
+  } finally { lock.releaseLock(); }
+  if (job.done) removeTrigger_();
+}
+
+function ensureTrigger_() {
+  var has = ScriptApp.getProjectTriggers().some(function (t) { return t.getHandlerFunction() === 'sendAnnouncementQueue'; });
+  if (!has) ScriptApp.newTrigger('sendAnnouncementQueue').timeBased().everyHours(1).create();
+}
+function removeTrigger_() {
+  ScriptApp.getProjectTriggers().forEach(function (t) { if (t.getHandlerFunction() === 'sendAnnouncementQueue') ScriptApp.deleteTrigger(t); });
+}
+
+function jobInfo_(job) {
+  if (!job) return null;
+  return { id: job.id, subject: job.a.subject.en, total: job.total, sent: job.sent, failed: job.failed, done: job.done, started: job.started, finished: job.finished || null, by: job.by };
+}
+
+function annStatus_() {
+  var job = JSON.parse(PropertiesService.getScriptProperties().getProperty('ANN_JOB') || 'null');
+  return { ok: true, job: jobInfo_(job), subscribers: subscribers_().length, quota: MailApp.getRemainingDailyQuota(), reserve: MAIL_RESERVE };
+}
+
+function unsubscribe_(email, sig) {
+  email = email.trim().toLowerCase();
+  var good = email && same_(sig, annSig_(email)), done = false;
+  if (good) {
+    var lock = LockService.getScriptLock(); lock.waitLock(20000);
+    try {
+      var sh = tab_(FORMS.notify), lc = Math.max(sh.getLastColumn(), 1), head = sh.getRange(1, 1, 1, lc).getValues()[0].map(String);
+      var ui = head.indexOf('Unsubscribed');
+      if (ui < 0) { head.push('Unsubscribed'); ui = head.length - 1; sh.getRange(1, ui + 1).setValue('Unsubscribed').setFontWeight('bold'); }
+      var ei = head.indexOf('Email'), lr = sh.getLastRow();
+      if (lr > 1) sh.getRange(2, ei + 1, lr - 1, 1).getValues().forEach(function (r, i) {
+        if (plainCell_(r[0]).trim().toLowerCase() === email) { sh.getRange(i + 2, ui + 1).setValue('yes'); done = true; }
+      });
+    } finally { lock.releaseLock(); }
+  }
+  var msg = good
+    ? '<h1>You are unsubscribed</h1><p>' + esc_(email) + ' will no longer receive ADCC Georgia announcements.</p><p>' + esc_(email) + ' აღარ მიიღებს ADCC Georgia-ს შეტყობინებებს.</p>'
+    : '<h1>This link is not valid</h1><p>Please write to us and we will remove you from the list.</p>';
+  return HtmlService.createHtmlOutput('<div style="font-family:Arial,sans-serif;max-width:520px;margin:60px auto;padding:0 20px;color:#222">' + msg + '<p><a href="' + SITE_URL + '">www.adcc.ge</a></p></div>').setTitle('ADCC Georgia');
+}
+
+/* ------------------------------------------------------------ visitor stats */
+
+function clip_(v, n) { return safeCell_(String(v === null || v === undefined ? '' : v).replace(/[\r\n\t]/g, ' ').slice(0, n)); }
+
+function visit_(req) {
+  var path = String(req.path || '/').slice(0, 120);
+  if (!/^\/[\w\/.\-]*$/.test(path)) path = '/';
+  var cache = CacheService.getScriptCache(), sid = String(req.sid || '').replace(/[^\w]/g, '').slice(0, 24);
+  if (sid) { var ck = 'v:' + sid, n = Number(cache.get(ck) || 0); if (n > 60) return { ok: true }; cache.put(ck, String(n + 1), 3600); }
+  tab_(VISITS).appendRow([new Date(), path, clip_(req.source, 60), clip_(req.device, 20), clip_(req.lang, 10), clip_(req.zone, 40), sid, req.first ? 'yes' : '']);
+  return { ok: true };
+}
+
+var ZONES = { 'Asia/Tbilisi': 'Georgia', 'Asia/Yerevan': 'Armenia', 'Asia/Baku': 'Azerbaijan', 'Europe/Istanbul': 'Türkiye', 'Europe/Moscow': 'Russia', 'Europe/Kiev': 'Ukraine', 'Europe/Kyiv': 'Ukraine', 'Asia/Dubai': 'UAE', 'Asia/Almaty': 'Kazakhstan', 'Asia/Tashkent': 'Uzbekistan', 'Europe/London': 'UK', 'Europe/Berlin': 'Germany', 'Europe/Warsaw': 'Poland', 'Asia/Jerusalem': 'Israel', 'Asia/Riyadh': 'Saudi Arabia' };
+
+function stats_(req) {
+  var days = Math.min(Math.max(Number(req.days) || 30, 7), 365);
+  var sh = tab_(VISITS), lr = sh.getLastRow(), tz = 'Asia/Tbilisi';
+  var now = new Date(), fmt = function (d) { return Utilities.formatDate(d, tz, 'yyyy-MM-dd'); };
+  var series = {}, labels = [];
+  for (var i = days - 1; i >= 0; i--) { var k = fmt(new Date(now.getTime() - i * 864e5)); labels.push(k); series[k] = { views: 0, visits: {} }; }
+  var today = fmt(now), d7 = fmt(new Date(now.getTime() - 6 * 864e5));
+  var tot = { today: 0, week: 0, period: 0 }, vis = { today: {}, week: {}, period: {} };
+  var pages = {}, sources = {}, devices = {}, langs = {}, countries = {}, seen = {};
+  if (lr > 1) {
+    sh.getRange(2, 1, lr - 1, 8).getValues().forEach(function (r) {
+      if (!(r[0] instanceof Date)) return;
+      var k = fmt(r[0]); if (!series[k]) return;
+      var sid = String(r[6] || ('row' + Math.random()));
+      series[k].views++; series[k].visits[sid] = 1;
+      tot.period++; vis.period[sid] = 1;
+      if (k >= d7) { tot.week++; vis.week[sid] = 1; }
+      if (k === today) { tot.today++; vis.today[sid] = 1; }
+      var pg = plainCell_(r[1]) || '/'; pages[pg] = (pages[pg] || 0) + 1;
+      if (!seen[sid]) {   // per visit: where they came from, device, language, country
+        seen[sid] = 1;
+        var src = plainCell_(r[2]) || 'Direct', dev = plainCell_(r[3]) || 'Unknown', lg = plainCell_(r[4]) || '?', zn = plainCell_(r[5]);
+        sources[src] = (sources[src] || 0) + 1; devices[dev] = (devices[dev] || 0) + 1;
+        langs[lg] = (langs[lg] || 0) + 1;
+        var c = ZONES[zn] || (zn ? zn.split('/').pop().replace(/_/g, ' ') : 'Unknown'); countries[c] = (countries[c] || 0) + 1;
+      }
+    });
+  }
+  var top = function (o, n) { return Object.keys(o).map(function (k) { return [k, o[k]]; }).sort(function (a, b) { return b[1] - a[1]; }).slice(0, n || 10); };
+  var n = function (o) { return Object.keys(o).length; };
+  return { ok: true, days: days,
+    totals: { viewsToday: tot.today, viewsWeek: tot.week, viewsPeriod: tot.period, visitsToday: n(vis.today), visitsWeek: n(vis.week), visitsPeriod: n(vis.period) },
+    daily: labels.map(function (k) { return [k, series[k].views, n(series[k].visits)]; }),
+    pages: top(pages, 12), sources: top(sources, 10), devices: top(devices, 5), languages: top(langs, 5), countries: top(countries, 10) };
 }

@@ -4,7 +4,10 @@
 
 * stores every website form (Notify me, Join the team, Partners) as a row in the Sheet,
 * checks admin logins for www.adcc.ge/admin (email + password, passwords stored hashed),
-* saves admin changes to this GitHub repository, so admins never handle a GitHub token.
+* saves admin changes to this GitHub repository, so admins never handle a GitHub token,
+* counts website visits (tab *Visits*, no cookies) for the Visitor statistics page,
+* sends an automatic thank-you email to everyone who fills in a form,
+* sends announcements to the Notify me list from the admin panel (tab *Announcements*, about 100 emails a day on a free Gmail account; the rest go out automatically every hour), with an unsubscribe link.
 
 ## One-time setup (about 10 minutes)
 
