@@ -1518,7 +1518,8 @@
   "video": ""
  },
  "site": {
-  "goatcounter": ""
+  "goatcounter": "",
+  "api": ""
  },
  "banner": {
   "enabled": false,
@@ -2463,6 +2464,27 @@
   }
   function L2(k) { return { en: UI[k][0], ka: UI[k][1] }; }
 
+  function apiUrl() {
+    var u = String(((DATA.site || {}).api) || '').trim();
+    return /^https:\/\/script\.google\.com\/macros\/s\/[\w-]+\/exec$/.test(u) ? u : '';
+  }
+  // send a form to the email service (Web3Forms) and to the Google Sheet; success if either one worked
+  function submitForm(kind, data) {
+    var jobs = [], key = String(data.access_key || '').trim(), api = apiUrl();
+    if (key) jobs.push(fetch('https://api.web3forms.com/submit', { method: 'POST', headers: { 'Content-Type': 'application/json', 'Accept': 'application/json' }, body: JSON.stringify(data) })
+      .then(function (res) { return res.json().catch(function () { return {}; }).then(function (j) { return res.ok && j.success !== false; }); })
+      .catch(function () { return false; }));
+    if (api) {
+      var row = {};
+      Object.keys(data).forEach(function (n) { if (!/^(access_key|subject|from_name|botcheck|email|Form)$/.test(n)) row[n] = data[n]; });
+      if (!row.Email && data.email) row.Email = data.email;
+      jobs.push(fetch(api, { method: 'POST', body: JSON.stringify({ action: 'submit', form: kind, fields: row }) })
+        .then(function (res) { return res.json(); }).then(function (j) { return !!(j && j.ok); })
+        .catch(function () { return false; }));
+    }
+    if (!jobs.length) return Promise.resolve(false);
+    return Promise.all(jobs).then(function (rs) { return rs.some(Boolean); });
+  }
   function sendSponsor(fields, errs, form, btn, msg, J) {
     var first = null;
     fields.forEach(function (f) {
@@ -2494,13 +2516,11 @@
       window.location.href = 'mailto:' + mail + '?subject=' + encodeURIComponent(subject) + '&body=' + encodeURIComponent(body);
     }
     var key = String(J.accessKey || '').trim();
-    if (!key) { if (mail) viaEmail(); return; }
+    if (!key && !apiUrl()) { if (mail) viaEmail(); return; }
     btn.disabled = true; btn.textContent = ui('join.sending');
     var data = { access_key: key, subject: subject, from_name: 'ADCC Georgia website', email: String(spVals.email).trim(), botcheck: false, 'Form': 'Sponsorship inquiry', 'Site language': lang === 'ka' ? 'Georgian' : 'English' };
     for (var n in payload) data[n] = payload[n];
-    fetch('https://api.web3forms.com/submit', { method: 'POST', headers: { 'Content-Type': 'application/json', 'Accept': 'application/json' }, body: JSON.stringify(data) })
-      .then(function (res) { return res.json().catch(function () { return {}; }).then(function (j) { return res.ok && j.success !== false; }); })
-      .catch(function () { return false; })
+    submitForm('sponsor', data)
       .then(function (ok) {
         if (ok) { spSent = true; spVals = {}; renderSponsors(); markKa(); var f = $('#sp-form'); if (f && f.scrollIntoView) f.scrollIntoView({ behavior: 'smooth', block: 'start' }); return; }
         btn.disabled = false; btn.textContent = ui('sp.send'); msg.textContent = ui('join.err');
@@ -2860,14 +2880,12 @@
       window.location.href = 'mailto:' + mail + '?subject=' + encodeURIComponent(subject) + '&body=' + encodeURIComponent(body);
     }
     var key = String(J.accessKey || '').trim();
-    if (!key) { if (mail) viaEmail(); return; }
+    if (!key && !apiUrl()) { if (mail) viaEmail(); return; }
 
     btn.disabled = true; btn.textContent = ui('join.sending');
     var data = { access_key: key, subject: subject, from_name: 'ADCC Georgia website', email: String(vals.email).trim(), botcheck: false, 'Application for': r.title.en, 'Site language': lang === 'ka' ? 'Georgian' : 'English' };
     for (var n in payload) data[n] = payload[n];
-    fetch('https://api.web3forms.com/submit', { method: 'POST', headers: { 'Content-Type': 'application/json', 'Accept': 'application/json' }, body: JSON.stringify(data) })
-      .then(function (res) { return res.json().catch(function () { return {}; }).then(function (j) { return res.ok && j.success !== false; }); })
-      .catch(function () { return false; })
+    submitForm('join', data)
       .then(function (ok) {
         if (ok) { joinSent[k] = true; FV[k] = {}; renderJoin(); markKa(); var f = $('#join-form'); if (f && f.scrollIntoView) f.scrollIntoView({ behavior: 'smooth', block: 'start' }); return; }
         btn.disabled = false; btn.textContent = ui('join.submit');
@@ -2917,12 +2935,10 @@
     var email = String(ntVals.email).trim(), key = String(J.accessKey || '').trim(), mail = String((DATA.contact || {}).email || '').trim();
     var subject = 'ADCC Georgia – Next event notify – ' + email;
     function viaEmail() { window.location.href = 'mailto:' + mail + '?subject=' + encodeURIComponent(subject) + '&body=' + encodeURIComponent('Please notify me about the next event.\nEmail: ' + email); }
-    if (!key) { if (mail) viaEmail(); return; }
+    if (!key && !apiUrl()) { if (mail) viaEmail(); return; }
     btn.disabled = true; btn.textContent = ui('join.sending');
     var data = { access_key: key, subject: subject, from_name: 'ADCC Georgia website', email: email, botcheck: false, 'Form': 'Next event notification list', 'Name': String(ntVals.name || '').trim(), 'Site language': lang === 'ka' ? 'Georgian' : 'English' };
-    fetch('https://api.web3forms.com/submit', { method: 'POST', headers: { 'Content-Type': 'application/json', 'Accept': 'application/json' }, body: JSON.stringify(data) })
-      .then(function (res) { return res.json().catch(function () { return {}; }).then(function (j) { return res.ok && j.success !== false; }); })
-      .catch(function () { return false; })
+    submitForm('notify', data)
       .then(function (ok) {
         if (ok) { ntSent = true; ntVals = {}; try { if (ls()) ls().setItem('adcc-notified', '1'); } catch (e) {} renderNotify(); renderNbar(phase(DATA.event, Date.now())); markKa(); return; }
         btn.disabled = false; btn.textContent = ui('nt.send'); msg.textContent = ui('join.err');
