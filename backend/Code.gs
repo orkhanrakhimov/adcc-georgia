@@ -173,7 +173,7 @@ function login_(req) {
   var fails = Number(cache.get(fk) || 0);
   if (fails >= 5) return { ok: false, error: 'Too many wrong attempts. Wait 15 minutes and try again.' };
   var admins = admins_(), a = admins[email];
-  if (!a || hash_(pw, a.salt) !== a.hash) {
+  if (!pwOk_(a, pw)) {
     cache.put(fk, String(fails + 1), 900);
     Utilities.sleep(600);
     return { ok: false, error: 'Wrong email or password.' };
@@ -202,9 +202,9 @@ function verify_(tok) {
   var good = Utilities.base64EncodeWebSafe(Utilities.computeHmacSha256Signature(p, secret_()));
   if (!same_(s, good)) return null;
   var parts = Utilities.newBlob(Utilities.base64DecodeWebSafe(p)).getDataAsString().split('|');
-  var email = parts[0], exp = Number(parts[1]), v = Number(parts[2] || 1);
+  var email = parts[0], exp = Number(parts[1]), v = String(parts[2] || '1');
   var a = admins_()[email];
-  if (!a || !(exp > Date.now()) || (a.v || 1) !== v) return null;   // removed admin, expired, or password changed
+  if (!a || !(exp > Date.now()) || String(a.v || 1) !== v) return null;   // removed admin, expired, or password changed
   return email;
 }
 
@@ -229,20 +229,36 @@ function secret_() {
   return s;
 }
 
+// Admins come from two places:
+//  - Script Properties ADMIN_EMAIL + ADMIN_PASSWORD (and ADMIN_EMAIL_2 + ADMIN_PASSWORD_2, _3 …), typed in by hand
+//  - the "Add or reset an admin" menu, which stores passwords scrambled (these win if both exist)
 function admins_() {
-  try { return JSON.parse(PropertiesService.getScriptProperties().getProperty('ADMINS') || '{}'); }
-  catch (e) { return {}; }
+  var props = PropertiesService.getScriptProperties(), all = props.getProperties(), out = {};
+  Object.keys(all).forEach(function (k) {
+    var m = /^ADMIN_EMAIL(_\w+)?$/.exec(k); if (!m) return;
+    var email = String(all[k]).trim().toLowerCase(), pw = all['ADMIN_PASSWORD' + (m[1] || '')];
+    if (email && pw) out[email] = { plain: String(pw), v: 'p' + Utilities.base64Encode(Utilities.computeDigest(Utilities.DigestAlgorithm.SHA_256, String(pw), Utilities.Charset.UTF_8)).slice(0, 10) };
+  });
+  try { var h = JSON.parse(props.getProperty('ADMINS') || '{}'); Object.keys(h).forEach(function (e) { out[e] = h[e]; }); } catch (e) {}
+  return out;
+}
+function pwOk_(a, pw) {
+  if (!a) return false;
+  if (a.plain !== undefined) return same_(String(pw), a.plain);
+  return hash_(pw, a.salt) === a.hash;
 }
 
 function setAdmin_(email, pw) {
-  var admins = admins_(), old = admins[email], salt = Utilities.getUuid();
-  admins[email] = { salt: salt, hash: hash_(pw, salt), v: old ? (old.v || 1) + 1 : 1 };
-  PropertiesService.getScriptProperties().setProperty('ADMINS', JSON.stringify(admins));
+  var props = PropertiesService.getScriptProperties(), hashed = {};
+  try { hashed = JSON.parse(props.getProperty('ADMINS') || '{}'); } catch (e) {}
+  var old = hashed[email], salt = Utilities.getUuid();
+  hashed[email] = { salt: salt, hash: hash_(pw, salt), v: old ? (Number(old.v) || 1) + 1 : 1 };
+  props.setProperty('ADMINS', JSON.stringify(hashed));
 }
 
 function changePassword_(who, req) {
   var a = admins_()[who], cur = String(req.current || ''), nw = String(req.next || '');
-  if (!a || hash_(cur, a.salt) !== a.hash) return { ok: false, error: 'Your current password is wrong.' };
+  if (!pwOk_(a, cur)) return { ok: false, error: 'Your current password is wrong.' };
   var why = weak_(nw); if (why) return { ok: false, error: why };
   setAdmin_(who, nw);
   return { ok: true, token: sign_(who + '|' + (Date.now() + SESSION_DAYS * 864e5) + '|' + admins_()[who].v) };
@@ -314,10 +330,11 @@ function menuRemoveAdmin() {
   var ui = SpreadsheetApp.getUi();
   var r = ui.prompt('Remove an admin', 'Email address to remove:', ui.ButtonSet.OK_CANCEL);
   if (r.getSelectedButton() !== ui.Button.OK) return;
-  var email = r.getResponseText().trim().toLowerCase(), admins = admins_();
-  if (!admins[email]) { ui.alert('No admin with that email.'); return; }
+  var email = r.getResponseText().trim().toLowerCase(), props = PropertiesService.getScriptProperties(), admins = {};
+  try { admins = JSON.parse(props.getProperty('ADMINS') || '{}'); } catch (e) {}
+  if (!admins[email]) { ui.alert('No admin with that email in the menu list. If you added them in Script Properties, delete their ADMIN_EMAIL / ADMIN_PASSWORD there.'); return; }
   delete admins[email];
-  PropertiesService.getScriptProperties().setProperty('ADMINS', JSON.stringify(admins));
+  props.setProperty('ADMINS', JSON.stringify(admins));
   ui.alert(email + ' was removed and logged out.');
 }
 

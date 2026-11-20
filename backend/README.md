@@ -13,7 +13,10 @@
    * Execute as: **Me**
    * Who has access: **Anyone**
    * Press **Deploy**, allow access (Google shows “unverified app” for your own scripts: **Advanced → Go to … (unsafe)** is expected), and copy the **Web app URL** (ends in `/exec`).
-3. Reload the Sheet. A new **ADCC Admin** menu appears:
+3. Admin logins – either way works:
+   * **Script Properties** (Apps Script → Project Settings → Script Properties): add `ADMIN_EMAIL` and `ADMIN_PASSWORD`.
+     More admins: `ADMIN_EMAIL_2` + `ADMIN_PASSWORD_2`, `_3`, … Changing a password there logs that admin out everywhere.
+   * or the **ADCC Admin** menu in the Sheet (stores the password scrambled):
    1. **Set up the tabs**
    2. **Add or reset an admin** – your email and a password (10+ characters, letters and numbers)
    3. **Connect the website (GitHub token)** – a fine-grained token for this repository with *Contents: Read and write*
